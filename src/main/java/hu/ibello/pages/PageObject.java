@@ -1,0 +1,230 @@
+package hu.ibello.pages;
+
+import hu.ibello.actions.ActionBuilder;
+import hu.ibello.actions.KeyHelper;
+import hu.ibello.core.Browser;
+import hu.ibello.core.Name;
+import hu.ibello.core.Value;
+import hu.ibello.elements.WebElement;
+import hu.ibello.elements.WebElements;
+import hu.ibello.expect.ExpectationBuilder;
+import hu.ibello.inject.Inject;
+import hu.ibello.inject.Injectable;
+import hu.ibello.inject.Scope;
+import hu.ibello.search.Find;
+import hu.ibello.search.Position;
+import hu.ibello.search.Relation;
+import hu.ibello.search.SearchTool;
+
+/**
+ * <p>
+ * Superclass for page objects. Each class sub-classing it will be automatically injected by the injector in
+ * session-scope - there is no need for {@link Inject} annotation.
+ * </p>
+ * <p>
+ * During the dependency injection the injector automatically initializes all fields in a page object, when the
+ * field has one {@link Find} annotation and it's type is one of the followings:
+ * </p>
+ * <ul>
+ * <li>{@link WebElement} - the field will represent a single element on the page,</li>
+ * <li>{@link WebElements} - the field will represent multiple elements on the page,</li>
+ * <li>List&lt;{@link WebElement}&gt; - same,</li>
+ * <li>{@link WebElement}[] - same.</li>
+ * </ul>
+ * <p>
+ * The fields even can be private. Examples:
+ * </p>
+ * <pre>
+ * {@literal @}Find(selector="#ok-button")
+ * private WebElement okButton;
+ * 
+ * {@literal @}Find(selector=".main-table tr")
+ * private List&lt;WebElement&gt; tableRows; 
+ * </pre>
+ * <p>
+ * With the {@link Find} annotation some other (modifier) annotations can be added to the initialized fields.
+ * With the {@link Position} annotation the desired element's relative position can be specified to an anchor element.
+ * With the {@link Relation} annotation the structural relation between the desired and anchor elements can be
+ * specified. Examples:
+ * </p>
+ * <pre>
+ * {@literal @}Find(selector="button")
+ * {@literal @}Position(type=PositionType.LEFT_FROM, selector="#ok-button")
+ * private WebElement cancelButton;
+ * 
+ * {@literal @}Find(selector="button")
+ * {@literal @}Relation(type=RelationType.DESCENDANT_OF, selector="#modal-window")
+ * private WebElement modalButton;
+ * </pre>
+ * <p>
+ * A page object encapsulates the technical functionality of a well-defined part of the application under test.
+ * For example, it can represent the functionality of a single web-page, a navigation bar, a frame, ... Every
+ * necessary action available on that page is specified in the page object as public method. Every assertion
+ * that can be verified on that page is represented by a public method too.
+ * </p>
+ * <p>
+ * The abstract {@link PageObject} class contains some useful protected methods. These are for:
+ * </p>
+ * <ul>
+ * <li>doing something with elements, see {@link PageObject#doWith(WebElement)},</li>
+ * <li>accessing browser interface which can be used for element search, or for open an URL, and other things,
+ * see {@link PageObject#browser()},</li>
+ * <li>verifying some expectations, see {@link PageObject#expectations()},</li>
+ * <li>reading configuration values, see {@link PageObject#getConfigurationValue(String)}.</li>
+ * </ul>
+ * <p>
+ * Examples:
+ * </p>
+ * <pre>
+ * public void clickButton() {
+ *     // clicking a button
+ *     doWith(okButton).click();
+ * }
+ * 
+ * private WebElement findButton() {
+ *     // finding a specific element on page
+ *     return browser().find("#ok-button");
+ * }
+ * 
+ * public void openPage() {
+ *     // opening a specific URL
+ *     browser().openURL("http://localhost/page");
+ * }
+ * 
+ * public void expectButtonIsVisible() {
+ *     // verifying that button is visible
+ *     expectations().expect(okButton).toBe().visible();
+ * }
+ * 
+ * public void expectPageIsOpened() {
+ *     // verifying that a specific URL is opened
+ *     expectations().expect(browser()).toHave().url("http://localhost/page");
+ * }
+ * 
+ * private Long getDefaultTimeout() {
+ *     // returning configuration value as number
+ *     return getConfigurationValue("ibello.timeout.default").toLong();
+ * }
+ * </pre>
+ * <p>
+ * All public methods of a page object are considered as test steps and therefore automatically logged when called.
+ * The log will contain the descriptive name of the methods. If the method has a {@link Name} annotation, then
+ * the descriptive name will be the one specified by that annotation. Otherwise the descriptive name will be transformed
+ * from the name of the method; all underscore character will be replaced by a space, and all camel-case substring
+ * will be separated into multiple words. Method parameters are also included in the descriptive name.
+ * </p>
+ * <p>
+ * Examples:
+ * </p>
+ * <pre>
+ * public void clickBigButton() {
+ *     // descriptive name is "Click Big Button"
+ * }
+ * 
+ * public void open_page() {
+ *     // descriptive name is "Open Page"
+ * }
+ * 
+ * {@literal @}Name("Close Modal Dialog")
+ * public void doSomething() {
+ *     // descriptive name is "Close Modal Dialog"
+ * }
+ * 
+ * {@literal @}Name("Click Button in Row ${0}")
+ * public void clickButton(int index) {
+ *     // the name may contain parameter substitution marker
+ *     // eg. clickButton(5) will have descriptive name: "Click Button in Row 5"
+ * }
+ * </pre>
+ * <p>
+ * A step library should have a public default constructor.
+ * </p>
+ * @author Kornél Simon
+ * @see Find
+ * @see Position
+ * @see Relation
+ */
+@Injectable(Scope.PAGE)
+public abstract class PageObject {
+	
+	@Inject
+	private PageObjectTool tool;
+	
+	/**
+	 * <p>
+	 * Returns a {@link SearchTool} instance which is used to search elements on the page.
+	 * </p>
+	 * <p>
+	 * The returned instance offers a fluent interface for element search. Example:
+	 * </p>
+	 * <pre>
+	 * WebElement image = ...;
+	 * WebElement child = find().using(By.TAG_NAME, "span").leftFrom(image).first();
+	 * </pre>
+	 * @return an object used for element search on the page
+	 */
+	protected SearchTool find() {
+		return tool.find();
+	}
+
+	/**
+	 * Returns a configuration property as a {@link Value}. The returned value offers some public methods to
+	 * transform the configuration property into different java types.
+	 * This method always has a non-null result, even if the configuration value does not exist - in this case,
+	 * the wrapped value will be <code>null</code>.
+	 * @param name name of the configuration parameter
+	 * @return value of the configuration parameter wrapped into a {@link Value} instance
+	 */
+	protected Value getConfigurationValue(String name) {
+		return tool.getConfigurationValue(name);
+	}
+	
+	/**
+	 * Returns a {@link Browser} instance which can be used for different browser-specific actions,
+	 * including element search and opening URL.
+	 * @return an interface which offers browser-specific actions
+	 */
+	protected Browser browser() {
+		return tool.browser();
+	}
+	
+	/**
+	 * Returns an {@link ActionBuilder} instance which can be used to perform different actions on the web element.
+	 * @param element we want to perform an action with this elements
+	 * @return an interface configured for doing actions with the element
+	 */
+	protected ActionBuilder doWith(WebElement element) {
+		return tool.doWith(element);
+	}
+	
+	/**
+	 * <p>
+	 * Returns an {@link ExpectationBuilder} instance which can be used to build and execute an expectation.
+	 * </p>
+	 * <p>
+	 * The returned instance offers a fluent interface for element search. Example:
+	 * </p>
+	 * <pre>
+	 * WebElement okButton = ...;
+	 * WebElements buttons = ...;
+	 * expectations().expect(okButton).toBe().visible();
+	 * expectations().expect(buttons).toHave().size(5);
+	 * expectations().expect(browser()).toHave().url("http://localhost/page");
+	 * </pre>
+	 * @return an {@link ExpectationBuilder} instance which is configured to run expectations
+	 */
+	protected ExpectationBuilder expectations() {
+		return tool.expectations();
+	}
+	
+	/**
+	 * Returns a {@link KeyHelper} instance, which offers special keys and key modifiers.
+	 * Those can be used in {@link ActionBuilder#sendKeys(CharSequence...)} and
+	 * {@link ActionBuilder#sendKeys(hu.ibello.actions.KeyModifier, CharSequence...)} methods.
+	 * @return a {@link KeyHelper} instance
+	 */
+	protected KeyHelper keys() {
+		return tool.keys();
+	}
+	
+}
