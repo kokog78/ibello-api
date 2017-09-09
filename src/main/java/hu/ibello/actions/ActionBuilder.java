@@ -7,7 +7,7 @@ import hu.ibello.pages.PageObject;
 
 /**
  * Interface for building an <em>action</em>.
- * It contains fluent methods to build and execute interactive operations on elements.
+ * It contains fluent methods to build and execute interactive operations on an element.
  * <p>
  * During an action, the <em>ibello</em> tries to interact with an element on the page.
  * If the interaction fails, it will try it again and again, until it successes or the time
@@ -16,14 +16,15 @@ import hu.ibello.pages.PageObject;
  * {@link #withTimeout(String)} method.
  * </p>
  * <p>
- * In some cases it is useful to wait some more after an interaction occured on the page.
+ * In some cases it is useful to wait a few seconds after an interaction occured on the page.
  * The action may change the page structure dynamically, or can navigate to another page.
  * With the {@link #withPageRefreshWait()} method, this wait can be performed right after
  * the action finishes.
  * </p>
  * <p>
  * During test execution, every action is logged with it's additional information. If an action
- * fails, then the test will be marked with "error" flag, and not with "failed".
+ * fails, then the test will be marked with "error" flag, and not with "failed". This is a
+ * difference between actions and expectations - see {@link hu.ibello.expect}.
  * </p>
  * <p>
  * ActionBuilder instance can be obtained on page objects, with {@link PageObject#doWith(WebElement)}

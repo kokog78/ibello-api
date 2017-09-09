@@ -75,6 +75,8 @@
 				<configuration>
 					<show>public</show>
 					<nohelp>true</nohelp>
+					<bottom><![CDATA[Created by Korn&#x00E9;l Simon, {currentYear}]]></bottom>
+					<charset>UTF-8</charset>
 				</configuration>
 				<executions>
 					<execution>

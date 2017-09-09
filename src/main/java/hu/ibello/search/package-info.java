@@ -10,7 +10,7 @@
  * are available as enum constants in {@link hu.ibello.search.By}.</li>
  * <li>Search pattern: a single string. It's meaning depends on the search algorithm. For example,
  * if search algorithm is {@link hu.ibello.search.By#CSS_SELECTOR}, then the search pattern
- * is a valid CSS selector, but if search algorithm is {@link hu.ibello.search.By#TAG_NAME},
+ * is a valid CSS selector, and if search algorithm is {@link hu.ibello.search.By#TAG_NAME},
  * the the pattern is a valid HTML tag name.</li>
  * <li>Search parameters: the search pattern may contain parameter substitution markers.
  * A parameter substitution marker is a 0-based index surrounded by <code>${</code> and <code>}</code>.
@@ -18,23 +18,22 @@
  * For example, if <code>pattern</code> is <code>"${0}-${1}"</code>,
  * then the method will replace <code>${0}</code> with the first parameter, and <code>${1}</code>
  * with the second parameter. If the parameters are <code>"a"</code> and <code>1</code>, then the
- * result pattern will be <code>"a-1"</code>.</li>
+ * result will be <code>"a-1"</code>.</li>
  * <li>Search modifiers: each search may have one or more modifiers. These are just another conditions
- * for the search. Some are conditions for the position of the desired elements, another ones
+ * for the search. Some are conditions about the position of the desired elements, another ones
  * specify the relation of the desired elements to another elements on the page.</li>
  * </ul>
  * <p>
  * The result of an element search is a single {@link hu.ibello.elements.WebElement} instance,
- * or a collection of elements: {@link hu.ibello.elements.WebElements}, list of WebElement instances
- * or array of WebElement instances.
+ * or a collection of elements: {@link hu.ibello.elements.WebElements}.
  * </p>
  * <p>
  * An elements search can be <em>static</em> or <em>dynamic</em>.
  * </p>
  * <p>
  * During a static element search the search conditions are specified with annotations added to
- * fields in a page object (see {@link hu.ibello.pages.PageObject}). The search is performed
- * automatically when the page object is initialized, and the result elements are stored in the
+ * fields of a page object (see {@link hu.ibello.pages.PageObject}). The search is performed
+ * automatically when the page object is initialized, and the results are stored in the
  * field's value. These annotations are:
  * </p>
  * <ul>
@@ -59,12 +58,12 @@
  * {@link hu.ibello.search.SearchTool} interface: it has some useful methods where the search
  * conditions can be specified. Instances of this interface can be obtained by
  * {@link hu.ibello.elements.WebElement#find()} and {@link hu.ibello.pages.PageObject#find()}.
- * Examples:
+ * Examples (in a page object):
  * </p>
  * <pre>
  * WebElement okButton = find().using("#ok-button").first();
  * WebElement cancelButton = find().using("button").leftFrom(okButton).first();
- * WebElement modalButton = find().using("#modal-window").first().using(By.TAG_NAME, "button").first();
+ * WebElement modalButton = find().using("#modal-window").first().find().using(By.TAG_NAME, "button").first();
  * </pre>
  * @author Kornél Simon
  */

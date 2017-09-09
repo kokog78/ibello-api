@@ -27,9 +27,7 @@ import hu.ibello.search.SearchTool;
  * </p>
  * <ul>
  * <li>{@link WebElement} - the field will represent a single element on the page,</li>
- * <li>{@link WebElements} - the field will represent multiple elements on the page,</li>
- * <li>List&lt;{@link WebElement}&gt; - same,</li>
- * <li>{@link WebElement}[] - same.</li>
+ * <li>{@link WebElements} - the field will represent multiple elements on the page.</li>
  * </ul>
  * <p>
  * The fields even can be private. Examples:
@@ -39,10 +37,10 @@ import hu.ibello.search.SearchTool;
  * private WebElement okButton;
  * 
  * {@literal @}Find(selector=".main-table tr")
- * private List&lt;WebElement&gt; tableRows; 
+ * private WebElements tableRows; 
  * </pre>
  * <p>
- * With the {@link Find} annotation some other (modifier) annotations can be added to the initialized fields.
+ * After the {@link Find} annotation some other (modifier) annotations can be added to a field.
  * With the {@link Position} annotation the desired element's relative position can be specified to an anchor element.
  * With the {@link Relation} annotation the structural relation between the desired and anchor elements can be
  * specified. Examples:
@@ -58,16 +56,16 @@ import hu.ibello.search.SearchTool;
  * </pre>
  * <p>
  * A page object encapsulates the technical functionality of a well-defined part of the application under test.
- * For example, it can represent the functionality of a single web-page, a navigation bar, a frame, ... Every
- * necessary action available on that page is specified in the page object as public method. Every assertion
- * that can be verified on that page is represented by a public method too.
+ * For example, it can represent a single web-page, a navigation bar, a frame, ... Every
+ * necessary action available on that object is specified in the page object as public method. Every assertion
+ * that can be verified on that object is represented by a public method too.
  * </p>
  * <p>
  * The abstract {@link PageObject} class contains some useful protected methods. These are for:
  * </p>
  * <ul>
  * <li>doing something with elements, see {@link PageObject#doWith(WebElement)},</li>
- * <li>accessing browser interface which can be used for element search, or for open an URL, and other things,
+ * <li>accessing browser interface which can be used to open an URL, and to other things,
  * see {@link PageObject#browser()},</li>
  * <li>verifying some expectations, see {@link PageObject#expectations()},</li>
  * <li>reading configuration values, see {@link PageObject#getConfigurationValue(String)}.</li>
@@ -137,7 +135,7 @@ import hu.ibello.search.SearchTool;
  * }
  * </pre>
  * <p>
- * A step library should have a public default constructor.
+ * A page object should have a public default constructor.
  * </p>
  * @author Kornél Simon
  * @see Find
