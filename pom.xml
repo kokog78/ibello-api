@@ -6,6 +6,7 @@
 	<version>1.0.0</version>
 	<name>Ibello API</name>
 	<description>Ibello is an easy-to-use automated test framework for web applications. It's public API is ibello-api.</description>
+	<url>http://ibello.hu</url>
 	<inceptionYear>2017</inceptionYear>
 	<licenses>
 		<license>
@@ -21,6 +22,13 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+	<developers>
+		<developer>
+			<name>Kornél Simon</name>
+			<email>kokog.private@gmail.com</email>
+			<organization>Ark-Sys</organization>
+		</developer>
+	</developers>
 	<distributionManagement>
 		<snapshotRepository>
 			<id>ossrh</id>
@@ -74,6 +82,19 @@
 						<phase>test-compile</phase>
 						<goals>
 							<goal>testCompile</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.2.1</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar-no-fork</goal>
 						</goals>
 					</execution>
 				</executions>
