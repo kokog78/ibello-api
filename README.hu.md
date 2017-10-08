@@ -227,6 +227,20 @@ public class WelcomePage extends PageObject {
 
 Az oldal-leírók metódusai is bekerülnek a logba és a riportba. A megjelenő szöveg ezeknél is pontosítható a `@Name` annotáció segítségével.
 
+## Konfigurációs paraméterek olvasása
+
+A tesztlépés-könyvtárak és az oldal-leírók lehetőséget adnak az ibello konfigurációs paraméterek olvasására. Erre a célra a `getConfigurationValue(String)` metódus szolgál.
+A metódus egyetlen argumentuma a kívánt konfigurációs paraméter neve, visszatérési értéke pedig egy `Value` típusú objektum, amivel a paraméter értékét lehet különböző java
+típusokra konvertálni. A konverzió a `Value` osztály metódusaival lehetséged, pl. `Value.toString()`, `Value.toDouble()`, `Value.toStringArray()`.
+A `getConfigurationValue` metódus akkor is visszatér egy `Value` objektummal, ha a kért konfigurációs paraméter nem létezik, ekkor azonban minden konverziós metódus
+`null` értékkel ad. Példák:
+
+```java
+String username = getConfigurationValue("current.user").toString();
+Integer backendPort = getConfigurationValue("backend.port").toInteger();
+File parameterFile = getConfigurationValue("backend.parameter.file").toFile();
+```
+
 ## Elemek keresése
 
 Az ibello rendszer lehetőséget ad egyszerre egy vagy több elem keresésére. A keresés lehet _statikus_ vagy _dinamikus_.
