@@ -345,5 +345,306 @@ usernameField = find()
                 .first();
 ```
 
+## Időtúllépések kezelése
+
+Az ibello rendszert webalkalmazások teszteléséhez használjuk. A tesztelendő alkalmazást egy böngészőben futtatjuk, a tesztek pedig ezt a böngészőt automatizálják. Az automatizálás
+_aszinkron_ abban az értelemben, hogy a tesztkódból kiadott parancsok egy külön folyamatba futnak be, ami közvetlenül nincs összekötve a teszteket futtató java folyamattal. A
+parancs végrehajtása tehát a kiadását követően fog megtörténni, valamikor a közeli jövőben - de hogy pontosan mikor, azt nem lehet előre tudni. Az ilyen típusú vezérléseknél bevett
+gyakorlat az, hogy a parancsot indító folyamat várakozik addig, amíg tudomást nem szerez a parancs végrehajtásának sikerességéről vagy sikertelenségéről. Mindez azért fontos,
+mert ha nem várná meg a parancs eredményét, és rögtön kiadna egy újabb parancsot, akkor _versenyhelyzetet_ teremtene a két parancs végrehajtása között, aminek a kimenetele kétesélyes.
+Az ilyen versenyhelyzetek viszont kerülendőek a tesztekben, azoktól ugyanis elvárjuk, hogy újra és újra lefuttatva ugyanazt az eredményt adják.
+
+A parancsok sikerességéről általában úgy szerzünk tudomást, hogy figyeljük az oldal állapotát. Ha az olyan módon változott meg, ahogyan azt elvártuk, akkor a parancs sikeres volt.
+Ez azonban egy újabb _aszinkron_ esemény, ugyanis az oldal állapotát a böngésző változtatja meg, szintén nem tudni, pontosan mikor. A webalkalmazások tesztelése tehát a fentiek miatt
+_kétszeresen aszinkron módon_ történik.
+
+Képzeljük el például, hogy egy hivatkozásra szeretnénk kattintani, aminek a hatására az oldal tartalma meg fog változni. A tesztkód kiadja a kattintás parancsot, amit a böngésző valamikor
+végrehajt (első aszinkron lépés). Ezután a böngésző elindítja az új oldal betöltését és megjelenítését, ami megintcsak valamikor a jövőben fog befejeződni (második aszinkron lépés).
+Azt, hogy a kattintás sikeres volt, onnan tudhatjuk meg, hogy az új oldal URL címe megjelenik a böngésző címmezőjében, vagy még biztosabban onnan, hogy az új oldalra jellemző tartalom
+megjelenik a böngészőben. Ha a hivatkozás - egy programhiba miatt - máshová mutatott, akkor másik oldal töltődik be, és más tartalom jelenik meg a böngészőben.
+
+A fenti esetet legjobban úgy tudjuk kezelni, ha a kattintás után várakozunk addig, amíg az új oldal megjelenésével kapcsolatos feltétel nem teljesül. Ha viszont programhiba van, akkor
+a feltétel sohasem fog teljesülni - viszont erről értelmes időben tudomást szeretnénk kapni. Meg kell adnunk tehát egy határidőt, amin túl nem vagyunk hajlandóak várakozni. Ha a feltétel
+nem teljesül a határidő alatt, akkor feltételezhetjük, hogy hiba van, és a tesztnek el kell törnie.
+
+De milyen határidőt válasszunk? Egyes műveletek tovább tartanak az átlagosnál. Ha pl. az előbbi példánkban a kattintás eredményeképpen egy olyan számolási folyamat indul be a háttérben,
+ami tovább tart az átlagosnál, akkor az átlagosnak gondolt időtúllépés nem lesz megfelelő. Természetes elvárás tehát a tesztrendszertől, hogy az időtúllépések mértéke egyedileg
+megadható legyen.
+
+Az ibello rendszer - ellentétben más keretrendszerekkel - nem ad lehetőséget az időtúllépések közvetlen meghatározására. Minden időtúllépés-értéket egy szöveges azonosítóhoz, vagy egy
+enum konstanshoz kell kötni. A tesztkódban ezen a módon lehet hivatkozni az időtúllépésre. A konkrét - másodpercekben mért - értéket az ibello konfigurációs fájlokból olvassa fel.
+Ezen a módon, ha a tesztjeinket egy olyan környezetben akarjuk futtatni, ami természetszerűen lassabb (mert például több hasonló folyamat is fut rajta), akkor elegendő csupán a
+konfigurációs fájlok szintjén változtatnunk, a tesztkódot nem kell átírni.
+
+Az ibello néhány időtúllépést előre definiál.
+
+Az alapértelmezett időtúllépést a "default" kulcsszó azonosítja. Ez - ha a konfigurációs fájlokban máshogyan nem rendelkezünk - 5 másodperc. A legtöbb esetben, amikor nincs más érték
+külön megadva, akkor ez van használva.
+
+Ha a böngészőbe közvetlenül egy új URL-t töltünk be (az oldal-leíró `browser().openURL(...)` metódusával), akkor az ibello megpróbálja kivárni az új oldal betöltődését. Ehhez a
+"page.load" azonosítójú időtúllépést használja. Ennek az alapértelmezett értéke 10 másodperc. Ha ez alatt az idő alatt az oldal nem töltődik be, akkor a tesztfutás hiba nélkül folytatódik
+(viszont a későbbi ellenőrzések, amik feltételezik, hogy az oldal betöltődött, elbukhatnak).
+
+Dinamikus weboldalakon, ahol a tartalmaz javascript kód állítja elő, gyakori eset, hogy egy művelet után a kívánt tartalom még nem látható, mivel az oldalon futó szkriptek még
+dolgoznak. Az ibello rendszernek erre az esetre van egy megoldása, amivel figyeli, hogy az oldalon folyamatban van-e még valamilyen változás. Lehetőség van arra, hogy a műveletek
+után ezt a változást kivárjuk, mielőtt a tesztfutás továbbmegy. Ehhez a várakozáshoz is tartozik egy időtúllépés, "page.refresh" azonosítóval. Az alapértelmezett értéke megyegyezik
+az alapértelmezett időtúllépésével.
+
+Az előre definiált időtúllépések mellett sajátokat is definiálhatunk. A legjobb, ha erre a célra létrehozunk egy java enum-ot. Az enum konstansok fogják azonosítani a különböző
+típusú időtúllépéseket. Ezeket a konstansokat megadhatjuk a műveletek és az ellenőrzések hívásakor. A konkrét értékeket az ibello konfigurációs fájlokban kell majd megadnunk,
+másodpercekben.
+
+## Műveletek elemekkel
+
+Az oldal-leírókban a `doWith(WebElement)` metódus segítségével végezhetünk műveletet az elemekkel. A metódus által visszaadott objektumból kiindulva folytatólagosan lehet
+hívni a kívánt műveletet.
+
+```java
+WebElement usernameField = find().using("#user-name").first();
+// beállítjuk a megtalált mező értékét
+doWith(usernameField).setValue("testuser");
+```
+
+Amikor egy kívánt művelet meghívódik, még nem biztos, hogy az elem, amivel a műveletet el szeretnénk végezni, elérhető a böngészőben. Ezért minden egyes művelethez tartozik egy
+implicit időtúllépés - ennyi ideig próbálkozik az ibello a művelet végrehajtásával. Ha ez idő alatt nem sikerül végrehajtani a műveletet, akkor a teszt elbukik, és _hibásnak_
+minősül. A várakozási idő értéke az alapértelmezett időtúllépéssel egyezik meg, de ezt módosíthatjuk a `withTimeout(...)` metódussal. Paraméternek a kívánt időtúllépés értékét
+adhatjuk meg, szövegesen vagy enum konstanssal.
+
+```java
+// várakozási idő beállítása a saját Timeouts.MEDIUM enum konstanssal
+doWith(usernameField).withTimeout(Timeouts.MEDIUM).setValue("testuser");
+```
+
+A `withPageRefreshWait()` metódus segítségével elérhetjük, hogy a művelet végrehajtása után az ibello rendszer várakozzon addig, amíg az oldalon minden változás megtörténik,
+vagy amíg a beállított határidő ("page.refresh" időtúllépés) lejár. Ez akkor lehet hasznos, ha előre sejtjük, hogy a művelet változást fog okozni az oldalon - például egy másik oldalra juttat, vagy a DOM-ból
+eltüntet egyes elemeket.
+
+```java
+// az egérkattintás után megvárja az oldal frissülését
+doWith(button).withPageRefreshWait().click();
+```
+
+### Egérműveletek
+
+| Metódus                     | Leírás                                                                         |
+| --------------------------- | ------------------------------------------------------------------------------ |
+| `click()`                   | Balgombos egérkattintás az elem közepére.                                      |
+| `contextClick()`            | Jobbgombos egérkattintás az elem közepére.                                     |
+| `doubleClick()`             | Dupla egérkattintás az elem közepére.                                          |
+| `moveTo()`                  | Az egérmutatót az elem közepére állítja.                                       |
+| `dragAndDropTo(WebElement)` | "Fog és vidd" művelettel az elemet a paraméterben megadott másik elemre húzza. |
+
+### Billentyűzet művelet
+
+Billentyűzet műveleteket a `sendKeys(...)` metódussal tudunk kiváltani. A metódus tetszőleges számú `CharSequence` típusú paramétert kaphat, amiket sorban elküld az elemnek,
+mintha begépeltük volna azokat. Az elküldendő karaktereket megadhatjuk egyszerűen egy `String` példánnyal is:
+
+```java
+doWith(usernameField).sendKeys("testuser");
+```
+
+Arra is lehetőségünk van, hogy speciális karaktereket küldjünk el. Ehhez az oldal-leíró `keys()` metódusát kell használnunk, a visszaadott objektumnak vannak erre a célra konstans
+mezői:
+
+```java
+doWith(usernameField).sendKeys(keys().HOME);
+```
+
+Ha `CTRL`, `ALT` vagy `SHIFT` lenyomása mellett szeretnénk karaktereket küldeni az elemnek, akkor a `sendKeys` első paraméterének a módosítót kell megadnunk:
+
+```java
+doWith(usernameField).sendKeys(keys().CONTROL(), "a");
+```
+
+### Egyéb műveletek
+
+| Metódus            | Leírás                                                                |
+| ------------------ | --------------------------------------------------------------------- |
+| `setValue(String)` | Beállítja az `input` vagy `textarea` típusú mező értékét.             |
+| `setFile(String)`  | Beállítja az `input type=file` típusú mező értékét a megadott fájlra. |
+| `submit()`         | Elküldi a `form` típusú elem tartalmát.                               |
+
+## Ellenőrzések
+
+A tesztlépések egyik legfontosabb mozzanata az, amikor ellenőrizzük az aktuális oldal állapotát. Erre az ibello rendszer folytatólagosan írható API-val nyújt segítséget.
+
+Egy oldal-leíró osztályon belül hívható az `expectations()` metódus. Ez egy olyan objektumot ad, amiből minden ellenőrzés kiindul.
+
+### Egyszerű ellenőrzések
+
+Az `expect(...)` metódussal egy adott objektummal kapcsolatos ellenőrzést indítunk. Az objektum a metódus paramétere, típus szerint lehet:
+
+- egy `WebElement` példány,
+- egy `WebElements` példány,
+- vagy a `browser()` metódus által visszaadott böngésző objektum.
+
+A háromféle paraméterezés háromféle ellenőrzést jelent, mindegyiknél más metódusok érhetőek el az `expect(...)` által visszaadott objektumból. Mindegyik esetben még két metódust
+kell hívnunk az ellenőrzés indításához, amikkel az objektumra vonatkozó feltételt szabjuk ki. Az első metódus valamilyen tulajdonság létezését vagy nem létezését határozza meg:
+
+| Metódus       | Leírás                                                 |
+| ------------- | ------------------------------------------------------ |
+| `toHave()`    | Az objektum rendelkezik valamilyen tulajdonsággal.     |
+| `toNotHave()` | Az objektum nem rendelkezik valamilyen tulajdonsággal. |
+| `toBe()`      | Az objektumra igaz valamilyen logikai állítás.         |
+| `toNotBe()`   | Az objektumra nem igaz valamilyen logikai állítás.     |
+
+Mind a négy metódus tulajdonképpen egy tulajdonság meglétét vagy hiányát köti ki, azért van belőlük kettő helyett négy, hogy az ellenőrzés metódusai egymás után összeolvasva értelmes
+szöveget adjanak ki.
+
+Az előző metódust követi a tulajdonság megnevezése. A lehetséges tulajdonságok a vizsgált objektum típusától függenek. `WebElement` típus esetén ezek érhetőek el:
+
+| Metódus                        | Jelentés                                                                                |
+| ------------------------------ | --------------------------------------------------------------------------------------- |
+| `id(...)`                      | Az elem `id` attribútuma a megadott értékkel rendelkezik.                               |
+| `value(...)`                   | Az elem `value` attribútuma a megadott értékkel rendelkezik.                            |
+| `fileName(...)`                | Az elem `input type=file` típusú, és a kiválasztott fájl a megadott névvel rendelkezik. |
+| `attribute(...)`               | Az elem rendelkezik a megadott nevű attribútummal.                                      |
+| `attributeWithValue(..., ...)` | Az elem adott attribútuma a megadott értéket veszi fel.                                 |
+| `tagName(...)`                 | Az elem a megadott típusú.                                                              |
+| `cssClassName(...)`            | Az elem rendelkezik a megadott CSS osztálynévvel.                                       |
+| `cssValue(..., ...)`           | Az elem adott CSS tulajdonsága a megadott értéket veszi fel.                            |
+| `text(...)`                    | Az elem tartalma a megadott.                                                            |
+| `cssClassName(...)`            | Az elem rendelkezik a megadott CSS osztálynévvel.                                       |
+| `displayed()`                  | Az elem láthatósága.                                                                    |
+| `enabled()`                    | Az elem engedélyezett / nem engedélyezett állapota.                                     |
+| `clickable()`                  | Az elem kattinthatósága.                                                                |
+| `selected()`                   | Az elem kiválasztott / nem kiválasztott állapota.                                       |
+| `present()`                    | Az elem jelenléte a DOM-ban.                                                            |
+
+Példák:
+
+```java
+WebElement element = ...;
+
+// a mező tartalma "testuser"
+expectations().expect(element).toHave().value("testuser");
+// az elem nem rendelkezik "active" CSS osztálynévvel
+expectations().expect(element).toNotHave().cssClassName("active");
+// az elem látható
+expectations().expect(element).toBe().displayed();
+// az elem nem engedélyezett
+expectations().expect(element).toNotBe().enabled();
+```
+
+`WebElements` típusú objektum esetén ezek a metódusok érhetőek el:
+
+| Metódus                        | Jelentés                                                                                |
+| ------------------------------ | --------------------------------------------------------------------------------------- |
+| `size(...)`                    | Az elemek pontos száma.                                                                 |
+| `sizeGreaterThan(...)`         | Az elemek száma nagyobb, mint a megadott érték.                                         |
+| `sizeLessThan(...)`            | Az elemek száma kisebb, mint a megadott érték.                                          |
+| `sizeBetween(..., ...)`        | Az elemek száma a megadott határok között van.                                          |
+
+Példák:
+
+```java
+WebElements elements = ...;
+
+// az elemek száma nagyobb, mint 5
+expectations().expect(elements).toHave().sizeGreaterThan(5);
+// az elemek száma nem kisebb, mint 6
+expectations().expect(elements).toNotHave().sizeLessThan(6);
+```
+
+Böngészővel kapcsolatos metódusok:
+
+| Metódus                        | Jelentés                                                                                |
+| ------------------------------ | --------------------------------------------------------------------------------------- |
+| `url(...)`                     | A böngésző címsorában található URL.                                                    |
+| `loaded()`                     | Az aktuális oldal betöltöttsége.                                                        |
+
+Példák:
+
+```java
+// az aktuális URL "/login.html"
+expectations().expect(browser()).toHave().url("/login.html");
+// az aktuális URL nem "/welcome.html"
+expectations().expect(browser()).toNotHave().url("/welcome.html");
+// az oldal minden eleme be van töltve
+expectations().expect(browser()).toBe().loaded();
+```
+
+Az összes ellenőrzésnek van egy várakozási ideje. Ha ezen idő alatt nem teljesül a vizsgált feltétel, akkor a teszt elbukik, és _sikertelennek_ minősül. A várakozási idő alapesetben
+az alapértelmezett időtúllépés értékével egyezik meg, de ettől a `withTimeout(...)` metódus segítségével eltérhetünk:
+
+```java
+// várakozási idő beállítása a saját Timeouts.MEDIUM enum konstanssal
+expect(element).withTimeout(Timeouts.MEDIUM).toBe().displayed();
+```
+
+### Összetett ellenőrzések
+
+Az `expectAll(Runnable)` metódussal több feltételt közösen vizsgálunk. Minden feltételnek teljesülnie kell a várakozási időn belül, de a teljesülésük sorrendje mindegy. A feltételeket
+egy `Runnable` interfészen keresztül adhatjuk át, a legegyszerűbb a java 8 lambda kifejezését használni. Példa:
+
+```java
+expectations().expectAll(() -> {
+    expectations().expect(browser()).toHave().url("ibello.hu");
+    expectations().expect(registerButton).toBe().clickable();
+});
+```
+
+Ha az ellenőrzésnek nem adunk meg explicit várakozási időt, akkor azt ki fogja számolni a feltételekből - a feltételek várakozási idejének összege lesz a teljes várakozási idő.
+
+Az `expectAny(Runnable)` hasonlóan több feltételt kaphat a `Runnable` interfészen keresztül. Az ellenőrzés akkor lesz sikeres, ha közülük egy teljesül.
+
+```java
+expectations().expectAny(() -> {
+    expectations().expect(loginButton).toBe().clickable();
+    expectations().expect(registerButton).toBe().clickable();
+});
+```
+
+Ha nincs megadva együttes várakozási idő, akkor annak az értéke automatikusan kerül meghatározásra - a feltételek várakozási idejének maximuma lesz.
+
 ## Függőségek injektálása
 
+Az ibello keretrendszer képes egyedi osztályainkat automatikusan a teszlépés-könyvtár és az oldal-leíró osztályokba injektálni. Sőt, az ily módon injektált osztályokba is hasonlóan
+injektálhatunk más osztályokat.
+
+Csak olyan osztály injektálható, aminek van alapértelmezett konstruktora. Az injektáláshoz be kell illesztenünk egy mezőt a hivatkozó osztályba - ez lehet privát is. A mezőt meg kell
+jelölnünk az `@Inject` annotációval.
+
+```java
+public class MyPage extends PageObject {
+
+    // a tool mező automtikusan kap egy MyTool példányt
+    @Inject
+    private MyTool tool;
+}
+```
+
+Az injektálás a fentieken kívül még finomítható. Amennyiben az injektált osztály implementálja az `Initializable` interfészt, úgy az ibello rendszer az innen örökölt `initialize()`
+metódust automatikusan meg fogja hívni, miután létrehozta az osztály egy példányát.
+
+```java
+public class MyTool implements Initializable {
+
+    @Override
+    public void initialize() {
+        // inicializáljuk az osztálypéldányt
+    }
+}
+```
+
+Alapértelmezésben az injektálás ún. _session szkópban_ történik. Ez azt jelenti, hogy az ibello szálanként csak egyetlen példányt hoz létre egy adott injektált típusból.
+Ezen változtathatunk, ha az `@Injectable` annotáció segítségével megadjuk az injektált típus szkópját.
+
+```java
+@Injectable(Scope.TEST)
+public class MyTool implements Initializable { ... }
+```
+
+Az `@Injectable` annotáció egyetlen paramétere a kívánt szkóp, ami lehet:
+
+| Paraméter             | Szkóp leírása                                              |
+| --------------------- | ---------------------------------------------------------- |
+| `Scope.PROTOTYPE`     | Minden új injektálási helyhez új példány keletkezik.       |
+| `Scope.TEST`          | Minden egyes teszt metódus futáshoz új példány keletkezik. |
+| `Scope.SPECIFICATION` | Minden teszt osztály futásához új példány keletkezik.      |
+| `Scope.SESSION`       | Minden java szálhoz új példány keletkezik.                 |
+| `Scope.SINGLETON`     | A tesztek futása során csak egyetlen példány jön létre.    |
+
+Az ibello rendszerben az `@Inject` annotációval végrehajtott injektálás a támogatott módja annak, hogy extra logikát illesszünk a tesztjeinkbe. A tesztek futása során szükség lehet
+például háttérrendszerek konfigurálására, hogy a kívánt eredményt adják, miközben a böngészőt vezéreljük. Az ilyen típusú igényekhez létrehozhatunk az ibello API-tól független
+osztályokat, amiket az ibello függőség injektálásának segítségével illeszthetünk be a tesztek kódjába.
