@@ -14,7 +14,7 @@ import hu.ibello.pages.PageObject;
  * This annotation modifies the element search in a page object (see {@link PageObject}).
  * The modification means that the desired element is the descendant or the ancestor
  * of an anchor element. (This can be specified with the {@link Relation#type()}.)
- * The anchor element can be specified with the {@link Relation#by()} and {@link Relation#selector()}
+ * The anchor element can be specified with the {@link Relation#by()} and {@link Relation#using()}
  * properties.
  * </p>
  * <p>
@@ -52,5 +52,5 @@ public @interface Relation {
 	 * It's value depends on the search algorithm - see {@link By}.
 	 * @return search pattern
 	 */
-	String selector();
+	String using();
 }

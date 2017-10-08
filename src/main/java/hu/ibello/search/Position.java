@@ -14,7 +14,7 @@ import hu.ibello.pages.PageObject;
  * This annotation modifies the element search in a page object (see {@link PageObject}).
  * The modification means that the desired element should have a specific relative position
  * from an anchor element. The position can be specified with the {@link Position#type()} property.
- * The anchor element can be specified with the {@link Position#by()} and {@link Position#selector()}
+ * The anchor element can be specified with the {@link Position#by()} and {@link Position#using()}
  * properties.
  * </p>
  * <p>
@@ -52,6 +52,6 @@ public @interface Position {
 	 * It's value depends on the search algorithm - see {@link By}.
 	 * @return search pattern
 	 */
-	String selector();
+	String using();
 	
 }
