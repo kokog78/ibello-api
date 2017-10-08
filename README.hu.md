@@ -1,14 +1,11 @@
 # ibello-api
 
-## Tesztek felépítése
-
-Az ibello keretrendszerben létrehozott tesztek háromrétegűek. Egyrészről, az oldalak technikai funkcióit az ún. _oldal-leíró osztályok_ foglalja össze. Másrészről, egy vagy több
+Az ibello keretrendszerben létrehozott tesztek háromrétegűek. Egyrészről, az oldalak technikai funkcióit az ún. _oldal-leíró osztályok_ foglalják össze. Másrészről, egy vagy több
 oldal-leíró osztály metódusai segítségével tesztlépéseket állítunk össze, amelyeket egy ún. _tesztlépés-könyvtár osztályba_ teszünk. Az egyes _tesztek_ a tesztlépés-könyvtárak
-metódusainak hívásából állnak elő.
+metódusainak hívásaiból állnak elő.
 
-Ez a hármas tagozódás lehetővé teszi, hogy az üzletileg igényelt funkciókat elválasszuk azok technikai megvalósításától. Így a tesztek
-üzleti szempontból is érthetőbbé válnak. A másik előny, hogy a weboldalak apróbb változásai nincsenek kihatással magukra a tesztekre, csak az oldal-leírókat kell megváltoztatni.
-Ezáltal a tesztek időtállóbbak.
+Ez a hármas tagozódás lehetővé teszi, hogy az üzletileg igényelt funkciókat elválasszuk azok technikai megvalósításától. Így a tesztek üzleti szempontból is érthetőbbé válnak.
+További előnyt jelent még az, hogy a weboldalak apróbb változásai nincsenek kihatással magukra a tesztekre, csak az oldal-leírókat kell megváltoztatni. Ezáltal a tesztek időtállóbbak.
 
 ## A teszt osztály
 
