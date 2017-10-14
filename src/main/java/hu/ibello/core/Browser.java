@@ -14,6 +14,13 @@ import java.net.URL;
  * <li>{@link Browser#openURL(String)}</li>
  * <li>{@link Browser#openURL(java.net.URL)}</li>
  * </ul>
+ * <p>
+ * To set the size of the browser window, see these methods:
+ * </p>
+ * <ul>
+ * <li>{@link Browser#maximize()}</li>
+ * <li>{@link Browser#resize(int, int)}</li>
+ * </ul>
  * @author Kornél Simon
  *
  */
@@ -59,5 +66,19 @@ public interface Browser {
 	public default void openURL(URL url) {
 		openURL(url.toExternalForm());
 	}
+	
+	/**
+	 * <p>
+	 * Maximizes the size of the browser window to fit the borders of the current display.
+	 * </p>
+	 */
+	public void maximize();
+	
+	/**
+	 * Sets the size of the browser window.
+	 * @param width the new width of the browser window, in pixels
+	 * @param height the new height of the browser window, in pixels
+	 */
+	public void resize(int width, int height);
 	
 }

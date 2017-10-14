@@ -428,7 +428,7 @@ doWith(usernameField).withTimeout(Timeouts.MEDIUM).setValue("testuser");
 
 A `withPageRefreshWait()` metódus segítségével elérhetjük, hogy a művelet végrehajtása után az ibello rendszer várakozzon addig, amíg az oldalon minden változás megtörténik,
 vagy amíg a beállított határidő ("page.refresh" időtúllépés) lejár. Ez akkor lehet hasznos, ha előre sejtjük, hogy a művelet változást fog okozni az oldalon - például egy másik oldalra juttat, vagy a DOM-ból
-eltüntet egyes elemeket.
+eltüntet egyes elemeket. Ha a határidő lejár anélkül, hogy az oldal frissítése befejeződött volna, akkor a tesztfutás hiba nélkül folytatódik.
 
 ```java
 // az egérkattintás után megvárja az oldal frissülését
@@ -474,6 +474,34 @@ doWith(usernameField).sendKeys(keys().CONTROL(), "a");
 | `setValue(String)` | Beállítja az `input` vagy `textarea` típusú mező értékét.             |
 | `setFile(String)`  | Beállítja az `input type=file` típusú mező értékét a megadott fájlra. |
 | `submit()`         | Elküldi a `form` típusú elem tartalmát.                               |
+
+## A böngésző objektum műveletei
+
+Az oldal-leírókon belül a `browser()` metódus segítségével megkapjuk a böngésző objektumot, amivel a tesztek által vezérelt böngészővel végezhetünk műveleteket.
+Ezek a műveletek egyszerű metódushívások.
+
+### Új oldal megnyitása
+
+A `browser().openURL(...)` segítségével beállíthatjuk a böngésző aktuálisan megnyitott URL-jét. A metódus először beállítja az URL-t, majd vár addig, amíg az új oldal elemei
+betöltődnek. Ha az oldal nem töltődik be a "page.load" időtúllépésben meghatározott ideig, akkor a tesztfutás hiba nélkül folytatódik.
+
+A metódusnak kétféle paraméterezése van. Kaphat `String` vagy `URL` objektumot. `String` paraméterezés esetében a paraméter lehet:
+
+- teljes URL, pl. `http://localhost:8080/page`;
+- protokoll nélküli cím, pl. `localhost:8080/page` - ebben az esetben a protokoll értéke `http://` lesz;
+- relatív cím, ami egy `/` jellel kezdődik, pl. `/page` - ebben az esetben mindenképpen szükség van a `ibello.url.base` konfigurációs paraméterre, anélkül a metódus kivételt dob.
+
+Mindkét paraméterezésnél számít a `ibello.url.base` konfigurációs paraméter értéke. Ha ez meg van adva, akkor a ténylegesen beállított URL a konfigurációs paraméter és a metódus
+paraméter ötvözete lesz:
+
+- ha a metódust teljes URL-lel vagy protokoll nélkül hívták, akkor a protokoll, a tartománynév és a portszám a konfigurációs paraméterből fog származni, az elérési út pedig a
+  metódus paraméteréből;
+- ha a metódust relatív címmel hívták, akkor a konfigurációs paraméter és a relatív cím összefűzött értéke kerül a böngésző címsorába.
+
+### Böngészőablak mérete
+
+A `browser().maximize()` metódus maximalizálja a böngészőablak méretét. A `broswer().resize(int, int)` metódussal közvetlenül megadhatjuk a böngészőablak új szélességét és
+hosszúságát, képernyőpontokban.
 
 ## Ellenőrzések
 
