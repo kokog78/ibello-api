@@ -76,8 +76,18 @@ public enum By {
 	
 	/**
 	 * Search by label. The search pattern is the case-sensitive content of a <code>label</code> element.
-	 * The <code>label</code> should belong to the desired element. It means that it's <code>for</code> attribute
-	 * matches the <code>id</code> attribute of the desired element.
+	 * The <code>label</code> should belong to the desired element. It means that:
+	 * <ul>
+	 * <li>
+	 * The label has a <code>for</code> attribute, and the value of this attribute matches the
+	 * <code>id</code> attribute of the desired element.
+	 * </li>
+	 * <li>
+	 * The label does not have <code>for</code> attribute, but there is a single <code>input</code>,
+	 * <code>textarea</code> or <code>select</code> element inside of it's parent or it's grandparent -
+	 * that single element will be the desired one.
+	 * </li>
+	 * </ul>
 	 */
 	LABEL;
 }
