@@ -359,28 +359,24 @@ usernameField = find()
 ## Időtúllépések kezelése
 
 Az ibello rendszert webalkalmazások teszteléséhez használjuk. A tesztelendő alkalmazást egy böngészőben futtatjuk, a tesztek pedig ezt a böngészőt automatizálják. Az automatizálás
-_aszinkron_ abban az értelemben, hogy a tesztkódból kiadott parancsok egy külön folyamatba futnak be, ami közvetlenül nincs összekötve a teszteket futtató java folyamattal. A
-parancs végrehajtása tehát a kiadását követően fog megtörténni, valamikor a közeli jövőben - de hogy pontosan mikor, azt nem lehet előre tudni. Az ilyen típusú vezérléseknél bevett
-gyakorlat az, hogy a parancsot indító folyamat várakozik addig, amíg tudomást nem szerez a parancs végrehajtásának sikerességéről vagy sikertelenségéről. Mindez azért fontos,
-mert ha nem várná meg a parancs eredményét, és rögtön kiadna egy újabb parancsot, akkor _versenyhelyzetet_ teremtene a két parancs végrehajtása között, aminek a kimenetele kétesélyes.
-Az ilyen versenyhelyzetek viszont kerülendőek a tesztekben, azoktól ugyanis elvárjuk, hogy újra és újra lefuttatva ugyanazt az eredményt adják.
+_aszinkron_ abban az értelemben, hogy a tesztkódból kiadott parancsok és az azok hatására történő változások nincsenek szorosan
+összekötve a teszteket futtató java folyamattal. A parancs végrehajtásának eredménye tehát csak valamikor a közeli jövőben várható - de hogy pontosan mikor, azt nem lehet előre tudni.
+Az ilyen típusú vezérléseknél bevett gyakorlat az, hogy a parancsot indító folyamat várakozik addig, amíg tudomást nem szerez a parancs végrehajtásának sikerességéről vagy
+sikertelenségéről. Mindez azért fontos, mert ha nem várná meg a parancs eredményét, és rögtön kiadna egy újabb parancsot, akkor _versenyhelyzetet_ teremtene a két parancs végrehajtása
+között, aminek a kimenetele kétesélyes. Az ilyen versenyhelyzetek viszont kerülendőek a tesztekben, azoktól ugyanis elvárjuk, hogy újra és újra lefuttatva ugyanazt az eredményt adják.
 
-A parancsok sikerességéről általában úgy szerzünk tudomást, hogy figyeljük az oldal állapotát. Ha az olyan módon változott meg, ahogyan azt elvártuk, akkor a parancs sikeres volt.
-Ez azonban egy újabb _aszinkron_ esemény, ugyanis az oldal állapotát a böngésző változtatja meg, szintén nem tudni, pontosan mikor. A webalkalmazások tesztelése tehát a fentiek miatt
-_kétszeresen aszinkron módon_ történik.
-
-Képzeljük el például, hogy egy hivatkozásra szeretnénk kattintani, aminek a hatására az oldal tartalma meg fog változni. A tesztkód kiadja a kattintás parancsot, amit a böngésző valamikor
-végrehajt (első aszinkron lépés). Ezután a böngésző elindítja az új oldal betöltését és megjelenítését, ami megintcsak valamikor a jövőben fog befejeződni (második aszinkron lépés).
+Képzeljük el például, hogy egy hivatkozásra szeretnénk kattintani, aminek a hatására az oldal tartalma meg fog változni. A tesztkód kiadja a kattintás parancsot, amit a böngésző végrehajt.
+Ezután a böngésző elindítja az új oldal betöltését és megjelenítését, ami csak valamikor a jövőben fog befejeződni (aszinkron folyamat).
 Azt, hogy a kattintás sikeres volt, onnan tudhatjuk meg, hogy az új oldal URL címe megjelenik a böngésző címmezőjében, vagy még biztosabban onnan, hogy az új oldalra jellemző tartalom
 megjelenik a böngészőben. Ha a hivatkozás - egy programhiba miatt - máshová mutatott, akkor másik oldal töltődik be, és más tartalom jelenik meg a böngészőben.
 
-A fenti esetet legjobban úgy tudjuk kezelni, ha a kattintás után várakozunk addig, amíg az új oldal megjelenésével kapcsolatos feltétel nem teljesül. Ha viszont programhiba van, akkor
-a feltétel sohasem fog teljesülni - viszont erről értelmes időben tudomást szeretnénk kapni. Meg kell adnunk tehát egy határidőt, amin túl nem vagyunk hajlandóak várakozni. Ha a feltétel
-nem teljesül a határidő alatt, akkor feltételezhetjük, hogy hiba van, és a tesztnek el kell törnie.
+A fenti esetet legjobban úgy tudjuk kezelni, ha a kattintás után a teszkód várakozik addig, amíg az új oldal megjelenésével kapcsolatos feltétel nem teljesül. Ha viszont programhiba van,
+akkor a feltétel sohasem fog teljesülni - viszont erről értelmes időben tudomást szeretnénk kapni. Meg kell adnunk tehát egy határidőt, amin túl nem vagyunk hajlandóak várakozni. Ha a
+feltétel nem teljesül a határidő alatt, akkor feltételezhetjük, hogy hiba van, és a tesztnek el kell törnie.
 
-De milyen határidőt válasszunk? Egyes műveletek tovább tartanak az átlagosnál. Ha pl. az előbbi példánkban a kattintás eredményeképpen egy olyan számolási folyamat indul be a háttérben,
-ami tovább tart az átlagosnál, akkor az átlagosnak gondolt időtúllépés nem lesz megfelelő. Természetes elvárás tehát a tesztrendszertől, hogy az időtúllépések mértéke egyedileg
-megadható legyen.
+De milyen határidőt válasszunk? Egyes műveletek tovább tartanak az átlagosnál. Ha pl. az előbbi példánkban a kattintás eredményeképpen egy hosszadalmas számolási folyamat indul be a
+böngészőben vagy a böngésző által hívott webszolgáltatásban, akkor az átlagosnak gondolt időtúllépés nem lesz megfelelő. Természetes elvárás tehát a tesztrendszertől, hogy az
+időtúllépések mértéke egyedileg megadható legyen.
 
 Az ibello rendszer - ellentétben más keretrendszerekkel - nem ad lehetőséget az időtúllépések közvetlen meghatározására. Minden időtúllépés-értéket egy szöveges azonosítóhoz, vagy egy
 enum konstanshoz kell kötni. A tesztkódban ezen a módon lehet hivatkozni az időtúllépésre. A konkrét - másodpercekben mért - értéket az ibello konfigurációs fájlokból olvassa fel.
@@ -396,7 +392,7 @@ Ha a böngészőbe közvetlenül egy új URL-t töltünk be (az oldal-leíró `b
 "page.load" azonosítójú időtúllépést használja. Ennek az alapértelmezett értéke 10 másodperc. Ha ez alatt az idő alatt az oldal nem töltődik be, akkor a tesztfutás hiba nélkül folytatódik
 (viszont a későbbi ellenőrzések, amik feltételezik, hogy az oldal betöltődött, elbukhatnak).
 
-Dinamikus weboldalakon, ahol a tartalmaz javascript kód állítja elő, gyakori eset, hogy egy művelet után a kívánt tartalom még nem látható, mivel az oldalon futó szkriptek még
+Dinamikus weboldalakon, ahol a tartalmat javascript kód állítja elő, gyakori eset, hogy egy művelet után a kívánt tartalom még nem látható, mivel az oldalon futó szkriptek még
 dolgoznak. Az ibello rendszernek erre az esetre van egy megoldása, amivel figyeli, hogy az oldalon folyamatban van-e még valamilyen változás. Lehetőség van arra, hogy a műveletek
 után ezt a változást kivárjuk, mielőtt a tesztfutás továbbmegy. Ehhez a várakozáshoz is tartozik egy időtúllépés, "page.refresh" azonosítóval. Az alapértelmezett értéke megyegyezik
 az alapértelmezett időtúllépésével.
