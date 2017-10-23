@@ -80,6 +80,10 @@
  * WebElement cancelButton = find().using("button").leftFrom(okButton).first();
  * WebElement modalButton = find().using("#modal-window").first().find().using(By.TAG_NAME, "button").first();
  * </pre>
+ * In some cases the desired elements are in a HTML <code>iframe</code> element. To find these elements,
+ * the page object, which contains those element references, should have a {@link hu.ibello.search.Frame}
+ * annotation with the search properties of the <code>iframe</code>. In this case every element searches
+ * performed by that page object will be executed inside of that specific <code>iframe</code>.
  * @author Kornél Simon
  */
 package hu.ibello.search;

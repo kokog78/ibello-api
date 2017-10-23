@@ -27,6 +27,7 @@ import hu.ibello.inject.Inject;
 import hu.ibello.inject.Injectable;
 import hu.ibello.inject.Scope;
 import hu.ibello.search.Find;
+import hu.ibello.search.Frame;
 import hu.ibello.search.Position;
 import hu.ibello.search.Relation;
 import hu.ibello.search.SearchTool;
@@ -69,6 +70,12 @@ import hu.ibello.search.SearchTool;
  * {@literal @}Relation(type=RelationType.DESCENDANT_OF, selector="#modal-window")
  * private WebElement modalButton;
  * </pre>
+ * <p>
+ * When the content of a page is included by an <code>iframe</code> parent, then a single {@link Find} annotation will
+ * not find the desired elements. In this case, a {@link Frame} annotation should be added to the page object class,
+ * which specifies the search properties of the <code>iframe</code> element. Every element search inside of this page object
+ * will be automatically performed inside of that <code>iframe</code>.
+ * </p>
  * <p>
  * A page object encapsulates the technical functionality of a well-defined part of the application under test.
  * For example, it can represent a single web-page, a navigation bar, a frame, ... Every

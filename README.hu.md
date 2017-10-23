@@ -357,6 +357,35 @@ usernameField = find()
                 .first();
 ```
 
+### `iframe` kezelése
+
+Egyes weboldalak még használnak `iframe` elemet. Az `iframe` HTML elem egy olyan másik oldal HTML kódját tartalmazza, amit a szülő oldal meghatározott területére illesztünk be.
+Mivel az `iframe` tartalma független HTML oldalnak minősül, ezért külön információ nélkül az elemkeresések sem "látnak be" oda.
+
+Egy `iframe`-en belül úgy lehet elemeket keresni, hogy az oldal-leíró osztályhoz rendelünk egy `Frame` annotációt, amiben megadjuk az `iframe`-re vonatkozó keresési paramétereket.
+Ekkor az oldal-leírón beüli minden (dinamikus és statikus) elemkeresés az `iframe`-en belül értendő.
+
+```java
+@Frame(by=By.ID, using="my-frame")
+public class FramedPage extends PageObject {
+    ...
+}
+```
+
+Az `iframe`-et érdemes az `id` tulajdonságának értéke segítségével azonosítani:
+
+```java
+@Frame(using="#my-frame")
+```
+
+Ha az oldal egyetlen `iframe`-et tartalmaz, akkor a típusnég is elegendő:
+
+```java
+@Frame(using="iframe")
+```
+
+Az `iframe`-en belüli `iframe` elemek tartalmát egyenlőre nem lehet elérni az ibello segítségével.
+
 ## Időtúllépések kezelése
 
 Az ibello rendszert webalkalmazások teszteléséhez használjuk. A tesztelendő alkalmazást egy böngészőben futtatjuk, a tesztek pedig ezt a böngészőt automatizálják. Az automatizálás
