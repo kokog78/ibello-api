@@ -40,16 +40,24 @@
  * - see {@link hu.ibello.pages.PageObject#expectations()} method.
  * </p>
  * <p>
- * Examples (from a page object):
+ * An expectation can be "hard" or "soft". If a "hard" expectation fails, the execution of the current test
+ * is instantly terminated. This is the difference from "soft" expectations, where the test execution continues,
+ * but at the end the test itself will be marked as failed. "Hard" expectations can be constructed with the
+ * <code>expect(...)</code> methods. For "soft" expectations, the <code>assume(...)</code> methods can be
+ * used.
+ * </p>
+ * <p>
+ * Examples (in a page object):
  * </p>
  * <pre>
  * WebElement button = ...;
  * WebElements inputFields = ...;
  * 
+ * expectations().assume(button).toHave().text("Click me");
  * expectations().expect(button).toBe().clickable();
  * expectations().expect(inputFields).toHave().size(3);
  * expectations().expect(browser()).toHave().url("ibello.com");
- * expectations().expectAny(() -&gt; {
+ * expectations().any(() -&gt; {
  *     expectations().expect(button).toBe().clickable();
  *     expectations().expect(inputFields).toHave().size(3);
  *     expectations().expect(browser()).toHave().url("ibello.com");

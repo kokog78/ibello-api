@@ -227,6 +227,7 @@ public abstract class PageObject {
 	 * <pre>
 	 * WebElement okButton = ...;
 	 * WebElements buttons = ...;
+	 * expectations().assume(okButton).toHave().text("OK");
 	 * expectations().expect(okButton).toBe().visible();
 	 * expectations().expect(buttons).toHave().size(5);
 	 * expectations().expect(browser()).toHave().url("http://localhost/page");

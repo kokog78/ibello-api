@@ -634,16 +634,34 @@ az alapértelmezett időtúllépés értékével egyezik meg, de ettől a `withT
 
 ```java
 // várakozási idő beállítása a saját Timeouts.MEDIUM enum konstanssal
-expect(element).withTimeout(Timeouts.MEDIUM).toBe().displayed();
+expectations().expect(element).withTimeout(Timeouts.MEDIUM).toBe().displayed();
+```
+
+### "Lágy" ellenőrzések
+
+Az `expect(...)` metódusokkal kényszer-ellenőrzéseket tudunk készíteni. Ez azt jelenti, hogy ha egy ilyen ellenőrzés elbukik, akkor az éppen aktuális teszt futtatása félbeszakad
+(és ha van következő teszt, akkor az indul el). Ez egyben azt is jelenti, hogy ha az elbukó ellenőrzés után még írtunk más ellenőrzéseket is, akkor azok eredményét nem tudjuk meg,
+hiszen le sem futnak.
+
+Előfordulhat olyan eset, amikor azt szeretnénk, hogy az egyik ellenőrzés elbukása után még a többi ellenőrzés is fusson le, mert az összes eredményét látni szeretnénk a
+riportban. Ilyen esetekben "lágy" ellenőrzést kell használnunk. A "lágy" ellenőrzés nem akasztja meg a tesztfutást akkor sem, ha elbukik. Bukás esetén az azt követő ellenőrzések is
+lefutnak, viszont a teszteset a végén hibásnak lesz jelölve.
+
+"Lágy" ellenőrzést az `assume(...)` metódusokkal tudunk készíteni, teljesen hasonlóan az `expect(...)` metódusokkal készítettekhez.
+
+```java
+expectations().assume(button).toHave().text("OK");
+// ha az előző ellenőrzés elbukik, akkor még megtudjuk, hogy a gomb kattintható volt-e
+expectations().expect(button).toBe().clickable();
 ```
 
 ### Összetett ellenőrzések
 
-Az `expectAll(Runnable)` metódussal több feltételt közösen vizsgálunk. Minden feltételnek teljesülnie kell a várakozási időn belül, de a teljesülésük sorrendje mindegy. A feltételeket
+Az `all(Runnable)` metódussal több feltételt közösen vizsgálunk. Minden feltételnek teljesülnie kell a várakozási időn belül, de a teljesülésük sorrendje mindegy. A feltételeket
 egy `Runnable` interfészen keresztül adhatjuk át, a legegyszerűbb a java 8 lambda kifejezését használni. Példa:
 
 ```java
-expectations().expectAll(() -> {
+expectations().all(() -> {
     expectations().expect(browser()).toHave().url("ibello.hu");
     expectations().expect(registerButton).toBe().clickable();
 });
@@ -651,16 +669,24 @@ expectations().expectAll(() -> {
 
 Ha az ellenőrzésnek nem adunk meg explicit várakozási időt, akkor azt ki fogja számolni a feltételekből - a feltételek várakozási idejének összege lesz a teljes várakozási idő.
 
-Az `expectAny(Runnable)` hasonlóan több feltételt kaphat a `Runnable` interfészen keresztül. Az ellenőrzés akkor lesz sikeres, ha közülük egy teljesül.
+Az `any(Runnable)` hasonlóan több feltételt kaphat a `Runnable` interfészen keresztül. Az ellenőrzés akkor lesz sikeres, ha közülük egy teljesül.
 
 ```java
-expectations().expectAny(() -> {
+expectations().any(() -> {
     expectations().expect(loginButton).toBe().clickable();
     expectations().expect(registerButton).toBe().clickable();
 });
 ```
 
-Ha nincs megadva együttes várakozási idő, akkor annak az értéke automatikusan kerül meghatározásra - a feltételek várakozási idejének maximuma lesz.
+Ha nincs megadva együttes várakozási idő, akkor annak az értéke automatikusan kerül meghatározásra - az egyes feltételek várakozási idejének maximuma lesz.
+
+Az összetett ellenőrzéseken belül használhatunk `expect(...)` és `assume(...)` metódust is.
+
+Ha `all(...)` metódussal létehozott összetett ellenőrzést használunk, akkor az akkor bukik el, amikor az első befoglalt ellenőrzés elbukik. Ha ez `expect(...)` metódussal volt
+létrehozva, akkor a teszt futása is végetér, míg ha `assume(...)` metódussal, akkor a tesztfutás folytatódik.
+
+Az `any(...)` metódussal létrehozott összetett ellenőrzéseknél kicsit más a helyzet. Ha a befoglalt ellenőrzések között akár egyetlen olyan is akad, amit `expect(...)` metódussal
+hoztunk létre, akkor a tesztfutás félbe fog szakadni akkor, amikor az összetett ellenőrzés elbukik. (Ilyenkor ugyanis biztos, hogy a kényszer-ellenőrzés is elbukott.)
 
 ## Függőségek injektálása
 
