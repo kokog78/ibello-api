@@ -378,7 +378,7 @@ Az `iframe`-et érdemes az `id` tulajdonságának értéke segítségével azono
 @Frame(using="#my-frame")
 ```
 
-Ha az oldal egyetlen `iframe`-et tartalmaz, akkor a típusnég is elegendő:
+Ha az oldal egyetlen `iframe`-et tartalmaz, akkor a típusnéV is elegendő:
 
 ```java
 @Frame(using="iframe")
