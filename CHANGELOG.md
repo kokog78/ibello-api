@@ -8,3 +8,4 @@
 
 - New `assume` methods in expectation engine for "soft" expectations
 - `expectAny` and `expectAll` methods in expectation engine are deprecated
+- `BrowserHaveExpectations.url(String)` method handles double asterisk (`**`)

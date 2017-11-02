@@ -9,3 +9,4 @@
 
 - Új `assume` metódusok az ellenőrzési motorban "lágy" ellenőrzésekhez
 - Az ellenőrző motor `expectAny` és `expectAll` metódusai érvényüket vesztik
+- `BrowserHaveExpectations.url(String)` metódus értelmezi a dupla csillagot (`**`) is

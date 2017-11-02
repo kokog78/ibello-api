@@ -46,7 +46,8 @@ public interface BrowserHaveExpectations {
 	 * <p>
 	 * The argument may contain <code>*</code> and <code>?</code> wildchars.
 	 * <code>*</code> means any path element, <code>?</code> means any character (except
-	 * <code>/</code>).
+	 * <code>/</code>). The double asterisk (<code>**</code>) means any characters
+	 * (including <code>/</code>).
 	 * </p>
 	 * <p>
 	 * If the <em>ibello</em> configuration contains the <code>ibello.url.base</code> property,
