@@ -118,9 +118,12 @@ public enum Key implements CharSequence {
 	@Override
 	public CharSequence subSequence(int start, int end) {
 		if (start == 0 && end == 1) {
-			return String.valueOf(charAt(0));
+			return this;
+		} else if (start == end) {
+			return "";
+		} else {
+			throw new IndexOutOfBoundsException();
 		}
-		throw new IndexOutOfBoundsException();
 	}
 
 	@Override
