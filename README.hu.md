@@ -260,8 +260,10 @@ mód paramétere, jelentése a keresési módtól függ. Az alábbi táblázat f
 | címke szerinti             | `By.LABEL`        | a keresett elemhez tartozó címke felirata |
 | tartalom szerinti          | `By.TEXT`         | a keresett elem tartalma                  |
 
-A `By.BUTTON_TEXT` keresés megtalálja a `button` típusú, az `input type=button` típusú, az `input type=submit` típusú, az `input type=reset` típusú elemeket és a linkeket is -
-mindent, aminek gombszerű funkciója lehet. A `By.LABEL` keresés először a `label` típusú elemet keresi meg tartalom szerint, majd annak a `for` attribútumát követve megtalálja a
+A `By.BUTTON_TEXT` keresés megtalálja a `button` típusú, az `input type=button` típusú, az `input type=submit` típusú, az `input type=reset` típusú elemeket, a linkeket és azokat az
+elemeket is, amiknek a `role` attribútuma `button` - mindent, aminek gombszerű funkciója lehet.
+
+A `By.LABEL` keresés először a `label` típusú elemet keresi meg tartalom szerint, majd annak a `for` attribútumát követve megtalálja a
 kívánt elemet is. Ha a `label` elemnek nincs `for` attribútuma, de a szülője vagy a nagyszülője alá tartozik egyetlen `input`, `textarea` vagy `select` típusú elem,
 akkor az lesz a keresett elem.
 
