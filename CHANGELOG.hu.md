@@ -10,3 +10,4 @@
 - Új `assume` metódusok az ellenőrzési motorban "lágy" ellenőrzésekhez
 - Az ellenőrző motor `expectAny` és `expectAll` metódusai érvényüket vesztik
 - `BrowserHaveExpectations.url(String)` metódus értelmezi a dupla csillagot (`**`) is
+- `By.BUTTON_TEXT` alapján történő keresés megtalálja azokat az elemeket is, ahol a `role` attribútum értéke `button`
