@@ -62,7 +62,8 @@ public enum By {
 	 * and the <code>type</code> attribute is <code>button</code>, <code>submit</code> or <code>reset</code>,</li>
 	 * <li>an <code>input</code> field for which the <code>alt</code> attribute is the given text,
 	 * and the <code>type</code> attribute is <code>image</code></li>
-	 * <li>an <code>a</code> (link) element with the given text.</li>
+	 * <li>an <code>a</code> (link) element with the given text,</li>
+	 * <li>an element with <code>role=button</code> attribute.</li>
 	 * </ul>
 	 * During the search, the first two categories are preferred. It means that if the search results a positive
 	 * outcome for the first category, then the other categories are not searched.
