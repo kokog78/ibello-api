@@ -24,6 +24,8 @@ import java.lang.annotation.Target;
 /**
  * This annotation marks test classes (<em>specifications</em>).
  * Only classes marked with this annotation will be executed as tests.
+ * The execution order is based on the canonical name of the classes
+ * - see {@link Class#getCanonicalName()}.
  * @author Kornél Simon
  */
 @Retention(RUNTIME)
