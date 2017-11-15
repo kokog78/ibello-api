@@ -359,7 +359,7 @@ usernameField = find()
                 .first();
 ```
 
-### `iframe` kezelése
+### HTML keretek kezelése
 
 Egyes weboldalak még használnak `iframe` elemet. Az `iframe` HTML elem egy olyan másik oldal HTML kódját tartalmazza, amit a szülő oldal meghatározott területére illesztünk be.
 Mivel az `iframe` tartalma független HTML oldalnak minősül, ezért külön információ nélkül az elemkeresések sem "látnak be" oda.
@@ -374,19 +374,29 @@ public class FramedPage extends PageObject {
 }
 ```
 
-Az `iframe`-et érdemes az `id` tulajdonságának értéke segítségével azonosítani:
+Az `iframe`-et érdemes az `id` tulajdonságának segítségével azonosítani:
 
 ```java
 @Frame(using="#my-frame")
 ```
 
-Ha az oldal egyetlen `iframe`-et tartalmaz, akkor a típusnéV is elegendő:
+Ha az oldal egyetlen `iframe`-et tartalmaz, akkor a típusnév is elegendő:
 
 ```java
 @Frame(using="iframe")
 ```
 
-Az `iframe`-en belüli `iframe` elemek tartalmát egyenlőre nem lehet elérni az ibello segítségével.
+Az `iframe`-en belüli `iframe` elemek tartalmát úgy lehet elérni, hogy egy oldal-leíróhoz több `Frame` annotációt is rendelünk. Az első annotáció a legkülső keret adatait tartalmazza,
+a második az ezen belüli keretét, és így tovább.
+
+```java
+@Frame(using="#parent-frame")
+@Frame(using="#child-frame")
+public class ChildFramedPage extends PageObject {
+    ...
+}
+```
+
 
 ## Időtúllépések kezelése
 

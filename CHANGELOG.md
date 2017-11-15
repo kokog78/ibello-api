@@ -11,6 +11,7 @@
 - `BrowserHaveExpectations.url(String)` method handles double asterisk (`**`)
 - Element search based on `By.BUTTON_TEXT` finds elements where attribute `role` is `button`
 
-## 1.3.1
+## 1.4.0
 
 - Test are executed in alphabetical order, based on the name of test classes.
+- It is possible to add multiple `Frame` annotations to a single page object, in order to access HTML frames included by frames.
