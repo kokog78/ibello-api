@@ -37,6 +37,8 @@ A fenti példának az egyik fontos jellemzője, hogy a teszt metódusban meghív
 részletet. Nem tudjuk, pontosan honnan is lehet tudni, hogy a bejelentkező oldalon vagyunk, és azt sem, hogy hogyan is lehet belépni egy érvényes felhasználóval. Mindezeket
 az információkat a tesztlépés-könyvtár metódusai tartalmazzák.
 
+Annyit még érdemes megjegyeznünk, hogy a `Specification` annotációval jelölt teszt osztályok metódusai a nevük szerint ábécé sorrendben futnak. Ezen változtatni egyenlőre nincs lehetőség.
+
 ## A tesztlépés-könyvtár
 
 A tesztlépés-könyvtár osztály a `StepLibrary` ősosztályból származik. Minden publikus metódusa tesztlépésnek számít. A metódusok neveit érdemes beszédesre választani.
