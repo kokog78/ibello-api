@@ -28,7 +28,7 @@ public class LoginTests {
         steps.when_i_login_with_valid_credentials();
         steps.then_i_get_to_the_welcome_page();
         steps.then_i_see_that_valid_user_is_logged_in();
-        steps.then_is_see_the_standard_operations();
+        steps.then_i_see_the_standard_operations();
     }
 }
 ```
@@ -78,7 +78,7 @@ public class LoginSteps extends StepLibrary {
         welcomePage.expectCurrentUser("testuser");
     }
     
-    public void then_is_see_the_standard_operations() {
+    public void then_i_see_the_standard_operations() {
         welcomePage.expectOperations("Adatrögzítés", "Lekérdezések", "Beállítások");
     }
 }
