@@ -482,6 +482,7 @@ doWith(button).withPageRefreshWait().click();
 | `click()`                   | Balgombos egérkattintás az elem közepére.                                      |
 | `contextClick()`            | Jobbgombos egérkattintás az elem közepére.                                     |
 | `doubleClick()`             | Dupla egérkattintás az elem közepére.                                          |
+| `selectOption(...)`         | Legördülő listában a megadott feliratú opció kiválasztása.                     |
 | `moveTo()`                  | Az egérmutatót az elem közepére állítja.                                       |
 | `dragAndDropTo(WebElement)` | "Fog és vidd" művelettel az elemet a paraméterben megadott másik elemre húzza. |
 

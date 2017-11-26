@@ -14,5 +14,10 @@
 
 ## 1.4.0
 
-- A tesztek futtatása a teszt osztályok nevei alapján ábécé szerinti sorrendben történik.
-- Az oldal-leírókhoz több `Frame` annotáció is hozzáadható azért, hogy HTML keretben levő keretet is elérhessünk.
+- A tesztek futtatása a teszt osztályok nevei alapján ábécé szerinti sorrendben történik
+- Az oldal-leírókhoz több `Frame` annotáció is hozzáadható azért, hogy HTML keretben levő keretet is elérhessünk
+
+## 1.5.0
+
+- Új `ActionBuilder.selectOption(...)` metódusok legördülő listából történő választáshoz
+- Új `WebElementHaveExpectations.selectedOption(...)` metódusok legördülő lista kiválasztott elemének ellenőrzéséhez

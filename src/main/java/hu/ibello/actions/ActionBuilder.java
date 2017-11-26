@@ -140,6 +140,31 @@ public interface ActionBuilder {
 	void doubleClick();
 	
 	/**
+	 * Select an option from the dropdown list, with the given text.
+	 * <p>
+	 * During the timeout, this method tries to execute the action until it is successfully
+	 * performed. If the time runs out and the action was not performed, an exception will
+	 * be thrown, the error will be logged and the current test will be interrupted and
+	 * marked as "error".
+	 * </p>
+	 * @param text the text of the option we want to select
+	 */
+	void selectOption(String text);
+	
+	/**
+	 * Select an option from the dropdown list, with the given index. The index is 0-based,
+	 * so the first option has index 0.
+	 * <p>
+	 * During the timeout, this method tries to execute the action until it is successfully
+	 * performed. If the time runs out and the action was not performed, an exception will
+	 * be thrown, the error will be logged and the current test will be interrupted and
+	 * marked as "error".
+	 * </p>
+	 * @param index the index of the option we want to select
+	 */
+	void selectOption(int index);
+	
+	/**
 	 * Move the cursor to the center of the current element.
 	 * <p>
 	 * During the timeout, this method tries to execute the action until it is successfully

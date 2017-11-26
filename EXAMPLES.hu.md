@@ -1,6 +1,6 @@
 # Példák
 
-Az alábbi példák néhány komplex feladat megvalósítását mutatják be.
+Az alábbi példák néhány összetettebb feladat megvalósítását mutatják be.
 
 ## HTML `select` elem
 
@@ -16,90 +16,52 @@ Vegyük a következő HTML kódot:
 Ez a kód egy olyan legördülő listát ír le, amiben három érték közül választhatunk egyet. A kiválasztott opció lehet üres, "First" feliratú vagy "Second" feliratú.
 Az alábbiakban összefoglaljuk, hogy hogyan végezhetünk műveleteket és ellenőrzéseket ezzel az elemmel.
 
-### Opció kiválasztása érték szerint
+### Opció kiválasztása megjelenített szöveg szerint
 
-Pontosan úgy kell csinálnunk, mint ahogyan a felhasználók is csinálják. Először a `select` elemre kell kattintanunk, hogy megjelenjenek a választható opciók.
-Ezután rá kell kattintanunk a kívánt `option` elemre. Az `option` elemet paraméteresen fogjuk megkeresni - ami valamennyi rugalmasságot ad nekünk.
+Ez egyszerű, hiszen erre való a `selectOption` metódus. Ez megjeleníti a választható opciókat, majd kiválasztja azt, amire szükségünk van.
 
 ```java
 @Find(using="#example")
 private WebElement select;
 
-@Find(using="#example option[value='${0}']")
-WebElement optionByValue;
-
-public void selectOptionByValue(String value) {
-	doWith(select).click();
-	doWith(optionByValue.applyParameters(value)).click();
-}
-```
-
-### Érték nélküli opció kiválasztása
-
-Ha a kiválasztandó `option` elemnek nincs `value` attribútuma, akkor azt nem kereshetjük meg az előbbi módszerrel. Más CSS szelektort kell alkalmaznunk. HTML kód:
-
-```html
-<select id="example">
-	<option></option>
-	<option value="1" selected>First</option>
-</select>
-```
-
-Java kód:
-
-```java
-@Find(using="#example option:not([value])")
-WebElement emptyOption;
-
-public void selectEmptyOption() {
-	doWith(select).click();
-	doWith(emptyOption).click();
-}
-```
-
-### Opció kiválasztása megjelenített szöveg szerint
-
-Az előző példához teljesen hasonlóan kell eljárnunk, csak máshogyan kell megkeresnünk az `option` elemet:
-
-```java
-@Relation(type=RelationType.DESCENDANT_OF, using="#example")
-@Find(by=By.TEXT, using="${0}")
-private WebElement optionByText;
-
 public void selectOptionByText(String text) {
-	doWith(select).click();
-	doWith(optionByText.applyParameters(text)).click();
+	doWith(select).selectOption(text);
 }
 ```
 
-### A kiválasztott érték ellenőrzése
+Megjegyzés: a tesztjeinkben érdemes az elemek látható tulajdonságait használnunk, hiszen a felhasználók is azokat használják. Ezért nem érdemes az
+opciók értéke (`value` attribútuma) szerint választanunk.
 
-Két lehetőségünk van. Ellenőrizzük közvetlenül a `select` elemet:
+### Opció kiválasztása index szerint
 
-```java
-public void expectSelectedValue(String selectedValue) {
-	expectations().expect(select).toHave().value(selectedValue);
-}
-```
-
-Vagy keressük meg az éppen kiválasztott `option` elemet:
+Szintén a `selectOption` metódust használjuk, aminek most a keresett opció indexét adjuk át. Az index 0-val indul, vagyis az első opciónak az index 0,
+a másodiknak 1, és így tovább.
 
 ```java
-@Find(using="#example option:checked")
-private WebElement selectedOption;
-
-public void expectSelectedValue(String selectedValue) {
-	expectations().expect(selectedOption).toHave().value(selectedValue);
+public void selectOptionByText(int index) {
+	doWith(select).selectOption(index);
 }
 ```
 
 ### A kiválasztott szöveg ellenőrzése
 
-Elképzelhető, hogy inkább azt szeretnénk ellenőrizni, hogy mi a kiválasztott opcióhoz tartozó megjelenített szöveg - ugyanis a
-felhasználók is ezt látják. Ehhez az előbbi példa szerint meg kell keresnünk a kiválasztott `option` elemet, és azt kell vizsgálnunk:
+A kiválasztott opció szövege az a látható tulajdonság, amit leginkább ellenőrizni érdemes. Erre van egyszerű megoldás. Elegendő a `select` elemet vizsgálnunk:
 
 ```java
 public void expectSelectedText(String selectedText) {
-	expectations().expect(selectedOption).toHave().text(selectedText);
+	expectations().expect(select).toHave().selectedOption(selectedText);
+}
+```
+
+Megjegyzés: ha egyik opció sincs kiválasztva, akkor az ellenőrzéshez használhatunk üres sztringet vagy `null` értéket.
+
+### A kiválasztott érték ellenőrzése
+
+Erre is van lehetőség, bár az érték (a `value` attribútum értéke) a tesztjeink szempontjából kevésbé fontos, mivel közvetlenül nem látható.
+Szintén a `select` elemet kell vizsgálnunk:
+
+```java
+public void expectSelectedValue(String selectedValue) {
+	expectations().expect(select).toHave().value(selectedValue);
 }
 ```
