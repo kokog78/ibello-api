@@ -52,6 +52,19 @@ public interface WebElementBeExpectations {
 	void enabled();
 	
 	/**
+	 * An <em>expectation</em> which comes true when the element is read-only.
+	 * Disabled elements are counted as read-only.
+	 * The method fails only if the element is enabled and not read-only.
+	 * In this case an exception will be thrown,
+	 * all information will be logged and the current test will fail.
+	 * <p>
+	 * If the method was called after {@link WebElementExpectationBuilder#toNotBe()},
+	 * then the outcome of the expectation is the opposite: it will fail if the element is not read-only.
+	 * </p>
+	 */
+	void readonly();
+	
+	/**
 	 * An <em>expectation</em> which comes true when the element can be clicked.
 	 * It means that the elements should be displayed and enabled.
 	 * If this not occurs during the timeout, an exception will be thrown,

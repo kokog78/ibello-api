@@ -587,6 +587,7 @@ Az előző metódust követi a tulajdonság megnevezése. A lehetséges tulajdon
 | `cssClassName(...)`            | Az elem rendelkezik a megadott CSS osztálynévvel.                                       |
 | `displayed()`                  | Az elem láthatósága.                                                                    |
 | `enabled()`                    | Az elem engedélyezett / nem engedélyezett állapota.                                     |
+| `readonly()`                   | Az elem csak olvasható / írható állapota. Nem engedélyezett elem mindig csak olvasható. |
 | `clickable()`                  | Az elem kattinthatósága.                                                                |
 | `selected()`                   | Az elem kiválasztott / nem kiválasztott állapota.                                       |
 | `present()`                    | Az elem jelenléte a DOM-ban.                                                            |

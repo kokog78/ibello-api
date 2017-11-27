@@ -21,3 +21,4 @@
 
 - Új `ActionBuilder.selectOption(...)` metódusok legördülő listából történő választáshoz
 - Új `WebElementHaveExpectations.selectedOption(...)` metódusok legördülő lista kiválasztott elemének ellenőrzéséhez
+- Új `WebElementBeExpectations.readonly()` metódus csak olvasható mezők ellenőrzéséhez

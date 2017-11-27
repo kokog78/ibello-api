@@ -20,3 +20,4 @@
 
 - New `ActionBuilder.selectOption(...)` methods to select an item from a dropdown list
 - New `WebElementHaveExpectations.selectedOption(...)` methods to verify the selected item in a dropdown list
+- New `WebElementBeExpectations.readonly()` method to verify read-only fields
