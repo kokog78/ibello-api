@@ -19,8 +19,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import hu.ibello.search.By;
-import hu.ibello.search.SearchTool;
+import hu.ibello.elements.WebElements;
 
 public class SearchToolTest {
 
@@ -41,5 +40,14 @@ public class SearchToolTest {
 	public void asAncestorOf_sets_default_by() throws Exception {
 		tested.asAncestorOf("a", "b");
 		Mockito.verify(tested).asAncestorOf(By.CSS_SELECTOR, "a", "b");
+	}
+	
+	@Test
+	public void nth_returns_element_by_index() throws Exception {
+		WebElements elements = Mockito.mock(WebElements.class);
+		Mockito.when(tested.all()).thenReturn(elements);
+		tested.nth(5);
+		Mockito.verify(tested).all();
+		Mockito.verify(elements).get(5);
 	}
 }

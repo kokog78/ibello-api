@@ -336,8 +336,11 @@ private WebElement usernameField;
 
 Dinamikus elemkeresésnél tulajdonképpen klasszikus java metódushívásokkal keresünk elemeket. Ezt kétféleképpen tehetjük meg. Egyrészről, minden `WebElement` példány rendelkezik egy
 `find()` metódussal, amit meghívva elindíthatunk egy új keresést, méghozzá a `WebElement` példányon belül. Másrészről, a `PageObject.find()` metódusával a teljes oldalon belül indíthatunk
-elemkeresés. Mindkét `find()` metódus egy előkonfigurált `SearchTool` példányt ad vissza, amivel folytatólagosan adhatjuk meg a keresés paramétereit. A keresést a `first()` vagy az `all()`
-metódusok egyikével zárhatjuk le aszerint, hogy `WebElement` vagy `WebElements` példányt szeretnénk-e kapni eredményül. Az előző fejezet példái:
+elemkeresés. Mindkét `find()` metódus egy előkonfigurált `SearchTool` példányt ad vissza, amivel folytatólagosan adhatjuk meg a keresés paramétereit. A keresést a `first()`, `nth(int)`
+vagy az `all()` metódusok egyikével zárhatjuk le aszerint, hogy `WebElement` vagy `WebElements` példányt szeretnénk-e kapni eredményül. A `first()` az első megtalált elemet adja vissza.
+Az `nth(int)` index alapján adja vissza a megtalált elemet. A `first()` és az `nth(0)` hívások egyenértékűek. Az `all()` az összes megtalált elemet visszaadja.
+
+Az előző fejezet példái:
 
 ```java
 // paraméteres keresés

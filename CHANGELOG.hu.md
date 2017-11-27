@@ -23,3 +23,4 @@
 - Új `ActionBuilder.scrollTo(...)` metódus görgetéshez
 - Új `WebElementHaveExpectations.selectedOption(...)` metódusok legördülő lista kiválasztott elemének ellenőrzéséhez
 - Új `WebElementBeExpectations.readonly()` metódus csak olvasható mezők ellenőrzéséhez
+- Új `SearchTool.nth(...)` metódus index szerinti kereséshez

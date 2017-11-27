@@ -22,3 +22,4 @@
 - New `ActionBuilder.scrollTo(...)` method for scrolling
 - New `WebElementHaveExpectations.selectedOption(...)` methods to verify the selected item in a dropdown list
 - New `WebElementBeExpectations.readonly()` method to verify read-only fields
+- New `SearchTool.nth(...)` method for index based search

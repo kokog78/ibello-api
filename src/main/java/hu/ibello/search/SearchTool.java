@@ -230,6 +230,25 @@ public interface SearchTool {
 	
 	/**
 	 * <p>
+	 * Get the nth element on the page which matches the conditions. The index of the element should
+	 * be specified with the parameter. It is 0-based, so the index of the first element is 0, the second is 1,
+	 * and so on.
+	 * </p>
+	 * <p>
+	 * This method always returns a non-null object, even if the element is not present on the
+	 * page at the time of the search. The returned {@link WebElement} instance can be used for
+	 * different actions and assertions later - there is no need to search with the same arguments
+	 * again.
+	 * </p>
+	 * @param index 0-based index of the element
+	 * @return the element with the given index
+	 */
+	public default WebElement nth(int index) {
+		return all().get(index);
+	}
+	
+	/**
+	 * <p>
 	 * Get all elements on the page that match the conditions.
 	 * </p>
 	 * <p>
