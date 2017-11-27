@@ -37,7 +37,48 @@ A fenti példának az egyik fontos jellemzője, hogy a teszt metódusban meghív
 részletet. Nem tudjuk, pontosan honnan is lehet tudni, hogy a bejelentkező oldalon vagyunk, és azt sem, hogy hogyan is lehet belépni egy érvényes felhasználóval. Mindezeket
 az információkat a tesztlépés-könyvtár metódusai tartalmazzák.
 
-Annyit még érdemes megjegyeznünk, hogy a `Specification` annotációval jelölt teszt osztályok metódusai a nevük szerint ábécé sorrendben futnak. Ezen változtatni egyenlőre nincs lehetőség.
+### A teszt osztályok futási sorrendje
+
+A `Specification` annotációval jelölt teszt osztályok metódusai alapértelmezés szerint a nevük szerint ábécé sorrendben futnak.
+Ezen úgy lehet változtatni, hogy az annotáció `order` mezőjében megadjuk azt az indexet, amit az ibello a rendezéshez felhasznál:
+
+```java
+@Specification(order = 3)
+public class RunLater {
+	...
+}
+```
+
+Ha az index értéke nincs megadva, akkor azt 0-nak veszi. Az azonos indexű teszt osztályok közül az fog előbb futni, aminek a neve ábécé sorrendben előbb van.
+
+### Tesztek kizárása címke alapján
+
+A `Specification.includedTags` és `Specification.excludedTags` mezők segítségével kizárhatunk egyes teszt osztályokat. Amikor a teszteket futtatjuk, meghatározhatunk egy címke-halmazt.
+Ez tulajdonképpen néhány szóból álló halmaz, amivel jellemezzük az aktuális tesztfutást. A címkék alapján kikapcsolhatjuk a teszt osztályokat.
+
+Az `includedTags` mezőben felsorolt címkék bekapcsolják a teszt osztályt. Ez azt jelenti, hogy ahhoz, hogy a teszt osztály fusson, a felsorolt címkék közül legalább egynek
+benne kell lennie az aktuális címke-állományunkban. Példák:
+
+```java
+@Specification(includedTags = "longRunning")
+public class LongRunningTests {
+	...
+}
+
+@Specification(includedTags = {"smoke", "parallel"})
+public class ParallelSmokeTests {
+	...
+}
+```
+
+Az `excludedTags` mezővel éppen fordított viselkedést tudunk elérni. Ha az itt felsorolt címkék közül akár egy is szerepel a címke-állományban, akkor a teszt osztály nem fog futni.
+
+```java
+@Specification(excludedTags = "ci")
+public class LocalTests {
+	...
+}
+```
 
 ## A tesztlépés-könyvtár
 

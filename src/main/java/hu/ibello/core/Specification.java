@@ -44,12 +44,12 @@ public @interface Specification {
 	 * is available.
 	 * @return array of included tags; default value is the empty array
 	 */
-	String[] includeTags() default {};
+	String[] includedTags() default {};
 	
 	/**
 	 * Array of excluded tags. If this field is specified, then the test class will run only if none of the specified tags
 	 * is available.
 	 * @return array of excluded tags; default value is the empty array
 	 */
-	String[] excludeTags() default {};
+	String[] excludedTags() default {};
 }
