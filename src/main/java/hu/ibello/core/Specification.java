@@ -32,4 +32,24 @@ import java.lang.annotation.Target;
 @Target(TYPE)
 public @interface Specification {
 
+	/**
+	 * An integer value which is used for sorting test classes. The classes will be executed in the calculated order.
+	 * Sorting of test classes with the same index is based on the class name.
+	 * @return and index used for sorting test classes; default value is 0
+	 */
+	int order() default 0;
+	
+	/**
+	 * Array of included tags. If this field is specified, then the test class will run only if one of the specified tags
+	 * is available.
+	 * @return array of included tags; default value is the empty array
+	 */
+	String[] includeTags() default {};
+	
+	/**
+	 * Array of excluded tags. If this field is specified, then the test class will run only if none of the specified tags
+	 * is available.
+	 * @return array of excluded tags; default value is the empty array
+	 */
+	String[] excludeTags() default {};
 }

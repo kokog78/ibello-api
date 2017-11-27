@@ -24,3 +24,5 @@
 - Új `WebElementHaveExpectations.selectedOption(...)` metódusok legördülő lista kiválasztott elemének ellenőrzéséhez
 - Új `WebElementBeExpectations.readonly()` metódus csak olvasható mezők ellenőrzéséhez
 - Új `SearchTool.nth(...)` metódus index szerinti kereséshez
+- Új `Specification.order` mező teszt osztályok sorbarendezéséhez
+- Új `Specification.includeTags` és `Specification.excludeTags` mezők teszt osztályok ki/bekapcsolásához

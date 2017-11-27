@@ -23,3 +23,5 @@
 - New `WebElementHaveExpectations.selectedOption(...)` methods to verify the selected item in a dropdown list
 - New `WebElementBeExpectations.readonly()` method to verify read-only fields
 - New `SearchTool.nth(...)` method for index based search
+- New `Specification.order` firld for sorting test classes
+- New `Specification.includeTags` and `Specification.excludeTags` fields to turn on/off test classes
