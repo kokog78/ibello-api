@@ -19,5 +19,6 @@
 ## 1.5.0
 
 - New `ActionBuilder.selectOption(...)` methods to select an item from a dropdown list
+- New `ActionBuilder.scrollTo(...)` method for scrolling
 - New `WebElementHaveExpectations.selectedOption(...)` methods to verify the selected item in a dropdown list
 - New `WebElementBeExpectations.readonly()` method to verify read-only fields

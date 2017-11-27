@@ -485,6 +485,7 @@ doWith(button).withPageRefreshWait().click();
 | `selectOption(...)`         | Legördülő listában a megadott feliratú opció kiválasztása.                     |
 | `moveTo()`                  | Az egérmutatót az elem közepére állítja.                                       |
 | `dragAndDropTo(WebElement)` | "Fog és vidd" művelettel az elemet a paraméterben megadott másik elemre húzza. |
+| `scrollTo(WebElement)`      | Az elem görgetése úgy, hogy a paraméterben megadott másik elem látható legyen  |
 
 ### Billentyűzet művelet
 

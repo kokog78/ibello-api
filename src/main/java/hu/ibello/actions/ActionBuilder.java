@@ -176,6 +176,20 @@ public interface ActionBuilder {
 	void moveTo();
 	
 	/**
+	 * Scrolls the current element (if it is scrollable) to the given target element.
+	 * The target should be a child of the current element.
+	 * After the scrolling the target element will be visible inside of the current element.
+	 * <p>
+	 * During the timeout, this method tries to execute the action until it is successfully
+	 * performed. If the time runs out and the action was not performed, an exception will
+	 * be thrown, the error will be logged and the current test will be interrupted and
+	 * marked as "error".
+	 * </p>
+	 * @param target the target element to which we want to scroll
+	 */
+	void scrollTo(WebElement target);
+	
+	/**
 	 * Send the given character sequences (strings) to the current element.
 	 * <p>
 	 * During the timeout, this method tries to execute the action until it is successfully
