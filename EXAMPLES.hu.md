@@ -31,7 +31,7 @@ A technika lényege, hogy a megnyitandó oldalhoz (elemcsoporthoz) külön oldal
 oldalt (elemcsoportot) megnyitottnak tekinthetjük. Ez gyakran egyetlen elem megjelenése:
 
 ```java
-public class SlowPage extenda PageObject{
+public class SlowPage extends PageObject{
 	
 	@Find(using="#page-header")
 	private WebElement indicator;
@@ -46,7 +46,7 @@ public class SlowPage extenda PageObject{
 Extrém esetekben több elem megjelenését is vizsgálhatjuk, akár sorrendiség nélkül is:
 
 ```java
-public class SlowPage extenda PageObject{
+public class SlowPage extends PageObject{
 	
 	@Find(using="#page-header")
 	private WebElement indicator;
