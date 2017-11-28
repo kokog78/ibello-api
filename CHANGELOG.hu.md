@@ -2,7 +2,7 @@
 
 ## 1.2.0
 
-- Új Frame annotáció, amivel HTML keretek tartalma is elérhető
+- Új `Frame` annotáció, amivel HTML keretek tartalma is elérhető
 
 
 ## 1.3.0
@@ -25,4 +25,4 @@
 - Új `WebElementBeExpectations.readonly()` metódus csak olvasható mezők ellenőrzéséhez
 - Új `SearchTool.nth(...)` metódus index szerinti kereséshez
 - Új `Specification.order` mező teszt osztályok sorbarendezéséhez
-- Új `Specification.includeTags` és `Specification.excludeTags` mezők teszt osztályok ki/bekapcsolásához
+- Új `Specification.includedTags` és `Specification.excludedTags` mezők teszt osztályok ki/bekapcsolásához

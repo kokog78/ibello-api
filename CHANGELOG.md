@@ -2,7 +2,7 @@
 
 ## 1.2.0
 
-- New Frame annotation to access content in HTML frames
+- New `Frame` annotation to access content in HTML frames
 
 ## 1.3.0
 
@@ -24,4 +24,4 @@
 - New `WebElementBeExpectations.readonly()` method to verify read-only fields
 - New `SearchTool.nth(...)` method for index based search
 - New `Specification.order` firld for sorting test classes
-- New `Specification.includeTags` and `Specification.excludeTags` fields to turn on/off test classes
+- New `Specification.includedTags` and `Specification.excludedTags` fields to turn on/off test classes
