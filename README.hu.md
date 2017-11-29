@@ -80,6 +80,26 @@ public class LocalTests {
 }
 ```
 
+### Teszt metódusok futási sorrendje és elnevezése
+
+Egy teszt osztályon belül a teszt metódusok a nevük szerint ábécé sorrendben futnak. A megfelelő névválasztással tudjuk koordinálni a sorrendet. Ez időnként kényelmetlen lehet,
+mert a metódusok neve megjelenik a logokban és az eredmény riportban is - a sorrendezés miatt előtagként hozzáadott karaktereket sok esetben nem szeretnénk látni a riportban.
+Ezért lehetőségünk van arra, hogy a `@Name` annotációval megjelenítendő nevet adjuk a metódusoknak. Ez fog megjelenni a logokban és a riportban is.
+
+```java
+@Test
+@Name("Login")
+public void t0_login() {
+	...
+}
+
+@Test
+@Name("Check basic functions")
+public void t1_check_basic_functions() {
+	...
+}
+```
+
 ## A tesztlépés-könyvtár
 
 A tesztlépés-könyvtár osztály a `StepLibrary` ősosztályból származik. Minden publikus metódusa tesztlépésnek számít. A metódusok neveit érdemes beszédesre választani.
