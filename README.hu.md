@@ -13,7 +13,7 @@ A teszt osztályt a `@Specification` annotációval jelöljük. Az ibello rendsz
 annotáció jelöl. A tesztek futtatásához az ibello JUnit-ot használ.
 
 A teszt osztályban tesztlépés-könyvtárakat használunk. Egy tesztlépés-könyvtárat úgy a legegyszerűbb elérni, ha a teszt osztályhoz adunk egy (akár privát) mezőt a kívánt típussal.
-Az ibello automatikusan létre fogja majd hozni a tesztlépés-könyvtárat, amit a teszt metódusokban nyugodtan használhatunk:
+Az ibello automatikusan létre fogja majd hozni a tesztlépés-könyvtár egy példányát, amit a teszt metódusokban nyugodtan használhatunk:
 
 ```java
 @Specification
@@ -110,7 +110,7 @@ Jó gyakorlatot követünk, ha háromféle metódust különböztetünk meg, és
 - Az ellenőrző metódusok ellenőrzik az előállt állapotot, és hibát dobnak, ha a kívánt feltétel nem teljesült. A nevük kezdődhez `then_` előtaggal.
 
 A tesztlépés-könyvtár metódusai oldal-leírókat használnak. Az oldal-leírókat nyugodtan bejegyezhetjük (privát) mezőkként, az ibello rendszer automatikusan létre fogja
-azokat hozni. Egy tesztlépés-könyvárban más tesztlépés-könyvtárakra is hivatkozhatunk, szintén elég csak egy (privát) mezőt létrehozni a megfelelő típussal.
+hozni a példányokat. Egy tesztlépés-könyvárban más tesztlépés-könyvtárakra is hivatkozhatunk, szintén elég csak egy (privát) mezőt létrehozni a megfelelő típussal.
 
 ```java
 public class LoginSteps extends StepLibrary {

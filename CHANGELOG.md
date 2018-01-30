@@ -25,3 +25,7 @@
 - New `SearchTool.nth(...)` method for index based search
 - New `Specification.order` firld for sorting test classes
 - New `Specification.includedTags` and `Specification.excludedTags` fields to turn on/off test classes
+
+## 1.6.0
+
+- New interface for testing email communication: `FakeEmailServer`

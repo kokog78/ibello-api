@@ -26,3 +26,7 @@
 - Új `SearchTool.nth(...)` metódus index szerinti kereséshez
 - Új `Specification.order` mező teszt osztályok sorbarendezéséhez
 - Új `Specification.includedTags` és `Specification.excludedTags` mezők teszt osztályok ki/bekapcsolásához
+
+## 1.6.0
+
+- Új interfész email kommunikáció tesztelésére: `FakeEmailServer`
