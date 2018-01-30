@@ -29,6 +29,20 @@ public interface EmailExpectationBuilder {
 	public EmailHaveExpectations toNotHave();
 	
 	/**
+	 * Expectation builder method. It returns a new interface which has another methods
+	 * to finish and execute the expectation. The result will the opposite of {@link #toNotBe()}.
+	 * @return {@link EmailBeExpectations} instance to finish and execute the expectation
+	 */
+	public EmailBeExpectations toBe();
+	
+	/**
+	 * Expectation builder method. It returns a new interface which has another methods
+	 * to finish and execute the expectation. The result will the opposite of {@link #toBe()}.
+	 * @return {@link EmailBeExpectations} instance to finish and execute the expectation
+	 */
+	public EmailBeExpectations toNotBe();
+	
+	/**
 	 * Sets the timeout of this expectation.
 	 * @param key key of the timeout
 	 * @return the same builder object
