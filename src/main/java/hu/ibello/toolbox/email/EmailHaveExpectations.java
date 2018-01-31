@@ -46,6 +46,20 @@ public interface EmailHaveExpectations {
 	public void subject(Pattern pattern);
 	
 	/**
+	 * Expectations about the value of the MIME header.
+	 * @param name the name of the header (case-insensitive)
+	 * @param value the value of the header
+	 */
+	public void header(String name, String value);
+	
+	/**
+	 * Expectations about the value of the MIME header.
+	 * @param name the name of the header (case-insensitive)
+	 * @param pattern the value of the header as a regular expression
+	 */
+	public void header(String name, Pattern pattern);
+	
+	/**
 	 * Expectations about the text of an email.
 	 * @param value the expected text
 	 */
