@@ -1,4 +1,4 @@
-# ibello-api
+# ibello-api ${version}
 
 Az ibello keretrendszerben létrehozott tesztek háromrétegűek. Egyrészről, az oldalak technikai funkcióit az ún. _oldal-leíró osztályok_ foglalják össze. Másrészről, egy vagy több
 oldal-leíró osztály metódusai segítségével tesztlépéseket állítunk össze, amelyeket egy ún. _tesztlépés-könyvtár osztályba_ teszünk. Az egyes _tesztek_ a tesztlépés-könyvtárak
@@ -820,3 +820,110 @@ Az `@Injectable` annotáció egyetlen paramétere a kívánt szkóp, ami lehet:
 Az ibello rendszerben az `@Inject` annotációval végrehajtott injektálás a támogatott módja annak, hogy extra logikát illesszünk a tesztjeinkbe. A tesztek futása során szükség lehet
 például háttérrendszerek konfigurálására, hogy a kívánt eredményt adják, miközben a böngészőt vezéreljük. Az ilyen típusú igényekhez létrehozhatunk az ibello API-tól független
 osztályokat, amiket az ibello függőség injektálásának segítségével illeszthetünk be a tesztek kódjába.
+
+## Egyéb eszközök
+
+A `hu.ibello.toolbox` csomag olyan osztályokat (interfészeket) tartalmaz, amik integrációs tesztekben használhatók külső rendszerek kiváltására. A közös ezekben az eszközökben, hogy
+az `@Inject` annotáció segítségével a tesztlépés-könyvtárakba injektálhatóak. Az alábbiakban ezen eszközök bemutatása következik.
+
+### Email ellenőrzés
+
+Amennyiben a tesztelt alkalmazás email-eket küld ki, úgy szükség lehet arra, hogy a tesztekben a kiküldött email-eket is ellenőrizzük. Ezt a `FakeEmailServer` segítségével érhetjük el.
+
+Az osztály segítségével indíthatunk egy memóriában futó SMTP szervert, ami képes fogadni a tesztelt alkalmazás által küldött leveleket, és aminek a segítségével a tesztkódban
+ellenőrizhetjük a levelet tartalmát.
+
+#### Előzetes konfiguráció
+
+Az eszköz használatához a tesztelt alkalmazásban is el kell végeznünk némi konfigurációt annak érdekében, hogy az a teszt SMTP szerverhez
+küldje a leveleket. Java környezet esetében ezt általában elérhetjük a `mail.smtp.host` és a `mail.smtp.port` rendszerváltozók beállításával. Az elsőnek `localhost` értéket
+kell adnunk, míg a másodiknak az SMTP szerver portját (lásd később).
+
+Ha az előbbi módszer nem működik, akkor vegyük fel a kapcsolatot az alkalmazás fejlesztőivel. A legtöbb rendszerben elvégezhető ez a konfiguráció.
+
+#### Tesztkód előkészítése
+
+A `FakeEmailServer` példányt tipikusan egy tesztlépés-könyvtárba injektáljuk.
+
+```java
+public class EmailSteps extends StepLibrary {
+
+	@Inject
+	private FakeEmailServer emailServer;
+
+	public void startEmailServer() {
+		emailServer.start(2525);
+	}
+	
+}
+```
+
+A `start(int)` metódus segítségével indíthatjuk el a szervert a megadott porton. Ha már egyszer elindítottuk azon a porton, akkor ez a metódus nem csinál semmit.
+(Ha azonban más portszámot írunk be, mint amin már egyszer indítottuk, akkor a metódus kivételt dob.)
+
+A tesztlépés-könyvtárat ezután felhasználhatjuk egy teszt osztályban. Ha egy `@Before` blokkba tesszük a szerverindítást, akkor a szerver az első tesztünk előtt el fog
+indulni, így a tesztekben használhatjuk.
+
+```java
+@Specification
+public MyTests {
+
+	private EmailSteps email;
+
+	@Before
+	public void startEmailServer() {
+		email.startEmailServer();
+	}
+```
+
+Ha a szervert le szeretnénk állítani, akkor a `stop()` metódusát kell meghívjuk. Ha ezt elmulasztjuk, sem probléma, mert az utolsó teszt futását követően az ibello automatikusan
+leállítja.
+
+Itt érdemes megjegyezni, hogy a `FakeEmailServer` session-szkópban fut bár, de egy közös szervert vezérel. Ezt azt jelenti, hogy nem tudunk két szervert két különböző porton
+indítani. (A session-szkóp a logok miatt lényeges, a különböző szálakon futó ellenőrzések egymástól függetlenül képesek loggolni.)
+
+#### Ellenőrzések
+
+Az eszköz az `expectLastEmail()` és `assumeLastEmail()` metódusok segítségével folytonos (kemény és lágy) ellenőrzési lehetőséget ad nekünk. Mint ahogyan a metódusok nevéből
+is sejthető, mindig a legutolsó üzenetet tudjuk ellenőrizni. Az alábbi lehetőségeink vannak:
+
+| Java metódushívás                             | Magyarázat                                                                                                            |
+| --------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `expectLastEmail().toBe().present()`          | Az üzenet létezésének ellenőrzése. Csak az első üzenet elküldésekor teljesül.                                         |
+| `expectLastEmail().toHave().sender(...)`      | A feladó email-címének ellenőrzése.                                                                                   |
+| `expectLastEmail().toHave().recipient(...)`   | A fogadó email-címének ellenőrzése.                                                                                   |
+| `expectLastEmail().toHave().subject(...)`     | Az üzenet tárgyának ellenőrzése.                                                                                      |
+| `expectLastEmail().toHave().text(...)`        | Az üzenet szövegének ellenőrzése.                                                                                     |
+| `expectLastEmail().toHave().header(..., ...)` | Az üzenet egy fejlécének ellenőrzése. Az első paraméter a fejléc neve (kis/nagybetű érzéketlen), a második az értéke. |
+
+A `toHave()` ellenőrzéseknek természetesen van `toNotHave()` párja, amivel a feltételt tudjuk tagadni. Ugyanez áll fenn a `toBe()` ellenőrzésre is (a párja `toNotBe()`).
+A `toHave()` ellenőrzések utolsó paramétere lehet az elvárt érték (`String` típus), vagy egy reguláris kifejezés, aminek az aktuális értéket meg szeretnénk feleltetni
+(`Pattern` típus). Példák:
+
+```java
+expectLastEmail().toHave().subject("registration");
+expectLastEmail().toNotHave().text(Pattern.compile(".*error.*"));
+expectLastEmail().toHave().header("content-type", Pattern.compile("text/html(;.*)?"));
+```
+
+Fontos megjegyezni, hogy a `toNotHave()` tagadás akkor is teljesül, ha egyetlen üzenet sem kerül elküldésre. Ha arról szeretnénk megbizonyosodni, hogy már jött egy email, aminek
+valamely tulajdonsága nem felel meg egy feltételnek, akkor előbb a `toBe().present()` ellenőrzést kell futtatnunk. Például:
+
+```java
+expectLastEmail().toBe().present();
+expectLastEmail().toNotHave().subject("password changed");
+```
+
+Az ellenőrzések a többi ibello ellenőrzésekhez hasonlóan bekerülnek a logokba és az eredmény riportba is.
+
+#### Időtúllépés
+
+Az összes ellenőrzés a `toolbox.email` címkével jelzett időtúllépést használja. (Ezt a konfigurációban `ibello.timeout.toolbox.email` kulccsal adhatjuk meg.) Ha nincs megadva,
+akkor az alapértelmezett időtúllépés lesz a mérvadó. Lehetőségünk van saját időtúllépés használatára is, az `expectLastEmail().withTimeout(...)` metódusok valamelyikével.
+Az időtúllépés címkéjét kell megadnunk, vagy egy `Enum` konstanst.
+
+#### Alaphelyzetbe állás
+
+A `reset()` metódus segítségével alaphelyzetbe állíthatjuk az email szerverünket, ami elfelejt minden addigi üzenetet. Ez akkor hasznos, ha a rendszer többször egymás után hasonló
+üzeneteket küld ki, és nem szeretnénk hamis pozitív eredményt kapni a tesztjeinkben azért, mert egy korábbról bennragadt üzenetnek ugyanazok a tulajdonságai vannak, mint az újonnan
+vártnak.
