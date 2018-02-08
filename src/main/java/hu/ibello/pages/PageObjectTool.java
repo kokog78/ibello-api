@@ -46,9 +46,10 @@ public interface PageObjectTool {
 	 * WebElement image = ...;
 	 * WebElement child = find().using(By.TAG_NAME, "span").leftFrom(image).first();
 	 * </pre>
+	 * @param windowId identifier of the browser window
 	 * @return an object used for element search on the page
 	 */
-	SearchTool find();
+	SearchTool find(String windowId);
 
 	/**
 	 * Returns a configuration property as a {@link Value}. The returned value offers some public methods to
@@ -63,9 +64,10 @@ public interface PageObjectTool {
 	/**
 	 * Returns a {@link Browser} instance which can be used for different browser-specific actions,
 	 * including element search and opening URL.
+	 * @param windowId identifier of the browser window
 	 * @return an interface which offers browser-specific actions
 	 */
-	Browser browser();
+	Browser browser(String windowId);
 	
 	/**
 	 * Returns an {@link ActionBuilder} instance which can be used to perform different actions on the web element.
@@ -88,9 +90,10 @@ public interface PageObjectTool {
 	 * expectations().expect(buttons).toHave().size(5);
 	 * expectations().expect(browser()).toHave().url("http://localhost/page");
 	 * </pre>
+	 * @param windowId identifier of the browser window
 	 * @return an {@link ExpectationBuilder} instance which is configured to run expectations
 	 */
-	ExpectationBuilder expectations();
+	ExpectationBuilder expectations(String windowId);
 	
 	/**
 	 * Returns a {@link KeyHelper} instance, which offers special keys and key modifiers.

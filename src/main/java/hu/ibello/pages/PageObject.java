@@ -170,6 +170,8 @@ public abstract class PageObject {
 	@Inject
 	private PageObjectTool tool;
 	
+	private String windowId;
+	
 	/**
 	 * <p>
 	 * Returns a {@link SearchTool} instance which is used to search elements on the page.
@@ -184,7 +186,7 @@ public abstract class PageObject {
 	 * @return an object used for element search on the page
 	 */
 	protected SearchTool find() {
-		return tool.find();
+		return tool.find(windowId);
 	}
 
 	/**
@@ -205,7 +207,7 @@ public abstract class PageObject {
 	 * @return an interface which offers browser-specific actions
 	 */
 	protected Browser browser() {
-		return tool.browser();
+		return tool.browser(windowId);
 	}
 	
 	/**
@@ -235,7 +237,7 @@ public abstract class PageObject {
 	 * @return an {@link ExpectationBuilder} instance which is configured to run expectations
 	 */
 	protected ExpectationBuilder expectations() {
-		return tool.expectations();
+		return tool.expectations(windowId);
 	}
 	
 	/**
