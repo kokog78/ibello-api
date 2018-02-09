@@ -94,6 +94,8 @@ public abstract class StepLibrary {
 	@Inject
 	private StepLibraryTool tool;
 	
+	private String windowId;
+	
 	/**
 	 * Returns a configuration property as a {@link Value}. The returned value offers some public methods to
 	 * transform the configuration property into different java types.
