@@ -17,6 +17,8 @@ package hu.ibello.steps;
 
 import hu.ibello.core.Name;
 import hu.ibello.core.Value;
+import hu.ibello.core.Window;
+import hu.ibello.core.WindowRelated;
 import hu.ibello.inject.Inject;
 import hu.ibello.inject.Injectable;
 import hu.ibello.inject.Scope;
@@ -54,6 +56,29 @@ import hu.ibello.pages.PageObject;
  * class. These fields can be referenced from all methods of the step library (but not from the constructor).
  * </p>
  * <p>
+ * By default, the injected page objects are controlling the main browser window. With the {@link Window} annotation
+ * we can bound a page object field to a different browser window. The annotation receives a string identifier.
+ * If the window with that identifier already exists, the page object will be connected to that window,
+ * otherwise a new window with that identifier will be created. In the example below the <code>editor</code>
+ * page object instance will control a new browser window, which has the "editor" identifier.
+ * </p>
+ * <pre>
+ * public class EditorSteps extends StepLibrary {
+ * 
+ *     {@literal @}Window("editor")
+ *     private EditorPage editor;
+ *     
+ *     private PresenterPage presenter;
+ * 
+ * }
+ * </pre>
+ * <p>
+ * Also step library fields may have {@link Window} annotation. The browser window can be inherited from the container class.
+ * If a {@link PageObject} field does not have {@link Window} annotation, but the containing step library instance was injected
+ * into another step library (or test) with a {@link Window} annotation, then the page object will use the browser window with
+ * the injected identifier.
+ * </p>
+ * <p>
  * All public methods of a step library are considered as test steps and therefore automatically logged when called.
  * The log will contain the descriptive name of the methods. If the method has a {@link Name} annotation, then
  * the descriptive name will be the one specified by that annotation. Otherwise the descriptive name will be transformed
@@ -89,12 +114,10 @@ import hu.ibello.pages.PageObject;
  * @author Kornél Simon
  */
 @Injectable(Scope.STEPS)
-public abstract class StepLibrary {
+public abstract class StepLibrary extends WindowRelated {
 
 	@Inject
 	private StepLibraryTool tool;
-	
-	private String windowId;
 	
 	/**
 	 * Returns a configuration property as a {@link Value}. The returned value offers some public methods to

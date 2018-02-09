@@ -20,6 +20,7 @@ import hu.ibello.actions.KeyHelper;
 import hu.ibello.core.Browser;
 import hu.ibello.core.Name;
 import hu.ibello.core.Value;
+import hu.ibello.core.WindowRelated;
 import hu.ibello.elements.WebElement;
 import hu.ibello.elements.WebElements;
 import hu.ibello.expect.ExpectationBuilder;
@@ -165,12 +166,10 @@ import hu.ibello.search.SearchTool;
  * @see Relation
  */
 @Injectable(Scope.PAGE)
-public abstract class PageObject {
+public abstract class PageObject extends WindowRelated {
 	
 	@Inject
 	private PageObjectTool tool;
-	
-	private String windowId;
 	
 	/**
 	 * <p>
@@ -186,7 +185,7 @@ public abstract class PageObject {
 	 * @return an object used for element search on the page
 	 */
 	protected SearchTool find() {
-		return tool.find(windowId);
+		return tool.find(getWindowId());
 	}
 
 	/**
@@ -207,7 +206,7 @@ public abstract class PageObject {
 	 * @return an interface which offers browser-specific actions
 	 */
 	protected Browser browser() {
-		return tool.browser(windowId);
+		return tool.browser(getWindowId());
 	}
 	
 	/**
@@ -237,7 +236,7 @@ public abstract class PageObject {
 	 * @return an {@link ExpectationBuilder} instance which is configured to run expectations
 	 */
 	protected ExpectationBuilder expectations() {
-		return tool.expectations(windowId);
+		return tool.expectations(getWindowId());
 	}
 	
 	/**
