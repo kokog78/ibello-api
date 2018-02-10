@@ -463,7 +463,6 @@ public class ChildFramedPage extends PageObject {
 }
 ```
 
-
 ## Időtúllépések kezelése
 
 Az ibello rendszert webalkalmazások teszteléséhez használjuk. A tesztelendő alkalmazást egy böngészőben futtatjuk, a tesztek pedig ezt a böngészőt automatizálják. Az automatizálás
@@ -768,6 +767,47 @@ létrehozva, akkor a teszt futása is végetér, míg ha `assume(...)` metóduss
 
 Az `any(...)` metódussal létrehozott összetett ellenőrzéseknél kicsit más a helyzet. Ha a befoglalt ellenőrzések között akár egyetlen olyan is akad, amit `expect(...)` metódussal
 hoztunk létre, akkor a tesztfutás félbe fog szakadni akkor, amikor az összetett ellenőrzés elbukik. (Ilyenkor ugyanis biztos, hogy a kényszer-ellenőrzés is elbukott.)
+
+## Több böngészőablak vezérlése
+
+Az ibello rendszer lehetőséget ad arra, hogy egy tesztben több böngészőablakot is vezéreljünk. Alapesetben az összes művelet egy alapértelmezett ablakban
+hajtódik végre. Ha azonban egy oldal-leíró mezőre rátesszük a `Window` annotációt, aminek megadunk egy szöveges azonosítót, akkor az oldal-leíró által indított műveletek
+már egy új böngészőablakban fognak futni.
+
+```java
+public class MySteps extends StepLibrary {
+
+	// az alapértelmezett böngészőablakban fut
+	private PresenterPage presenter;
+
+	// egy új böngészőablakban fut
+	@Window("editor")
+	private EditorPage editor;
+	
+}
+```
+
+Az újonnan megnyíló böngészőablakot az átadott szöveges azonosítóval azonosítjuk. Ha egy másik oldal-leíró mezőnél ugyanezt az azonosítót adjuk meg, akkor az ugyanabban az ablakban
+fog futni (nem fog új ablak nyílni).
+
+A böngészőablakok öröklődnek is az oldal-leírók között. Amennyiben egy oldal-leíró tartalmaz más oldal-leírókra történő hivatkozásokat, amiknél nincs `Window` annotáció, akkor azok
+öröklik a tartalmazó objektum böngészőablakát. Vagyis a `Window` annotáció hiánya nem feltétlenül jelenti azt, hogy a műveletek az alapértelmezett ablakban futnak.
+
+A fentiek alapján lehetőség van arra is, hogy tesztlépés-könyvtárakra történő hibatkozásokhoz adjunk meg `Window` annotációt. Ezzel azt érjük el, hogy a tesztlépés-könyvtár
+által hivatkozott (annotációval nem rendelkező) oldal-leírók mint a tesztlépés-könyvtárnak megadott azonosítójú böngészőablakban fognak futni.
+
+```java
+@Specification
+public class MySpecs {
+
+	@Window("presenter")
+	private MySteps steps;
+
+}
+```
+
+A fenti példával azt érjük el, hogy a `steps.presenter` oldal-leíró a "presenter" ablakban fog futni - mivel az a `MySteps` osztályban nem kapott külön annotációt. Ugyanakkor a
+`steps.editor` oldal-leíró (az annotációjának köszönhetően) továbbra is az "editor" ablakot vezérli.
 
 ## Függőségek injektálása
 
