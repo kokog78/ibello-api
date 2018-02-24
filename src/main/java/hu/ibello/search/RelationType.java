@@ -36,6 +36,11 @@ public enum RelationType {
 	/**
 	 * The desired element is the ancestor of the anchor element.
 	 */
-	ANCESTOR_OF;
+	ANCESTOR_OF,
+	
+	/**
+	 * The desired element is near to the anchor element in the HTML structure.
+	 */
+	NEAREST_TO;
 	
 }

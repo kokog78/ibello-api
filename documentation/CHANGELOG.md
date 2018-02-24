@@ -29,3 +29,8 @@
 ## 1.6.0
 
 - New interface for testing email communication: `FakeEmailServer`
+
+## 1.7.0
+
+- New `Window` annotation for open new browser window
+- New relation-based element-search modifier: `RelationType.NEAREST_TO`

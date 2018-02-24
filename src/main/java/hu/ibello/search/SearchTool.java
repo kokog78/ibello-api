@@ -215,6 +215,13 @@ public interface SearchTool {
 	}
 	
 	/**
+	 * Modifies the element search to capture the nearest elements to the given anchor element.
+	 * @param anchor another element on the page
+	 * @return this {@link SearchTool} instance
+	 */
+	public SearchTool nearestTo(WebElement anchor);
+	
+	/**
 	 * <p>
 	 * Get only the first element on the page which matches the conditions.
 	 * </p>

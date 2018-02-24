@@ -30,3 +30,8 @@
 ## 1.6.0
 
 - Új interfész email kommunikáció tesztelésére: `FakeEmailServer`
+
+## 1.7.0
+
+- Új `Window` annotáció, amivel új böngészőablak nyitható
+- Új reláció szerinti elemkeresési módosító: `RelationType.NEAREST_TO`
