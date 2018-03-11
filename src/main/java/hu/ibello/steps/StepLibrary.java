@@ -17,12 +17,12 @@ package hu.ibello.steps;
 
 import hu.ibello.core.Name;
 import hu.ibello.core.Value;
-import hu.ibello.core.Window;
 import hu.ibello.core.WindowRelated;
 import hu.ibello.inject.Inject;
 import hu.ibello.inject.Injectable;
 import hu.ibello.inject.Scope;
 import hu.ibello.pages.PageObject;
+import hu.ibello.search.Window;
 
 /**
  * <p>
