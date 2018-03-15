@@ -2,7 +2,7 @@
 
 ## 1.7.0
 
-- New `Window` annotation for open new browser window
+- New `Window` annotation for open new browser window (and tab)
 - New relation-based element-search modifier: `RelationType.NEAREST_TO`
 
 ## 1.6.0

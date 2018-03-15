@@ -2,7 +2,7 @@
 
 ## 1.7.0
 
-- Új `Window` annotáció, amivel új böngészőablak nyitható
+- Új `Window` annotáció, amivel új böngészőablak (és fül) nyitható
 - Új reláció szerinti elemkeresési módosító: `RelationType.NEAREST_TO`
 
 ## 1.6.0
