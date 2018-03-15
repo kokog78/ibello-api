@@ -58,7 +58,24 @@ import java.lang.annotation.Target;
  * }
  * </pre>
  * <p>
- * The identifier of the controlled browser window is inherited through references. So if a page object references
+ * We can also open new tab with this annotation. If the window identifier (the parameter of the annotation) starts
+ * with colon, then it will identify a new tab in the default window. If the identifier contains a colon, then the
+ * text before the colon will be the window identifier, and the text after the colon will identify the tab in that window.
+ * </p>
+ * <pre>
+ * 
+ * {@literal @}Window(":new-tab")
+ * private MyPage pageOnNewTab;
+ * 
+ * {@literal @}Window("new-window:new-tab")
+ * private MyPage pageOnNewWindowAndTab;
+ * </pre>
+ * <p>
+ * Some browsers (and webdrivers) does not support multiple windows. If those browsers all request for a new window will
+ * be implemented with a new tab in the default window.
+ * </p>
+ * <p>
+ * The identifier of the controlled browser window (or tab) is inherited through references. So if a page object references
  * another page objects and those objects are not annotated, then all of them will control the same window.
  * </p>
  * @author Kornél Simon
