@@ -790,7 +790,28 @@ public class MySteps extends StepLibrary {
 Az újonnan megnyíló böngészőablakot az átadott szöveges azonosítóval azonosítjuk. Ha egy másik oldal-leíró mezőnél ugyanezt az azonosítót adjuk meg, akkor az ugyanabban az ablakban
 fog futni (nem fog új ablak nyílni).
 
-A böngészőablakok öröklődnek is az oldal-leírók között. Amennyiben egy oldal-leíró tartalmaz más oldal-leírókra történő hivatkozásokat, amiknél nincs `Window` annotáció, akkor azok
+Arra is lehetőségünk van, hogy új ablak helyett új fület nyissunk. Ha a `Window` annotáció azonosítója kettősponttal kezdődik, akkor az egy új fület fog nyitni, méghozzá az
+alapértelmezett ablakban. Ha az azonosító kettőspontot tartalmaz (de nem azzal kezdődik), akkor szintúgy új fület jelent, azonban egy új ablakban; az ablakot a kettőspont
+előtti szövegrész, míg a fület a kettőspont utáni rész fogja azonosítani.
+
+```java
+public class MyTabbedSteps extends StepLibrary {
+
+	// az alapértelmezett böngészőablakban fut, de új fülön
+	@Window(":new-tab")
+	private SomePage page1;
+
+	// egy új böngészőablakban fut, új fülön
+	@Window("new-window:new-tab")
+	private SomePage page2;
+	
+}
+```
+
+Egyes böngészők (és böngésző-meghajtók) nem támogatják egyszerre több ablak megnyitását. Ezeknél az új ablak nyitására vonatkozó kérések rendre új füleket nyitnak meg, méghozzá
+az alapértelmezett ablakban. Az előbbi példát tekintve: a két oldal-leíró ilyenkor az alapértelmezett ablakban két új fület fog külön-külön vezérelni.
+
+A böngészőablakok azonosítói öröklődnek is az oldal-leírók között. Amennyiben egy oldal-leíró tartalmaz más oldal-leírókra történő hivatkozásokat, amiknél nincs `Window` annotáció, akkor azok
 öröklik a tartalmazó objektum böngészőablakát. Vagyis a `Window` annotáció hiánya nem feltétlenül jelenti azt, hogy a műveletek az alapértelmezett ablakban futnak.
 
 A fentiek alapján lehetőség van arra is, hogy tesztlépés-könyvtárakra történő hibatkozásokhoz adjunk meg `Window` annotációt. Ezzel azt érjük el, hogy a tesztlépés-könyvtár
