@@ -40,7 +40,7 @@ az információkat a tesztlépés-könyvtár metódusai tartalmazzák.
 ### A teszt osztályok futási sorrendje
 
 A `Specification` annotációval jelölt teszt osztályok metódusai alapértelmezés szerint a nevük szerint ábécé sorrendben futnak.
-Ezen úgy lehet változtatni, hogy az annotáció `order` mezőjében megadjuk azt az indexet, amit az ibello a rendezéshez felhasznál:
+Ezen úgy lehet változtatni, hogy az annotáció `order` paraméterében megadjuk azt az indexet, amit az ibello a rendezéshez felhasznál:
 
 ```java
 @Specification(order = 3)
@@ -51,7 +51,7 @@ public class RunLater {
 
 Ha az index értéke nincs megadva, akkor azt 0-nak veszi. Az azonos indexű teszt osztályok közül az fog előbb futni, aminek a neve ábécé sorrendben előbb van.
 
-### Tesztek kizárása címke alapján
+### Teszt osztályok kizárása címke alapján
 
 A `Specification.includedTags` és `Specification.excludedTags` mezők segítségével kizárhatunk egyes teszt osztályokat. Amikor a teszteket futtatjuk, meghatározhatunk egy címke-halmazt.
 Ez tulajdonképpen néhány szóból álló halmaz, amivel jellemezzük az aktuális tesztfutást. A címkék alapján kikapcsolhatjuk a teszt osztályokat.
@@ -80,15 +80,31 @@ public class LocalTests {
 }
 ```
 
-### Teszt metódusok futási sorrendje és elnevezése
+### Teszt metódusok futási sorrendje
 
-Egy teszt osztályon belül a teszt metódusok a nevük szerint ábécé sorrendben futnak. A megfelelő névválasztással tudjuk koordinálni a sorrendet. Ez időnként kényelmetlen lehet,
-mert a metódusok neve megjelenik a logokban és az eredmény riportban is - a sorrendezés miatt előtagként hozzáadott karaktereket sok esetben nem szeretnénk látni a riportban.
-Ezért lehetőségünk van arra, hogy a `@Name` annotációval megjelenítendő nevet adjuk a metódusoknak. Ez fog megjelenni a logokban és a riportban is.
+Egy teszt osztályon belül a teszt metódusok a nevük szerint ábécé sorrendben futnak. Ezen úgy tudunk változtatni, hogy a `Test` annotáció `order` paraméterét megadjuk a rendezéshez
+használandó indexet. Ha ez nincs megadva, akkor az értéke 0-nak számít.
+
+```java
+@Test(order = 3)
+public void ordered_test_method() {
+	...
+}
+```
+
+### Tesztek metódusok kizárása címke alapján
+
+A teszt osztályokhoz hasonlóan a metódusokat is kizárhatjuk a `Test` annotáció `includedTags` és `excludedTags` mezőivel. Az `includedTags` mezőben felsorolt címkék bekapcsolják
+a teszt metódust, míg az `excludedTags` mező címkéi kizárják azt a futtatottak közül.
+
+### Teszt metódusok elnevezése
+
+A teszt metódusok neve megjelenik a logokban és az eredmény riportban is. A megjelenített nevet az ibello megpróbálja olvashatóbbá tenni (átalakítja a "camelcase" és "snake case"
+formában megadott metódusnevet), de ez nem mindig elég. Ezért lehetőségünk van arra, hogy a `@Name` annotációval megjelenítendő nevet adjuk a metódusoknak.
 
 ```java
 @Test
-@Name("Login")
+@Name("Login with valid user")
 public void t0_login() {
 	...
 }
