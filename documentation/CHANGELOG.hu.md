@@ -4,6 +4,8 @@
 
 - Új `Window` annotáció, amivel új böngészőablak (és fül) nyitható
 - Új reláció szerinti elemkeresési módosító: `RelationType.NEAREST_TO`
+- Új `Test` annotáció, ami lehetővé teszi teszt metódusok rendezését és kizárását
+- A projekt többé nem függ a `junit` csomagtól
 
 ## 1.6.0
 

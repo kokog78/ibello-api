@@ -4,6 +4,8 @@
 
 - New `Window` annotation for open new browser window (and tab)
 - New relation-based element-search modifier: `RelationType.NEAREST_TO`
+- New `Test` annotation which enables sorting and exclusion of test methods
+- The project does not depend on `junit` package anymore
 
 ## 1.6.0
 

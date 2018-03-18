@@ -15,39 +15,39 @@
  */
 package hu.ibello.core;
 
-import static java.lang.annotation.ElementType.TYPE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
+import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 /**
- * This annotation marks test classes (<em>specifications</em>).
- * Only classes marked with this annotation will be executed as tests.
+ * This annotation marks test methods.
+ * Only public methods marked with this annotation will be executed as tests.
  * The execution order is based on the annotation's {@link #order()}
- * property and the canonical name of the class - see {@link Class#getCanonicalName()}.
+ * property and the name of the method.
  * @author Kornél Simon
  */
 @Retention(RUNTIME)
-@Target(TYPE)
-public @interface Specification {
+@Target(ElementType.METHOD)
+public @interface Test {
 
 	/**
-	 * An integer value which is used for sorting test classes. The classes will be executed in the calculated order.
-	 * Sorting of test classes with the same index is based on the class name.
-	 * @return and index used for sorting test classes; default value is 0
+	 * An integer value which is used for sorting test methods. The methods will be executed in the calculated order.
+	 * Sorting of test methods with the same index is based on the method name.
+	 * @return and index used for sorting test methods; default value is 0
 	 */
 	int order() default 0;
 	
 	/**
-	 * Array of included tags. If this field is specified, then the test class will run only if one of the specified tags
+	 * Array of included tags. If this field is specified, then the test method will run only if one of the specified tags
 	 * is available.
 	 * @return array of included tags; default value is the empty array
 	 */
 	String[] includedTags() default {};
 	
 	/**
-	 * Array of excluded tags. If this field is specified, then the test class will run only if none of the specified tags
+	 * Array of excluded tags. If this field is specified, then the test method will run only if none of the specified tags
 	 * is available.
 	 * @return array of excluded tags; default value is the empty array
 	 */

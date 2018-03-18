@@ -1,8 +1,5 @@
 package hu.ibello.toolbox.email;
 
-import org.junit.After;
-import org.junit.Before;
-
 import hu.ibello.inject.Inject;
 
 /**
@@ -28,10 +25,10 @@ import hu.ibello.inject.Inject;
  * </li>
  * <li>
  * <p>Before you want to use the email server, you need to start it. Call the {@link #start(int)} method with your selected port number.
- * Typically you can do this in a {@link Before} block. It is not possible to start two servers on different ports in the same time.</p>
+ * Typically you can do this in a before-test block. It is not possible to start two servers on different ports in the same time.</p>
  * </li>
  * <li>
- * <p>At the end, you can stop the server with the {@link #stop()} method. A good place for that is an {@link After} block.
+ * <p>At the end, you can stop the server with the {@link #stop()} method. A good place for that is an after-test block.
  * If you do not stop it, it will be automatically stopped after the test execution.</p>
  * </li>
  * </ol>
