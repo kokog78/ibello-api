@@ -693,18 +693,19 @@ expectations().expect(elements).toNotHave().sizeLessThan(6);
 
 Böngészővel kapcsolatos metódusok:
 
-| Metódus                        | Jelentés                                                                                |
-| ------------------------------ | --------------------------------------------------------------------------------------- |
-| `url(...)`                     | A böngésző címsorában található URL.                                                    |
-| `loaded()`                     | Az aktuális oldal betöltöttsége.                                                        |
+- `toHave().url(...)`: A böngésző címsorában található URL ellenőrzése. A paraméter lehet `String` vagy `Pattern`. `String` paraméter esetén használhatunk helyettesítő mintákat:
+  `*` tetszőleges számú karaktert helyettesít, az útvonalelválasztó `/` kivételével, `?` egyetlen karaktert helyettesít (az útvonalelválasztó kivételével), `**` tetszőleges
+  karaktert helyettesít (akár az útvonalelválasztót is).
+- `toBe().loaded()`: Az aktuális oldal betöltöttségének ellenőrzése. Az oldal elemeinek betöltötődése mellett az esetleges dinamikus változásokat is kivárja.
+- `toBe().open()`: Ellenőrzi, hogy az oldal-leíróhoz köthető böngésző ablak/fül megnyílt-e. Az ablak/fül azonosítóit a `@Window` annotációval kell megadni. (Részleteket lásd később.)
 
 Példák:
 
 ```java
 // az aktuális URL "/login.html"
 expectations().expect(browser()).toHave().url("/login.html");
-// az aktuális URL nem "/welcome.html"
-expectations().expect(browser()).toNotHave().url("/welcome.html");
+// az aktuális URL nem ".html"-re végződik
+expectations().expect(browser()).toNotHave().url("/*.html");
 // az oldal minden eleme be van töltve
 expectations().expect(browser()).toBe().loaded();
 ```
@@ -829,6 +830,26 @@ public class MySpecs {
 
 A fenti példával azt érjük el, hogy a `steps.presenter` oldal-leíró a "presenter" ablakban fog futni - mivel az a `MySteps` osztályban nem kapott külön annotációt. Ugyanakkor a
 `steps.editor` oldal-leíró (az annotációjának köszönhetően) továbbra is az "editor" ablakot vezérli.
+
+### Az alkalmazás által megnyitott fül elérése
+
+Egyes esetekben a tesztelt alkalmazás nyit új fület, amit szeretnénk egy oldal-leíróval összekötni. Ehhez létre kell hoznunk egy oldal-leírót, amit a megfelelő `@Window`
+annotációval hozzákötünk a megnyitó oldal-leíró ablakához, viszont fül azonosítónak tetszőleges újat adunk:
+
+```java
+// az alapértelmezett ablak által megnyitott új fül
+@Window(":new-tab")
+private NewlyOpenedPage newPage;
+```
+
+Az új oldal-leíróban az `expectations().expect(browser)).toBe().open()` ellenőrzéssel két legyet üthetünk egy csapásra: egyrészről megvárhatjuk az új fül megnyílását, másrészről
+összeköthetjük az oldal-leírót az új füllel. Ennek kell lennie az első műveletnek, amit az oldal-leíróban hívunk. A metódus (első hívásakor) megkeresi az első "szabad"
+(más oldal-leíróhóz nem tartozó) fület.
+
+```java
+expectations().expect(browser)).toBe().open();
+expectations().expect(someElement).toHave().value("some value");
+```
 
 ## Függőségek injektálása
 
