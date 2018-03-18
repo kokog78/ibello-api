@@ -10,7 +10,7 @@ További előnyt jelent még az, hogy a weboldalak apróbb változásai nincsene
 ## A teszt osztály
 
 A teszt osztályt a `@Specification` annotációval jelöljük. Az ibello rendszer innen tudja, hogy az osztály metódusai között teszt metódusok is vannak. Egy teszt metódust a `@Test`
-annotáció jelöl. A tesztek futtatásához az ibello JUnit-ot használ.
+annotáció jelöl.
 
 A teszt osztályban tesztlépés-könyvtárakat használunk. Egy tesztlépés-könyvtárat úgy a legegyszerűbb elérni, ha a teszt osztályhoz adunk egy (akár privát) mezőt a kívánt típussal.
 Az ibello automatikusan létre fogja majd hozni a tesztlépés-könyvtár egy példányát, amit a teszt metódusokban nyugodtan használhatunk:
