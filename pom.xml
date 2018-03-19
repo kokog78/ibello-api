@@ -116,10 +116,10 @@
 							<goal>copy-resources</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>${basedir}/target/documentation</outputDirectory>
+							<outputDirectory>${basedir}/target/extra-resources</outputDirectory>
 							<resources>
 								<resource>
-									<directory>documentation</directory>
+									<directory>${basedir}/src/markdown</directory>
 									<filtering>true</filtering>
 								</resource>
 							</resources>
@@ -195,8 +195,8 @@
 						<configuration>
 							<target>
 								<copy todir="${project.build.directory}/..">
-									<fileset dir="${project.build.directory}/documentation">
-										<exclude name="*.md.html" />
+									<fileset dir="${project.build.directory}/extra-resources">
+										<exclude name="**/.md.html" />
 									</fileset>
 								</copy>
 							</target>
