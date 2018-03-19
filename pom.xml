@@ -119,7 +119,7 @@
 							<outputDirectory>${basedir}/target/extra-resources</outputDirectory>
 							<resources>
 								<resource>
-									<directory>${basedir}/src/markdown</directory>
+									<directory>${basedir}/src/main/markdown</directory>
 									<filtering>true</filtering>
 								</resource>
 							</resources>
