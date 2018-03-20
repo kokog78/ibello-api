@@ -1,5 +1,10 @@
 # Ablakok és fülek kezelése
 
+Az alapértelmezettől eltérő böngésző-ablakokat és füleket a `@Window` annotáció segítségével érhetünk el. Az annotációt oldal-leíró vagy tesztlépés-könyvtár
+mezőre lehet tenni. Az annotáció értéke öröklődik azokra a hivatkozott oldal-leírókra, amik nem rendelkeznek külön annotációval.
+
+Az annotáció értéke az oldal/fül (általunk adott) azonosítója. Egy böngésző fül azonosítója kettősponttal kezdődik. (Egy ablaké pedig kettőspont nélkül.)
+
 ## Újonnan megnyílt fül kezelése
 
 Szituáció: a tesztelendő alkalmazás gombnyomásra új fület nyit, amibe betölt egy beviteli mezőt tartalmazó oldalt.
@@ -41,8 +46,10 @@ A tesztlépés-könyvtár a két oldal-leíróval:
 ```java
 public class Steps extends StepLibrary {
 
+	// az alapértelmezett ablakban, az alapértelmezett fülön fut
 	private OpenerPage opener;
 	
+	// az alapértelmezett ablakban megnyílt új fülön fut
 	@Window(":new-tab");
 	private OpenedPage opened;
 	
@@ -122,8 +129,10 @@ A tesztlépés-könyvtár a két oldal-leíróval:
 ```java
 public class Steps extends StepLibrary {
 
+	// az alapértelmezett ablakban fut
 	private EditorPage editor;
 	
+	// egy új ablakban fut
 	@Window("viewer-window")
 	private ViewerPage viewer;
 	
