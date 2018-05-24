@@ -1,5 +1,9 @@
 # ibello-api változási napló
 
+## 1.7.1
+
+- Az oldal-leírók és a tesztlépés-könyvtárak metódusainak nevében `$` karakter jelöli a paraméterek helyét
+
 ## 1.7.0
 
 - Új `Window` annotáció, amivel új böngészőablak (és fül) nyitható

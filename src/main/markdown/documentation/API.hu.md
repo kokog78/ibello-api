@@ -202,10 +202,13 @@ A teszlépés-könyvtárak publikus metódusainak hívását az ibello rendszer 
 A logba és a riportba a metódus nevéből kiszámolt kifejezés kerül bele. Például a `when_i_login_with_valid_credentials` metódusnévből ez lesz:
 `When I Login With Valid Credentials`. Ha ezt a működést meg szeretnénk változtatni, akkor a metódushoz adnunk kell egy `@Name` annotációt, aminek egyetlen tulajdonságaként
 meg kell adnunk a kiírandó szöveget. A szövegben a metódus esetleges paraméterei is megjelennek, azoknak a helyét `${0}`, `${1}`, stb. karaktersorozatokkal jelölhetjük.
+A paramétereket beilleszthetjük a `@Name` annotáció megadása nélkül is, ekkor a helyüket a metódus nevében `$` karakter jelöli.
 
 ```java
 @Name("A(z) ${0}. elem megnyitása")
 public void openItem(int index) { ... }
+
+public void a_$_gomb_megnyomása(String title) { ... }
 ```
 
 ## Az oldal-leíró

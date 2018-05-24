@@ -1,5 +1,9 @@
 # ibello-api changelog
 
+## 1.7.1
+
+- Page objects and step libraries: `$` characters in method names will be replaced by parameters
+
 ## 1.7.0
 
 - New `Window` annotation for open new browser window (and tab)

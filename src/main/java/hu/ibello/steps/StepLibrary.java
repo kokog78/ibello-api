@@ -83,7 +83,8 @@ import hu.ibello.search.Window;
  * The log will contain the descriptive name of the methods. If the method has a {@link Name} annotation, then
  * the descriptive name will be the one specified by that annotation. Otherwise the descriptive name will be transformed
  * from the name of the method; all underscore character will be replaced by a space, and all camel-case substring
- * will be separated into multiple words. Method parameters are also included in the descriptive name.
+ * will be separated into multiple words. Method parameters are also included in the descriptive name. '$' signs in
+ * method name are placeholders for parameters.
  * </p>
  * <p>
  * Examples:
@@ -106,6 +107,11 @@ import hu.ibello.search.Window;
  * public void removeMessage(int index) {
  *     // the name may contain parameter substitution marker
  *     // eg. removeMessage(5) will have descriptive name: "Remove Message with Index 5"
+ * }
+ * 
+ * public void open_details_for_$s_job(String personName) {
+ *     // the '$' character will be replaced with the person name
+ *     // eg. open_details_for_$s_job("John") will have descriptive name: "Open Details for Johns Job"
  * }
  * </pre>
  * <p>
