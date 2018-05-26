@@ -40,4 +40,17 @@ public enum Events {
 		this.type = type;
 	}
 	
+	public static Events of(String eventName) {
+		try {
+			return Events.valueOf(eventName);
+		} catch (Exception ex) {
+			for (Events e : Events.values()) {
+				if (e.eventName.equalsIgnoreCase(eventName)) {
+					return e;
+				}
+			}
+			return null;
+		}
+	}
+	
 }
