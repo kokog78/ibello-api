@@ -1,5 +1,9 @@
 # ibello-api changelog
 
+## 1.8.0
+
+- New `ActionBuilder.fireEvent(...)` for calling javascript events on elements
+
 ## 1.7.1
 
 - Page objects and step libraries: `$` characters in method names will be replaced by parameters

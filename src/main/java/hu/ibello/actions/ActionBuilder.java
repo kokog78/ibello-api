@@ -264,5 +264,21 @@ public interface ActionBuilder {
 	default void setFile(File file) {
 		setFile(file.getAbsolutePath());
 	}
+	
+	/**
+	 * Fires an event on the element.
+	 * Event names can be obtained from an {@link Events} instance.
+	 * @param eventName the name of the event
+	 */
+	void fireEvent(String eventName);
+
+	/**
+	 * Fires an event on the element.
+	 * Event names can be obtained from an {@link Events} instance.
+	 * @param event the type of the event
+	 */
+	default void fireEvent(Events event) {
+		fireEvent(event.eventName);
+	}
 
 }

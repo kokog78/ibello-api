@@ -598,6 +598,7 @@ doWith(usernameField).sendKeys(keys().CONTROL(), "a");
 | `setValue(String)` | Beállítja az `input` vagy `textarea` típusú mező értékét.             |
 | `setFile(String)`  | Beállítja az `input type=file` típusú mező értékét a megadott fájlra. |
 | `submit()`         | Elküldi a `form` típusú elem tartalmát.                               |
+| `fireEvent(...)`   | Meghív egy javascript eseményt az elemen.                             |
 
 ## A böngésző objektum műveletei
 

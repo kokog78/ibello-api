@@ -1,5 +1,9 @@
 # ibello-api változási napló
 
+## 1.8.0
+
+- Új `ActionBuilder.fireEvent(...)` metódus elemeken futó javascript események meghívásához
+
 ## 1.7.1
 
 - Az oldal-leírók és a tesztlépés-könyvtárak metódusainak nevében `$` karakter jelöli a paraméterek helyét
