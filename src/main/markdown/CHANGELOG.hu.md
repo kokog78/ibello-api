@@ -4,6 +4,7 @@
 
 - Új `ActionBuilder.fireEvent(...)` metódus elemeken futó javascript események meghívásához
 - Új keresési módok: `By.PARTIAL_TEXT`, `By.PARTIAL_BUTTON_TEXT` és `By.PARTIAL_LABEL`
+- Új `Browser.localStorage()` és `Browser.sessionStorage()` metódusok a böngésző tárolóinak kezeléséhez
 
 ## 1.7.1
 
