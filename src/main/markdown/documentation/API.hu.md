@@ -631,6 +631,23 @@ paraméter ötvözete lesz:
 A `browser().maximize()` metódus maximalizálja a böngészőablak méretét. A `broswer().resize(int, int)` metódussal közvetlenül megadhatjuk a böngészőablak új szélességét és
 hosszúságát, képernyőpontokban.
 
+### A "local storage" és a "session storage" kezelése
+
+Webalkalmazások adatokat tárolhatnak a böngésző "local storage" és "session storage" tárolójában. A két tároló a tárolt adatok érvényességi idejében különbözik egymástól.
+S "session storage" adatai törlődnek a böngészőből történő kilépéskor, míg a "local storage" adatai nem. Mivel ezektől az adatoktól függően a webalkalmazások különbözőképpen
+viselkedhetnek, ezért előfordulhat, hogy a tesztjeinkben szeretnénk ezeket megváltoztatni.
+
+A két tárolót képviselő objektum a `browser().localStorage()` és a `browser().sessionStorage()` metódusokkal kérhető el. Mindkettőnek azonos felülete van. Az elérhető metódusokat
+az alábbi táblázat foglalja össze.
+
+| Metódus                   | Leírás                                                       |
+| ------------------------- | -------------------------------------------------------------|
+| `clear()`                 | Törli a tárolót, eltávolít belőle minden kulcs-érték párt.   |
+| `removeItem(String)`      | A tárolóból eltávolítja a megadott kulcsú elemet.            |
+| `setItem(String, String)` | Beállítja a megadott kulcshoz tartozó értéket.               |
+| `getItem(String)`         | Visszaadja a megadott kulcshoz tartozó értéket.              |
+
+
 ## Ellenőrzések
 
 A tesztlépések egyik legfontosabb mozzanata az, amikor ellenőrizzük az aktuális oldal állapotát. Erre az ibello rendszer folytatólagosan írható API-val nyújt segítséget.

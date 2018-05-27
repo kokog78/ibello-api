@@ -96,4 +96,17 @@ public interface Browser {
 	 */
 	public void resize(int width, int height);
 	
+	/**
+	 * Returns a {@link Storage} instance which can be used to manipulate the session storage of the browser.
+	 * @return the session storage object
+	 */
+	public Storage sessionStorage();
+	
+	/**
+	 * Returns a {@link Storage} instance which can be used to manipulate the local storage of the browser.
+	 * @return the local storage object
+	 */
+	public Storage localStorage();
+	
+	
 }
