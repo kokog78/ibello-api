@@ -4,6 +4,7 @@
 
 - New `ActionBuilder.fireEvent(...)` for calling javascript events on elements
 - New search methods: `By.PARTIAL_TEXT`, `By.PARTIAL_BUTTON_TEXT` és `By.PARTIAL_LABEL`
+- New `Browser.localStorage()` és `Browser.sessionStorage()` methods for management of storages of the browser
 
 ## 1.7.1
 
