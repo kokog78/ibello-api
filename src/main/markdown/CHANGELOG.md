@@ -3,6 +3,7 @@
 ## 1.8.0
 
 - New `ActionBuilder.fireEvent(...)` for calling javascript events on elements
+- New search methods: `By.PARTIAL_TEXT`, `By.PARTIAL_BUTTON_TEXT` és `By.PARTIAL_LABEL`
 
 ## 1.7.1
 

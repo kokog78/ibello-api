@@ -331,21 +331,24 @@ inicializálja a mezőt. A `@Find` annotációnak két tulajdonságot adhatunk m
 Ennek a tulajdonságnak van alapértelmezett értéke: `By.CSS_SELECTOR` - ha a `by` értékét nem adjuk meg, akkor ez lesz a keresési mód. A másik tulajdonság a `using`, ami a keresési
 mód paramétere, jelentése a keresési módtól függ. Az alábbi táblázat foglalja össze az egyes keresési módokat és tulajdonságokat.
 
-| Keresési mód               | `by` értéke       | `using` értéke                            |
-| -------------------------- | ----------------- | ----------------------------------------- |
-| CSS szelektor szerinti     | `By.CSS_SELECTOR` | CSS szelektor                             |
-| `id` attribútum szerinti   | `By.ID`           | a keresett elem `id` attribútuma          |
-| `name` attribútum szerinti | `By.NAME`         | a keresett elem `name` attribútuma        |
-| elem típusa szerinti       | `By.TAG_NAME`     | a keresett elem típusneve                 |
-| CSS osztály szerinti       | `By.CLASS_NAME`   | a keresett elem CSS osztályának neve      |
-| gomb felirata szerinti     | `By.BUTTON_TEXT`  | a keresett gomb funkciójú elem felirata   |
-| címke szerinti             | `By.LABEL`        | a keresett elemhez tartozó címke felirata |
-| tartalom szerinti          | `By.TEXT`         | a keresett elem tartalma                  |
+| Keresési mód                     | `by` értéke              | `using` értéke                                         |
+| -------------------------------- | ------------------------ | ------------------------------------------------------ |
+| CSS szelektor szerinti           | `By.CSS_SELECTOR`        | CSS szelektor                                          |
+| `id` attribútum szerinti         | `By.ID`                  | a keresett elem `id` attribútuma                       |
+| `name` attribútum szerinti       | `By.NAME`                | a keresett elem `name` attribútuma                     |
+| elem típusa szerinti             | `By.TAG_NAME`            | a keresett elem típusneve                              |
+| CSS osztály szerinti             | `By.CLASS_NAME`          | a keresett elem CSS osztályának neve                   |
+| gomb felirata szerinti           | `By.BUTTON_TEXT`         | a keresett gomb funkciójú elem felirata                |
+| gomb részleges felirata szerinti | `By.PARTIAL_BUTTON_TEXT` | a keresett gomb funkciójú elem feliratának egy része   |
+| címke szerinti                   | `By.LABEL`               | a keresett elemhez tartozó címke felirata              |
+| részleges címke szerinti         | `By.PARTIAL_LABEL`       | a keresett elemhez tartozó címke feliratának egy része |
+| tartalom szerinti                | `By.TEXT`                | a keresett elem tartalma                               |
+| részleges tartalom szerinti      | `By.PARTIAL_TEXT`        | a keresett elem tartalmának egy része                  |
 
-A `By.BUTTON_TEXT` keresés megtalálja a `button` típusú, az `input type=button` típusú, az `input type=submit` típusú, az `input type=reset` típusú elemeket, a linkeket és azokat az
-elemeket is, amiknek a `role` attribútuma `button` - mindent, aminek gombszerű funkciója lehet.
+A `By.BUTTON_TEXT` és a `By.PARTIAL_BUTTON_TEXT` keresés megtalálja a `button` típusú, az `input type=button` típusú, az `input type=submit` típusú, az `input type=reset` típusú elemeket,
+a linkeket és azokat az elemeket is, amiknek a `role` attribútuma `button` - mindent, aminek gombszerű funkciója lehet.
 
-A `By.LABEL` keresés először a `label` típusú elemet keresi meg tartalom szerint, majd annak a `for` attribútumát követve megtalálja a
+A `By.LABEL` és `By.PARTIAL_LABEL` keresés először a `label` típusú elemet keresi meg tartalom szerint, majd annak a `for` attribútumát követve megtalálja a
 kívánt elemet is. Ha a `label` elemnek nincs `for` attribútuma, de a szülője vagy a nagyszülője alá tartozik egyetlen `input`, `textarea` vagy `select` típusú elem,
 akkor az lesz a keresett elem.
 
