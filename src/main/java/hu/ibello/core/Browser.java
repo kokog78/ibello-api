@@ -108,5 +108,9 @@ public interface Browser {
 	 */
 	public Storage localStorage();
 	
-	
+	/**
+	 * Returns a {@link Storage} instance which can be used to manipulate the cookies of the browser.
+	 * @return the storage of cookies
+	 */
+	public Storage cookies();
 }

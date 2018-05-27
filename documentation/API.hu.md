@@ -647,6 +647,15 @@ az alábbi táblázat foglalja össze.
 | `setItem(String, String)` | Beállítja a megadott kulcshoz tartozó értéket.               |
 | `getItem(String)`         | Visszaadja a megadott kulcshoz tartozó értéket.              |
 
+### Sütik kezelése
+
+A "local storage" és a "session" storage kezeléséhez hasonlóan tudjuk menedzselni a böngésző sütijeit is. A képviselő objektumot a `browser().cookies()` metódus adja vissza,
+ami ugyanazzal a felülettel rendelkezik, mint a másik kettő.
+
+A felület `setItem(String, String)` metódusával lehet beállítani egy süti értékét. Ha a süti már létezik, akkor az értéke felül lesz írva, ha pedig még nem létezik, akkor a
+teljes süti létrehozásra kerül.
+
+A `getItem(String)` metódus csak a süti értékét adja vissza, a többi tulajdonságát nem.
 
 ## Ellenőrzések
 
