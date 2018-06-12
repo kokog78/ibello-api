@@ -1,4 +1,4 @@
-# ibello-api 1.8.0
+# ibello-api 1.8.1
 
 Az ibello keretrendszerben létrehozott tesztek háromrétegűek. Egyrészről, az oldalak technikai funkcióit az ún. _oldal-leíró osztályok_ foglalják össze. Másrészről, egy vagy több
 oldal-leíró osztály metódusai segítségével tesztlépéseket állítunk össze, amelyeket egy ún. _tesztlépés-könyvtár osztályba_ teszünk. Az egyes _tesztek_ a tesztlépés-könyvtárak
@@ -198,17 +198,32 @@ public class LoginSteps extends StepLibrary {
 }
 ```
 
+### Tesztlépések nevei
+
 A teszlépés-könyvtárak publikus metódusainak hívását az ibello rendszer folyamatosan loggolja, valamint azok neveit az elkészült teszt riportban is szerepelteti.
 A logba és a riportba a metódus nevéből kiszámolt kifejezés kerül bele. Például a `when_i_login_with_valid_credentials` metódusnévből ez lesz:
 `When I Login With Valid Credentials`. Ha ezt a működést meg szeretnénk változtatni, akkor a metódushoz adnunk kell egy `@Name` annotációt, aminek egyetlen tulajdonságaként
 meg kell adnunk a kiírandó szöveget. A szövegben a metódus esetleges paraméterei is megjelennek, azoknak a helyét `${0}`, `${1}`, stb. karaktersorozatokkal jelölhetjük.
-A paramétereket beilleszthetjük a `@Name` annotáció megadása nélkül is, ekkor a helyüket a metódus nevében `$` karakter jelöli.
+A paramétereket beilleszthetjük a `@Name` annotáció megadása nélkül is, ekkor a helyüket a metódus nevében `$` karakter jelöli. (A `String` típusú paraméterek ilyenkor macskakörmök
+közé kerülnek.)
 
 ```java
 @Name("A(z) ${0}. elem megnyitása")
 public void openItem(int index) { ... }
 
 public void a_$_gomb_megnyomása(String title) { ... }
+```
+
+Ha a tesztlépés-könyvtár osztály is rendelkezik `@Name` annotációval, akkor az abban megadott szöveg előtagként hozzáadódik az összes tesztlépés nevéhez is. Az alábbi példában a
+tesztlépés neve "Home Page: Open Page" lesz.
+
+```java
+@Name("Home Page")
+public class HomePageSteps extends StepLibrary {
+
+	public void open_page() {
+	}
+}
 ```
 
 ## Az oldal-leíró
@@ -304,7 +319,8 @@ public class WelcomePage extends PageObject {
 }
 ```
 
-Az oldal-leírók metódusai is bekerülnek a logba és a riportba. A megjelenő szöveg ezeknél is pontosítható a `@Name` annotáció segítségével.
+Az oldal-leírók metódusai is bekerülnek a logba és a riportba. A megjelenő név ezeknél is pontosítható a `@Name` annotáció segítségével. Az oldal-leíró osztályhoz rendelt
+`@Name` annotáció szövege előtagként szerepel a névben.
 
 ## Konfigurációs paraméterek olvasása
 

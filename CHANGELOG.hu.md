@@ -1,5 +1,10 @@
 # ibello-api változási napló
 
+## 1.8.1
+
+- Tesztlépés-könyvtárak és oldal-leírók `@Name` annotációval megadott nevei szerepelnek a teszt-lépések nevében is
+- `@Name` annotáció nélküli tesztlépések neveibe a `String` típusú paraméterek macskakörmök között kerülnek bele
+
 ## 1.8.0
 
 - Új `ActionBuilder.fireEvent(...)` metódus elemeken futó javascript események meghívásához

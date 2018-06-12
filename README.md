@@ -1,7 +1,7 @@
 # ibello-api
 Ibello is an easy-to-use automated test framework for web applications.
 
-The current version is 1.8.0.
+The current version is 1.8.1.
 
 ## Installation
 
@@ -11,14 +11,14 @@ For Maven users:
 <dependency>
     <groupId>hu.ibello</groupId>
     <artifactId>ibello-api</artifactId>
-    <version>1.8.0</version>
+    <version>1.8.1</version>
 </dependency>
 ```
 
 For Gradle users:
 
 ```groovy
-testCompile 'hu.ibello:ibello-api:1.8.0'
+testCompile 'hu.ibello:ibello-api:1.8.1'
 ```
 
 ## Documentation

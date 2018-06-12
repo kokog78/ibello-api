@@ -1,5 +1,10 @@
 # ibello-api changelog
 
+## 1.8.1
+
+- Name of step libraries and page objects (specified by `@Name` annotation) are contained by readable descriptions of test steps
+- If a test step does not have `@Name` annotation, it's name contains `String`-type parameters with quotes
+
 ## 1.8.0
 
 - New `ActionBuilder.fireEvent(...)` for calling javascript events on elements
