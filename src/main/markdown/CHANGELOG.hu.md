@@ -1,7 +1,8 @@
 # ibello-api változási napló
 
-## 1.8.1
+## 1.9.0
 
+- Új ibello plugin architektúra, egyedi beépülő modulok adhatóak a teszt futtatáshoz
 - Tesztlépés-könyvtárak és oldal-leírók `@Name` annotációval megadott nevei szerepelnek a teszt-lépések nevében is
 - `@Name` annotáció nélküli tesztlépések neveibe a `String` típusú paraméterek macskakörmök között kerülnek bele
 
