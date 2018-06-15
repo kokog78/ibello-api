@@ -4,6 +4,7 @@
 
 - Új ibello plugin architektúra, egyedi beépülő modulok adhatóak a teszt futtatáshoz
 - Böngésző riasztások kezelése az `AlertActionBuilder` osztállyal
+- Új `Browser.reload()` metódus, ami újratölti az aktuális URL-t
 - Tesztlépés-könyvtárak és oldal-leírók `@Name` annotációval megadott nevei szerepelnek a teszt-lépések nevében is
 - `@Name` annotáció nélküli tesztlépések neveibe a `String` típusú paraméterek macskakörmök között kerülnek bele
 

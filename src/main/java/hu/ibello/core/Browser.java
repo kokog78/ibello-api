@@ -85,6 +85,11 @@ public interface Browser {
 	}
 	
 	/**
+	 * Reloads the current URL in the browser.
+	 */
+	public void reload();
+	
+	/**
 	 * <p>
 	 * Maximizes the size of the browser window to fit the borders of the current display.
 	 * </p>
