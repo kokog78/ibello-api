@@ -17,7 +17,8 @@ package hu.ibello.plugins;
 
 /**
  * Base interface of ibello plugins. If a class implements this interface and it is registered as ibello plugin, then
- * the ibello system will call it's {@link #initialize(PluginLogger)} method before any tests.
+ * the ibello system will call it's {@link #initialize(PluginLogger)} method before any tests. After the tests are finished,
+ * the {@link #shutdown()} method will be called.
  * @author Kornél Simon
  * @see hu.ibello.plugins
  */
@@ -30,5 +31,11 @@ public interface Plugin {
 	 * @throws PluginException if a fatal error occurs, this exception will prevent any tests to be executed
 	 */
 	public void initialize(PluginLogger logger) throws PluginException;
+	
+	/**
+	 * This method is called when the test execution is finished and the ibello system is shutting down.
+	 * @throws PluginException if a fatal error occurs
+	 */
+	public void shutdown() throws PluginException;
 	
 }

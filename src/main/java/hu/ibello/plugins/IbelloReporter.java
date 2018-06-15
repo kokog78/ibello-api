@@ -32,7 +32,7 @@ public interface IbelloReporter extends Plugin {
 	 * the root-level parameters of the test execution.
 	 * @param tests information about tests to be executed
 	 */
-	public void startup(ITestRun tests);
+	public void testRunStarting(ITestRun tests);
 
 	/**
 	 * This method is called after a specification is executed. It receives every information about the specification,
@@ -46,6 +46,6 @@ public interface IbelloReporter extends Plugin {
 	 * It receives the full log of the test execution.
 	 * @param tests the full information about test execution
 	 */
-	public void shutdown(TestRun tests);
+	public void testRunFinished(TestRun tests);
 	
 }
