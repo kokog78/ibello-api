@@ -18,8 +18,8 @@ package hu.ibello.actions;
 /**
  * This enum collects special characters and implements the {@link CharSequence} interface.
  * Every constant of this enum is a 1-length character sequence.
- * It can be used in {@link ActionBuilder#sendKeys(CharSequence...)} and
- * {@link ActionBuilder#sendKeys(KeyModifier, CharSequence...)} methods.
+ * It can be used in {@link WebElementActionBuilder#sendKeys(CharSequence...)} and
+ * {@link WebElementActionBuilder#sendKeys(KeyModifier, CharSequence...)} methods.
  * @author Kornél Simon
  * @see KeyHelper
  */

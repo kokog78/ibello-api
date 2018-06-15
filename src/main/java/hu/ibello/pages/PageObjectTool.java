@@ -15,8 +15,10 @@
  */
 package hu.ibello.pages;
 
-import hu.ibello.actions.ActionBuilder;
+import hu.ibello.actions.AlertActionBuilder;
 import hu.ibello.actions.KeyHelper;
+import hu.ibello.actions.WebElementActionBuilder;
+import hu.ibello.core.Alert;
 import hu.ibello.core.Browser;
 import hu.ibello.core.Value;
 import hu.ibello.elements.WebElement;
@@ -70,11 +72,18 @@ public interface PageObjectTool {
 	Browser browser(String windowId);
 	
 	/**
-	 * Returns an {@link ActionBuilder} instance which can be used to perform different actions on the web element.
+	 * Returns an {@link WebElementActionBuilder} instance which can be used to perform different actions on the web element.
 	 * @param element we want to perform an action with this elements
 	 * @return an interface configured for doing actions with the element
 	 */
-	ActionBuilder doWith(WebElement element);
+	WebElementActionBuilder doWith(WebElement element);
+	
+	/**
+	 * Returns an {@link AlertActionBuilder} instance which can be used to manager an alert window.
+	 * @param alert the alert window instance, can be obtained with the {@link Browser#alert()} method
+	 * @return an interface configured for doing actions with the alert
+	 */
+	AlertActionBuilder doWith(Alert alert);
 	
 	/**
 	 * <p>
@@ -97,8 +106,8 @@ public interface PageObjectTool {
 	
 	/**
 	 * Returns a {@link KeyHelper} instance, which offers special keys and key modifiers.
-	 * Those can be used in {@link ActionBuilder#sendKeys(CharSequence...)} and
-	 * {@link ActionBuilder#sendKeys(hu.ibello.actions.KeyModifier, CharSequence...)} methods.
+	 * Those can be used in {@link WebElementActionBuilder#sendKeys(CharSequence...)} and
+	 * {@link WebElementActionBuilder#sendKeys(hu.ibello.actions.KeyModifier, CharSequence...)} methods.
 	 * @return a {@link KeyHelper} instance
 	 */
 	KeyHelper keys();

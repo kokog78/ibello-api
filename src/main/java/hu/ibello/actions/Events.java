@@ -17,7 +17,7 @@ package hu.ibello.actions;
 
 /**
  * Enumeration storing event names.
- * Constant values can be used in {@link ActionBuilder#fireEvent(Events)} method.
+ * Constant values can be used in {@link WebElementActionBuilder#fireEvent(Events)} method.
  * 
  * @author Kornél Simon
  *

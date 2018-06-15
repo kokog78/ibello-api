@@ -17,6 +17,8 @@ package hu.ibello.core;
 
 import java.net.URL;
 
+import hu.ibello.actions.AlertActionBuilder;
+
 /**
  * <p>
  * The object which implements this interface represents the browser.
@@ -113,4 +115,11 @@ public interface Browser {
 	 * @return the storage of cookies
 	 */
 	public Storage cookies();
+	
+	/**
+	 * Returns an {@link Alert} instance which can be used to manipulate browser alert windows.
+	 * The manipulation can be done with the {@link AlertActionBuilder} interface.
+	 * @return the alert window instance
+	 */
+	public Alert alert();
 }

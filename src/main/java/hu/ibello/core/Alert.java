@@ -13,29 +13,15 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package hu.ibello.actions;
+package hu.ibello.core;
 
-import java.io.File;
+import hu.ibello.actions.AlertActionBuilder;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.mockito.Mockito;
+/**
+ * Interface which an be used to manage alert windows.
+ * @author Kornél Simon
+ * @see AlertActionBuilder
+ */
+public interface Alert {
 
-import hu.ibello.actions.WebElementActionBuilder;
-
-public class ActionBuilderTest {
-
-	private WebElementActionBuilder builder;
-	
-	@Before
-	public void init() {
-		builder = Mockito.mock(WebElementActionBuilder.class, Mockito.CALLS_REAL_METHODS);
-	}
-	
-	@Test
-	public void setFile_uses_absolute_path() throws Exception {
-		File file = new File("x");
-		builder.setFile(file);
-		Mockito.verify(builder).setFile(file.getAbsolutePath());
-	}
 }

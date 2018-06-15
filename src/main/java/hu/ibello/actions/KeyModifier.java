@@ -20,7 +20,7 @@ import hu.ibello.elements.WebElement;
 /**
  * Interface which offers methods for accessing key modifiers.
  * A key modifier is one of the SHIFT, CONTROL or ALT. If this is
- * specified in an {@link ActionBuilder#sendKeys(KeyModifier, CharSequence...)} method,
+ * specified in an {@link WebElementActionBuilder#sendKeys(KeyModifier, CharSequence...)} method,
  * then the corresponding modifier key will be activated during the character
  * sequences are sent to the current {@link WebElement}.
  * <p>

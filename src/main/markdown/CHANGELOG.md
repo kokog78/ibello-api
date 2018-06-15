@@ -3,6 +3,7 @@
 ## 1.9.0
 
 - New ibello plugin architecture, custom plugins can be added to test execution
+- New `AlertActionBuilder` class for alert window handling
 - Name of step libraries and page objects (specified by `@Name` annotation) are contained by readable descriptions of test steps
 - If a test step does not have `@Name` annotation, it's name contains `String`-type parameters with quotes
 
