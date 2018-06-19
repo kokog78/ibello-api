@@ -3,7 +3,7 @@
 ## 1.9.0
 
 - New ibello plugin architecture, custom plugins can be added to test execution
-- New `AlertActionBuilder` class for alert window handling
+- New `BrowserActionBuilder` class for alert window handling
 - New `Browser.reload()` method which reloads the current URL
 - New `Specification.version` property
 - Name of step libraries and page objects (specified by `@Name` annotation) are contained by readable descriptions of test steps

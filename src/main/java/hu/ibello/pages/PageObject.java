@@ -15,10 +15,9 @@
  */
 package hu.ibello.pages;
 
-import hu.ibello.actions.AlertActionBuilder;
+import hu.ibello.actions.BrowserActionBuilder;
 import hu.ibello.actions.KeyHelper;
 import hu.ibello.actions.WebElementActionBuilder;
-import hu.ibello.core.Alert;
 import hu.ibello.core.Browser;
 import hu.ibello.core.Name;
 import hu.ibello.core.Value;
@@ -227,12 +226,12 @@ public abstract class PageObject extends WindowRelated {
 	}
 	
 	/**
-	 * Returns an {@link AlertActionBuilder} instance which can be used to manager an alert window.
-	 * @param alert the alert window instance, can be obtained with the {@link Browser#alert()} method
-	 * @return an interface configured for doing actions with the alert
+	 * Returns an {@link BrowserActionBuilder} instance which can be used to manager browser window related actions.
+	 * @param browser the browser instance, can be obtained with the {@link PageObject#browser()} method
+	 * @return an interface configured for doing actions with the browser
 	 */
-	protected AlertActionBuilder doWith(Alert alert) {
-		return tool.doWith(alert);
+	protected BrowserActionBuilder doWith(Browser browser) {
+		return tool.doWith(browser);
 	}
 	
 	/**

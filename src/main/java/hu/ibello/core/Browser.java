@@ -17,8 +17,6 @@ package hu.ibello.core;
 
 import java.net.URL;
 
-import hu.ibello.actions.AlertActionBuilder;
-
 /**
  * <p>
  * The object which implements this interface represents the browser.
@@ -37,6 +35,14 @@ import hu.ibello.actions.AlertActionBuilder;
  * <ul>
  * <li>{@link Browser#maximize()}</li>
  * <li>{@link Browser#resize(int, int)}</li>
+ * </ul>
+ * <p>
+ * To manage storages, see these methods:
+ * </p>
+ * <ul>
+ * <li>{@link Browser#sessionStorage()}</li>
+ * <li>{@link Browser#localStorage()}</li>
+ * <li>{@link Browser#cookies()}</li>
  * </ul>
  * @author Kornél Simon
  *
@@ -120,11 +126,4 @@ public interface Browser {
 	 * @return the storage of cookies
 	 */
 	public Storage cookies();
-	
-	/**
-	 * Returns an {@link Alert} instance which can be used to manipulate browser alert windows.
-	 * The manipulation can be done with the {@link AlertActionBuilder} interface.
-	 * @return the alert window instance
-	 */
-	public Alert alert();
 }

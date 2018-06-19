@@ -3,7 +3,7 @@
 ## 1.9.0
 
 - Új ibello plugin architektúra, egyedi beépülő modulok adhatóak a teszt futtatáshoz
-- Böngésző riasztások kezelése az `AlertActionBuilder` osztállyal
+- Böngésző riasztások kezelése az `BrowserActionBuilder` osztállyal
 - Új `Browser.reload()` metódus, ami újratölti az aktuális URL-t
 - Új `Specification.version` tulajdonság
 - Tesztlépés-könyvtárak és oldal-leírók `@Name` annotációval megadott nevei szerepelnek a teszt-lépések nevében is

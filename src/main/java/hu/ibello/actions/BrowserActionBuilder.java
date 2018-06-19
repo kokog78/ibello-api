@@ -15,14 +15,14 @@
  */
 package hu.ibello.actions;
 
-import hu.ibello.core.Alert;
+import hu.ibello.core.Browser;
 import hu.ibello.pages.PageObject;
 
 /**
- * Interface for building an <em>action</em> with an alert window.
- * It contains fluent methods to build and execute interactive operations on the alert window.
+ * Interface for building an <em>action</em> with the browser window.
+ * It contains methods to build and execute interactive operations on the alert window.
  * <p>
- * During an action, the <em>ibello</em> tries to interact with the alert window.
+ * During an action, the <em>ibello</em> tries to interact with the browser.
  * If the interaction fails, it will try it again and again, until it successes or the time
  * runs out. By default, an action uses the <em>ibello</em>
  * default timeout, but it can be changed with the {@link #withTimeout(Enum)} or
@@ -40,19 +40,19 @@ import hu.ibello.pages.PageObject;
  * difference between actions and expectations - see {@link hu.ibello.expect}.
  * </p>
  * <p>
- * {@link AlertActionBuilder} instance can be obtained on page objects, with {@link PageObject#doWith(Alert)}
+ * {@link BrowserActionBuilder} instance can be obtained on page objects, with {@link PageObject#doWith(Browser)}
  * method.
  * </p>
  * <p>
  * Example:
  * </p>
  * <pre>
- * doWith(browser().alert()).accept();
+ * doWith(browser()).acceptAlert();
  * </pre>
  * @author Kornél Simon
  *
  */
-public interface AlertActionBuilder extends ActionBuilder<AlertActionBuilder> {
+public interface BrowserActionBuilder extends ActionBuilder<BrowserActionBuilder> {
 
 	/**
 	 * Closes the alert window without accepting it's content.
@@ -63,7 +63,7 @@ public interface AlertActionBuilder extends ActionBuilder<AlertActionBuilder> {
 	 * marked as "error".
 	 * </p>
 	 */
-	void dismiss();
+	void dismissAlert();
 	
 	/**
 	 * Closes the alert window with accepting it's content.
@@ -74,6 +74,6 @@ public interface AlertActionBuilder extends ActionBuilder<AlertActionBuilder> {
 	 * marked as "error".
 	 * </p>
 	 */
-	void accept();
+	void acceptAlert();
 	
 }

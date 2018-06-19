@@ -14,8 +14,11 @@
  * under the License.
  */
 /**
- * This package contains interfaces, classes and enums to perform different actions on {@link hu.ibello.elements.WebElement}
- * and {@link hu.ibello.core.Alert} instances.
+ * This package contains interfaces, classes and enums to perform different actions on {@link WebElement}
+ * and {@link Browser} instances.
  * @author Kornél Simon
  */
 package hu.ibello.actions;
+
+import hu.ibello.core.Browser;
+import hu.ibello.elements.WebElement;
