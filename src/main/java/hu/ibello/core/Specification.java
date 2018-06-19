@@ -52,4 +52,10 @@ public @interface Specification {
 	 * @return array of excluded tags; default value is the empty array
 	 */
 	String[] excludedTags() default {};
+	
+	/**
+	 * An optional version number of the specification, which is added to the test report.
+	 * @return version number of the specification
+	 */
+	String version() default "";
 }

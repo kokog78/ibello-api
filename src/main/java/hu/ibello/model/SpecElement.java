@@ -18,9 +18,23 @@ package hu.ibello.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlType;
+
+@XmlType(propOrder={"version", "test"})
 public class SpecElement extends ParentElement {
 
+	private String version;
 	private List<TestElement> test;
+	
+	public String getVersion() {
+		return version;
+	}
+	
+	@XmlAttribute
+	public void setVersion(String version) {
+		this.version = version;
+	}
 	
 	public List<TestElement> getTest() {
 		if (test == null) {
