@@ -37,7 +37,16 @@ public interface PluginInitializer {
 	 * Adds an error-level message to the ibello logs.
 	 * @param message the log message
 	 */
-	public void error(String message);
+	public default void error(String message) {
+		this.error(message, null);
+	}
+	
+	/**
+	 * Adds an error-level message to the ibello logs.
+	 * @param message the log message
+	 * @param exception an exception
+	 */
+	public void error(String message, Throwable exception);
 	
 	/**
 	 * Returns a configuration property as a {@link Value}. The returned value offers some public methods to
