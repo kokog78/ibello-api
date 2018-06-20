@@ -2,7 +2,8 @@
 
 ## 1.9.1
 
-- Parameter of `Plugin.initialize(...)` method is able to read the configuration.
+- Parameter of `Plugin.initialize(...)` method is able to read the configuration
+- New `ITestRun.getName()` method
 
 ## 1.9.0
 

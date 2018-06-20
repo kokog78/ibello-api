@@ -2,7 +2,8 @@
 
 ## 1.9.1
 
-- A `Plugin.initialize(...)` metódus paramétere képes a konfiguráció lekérdezésére is.
+- A `Plugin.initialize(...)` metódus paramétere képes a konfiguráció lekérdezésére is
+- Új `ITestRun.getName()` metódus
 
 ## 1.9.0
 
