@@ -3,6 +3,9 @@ package hu.ibello.model;
 import java.util.Date;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlTransient;
+
+@XmlTransient
 public interface ITestRun {
 
 	public String getName();
