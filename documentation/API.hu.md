@@ -1,4 +1,4 @@
-# ibello-api 1.9.0
+# ibello-api 1.9.1
 
 Az ibello keretrendszerben létrehozott tesztek háromrétegűek. Egyrészről, az oldalak technikai funkcióit az ún. _oldal-leíró osztályok_ foglalják össze. Másrészről, egy vagy több
 oldal-leíró osztály metódusai segítségével tesztlépéseket állítunk össze, amelyeket egy ún. _tesztlépés-könyvtár osztályba_ teszünk. Az egyes _tesztek_ a tesztlépés-könyvtárak
@@ -624,7 +624,7 @@ doWith(usernameField).sendKeys(keys().CONTROL(), "a");
 Az oldal-leírókon belül a `browser()` metódus segítségével megkapjuk a böngésző objektumot, amivel a tesztek által vezérelt böngészővel végezhetünk műveleteket.
 Ezek a műveletek egyszerű metódushívások.
 
-### Új oldal megnyitása
+### Oldal megnyitása és újratöltése
 
 A `browser().openURL(...)` segítségével beállíthatjuk a böngésző aktuálisan megnyitott URL-jét. A metódus először beállítja az URL-t, majd vár addig, amíg az új oldal elemei
 betöltődnek. Ha az oldal nem töltődik be a "page.load" időtúllépésben meghatározott ideig, akkor a tesztfutás hiba nélkül folytatódik.
@@ -641,6 +641,8 @@ paraméter ötvözete lesz:
 - ha a metódust teljes URL-lel vagy protokoll nélkül hívták, akkor a protokoll, a tartománynév és a portszám a konfigurációs paraméterből fog származni, az elérési út pedig a
   metódus paraméteréből;
 - ha a metódust relatív címmel hívták, akkor a konfigurációs paraméter és a relatív cím összefűzött értéke kerül a böngésző címsorába.
+
+A megnyitott URL-t a `browser().reload()` metódus segítségével újratölthetjül.
 
 ### Böngészőablak mérete
 
@@ -672,6 +674,21 @@ A felület `setItem(String, String)` metódusával lehet beállítani egy süti 
 teljes süti létrehozásra kerül.
 
 A `getItem(String)` metódus csak a süti értékét adja vissza, a többi tulajdonságát nem.
+
+### Riasztások kezelése
+
+Egyes alkalmazások ún. *riasztásokat* (alert window) nyitnak meg. Egy riasztás mindig modális, blokkolja az oldal többi elemével történő interakciót, ráadásul nem is lehet
+szokványos elemként kezelni. Ezért az ibello is speciális parancsokat ad a riasztások kezeléséhez.
+
+Ezeket a parancsokat az oldal-leíró `doWith(Browser)` metódusával lehet elérni. Hasonlóan az elemekkel történő műveletekhez, itt is benne foglaltatik a műveletben egy várakozási
+idő. Ha ez idő alatt a műveletet nem sikerül végrehajtani, akkor hiba történik. Amíg az idő nem telik le, az ibello a sikertelen műveletet folyamatosan újra megpróbálja
+végrehajtani. Itt is használhatóak a `withTimeout(...)` és a `withPageRefreshWait()` kiegészítések.
+
+| Metódus            | Leírás                                                                |
+| ------------------ | --------------------------------------------------------------------- |
+| `dismissAlert()`   | A riasztás bezárása a "mégsem" gombra kattintással.                   |
+| `acceptAlert()`    | A riasztás bezárása az "ok" gombra kattintással.                      |
+
 
 ## Ellenőrzések
 

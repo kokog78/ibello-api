@@ -1,5 +1,9 @@
 # ibello-api changelog
 
+## 1.9.1
+
+- Parameter of `Plugin.initialize(...)` method is able to read the configuration.
+
 ## 1.9.0
 
 - New ibello plugin architecture, custom plugins can be added to test execution

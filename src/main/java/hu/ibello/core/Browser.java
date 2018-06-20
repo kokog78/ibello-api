@@ -28,6 +28,7 @@ import java.net.URL;
  * <ul>
  * <li>{@link Browser#openURL(String)}</li>
  * <li>{@link Browser#openURL(java.net.URL)}</li>
+ * <li>{@link Browser#reload()}</li>
  * </ul>
  * <p>
  * To set the size of the browser window, see these methods:

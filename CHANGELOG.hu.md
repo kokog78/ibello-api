@@ -1,5 +1,9 @@
 # ibello-api változási napló
 
+## 1.9.1
+
+- A `Plugin.initialize(...)` metódus paramétere képes a konfiguráció lekérdezésére is.
+
 ## 1.9.0
 
 - Új ibello plugin architektúra, egyedi beépülő modulok adhatóak a teszt futtatáshoz

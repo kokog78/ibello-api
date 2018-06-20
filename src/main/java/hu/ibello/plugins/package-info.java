@@ -22,7 +22,7 @@
  * <ol>
  * <li>
  * There should be a class which implements the {@link hu.ibello.plugins.Plugin} interface. It should have an
- * {@link hu.ibello.plugins.Plugin#initialize(PluginLogger)} method which will be called by the ibello system before
+ * {@link hu.ibello.plugins.Plugin#initialize(PluginInitializer)} method which will be called by the ibello system before
  * any test step. This class should be accessible on the classpath during the test execution.
  * </li>
  * <li>
