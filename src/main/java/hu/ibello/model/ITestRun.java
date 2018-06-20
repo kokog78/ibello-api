@@ -5,6 +5,8 @@ import java.util.List;
 
 public interface ITestRun {
 
+	public String getName();
+	
 	public Date getStartTime();
 	
 	public String getBaseDirectory();
