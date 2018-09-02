@@ -1,5 +1,9 @@
 # ibello-api changelog
 
+## 1.10.0
+
+- The `Value` interface has some new conversion methods with default value argument
+
 ## 1.9.1
 
 - Parameter of `Plugin.initialize(...)` method is able to read the configuration

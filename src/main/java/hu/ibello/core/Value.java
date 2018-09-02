@@ -45,12 +45,39 @@ public interface Value {
 	public String[] toStringArray();
 	
 	/**
+	 * Transforms the encapsulated value into a string. If the value is <code>null</code>, the result will be the given <code>defaultValue</code>.
+	 * If the value is a String, then will be used. Otherwise, the method returns the String representation of the value.
+	 * @param defaultValue default value which is used when the encapsulated value is <code>null</code>; cannot be <code>null</code>
+	 * @return the value as String
+	 * @throws NullPointerException if the given <code>defaultValue</code> is <code>null</code>
+	 */
+	public default String toString(String defaultValue) {
+		if (defaultValue == null) {
+			throw new NullPointerException();
+		}
+		String result = toString();
+		return (result == null ? defaultValue : result);
+	}
+	
+	/**
 	 * Transforms the encapsulated value into a Long. If the value is <code>null</code>, the result will be also <code>null</code>.
 	 * If the value is a Number, then it's long representation will be used. Otherwise, the method tries to parse the
 	 * String representation of the value as long. If it is not possible, <code>null</code> will be returned.
 	 * @return the value as Long, or <code>null</code>
 	 */
 	public Long toLong();
+	
+	/**
+	 * Transforms the encapsulated value into a long. If the value is <code>null</code>, the result will be the given <code>defaultValue</code>.
+	 * If the value is a Number, then it's long representation will be used. Otherwise, the method tries to parse the
+	 * String representation of the value as long. If it is not possible, the <code>defaultValue</code> will be returned.
+	 * @param defaultValue default value which is used when the encapsulated value cannot be transformed to a long
+	 * @return the value as long
+	 */
+	public default long toLong(long defaultValue) {
+		Long result = toLong();
+		return (result == null ? defaultValue : result.longValue());
+	}
 	
 	/**
 	 * Transforms the encapsulated value into an Integer. If the value is <code>null</code>, the result will be also <code>null</code>.
@@ -61,12 +88,36 @@ public interface Value {
 	public Integer toInteger();
 	
 	/**
+	 * Transforms the encapsulated value into an int. If the value is <code>null</code>, the result will be the given <code>defaultValue</code>.
+	 * If the value is a Number, then it's integer representation will be used. Otherwise, the method tries to parse the
+	 * String representation of the value as integer. If it is not possible, the <code>defaultValue</code> will be returned.
+	 * @param defaultValue default value which is used when the encapsulated value cannot be transformed to a int
+	 * @return value as int
+	 */
+	public default int toInteger(int defaultValue) {
+		Integer result = toInteger();
+		return (result == null ? defaultValue : result.intValue());
+	}
+	
+	/**
 	 * Transforms the encapsulated value into a Short. If the value is <code>null</code>, the result will be also <code>null</code>.
 	 * If the value is a Number, then it's short representation will be used. Otherwise, the method tries to parse the
 	 * String representation of the value as short. If it is not possible, <code>null</code> will be returned.
 	 * @return the value as Short, or <code>null</code>
 	 */
 	public Short toShort();
+	
+	/**
+	 * Transforms the encapsulated value into a short. If the value is <code>null</code>, the result will be the given <code>defaultValue</code>.
+	 * If the value is a Number, then it's short representation will be used. Otherwise, the method tries to parse the
+	 * String representation of the value as short. If it is not possible, the <code>defaultValue</code> will be returned.
+	 * @param defaultValue default value which is used when the encapsulated value cannot be transformed to a short
+	 * @return value as short
+	 */
+	public default short toShort(short defaultValue) {
+		Short result = toShort();
+		return (result == null ? defaultValue : result.shortValue());
+	}
 	
 	/**
 	 * Transforms the encapsulated value into a Byte. If the value is <code>null</code>, the result will be also <code>null</code>.
@@ -77,12 +128,36 @@ public interface Value {
 	public Byte toByte();
 	
 	/**
+	 * Transforms the encapsulated value into a byte. If the value is <code>null</code>, the result will be the given <code>defaultValue</code>.
+	 * If the value is a Number, then it's byte representation will be used. Otherwise, the method tries to parse the
+	 * String representation of the value as byte. If it is not possible, the <code>defaultValue</code> will be returned.
+	 * @param defaultValue default value which is used when the encapsulated value cannot be transformed to a byte
+	 * @return value as byte
+	 */
+	public default byte toByte(byte defaultValue) {
+		Byte result = toByte();
+		return (result == null ? defaultValue : result.byteValue());
+	}
+	
+	/**
 	 * Transforms the encapsulated value into a Double. If the value is <code>null</code>, the result will be also <code>null</code>.
 	 * If the value is a Number, then it's double representation will be used. Otherwise, the method tries to parse the
 	 * String representation of the value as double. If it is not possible, <code>null</code> will be returned.
 	 * @return the value as Double, or <code>null</code>
 	 */
 	public Double toDouble();
+	
+	/**
+	 * Transforms the encapsulated value into a double. If the value is <code>null</code>, the result will be the given <code>defaultValue</code>.
+	 * If the value is a Number, then it's double representation will be used. Otherwise, the method tries to parse the
+	 * String representation of the value as double. If it is not possible, the <code>defaultValue</code> will be returned.
+	 * @param defaultValue default value which is used when the encapsulated value cannot be transformed to a double
+	 * @return value as double
+	 */
+	public default double toDouble(double defaultValue) {
+		Double result = toDouble();
+		return (result == null ? defaultValue : result.doubleValue());
+	}
 	
 	/**
 	 * Transforms the encapsulated value into a Float. If the value is <code>null</code>, the result will be also <code>null</code>.
@@ -93,12 +168,36 @@ public interface Value {
 	public Float toFloat();
 	
 	/**
+	 * Transforms the encapsulated value into a float. If the value is <code>null</code>, the result will be the given <code>defaultValue</code>.
+	 * If the value is a Number, then it's float representation will be used. Otherwise, the method tries to parse the
+	 * String representation of the value as float. If it is not possible, the <code>defaultValue</code> will be returned.
+	 * @param defaultValue default value which is used when the encapsulated value cannot be transformed to a float
+	 * @return value as float
+	 */
+	public default float toFloat(float defaultValue) {
+		Float result = toFloat();
+		return (result == null ? defaultValue : result.floatValue());
+	}
+	
+	/**
 	 * Transforms the encapsulated value into a Boolean. If the value is <code>null</code>, the result will be also <code>null</code>.
 	 * If the value is a Boolean, then it will be returned. Otherwise, the method parses the
 	 * String representation of the value as boolean.
 	 * @return the value as Boolean, or <code>null</code>
 	 */
 	public Boolean toBoolean();
+	
+	/**
+	 * Transforms the encapsulated value into a boolean. If the value is <code>null</code>, the result will be the given <code>defaultValue</code>.
+	 * If the value is a Boolean, then it will be returned. Otherwise, the method parses the
+	 * String representation of the value as boolean.
+	 * @param defaultValue default value which is used when the encapsulated value is <code>null</code>
+	 * @return value as boolean
+	 */
+	public default boolean toBoolean(boolean defaultValue) {
+		Boolean result = toBoolean();
+		return (result == null ? defaultValue : result.booleanValue());
+	}
 	
 	/**
 	 * Transforms the encapsulated value into the given type of enum. If the value is <code>null</code>, the result will be also <code>null</code>.
@@ -110,6 +209,25 @@ public interface Value {
 	 * @return the value as the given type, or <code>null</code>
 	 */
 	public <E extends Enum<?>> E toEnum(Class<E> type);
+	
+	/**
+	 * Transforms the encapsulated value into an enum. If the value is <code>null</code>, the result will be the given <code>defaultValue</code>.
+	 * If the value is the right type, then it will be returned. Otherwise, the method tries to parse the result
+	 * from the String representation of the value. For that, the name of the enum constants will be used (see {@link Enum#name()}).
+	 * The method is able to find the right enum constant case-insensitively. If it is not possible, then the result will be the <code>defaultValue</code>.
+	 * @param <E> the type of the result
+	 * @param defaultValue default value which will be returned if value cannot be parsed to an enum constant; should be non-null
+	 * @return the value as enum constant
+	 * @throws NullPointerException if the given <code>defaultValue</code> is <code>null</code>
+	 */
+	public default <E extends Enum<?>> E toEnum(E defaultValue) {
+		if (defaultValue == null) {
+			throw new NullPointerException();
+		}
+		@SuppressWarnings("unchecked")
+		E result = (E) toEnum(defaultValue.getClass());
+		return (result == null ? defaultValue : result);
+	}
 	
 	/**
 	 * Transforms the encapsulated value into an {@link EnumSet} of the given enum type.

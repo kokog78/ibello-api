@@ -1,5 +1,9 @@
 # ibello-api változási napló
 
+## 1.10.0
+
+- A `Value` interfész alapértelmezett érték paraméterrel rendelkező konverziós metódusokkal gazdagodott
+
 ## 1.9.1
 
 - A `Plugin.initialize(...)` metódus paramétere képes a konfiguráció lekérdezésére is
