@@ -20,6 +20,7 @@ import hu.ibello.actions.KeyHelper;
 import hu.ibello.actions.WebElementActionBuilder;
 import hu.ibello.core.Browser;
 import hu.ibello.core.Value;
+import hu.ibello.data.TestDataBuilder;
 import hu.ibello.elements.WebElement;
 import hu.ibello.expect.ExpectationBuilder;
 import hu.ibello.search.SearchTool;
@@ -110,5 +111,7 @@ public interface PageObjectTool {
 	 * @return a {@link KeyHelper} instance
 	 */
 	KeyHelper keys();
+	
+	TestDataBuilder testData();
 	
 }

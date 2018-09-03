@@ -22,6 +22,7 @@ import hu.ibello.core.Browser;
 import hu.ibello.core.Name;
 import hu.ibello.core.Value;
 import hu.ibello.core.WindowRelated;
+import hu.ibello.data.TestDataBuilder;
 import hu.ibello.elements.WebElement;
 import hu.ibello.elements.WebElements;
 import hu.ibello.expect.ExpectationBuilder;
@@ -263,6 +264,10 @@ public abstract class PageObject extends WindowRelated {
 	 */
 	protected KeyHelper keys() {
 		return tool.keys();
+	}
+	
+	protected TestDataBuilder testData() {
+		return tool.testData();
 	}
 	
 }

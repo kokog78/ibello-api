@@ -16,6 +16,7 @@
 package hu.ibello.plugins;
 
 import hu.ibello.core.Value;
+import hu.ibello.data.TestDataBuilder;
 
 /**
  * A simple interface, which is used in ibello plugins.
@@ -57,5 +58,7 @@ public interface PluginInitializer {
 	 * @return value of the configuration parameter wrapped into a {@link Value} instance
 	 */
 	public Value getConfigurationValue(String name);
+	
+	public TestDataBuilder testData();
 	
 }

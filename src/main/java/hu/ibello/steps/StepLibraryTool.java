@@ -16,6 +16,7 @@
 package hu.ibello.steps;
 
 import hu.ibello.core.Value;
+import hu.ibello.data.TestDataBuilder;
 
 /**
  * Helper interface for step libraries.
@@ -38,4 +39,6 @@ public interface StepLibraryTool {
 	 * @return value of the configuration parameter wrapped into a {@link Value} instance
 	 */
 	Value getConfigurationValue(String name);
+	
+	TestDataBuilder testData();
 }
