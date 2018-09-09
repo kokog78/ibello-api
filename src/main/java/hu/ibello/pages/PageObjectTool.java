@@ -112,6 +112,12 @@ public interface PageObjectTool {
 	 */
 	KeyHelper keys();
 	
+	/**
+	 * Starts a new test data loading. The result is a {@link TestDataBuilder} instance which can be used
+	 * to configure and perform the test loading operation.
+	 * @return a test data loader instance
+	 * @see TestDataBuilder
+	 */
 	TestDataBuilder testData();
 	
 }

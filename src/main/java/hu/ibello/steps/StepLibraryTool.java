@@ -40,5 +40,11 @@ public interface StepLibraryTool {
 	 */
 	Value getConfigurationValue(String name);
 	
+	/**
+	 * Starts a new test data loading. The result is a {@link TestDataBuilder} instance which can be used
+	 * to configure and perform the test loading operation.
+	 * @return a test data loader instance
+	 * @see TestDataBuilder
+	 */
 	TestDataBuilder testData();
 }

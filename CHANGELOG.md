@@ -3,6 +3,7 @@
 ## 1.10.0
 
 - The `Value` interface has some new conversion methods with default value argument
+- Test data loading with `PageObject.testData()`, `StepLibrary.testData()` and `PluginInitializer.testData()` methods
 
 ## 1.9.1
 

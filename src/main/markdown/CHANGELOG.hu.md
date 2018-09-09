@@ -3,6 +3,7 @@
 ## 1.10.0
 
 - A `Value` interfész alapértelmezett érték paraméterrel rendelkező konverziós metódusokkal gazdagodott
+- Teszt adat betöltés a `PageObject.testData()`, `StepLibrary.testData()` és `PluginInitializer.testData()` metódusok segítségével
 
 ## 1.9.1
 
