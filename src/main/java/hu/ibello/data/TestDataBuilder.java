@@ -99,16 +99,48 @@ public interface TestDataBuilder {
 	 * that file will be <b>not</b> loaded. In other words, loaded files should not have unspecified tags.
 	 * </p>
 	 * <p>
-	 * The first loaded file will be the one without tags (if any). The remaining files will be sorted by the number of tags and
+	 * The first loaded file will be the one without identifier and tags (if any). Then comes the files without identifier but
+	 * with one or more tags. The remaining files (with identifier) will be sorted by the number of tags and
 	 * the tags itself (in alphabetical order). Examples:
 	 * </p>
 	 * <ul>
+	 * <li><code>myclass.json</code> will be loaded before <code>myclass.a.json</code></li>
+	 * <li><code>myclass.a.json</code> will be loaded before <code>myclass-id.json</code></li>
 	 * <li><code>myclass.a.json</code> will be loaded before <code>myclass.b.json</code></li>
 	 * <li><code>myclass.c.json</code> will be loaded before <code>myclass.a-b.json</code></li>
 	 * </ul>
 	 * <p>
-	 * If two loaded files have the same property, then the latest file's property will be in the final result.
-	 * In other words the loader merges the loaded JSON files into a single object.
+	 * By default, the objects loaded from the JSON files will be fully merged in the result. Element of arrays will be joined together.
+	 * For example, the first two JSON object will result the third one:
+	 * </p>
+	 * <pre>
+	 * {
+	 *     "a": 1,
+	 *     "b": {
+	 *         "b1": 1, "b2": 1, "b3": {"b3_1": 1}
+	 *     },
+	 *     "c": [1]
+	 * }
+	 * 
+	 * {
+	 *     "a": 2,
+	 *     "b": {
+	 *         "b1": 2, "b3": {"b3_2": 2}
+	 *     },
+	 *     "c": [2]
+	 * }
+	 * 
+	 * {
+	 *     "a": 2,
+	 *     "b": {
+	 *         "b1": 2, "b2": 1, "b3": {"b3_1": 1, "b3_2": 2}
+	 *     },
+	 *     "c": [1,2]
+	 * }
+	 * </pre>
+	 * <p>
+	 * We can change this behavior with the {@link JsonTestDataBuilder#doNotMergeObjects()} and {@link JsonTestDataBuilder#doNotJoinArrays()}
+	 * methods.
 	 * </p>
 	 * @param <T> type of the result object
 	 * @param dataType type of the result object

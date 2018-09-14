@@ -42,6 +42,33 @@ public interface JsonTestDataBuilder<T> {
 	public JsonTestDataBuilder<T> withId(String testDataId);
 	
 	/**
+	 * <p>
+	 * After this method is called, this {@link JsonTestDataBuilder} instance will not join arrays anymore. Array properties
+	 * loaded from higher priority JSON files will fully replace properties loaded from lower priority files.
+	 * </p>
+	 * <p>For example,
+	 * if two JSON files contains array property with the same name, the value of the lowest priority is <code>[1, 2]</code> and the highest
+	 * priority file contains <code>[3, 4]</code>, then the value of this property in the result will be <code>[3, 4]</code>.
+	 * </p>
+	 * @return this loader instance
+	 */
+	public JsonTestDataBuilder<T> doNotJoinArrays();
+	
+	/**
+	 * <p>
+	 * After this method is called, this {@link JsonTestDataBuilder} instance will not merge object properties. Every child object
+	 * loaded from higher priority JSON files will fully replace properties loaded from lower priority files.
+	 * </p>
+	 * <p>
+	 * For example,
+	 * if two JSON files contains an object property with the same name, the value of the lowest priority is <code>{"b1": 1, "b2": 1}</code> and the highest
+	 * priority file contains <code>{"b1": 2}</code>, then the value of this property in the result will be <code>{"b1": 2}</code>.
+	 * </p>
+	 * @return this loader instance
+	 */
+	public JsonTestDataBuilder<T> doNotMergeObjects();
+	
+	/**
 	 * Loads the test data from JSON file(s).
 	 * @return the loaded test data
 	 */
