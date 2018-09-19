@@ -4,6 +4,8 @@
 
 - The `Value` interface has some new conversion methods with default value argument
 - Test data loading with `PageObject.testData()`, `StepLibrary.testData()` and `PluginInitializer.testData()` methods
+- Create screenshot with the `browser().saveScreenshot()` method
+- New fields in the test result XML objects: `Screenshot.getWindow()`, `Screenshot.getFile()`
 
 ## 1.9.1
 

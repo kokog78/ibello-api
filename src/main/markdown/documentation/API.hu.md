@@ -1,4 +1,3 @@
-# ibello-api ${version}
 
 Az ibello keretrendszerben létrehozott tesztek háromrétegűek. Egyrészről, az oldalak technikai funkcióit az ún. _oldal-leíró osztályok_ foglalják össze. Másrészről, egy vagy több
 oldal-leíró osztály metódusai segítségével tesztlépéseket állítunk össze, amelyeket egy ún. _tesztlépés-könyvtár osztályba_ teszünk. Az egyes _tesztek_ a tesztlépés-könyvtárak
@@ -675,6 +674,12 @@ teljes süti létrehozásra kerül.
 
 A `getItem(String)` metódus csak a süti értékét adja vissza, a többi tulajdonságát nem.
 
+### Képernyőképek készítése
+
+Az ibello automatikusan készít képernyőképeket, például akkor, amikor valamilyen hiba történik. Arra is lehetőségünk van azonban,
+hogy mi határozzuk meg, mikor szeretnénk képernyőképet készíteni. Erre való a `browser().saveScreenshot()` metódus. Ezzel az aktív ablakról
+ill. fülről készítünk képernyőképet, ami a tesztriporthoz is hozzá lesz adva. Az eredmény a képek adatait tartalmazó objektum.
+
 ### Riasztások kezelése
 
 Egyes alkalmazások ún. *riasztásokat* (alert window) nyitnak meg. Egy riasztás mindig modális, blokkolja az oldal többi elemével történő interakciót, ráadásul nem is lehet
@@ -688,7 +693,6 @@ végrehajtani. Itt is használhatóak a `withTimeout(...)` és a `withPageRefres
 | ------------------ | --------------------------------------------------------------------- |
 | `dismissAlert()`   | A riasztás bezárása a "mégsem" gombra kattintással.                   |
 | `acceptAlert()`    | A riasztás bezárása az "ok" gombra kattintással.                      |
-
 
 ## Ellenőrzések
 

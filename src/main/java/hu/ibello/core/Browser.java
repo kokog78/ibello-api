@@ -17,6 +17,8 @@ package hu.ibello.core;
 
 import java.net.URL;
 
+import hu.ibello.model.Screenshot;
+
 /**
  * <p>
  * The object which implements this interface represents the browser.
@@ -109,6 +111,13 @@ public interface Browser {
 	 * @param height the new height of the browser window, in pixels
 	 */
 	public void resize(int width, int height);
+	
+	/**
+	 * Save screenshot about the active window or tab.
+	 * The screenshot will be added to the result report too.
+	 * @return screenshot data with the file and URL
+	 */
+	public Screenshot saveScreenshot();
 	
 	/**
 	 * Returns a {@link Storage} instance which can be used to manipulate the session storage of the browser.

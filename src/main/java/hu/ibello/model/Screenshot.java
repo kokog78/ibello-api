@@ -15,16 +15,21 @@
  */
 package hu.ibello.model;
 
+import java.io.File;
+
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.XmlValue;
 
-@XmlType(propOrder={"label", "url", "path"})
+@XmlType(propOrder={"label", "url", "path", "window"})
 public class Screenshot {
 
 	private String url;
 	private String path;
 	private String label;
+	private String window;
+	private File file;
 	
 	public Screenshot() {
 	}
@@ -60,5 +65,23 @@ public class Screenshot {
 	@XmlAttribute
 	public void setLabel(String label) {
 		this.label = label;
+	}
+
+	public File getFile() {
+		return file;
+	}
+	
+	@XmlTransient
+	public void setFile(File file) {
+		this.file = file;
+	}
+	
+	public String getWindow() {
+		return window;
+	}
+	
+	@XmlAttribute
+	public void setWindow(String window) {
+		this.window = window;
 	}
 }
