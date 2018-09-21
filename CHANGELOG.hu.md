@@ -2,9 +2,10 @@
 
 ## 1.10.0
 
-- A `Value` interfész alapértelmezett érték paraméterrel rendelkező konverziós metódusokkal gazdagodott
+- Információszerzés elemekről a `PageObject.checkThat(WebElement)` és a `PageObject.get(WebElement)` metódusok segítségével
 - Teszt adat betöltés a `PageObject.testData()`, `StepLibrary.testData()` és `PluginInitializer.testData()` metódusok segítségével
-- Képernyőkép készítése a `browser().saveScreenshot()` metódus segítségével
+- Képernyőkép készítése a `PageObject.browser().saveScreenshot()` metódus segítségével
+- A `Value` interfész alapértelmezett érték paraméterrel rendelkező konverziós metódusokkal gazdagodott
 - Új mezők a teszteredmény XML objektumokban: `Screenshot.getWindow()`, `Screenshot.getFile()`
 
 ## 1.9.1
