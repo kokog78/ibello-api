@@ -18,6 +18,8 @@ package hu.ibello.pages;
 import hu.ibello.actions.BrowserActionBuilder;
 import hu.ibello.actions.KeyHelper;
 import hu.ibello.actions.WebElementActionBuilder;
+import hu.ibello.check.WebElementChecker;
+import hu.ibello.check.WebElementGetter;
 import hu.ibello.core.Browser;
 import hu.ibello.core.Value;
 import hu.ibello.data.TestDataBuilder;
@@ -84,6 +86,22 @@ public interface PageObjectTool {
 	 * @return an interface configured for doing actions with the browser
 	 */
 	BrowserActionBuilder doWith(Browser browser);
+	
+	/**
+	 * Returns a {@link WebElementChecker} instance which can be used to inspect a {@link WebElement}'s state and have
+	 * some boolean result about it. The investigation holds until the element is accessible (or the time runs out).
+	 * @param element the element we need to investigate
+	 * @return an interface configured for running investigation on the element
+	 */
+	WebElementChecker checkThat(WebElement element);
+	
+	/**
+	 * Returns a {@link WebElementGetter} instance which can be used to get some property of the given {@link WebElement}.
+	 * The operation waits until the element is accessible (or the time runs out).
+	 * @param element the element
+	 * @return an interface configured for querying properties of the element
+	 */
+	WebElementGetter get(WebElement element);
 	
 	/**
 	 * <p>

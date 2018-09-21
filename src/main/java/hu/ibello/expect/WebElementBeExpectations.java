@@ -66,7 +66,7 @@ public interface WebElementBeExpectations {
 	
 	/**
 	 * An <em>expectation</em> which comes true when the element can be clicked.
-	 * It means that the elements should be displayed and enabled.
+	 * It means that the element should be displayed and enabled.
 	 * If this not occurs during the timeout, an exception will be thrown,
 	 * all information will be logged and the current test will fail.
 	 * <p>
@@ -80,7 +80,7 @@ public interface WebElementBeExpectations {
 	 * An <em>expectation</em> which comes true when the element is selected.
 	 * If this not occurs during the timeout, an exception will be thrown,
 	 * all information will be logged and the current test will fail.
-	 * Only checkboxes, options in a select and radio buttons can be selected.
+	 * Only checkboxes, options in a <code>select</code> tag and radio buttons can be selected.
 	 * <p>
 	 * If the method was called after {@link WebElementExpectationBuilder#toNotBe()},
 	 * then the outcome of the expectation is the opposite: it will fail if the element is selected.

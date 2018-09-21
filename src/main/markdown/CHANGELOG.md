@@ -2,9 +2,10 @@
 
 ## 1.10.0
 
-- The `Value` interface has some new conversion methods with default value argument
+- Get information about elements with the help of `PageObject.checkThat(WebElement)` and `PageObject.get(WebElement)` methods
 - Test data loading with `PageObject.testData()`, `StepLibrary.testData()` and `PluginInitializer.testData()` methods
-- Create screenshot with the `browser().saveScreenshot()` method
+- Create screenshot with the `PageObject.browser().saveScreenshot()` method
+- The `Value` interface has some new conversion methods with default value argument
 - New fields in the test result XML objects: `Screenshot.getWindow()`, `Screenshot.getFile()`
 
 ## 1.9.1

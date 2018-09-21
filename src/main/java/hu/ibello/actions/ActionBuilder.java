@@ -15,14 +15,16 @@
  */
 package hu.ibello.actions;
 
+import hu.ibello.core.TimeoutRelated;
+
 /**
  * Interface for building an <em>action</em> with a target.
  * <p>
  * During an action, the <em>ibello</em> tries to interact with the action's target.
  * If the interaction fails, it will try it again and again, until it successes or the time
  * runs out. By default, an action uses the <em>ibello</em>
- * default timeout, but it can be changed with the {@link #withTimeout(Enum)} or
- * {@link #withTimeout(String)} method.
+ * default timeout, but it can be changed with the {@link TimeoutRelated#withTimeout(Enum)} or
+ * {@link TimeoutRelated#withTimeout(String)} method.
  * </p>
  * <p>
  * In some cases it is useful to wait a few seconds after an interaction occurred on the page.
@@ -38,33 +40,7 @@ package hu.ibello.actions;
  * @author Kornél Simon
  *
  */
-interface ActionBuilder<B extends ActionBuilder<?>> {
-
-	/**
-	 * Sets the timeout of the action by it's string identifier.
-	 * The value of the timeout should be specified in the <em>ibello</em>
-	 * configuration, with <code>"ibello.timeout."</code> prefix. For example,
-	 * <code>withTimeout("LONG")</code> will set the timeout specified in the
-	 * <code>ibello.timeout.LONG</code> configuration property. The timeout is
-	 * specified in seconds.
-	 * @param key identifier of the desired timeout
-	 * @return the current action builder instance
-	 */
-	public B withTimeout(String key);
-
-	/**
-	 * Sets the timeout of the action by it's enum identifier. The enum can be
-	 * any valid java enum, it's not part of the <em>ibello</em> system. The given enum
-	 * constant will be transformed to string.
-	 * The value of the timeout should be specified in the <em>ibello</em>
-	 * configuration, with <code>"ibello.timeout."</code> prefix. For example,
-	 * <code>withTimeout(Timeouts.LONG)</code> will set the timeout specified in the
-	 * <code>ibello.timeout.LONG</code> configuration property. The timeout is
-	 * specified in seconds.
-	 * @param key identifier of the desired timeout
-	 * @return the current action builder instance
-	 */
-	public B withTimeout(Enum<?> key);
+interface ActionBuilder<B extends ActionBuilder<?>> extends TimeoutRelated<B> {
 	
 	/**
 	 * If this method is called on the action builder instance, and then an action

@@ -18,6 +18,7 @@ package hu.ibello.expect;
 import java.util.List;
 
 import hu.ibello.core.Browser;
+import hu.ibello.core.TimeoutRelated;
 import hu.ibello.elements.WebElement;
 import hu.ibello.elements.WebElements;
 import hu.ibello.pages.PageObject;
@@ -39,34 +40,8 @@ import hu.ibello.pages.PageObject;
  * @author Kornél Simon
  *
  */
-public interface ExpectationBuilder {
+public interface ExpectationBuilder extends TimeoutRelated<ExpectationBuilder> {
 
-	/**
-	 * Sets the timeout of the expectation by it's string identifier.
-	 * The value of the timeout should be specified in the <em>ibello</em>
-	 * configuration, with <code>"ibello.timeout."</code> prefix. For example,
-	 * <code>withTimeout("LONG")</code> will set the timeout specified in the
-	 * <code>ibello.timeout.LONG</code> configuration property. The timeout is
-	 * specified in seconds.
-	 * @param key identifier of the desired timeout
-	 * @return the current {@link ExpectationBuilder} instance
-	 */
-	ExpectationBuilder withTimeout(String key);
-
-	/**
-	 * Sets the timeout of the expectation by it's enum identifier. The enum can be
-	 * any valid java enum, it's not part of the <em>ibello</em> system. The given enum
-	 * constant will be transformed to string.
-	 * The value of the timeout should be specified in the <em>ibello</em>
-	 * configuration, with <code>"ibello.timeout."</code> prefix. For example,
-	 * <code>withTimeout(Timeouts.LONG)</code> will set the timeout specified in the
-	 * <code>ibello.timeout.LONG</code> configuration property. The timeout is
-	 * specified in seconds.
-	 * @param key identifier of the desired timeout
-	 * @return the current {@link ExpectationBuilder} instance
-	 */
-	ExpectationBuilder withTimeout(Enum<?> key);
-	
 	/**
 	 * Starts to build a simple expectation about the given element.
 	 * The expectations will use the timeout specified in this ExpectationBuilder instance.
