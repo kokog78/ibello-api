@@ -900,9 +900,10 @@ be lehet állítani a `withTimeout(...)` metódus segítségével.
 Példák:
 
 ```java
-checkThat(button).isDisplayed();
-checkThat(outputElement).withTimeout(Timeout.SLOW).hasText();
-get(inputField).value();
+boolean buttonIsVisible = checkThat(button).isDisplayed();
+boolean outputPrinted = checkThat(outputElement).withTimeout(Timeout.SLOW).hasText();
+String value = get(inputField).value();
+String[] classNames = get(button).withTimeout(Timeout.NORMAL).cssClassNames();
 ```
 
 ## Több böngészőablak vezérlése
