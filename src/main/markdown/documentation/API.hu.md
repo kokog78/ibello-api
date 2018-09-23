@@ -855,6 +855,56 @@ létrehozva, akkor a teszt futása is végetér, míg ha `assume(...)` metóduss
 Az `any(...)` metódussal létrehozott összetett ellenőrzéseknél kicsit más a helyzet. Ha a befoglalt ellenőrzések között akár egyetlen olyan is akad, amit `expect(...)` metódussal
 hoztunk létre, akkor a tesztfutás félbe fog szakadni akkor, amikor az összetett ellenőrzés elbukik. (Ilyenkor ugyanis biztos, hogy a kényszer-ellenőrzés is elbukott.)
 
+## Értéklekérések
+
+Az ibello arra is lehetőséget ad, hogy egy-egy elem valamely tulajdonságát visszakapjuk. Ehhez az oldal-leírók kétféle metódusát használhatjuk.
+
+A `checkThat(WebElement)` metódus segítségével logikai érték birtokába jutunk. A metódus által visszaadott objektumnak több lekérő metódusa van,
+ezeket hívhatjuk:
+
+| Metódus                        | Mikor `true`?                                                                           |
+| ------------------------------ | --------------------------------------------------------------------------------------- |
+| `isDisplayed()`                | Az elem látható a képernyőn.                                                            |
+| `isEnabled()`                  | Az elem elérhető ill. engedélyezett.                                                    |
+| `isReadonly()`                 | Az elem csak olvasható.                                                                 |
+| `isClickable()`                | Az elemre rá lehet kattintani, vagyis látható és engedélyezett.                         |
+| `isSelected()`                 | Az elem ki van választva.                                                               |
+| `isPresent()`                  | Az elem benne van az oldal DOM struktúrájában.                                          |
+| `hasId()`                      | Az elem `id` attribútima nem üres és nem csak szóközöket tartalmaz.                     |
+| `hasValue()`                   | Az elem `value` attribútima nem üres és nem csak szóközöket tartalmaz.                  |
+| `hasAttribute(String)`         | Az elem megadott nevű attribútima nem üres és nem csak szóközöket tartalmaz.            |
+| `hasText()`                    | Az elem szöveges tartalma nem üres és nem csak szóközöket tartalmaz.                    |
+| `hasClassName()`               | Az elem rendelkezik legalább egy CSS osztállyal.                                        |
+| `hasClassName(String)`         | Az elem rendelkezik a megadott CSS osztállyal.                                          |
+| `hasCssValue(String)`          | Az elem megadott nevű CSS tulajdonsága nem üres és nem csak szóközöket tartalmaz.       |
+
+A `get(WebElement)` metódus hasonlóan működik, az általa visszaadott objektum lekérő metódusaival visszakapjuk az elem bizonyos tulajdonságainak
+értékét:
+
+| Metódus                        | Visszaadott érték                                                                       |
+| ------------------------------ | --------------------------------------------------------------------------------------- |
+| `id()`                         | Az elem `id` attribútumának értéke.                                                     |
+| `value()`                      | Az elem `value` attribútumának értéke.                                                  |
+| `fileName()`                   | Fájl választó elem esetében a kiválasztott fájl neve.                                   |
+| `attribute(String)`            | Az elem adott nevű attribútumának értéke.                                               |
+| `tagName()`                    | Az elem neve.                                                                           |
+| `cssClassNames()`              | Az elem CSS osztályainak nevei.                                                         |
+| `cssValue(String)`             | Az elem adott nevű CSS tulajdonságának értéke.                                          |
+| `text()`                       | Az elem tartalma.                                                                       |
+| `selectedOptions()`            | Az elem kiválasztott opcióinak címkéi (`select` típusú elem esetén).                    |
+
+Mind a `checkThat(...)`, mind a `get(...)` metódusok várakoznak addig, amíg az adott elem elérhető lesz a DOM struktúrában. (Ez alól a
+`checkThat(...).isPresent()` kivétel, hiszen azt épp azt ellenőrzi, hogy elérhető-e az elem.) A várakozás időtúllépését a már ismert módon
+be lehet állítani a `withTimeout(...)` metódus segítségével.
+
+Példák:
+
+```java
+checkThat(button).isDisplayed();
+checkThat(outputElement).withTimeout(Timeout.SLOW).hasText();
+get(inputField).value();
+```
+
 ## Több böngészőablak vezérlése
 
 Az ibello rendszer lehetőséget ad arra, hogy egy tesztben több böngészőablakot is vezéreljünk. Alapesetben az összes művelet egy alapértelmezett ablakban
