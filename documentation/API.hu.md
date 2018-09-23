@@ -894,8 +894,8 @@ A `get(WebElement)` metódus hasonlóan működik, az általa visszaadott objekt
 | `selectedOptions()`            | Az elem kiválasztott opcióinak címkéi (`select` típusú elem esetén).                    |
 
 Mind a `checkThat(...)`, mind a `get(...)` metódusok várakoznak addig, amíg az adott elem elérhető lesz a DOM struktúrában. (Ez alól a
-`checkThat(...).isPresent()` kivétel, hiszen azt épp azt ellenőrzi, hogy elérhető-e az elem.) A várakozás időtúllépését a már ismert módon
-be lehet állítani a `withTimeout(...)` metódus segítségével.
+`checkThat(...).isPresent()` kivétel, hiszen az épp azt ellenőrzi, hogy elérhető-e az elem.) A várakozás időtúllépését a műveleteknél és az
+ellenőrzéseknél megismert módon be lehet állítani a `withTimeout(...)` metódus segítségével.
 
 Példák:
 
