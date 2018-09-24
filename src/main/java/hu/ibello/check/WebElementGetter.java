@@ -37,7 +37,10 @@ public interface WebElementGetter extends TimeoutRelated<WebElementGetter> {
 	 * <p>
 	 * This methods blocks the thread until the element is accessible or the time runs out.
 	 * </p>
-	 * @return the \"id\" attribute of the element
+	 * <p>
+	 * If the element does not have "id" attribute, this method returns an empty string (and never <code>null</code>).
+	 * </p>
+	 * @return the \"id\" attribute of the element or an empty string
 	 */
 	public String id();
 	
@@ -46,7 +49,10 @@ public interface WebElementGetter extends TimeoutRelated<WebElementGetter> {
 	 * <p>
 	 * This methods blocks the thread until the element is accessible or the time runs out.
 	 * </p>
-	 * @return the value of the element
+	 * <p>
+	 * If the element does not have value, this method returns an empty string (and never <code>null</code>).
+	 * </p>
+	 * @return the value of the element or an empty string
 	 */
 	public String value();
 	
@@ -55,7 +61,10 @@ public interface WebElementGetter extends TimeoutRelated<WebElementGetter> {
 	 * <p>
 	 * This methods blocks the thread until the element is accessible or the time runs out.
 	 * </p>
-	 * @return the file name of the element
+	 * <p>
+	 * If the element does not have file name, this method returns an empty string (and never <code>null</code>).
+	 * </p>
+	 * @return the file name of the element or an empty string
 	 */
 	public String fileName();
 	
@@ -64,7 +73,10 @@ public interface WebElementGetter extends TimeoutRelated<WebElementGetter> {
 	 * <p>
 	 * This methods blocks the thread until the element is accessible or the time runs out.
 	 * </p>
-	 * @param name the name of the desired attribute
+	 * <p>
+	 * If the element does not have the attribute, this method returns an empty string (and never <code>null</code>).
+	 * </p>
+	 * @param name the name of the desired attribute or an empty string
 	 * @return the attribute of the element
 	 */
 	public String attribute(String name);
@@ -83,7 +95,10 @@ public interface WebElementGetter extends TimeoutRelated<WebElementGetter> {
 	 * <p>
 	 * This methods blocks the thread until the element is accessible or the time runs out.
 	 * </p>
-	 * @return the CSS class names of the element
+	 * <p>
+	 * If the element does not have class names, this method returns an empty array (and never <code>null</code>).
+	 * </p>
+	 * @return the CSS class names of the element or an empty array
 	 */
 	public String[] cssClassNames();
 	
@@ -92,8 +107,11 @@ public interface WebElementGetter extends TimeoutRelated<WebElementGetter> {
 	 * <p>
 	 * This methods blocks the thread until the element is accessible or the time runs out.
 	 * </p>
+	 * <p>
+	 * If the element does not have that property, this method returns an empty string (and never <code>null</code>).
+	 * </p>
 	 * @param propertyName the name of the desired CSS property
-	 * @return the CSS property value of the element
+	 * @return the CSS property value of the element or an empty string
 	 */
 	public String cssValue(String propertyName);
 	
@@ -102,7 +120,10 @@ public interface WebElementGetter extends TimeoutRelated<WebElementGetter> {
 	 * <p>
 	 * This methods blocks the thread until the element is accessible or the time runs out.
 	 * </p>
-	 * @return the text of the element
+	 * <p>
+	 * If the element does not have text, this method returns an empty string (and never <code>null</code>).
+	 * </p>
+	 * @return the text of the element or an empty string
 	 */
 	public String text();
 	
@@ -111,7 +132,10 @@ public interface WebElementGetter extends TimeoutRelated<WebElementGetter> {
 	 * <p>
 	 * This methods blocks the thread until the element is accessible or the time runs out.
 	 * </p>
-	 * @return the selected options of the element
+	 * <p>
+	 * If the element does not have selected options, this method returns an empty array (and never <code>null</code>).
+	 * </p>
+	 * @return the selected options of the element or an empty array
 	 */
 	public String[] selectedOptions();
 	
