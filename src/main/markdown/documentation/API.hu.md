@@ -1050,7 +1050,7 @@ Az osztály meghatározza a JSON fájlok struktúráját is. Például az előz�
 }
 ```
 
-A JSON fájlokat az `ibello/data` könyvtárban kell elhelyezni. A nevüknek is szabályszerűnek kell lennie. A kiterjesztés legyen `.json`.
+A JSON fájlokat az `ibello/data` könyvtárban kell elhelyezni. A nevüknek is szabályszerűnek kell lennie. A kiterjesztés legyen ".json".
 A többi rész az alábbiak szerint épül fel:
 
 - A fájl neve annak az osztálynak a rövid és kisbetűsre alakított nevével kezdődik, amivé a tesztadatot alakítani szeretnénk.
@@ -1135,10 +1135,18 @@ Ha ezt a két fájlt ebben a sorrendben a `testData().fromJson(User.class).withI
 ### Tesztadatok `properties` fájlokban
 
 Az előzőekben tárgyal tesztadat-betöltési módok keveréke a java `properties` fájlokból történő betöltés. A betöltendő fájlokat szintén az
-`ibello/data` könyvtárba kell elhelyezni. A kiterjesztésük `.properties`. A fájlnév felépítése:
+`ibello/data` könyvtárba kell elhelyezni. A kiterjesztésük ".properties". A fájlnév felépítése:
 
 - Egy tetszőleges azonosítóval kezdődik. Ez tartalmazhat kötőjelet is.
 - Ezt opcionálisan egy pont és a használt címkék követik (kötőjellel elválasztva).
+
+Példák:
+
+```
+user-valid.properties
+user-valid.hu.properties
+user-valid.hu-prod.properties
+```
 
 A betöltést a `testData().fromProperties(String).load()` metódussal lehet elvégezni. A sztring paraméter az azonosító kell legyen.
 Csak azok a fájlok töltődnek be, amiknek nincs olyan címkéje, amit a tesztfuttatásnál *nem* adtunk meg.
