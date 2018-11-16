@@ -1088,7 +1088,7 @@ user-valid.hu-prod.json
 ```
 
 A JSON fájlok egész komplex szerkezetűek is tudnak lenni, ezáltal képesek objektumstruktúra leírására is. A JSON fájl mezői lehetnek tömbök és
-más objektumok is. Ezek betöltődését tudjuk picit módosítani a két alábbi metódus segítségével.
+más objektumok is. Ezek betöltődését picit módosíthatjuk az alábbi két metódus segítségével.
 
 Az ibello alapértelmezésben a különböző betöltött fájlokban levő tömböket összeolvasztja. A `doNotJoinArrays()` metódussal ezt tudjuk megtiltani.
 Ennek hatására a később betöltött fájlok tömb mezői felülírják a korábban betöltöttekből érkezett adatot. Nézzünk egy példát! Tegyük fel, hogy
@@ -1096,12 +1096,12 @@ az alábbi két JSON fájl egymás után töltődik be:
 
 ```json
 {
-	"hobbies": ["fishing", "singing"]
+    "hobbies": ["fishing", "singing"]
 }
 ```
 ```json
 {
-	"hobbies": ["basketball"]
+    "hobbies": ["basketball"]
 }
 ```
 
@@ -1114,16 +1114,16 @@ Ilyenkor az utóbb betöltött objektumok felülírják az előbb betöltötteke
 
 ```json
 {
-	"mother": {
-		"name": "Jane Doe"
-	}
+    "mother": {
+        "name": "Jane Doe"
+    }
 }
 ```
 ```json
 {
-	"mother": {
-		"birthName": "Jane Butterfly"
-	}
+    "mother": {
+        "birthName": "Jane Butterfly"
+    }
 }
 ```
 
