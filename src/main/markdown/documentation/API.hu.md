@@ -118,11 +118,11 @@ public void t1_check_basic_functions() {
 ## A tesztlépés-könyvtár
 
 A tesztlépés-könyvtár osztály a `StepLibrary` ősosztályból származik. Minden publikus metódusa tesztlépésnek számít. A metódusok neveit érdemes beszédesre választani.
-Jó gyakorlatot követünk, ha háromféle metódust különböztetünk meg, és ezeknek a metódusoknak a típusát a nevükben is jelezzük.
+Jó gyakorlatot követünk, ha háromféle metódust különböztetünk meg:
 
-- Az előkészítő metódusok elérik, hogy a böngészőben beálljon valamilyen kiindulási állapot. A nevük kezdődhez `given` előtaggal.
-- A végrehajtó metódusok végrehajtják a tesztelendő műveletet. A nevük kezdődhet `when_` előtaggal.
-- Az ellenőrző metódusok ellenőrzik az előállt állapotot, és hibát dobnak, ha a kívánt feltétel nem teljesült. A nevük kezdődhez `then_` előtaggal.
+- Az előkészítő metódusok elérik, hogy a böngészőben beálljon valamilyen kiindulási állapot.
+- A végrehajtó metódusok végrehajtják a tesztelendő műveletet.
+- Az ellenőrző metódusok ellenőrzik az előállt állapotot, és kivételt dobnak, ha a kívánt feltétel nem teljesült.
 
 A tesztlépés-könyvtár metódusai oldal-leírókat használnak. Az oldal-leírókat nyugodtan bejegyezhetjük (privát) mezőkként, az ibello rendszer automatikusan létre fogja
 hozni a példányokat. Egy tesztlépés-könyvárban más tesztlépés-könyvtárakra is hivatkozhatunk, szintén elég csak egy (privát) mezőt létrehozni a megfelelő típussal.
@@ -136,25 +136,25 @@ public class LoginSteps extends StepLibrary {
     // szintén automatikusan létrejön
     private WelcomePage welcomePage;
     
-    public void given_that_login_page_is_opened() {
+    public void login_page_is_opened() {
         loginPage.open();
     }
     
-    public void when_i_login_with_valid_credentials() {
+    public void i_login_with_valid_credentials() {
         loginPage.setUsername("testuser");
         loginPage.setPassword("testpwd");
         loginPage.clickLoginButton();
     }
     
-    public void then_i_get_to_the_welcome_page() {
+    public void i_get_to_the_welcome_page() {
         welcomePage.expectOpened();
     }
     
-    public void then_i_see_that_valid_user_is_logged_in() {
+    public void i_see_that_valid_user_is_logged_in() {
         welcomePage.expectCurrentUser("testuser");
     }
     
-    public void then_i_see_the_standard_operations() {
+    public void i_see_the_standard_operations() {
         welcomePage.expectOperations("Adatrögzítés", "Lekérdezések", "Beállítások");
     }
 }
@@ -189,7 +189,7 @@ public class LoginSteps extends StepLibrary {
     @Inject
     private UserData userData;
     
-    public void when_i_login_with_valid_credentials() {
+    public void i_login_with_valid_credentials() {
         loginPage.setUsername(userData.getValidUsername());
         loginPage.setPassword(userData.getValidPassword());
         loginPage.clickLoginButton();
@@ -200,8 +200,8 @@ public class LoginSteps extends StepLibrary {
 ### Tesztlépések nevei
 
 A teszlépés-könyvtárak publikus metódusainak hívását az ibello rendszer folyamatosan loggolja, valamint azok neveit az elkészült teszt riportban is szerepelteti.
-A logba és a riportba a metódus nevéből kiszámolt kifejezés kerül bele. Például a `when_i_login_with_valid_credentials` metódusnévből ez lesz:
-`When I Login With Valid Credentials`. Ha ezt a működést meg szeretnénk változtatni, akkor a metódushoz adnunk kell egy `@Name` annotációt, aminek egyetlen tulajdonságaként
+A logba és a riportba a metódus nevéből kiszámolt kifejezés kerül bele. Például az `i_login_with_valid_credentials` metódusnévből ez lesz:
+`I Login With Valid Credentials`. Ha ezt a működést meg szeretnénk változtatni, akkor a metódushoz adnunk kell egy `@Name` annotációt, aminek egyetlen tulajdonságaként
 meg kell adnunk a kiírandó szöveget. A szövegben a metódus esetleges paraméterei is megjelennek, azoknak a helyét `${0}`, `${1}`, stb. karaktersorozatokkal jelölhetjük.
 A paramétereket beilleszthetjük a `@Name` annotáció megadása nélkül is, ekkor a helyüket a metódus nevében `$` karakter jelöli. (A `String` típusú paraméterek ilyenkor macskakörmök
 közé kerülnek.)
@@ -213,8 +213,8 @@ public void openItem(int index) { ... }
 public void a_$_gomb_megnyomása(String title) { ... }
 ```
 
-Ha a tesztlépés-könyvtár osztály is rendelkezik `@Name` annotációval, akkor az abban megadott szöveg előtagként hozzáadódik az összes tesztlépés nevéhez is. Az alábbi példában a
-tesztlépés neve "Home Page: Open Page" lesz.
+Ha a tesztlépés-könyvtár osztály is rendelkezik `@Name` annotációval, akkor az abban megadott szöveg előtagként hozzáadódik az összes tesztlépés nevéhez is.
+Ezt az előtagot *névtér*nek is nevezzük. Az alábbi példában a tesztlépés neve "Home Page: Open Page" lesz.
 
 ```java
 @Name("Home Page")
@@ -327,12 +327,20 @@ A tesztlépés-könyvtárak és az oldal-leírók lehetőséget adnak az ibello 
 A metódus egyetlen argumentuma a kívánt konfigurációs paraméter neve, visszatérési értéke pedig egy `Value` típusú objektum, amivel a paraméter értékét lehet különböző java
 típusokra konvertálni. A konverzió a `Value` osztály metódusaival lehetséged, pl. `Value.toString()`, `Value.toDouble()`, `Value.toStringArray()`.
 A `getConfigurationValue` metódus akkor is visszatér egy `Value` objektummal, ha a kért konfigurációs paraméter nem létezik, ekkor azonban minden konverziós metódus
-`null` értékkel ad. Példák:
+`null` értéket ad. Példák:
 
 ```java
 String username = getConfigurationValue("current.user").toString();
 Integer backendPort = getConfigurationValue("backend.port").toInteger();
 File parameterFile = getConfigurationValue("backend.parameter.file").toFile();
+```
+
+A "to" kezdetű metódusok legtöbbjének van olyan párja, ami bemenő paraméterként megkapja az alapértelmezett értéket. Ez akkor lesz felhasználva,
+ha az adott nevű konfigurációs paraméter nem létezik. Például:
+
+```java
+String username = getConfigurationValue("current.user").toString("default");
+Integer backendPort = getConfigurationValue("backend.port").toInteger(0);
 ```
 
 ## Elemek keresése
@@ -987,6 +995,166 @@ Az új oldal-leíróban az `expectations().expect(browser)).toBe().open()` ellen
 expectations().expect(browser)).toBe().open();
 expectations().expect(someElement).toHave().value("some value");
 ```
+
+## Tesztadatok kezelése
+
+Tesztadatnak hívunk minden olyan értéket, amiket a tesztek futása közben felhasználunk. Tesztadat az a szöveg,
+amit a tesztkód beleír egy beviteli mezőbe, de az is tesztadat, amit valamilyen ellenőrzéshez használ fel.
+
+### Tesztadatok konfigurációs fájlokban
+
+A tesztadatokat beírhatjuk a konfigurációs fájlokba is. Bevett gyakorlat, hogy egy tesztadatot tartalmazó bejegyzés neve pontokat tartalmaz,
+amik logikai egységekre bontják a nevet. Az azonos csoportba tartozó tesztadatok neve ugyanúgy kezdődik. Például:
+
+```
+user.valid.name: user
+user.valid.firstName: John
+user.valid.lastName: Doe
+user.valid.male: true
+user.valid.age: 23
+```
+
+Az ilyen értékeket aztán oldal-leírókban vagy tesztlépés-könyvtárakban a `getConfigurationValue(String)` metódussal olvashatjuk ki. Például:
+
+```java
+String userName = getConfigurationValue("user.valid.name").toString();
+boolean isMale = getConfigurationValue("user.valid.male").toBoolean(false);
+int age = getConfigurationValue("user.valid.age").toInteger(0);
+```
+
+### Tesztadatok JSON fájlokban
+
+Komplex tesztadatokat már nehézkesebb konfigurációs fájlokban tárolni, ezért az ibello lehetőséget ad arra is, hogy JSON formátumú fájlokból
+olvassunk fel egész objektumokat. Ehhez először is készítenünk kell egy java osztályt, ami leírja a tesztadatot. Az előbbi példát továbbgondolva
+ilyesmiről van szó:
+
+```java
+public class User {
+    public String name;
+    public String firstName;
+    public String lastName;
+    public boolean male;
+    public int age;
+}
+```
+
+Az osztály meghatározza a JSON fájlok struktúráját is. Például az előző objektumhoz ilyen JSON tartalom képzelhető el:
+
+```json
+{
+    "name": "user",
+    "firstName": "John",
+    "lastName": "Doe",
+    "male": true,
+    "age": 23
+}
+```
+
+A JSON fájlokat az `ibello/data` könyvtárban kell elhelyezni. A nevüknek is szabályszerűnek kell lennie. A kiterjesztés legyen `.json`.
+A többi rész az alábbiak szerint épül fel:
+
+- A fájl neve annak az osztálynak a rövid és kisbetűsre alakított nevével kezdődik, amivé a tesztadatot alakítani szeretnénk.
+  Ez lesz a tesztadat típusa. A fenti példánkban ez "user".
+- Ezt opcionálisan egy kötőjel és egy egyedi azonosító követi. Ennek a szerepe a típuson belüli megkülönböztetés. A fenti példánkban
+  ez lehetne pl. "-valid".
+- Megint csak opcionálisan, egy pontot követően egy vagy több címke következhet, egymástól kötőjellel elválasztva. Ezeknek a címkéknek
+  ugyanaz a szerepe, mint a konfigurációs fájloknál: általuk a tesztek futtatásakor kiválaszthatjuk, hogy mely fájlok töltődhessenek be.
+  Azok a fájlok, amiknek a nevében olyan címke szerepel, amit a tesztfuttatáskor *nem* adtunk meg, nem fognak betöltődni. A fenti példa
+  szerint a "user-valid.hu.json" a "valid" azonosítóval ellátott felhasználó adatait tartalmazza "hu" címke esetén, míg a
+  "user-valid.en.json" ugyanezen felhasználó adatait "en" címke esetén.
+
+A tesztadatot a `testData()` metódus segítségével tölthetjük be. Ez elérhető oldal-leírókban, tesztlépés-könyvtárakban és bővítmények
+inicializálásakor, a `PluginInitializer` interfészben is. JSON fájlból történő adatbetöltés esetén a `testData().fromJson(Class)`
+metódusláncot kell használnunk. Ennek megadható az egyedi azonosító is, a `withId(String)` metódussal. A végén a `load()` metódussal
+kell zárnunk a hívási láncot. Példa:
+
+```java
+User user = testData().fromJson(User.class).withId("valid").load().
+```
+
+Ennek a metódusláncnak az eredményeképp kapunk egy olyan (megadott típusú) objektumot, ami a rendelkezésre álló JSON fájlokban tárolt adatokat
+tartalmazza. Csak azok a fájlok lesznek figyelembevéve, amiknek a típusa és a címkéi megfelelőek. Először az azonosító nélküli fájlok töltődnek
+be, majd a betöltött értékeket felülírják az azonosítóval rendelkező fájlok. Ha több fájl létezik azonosítóval vagy anélkül, különböző címkékkel,
+akkor a betöltés sorrendje a címkék szerint ábécében történik. A fenti példához igazodva, "hu" és "prod" címkék megadásakor ezek a fájlok töltődnek
+be, és ilyen sorrendben:
+
+```
+user.json
+user.hu.json
+user.hu-prod.json
+user-valid.json
+user-valid.hu.json
+user-valid.hu-prod.json
+```
+
+A JSON fájlok egész komplex szerkezetűek is tudnak lenni, ezáltal képesek objektumstruktúra leírására is. A JSON fájl mezői lehetnek tömbök és
+más objektumok is. Ezek betöltődését tudjuk picit módosítani a két alábbi metódus segítségével.
+
+Az ibello alapértelmezésben a különböző betöltött fájlokban levő tömböket összeolvasztja. A `doNotJoinArrays()` metódussal ezt tudjuk megtiltani.
+Ennek hatására a később betöltött fájlok tömb mezői felülírják a korábban betöltöttekből érkezett adatot. Nézzünk egy példát! Tegyük fel, hogy
+az alábbi két JSON fájl egymás után töltődik be:
+
+```json
+{
+	"hobbies": ["fishing", "singing"]
+}
+```
+```json
+{
+	"hobbies": ["basketball"]
+}
+```
+
+Ha ezeket a `testData().fromJson(User.class).withId("valid").load()` hívás segítségével töltjük be, akkor a `hobbies` mező értéke háromelemű
+tömb (vagy lista) lesz: "fishing", "singing" és "basketball". Ha azonban a `testData().fromJson(User.class).withId("valid").doNotJoinArrays().load()`
+láncot használjuk, akkor a `hobbies` csak a "basketball" sztringet fogja tartalmazni.
+
+Hasonlóan, tesztadat betöltéskor az ibello alapértelmezésben az objektumokat is összefésüli. Ezt a `doNotMergeObjects()` metódussal tudjuk tiltani.
+Ilyenkor az utóbb betöltött objektumok felülírják az előbb betöltötteket. Egy példán kifejtve ezt:
+
+```json
+{
+	"mother": {
+		"name": "Jane Doe"
+	}
+}
+```
+```json
+{
+	"mother": {
+		"birthName": "Jane Butterfly"
+	}
+}
+```
+
+Ha ezt a két fájlt ebben a sorrendben a `testData().fromJson(User.class).withId("valid").load()` hívással töltjük be, akkor a `mother` mező
+értéke egy olyan objektum lesz, amiben a `name` tartalma "Jane Doe", a `birthName` tartalma pedig "Jane Butterfly". Ha azonban a
+`testData().fromJson(User.class).withId("valid").doNotMergeObjects().load()` lánccal történik a betöltés, akkor a `mother` mezőben csak a
+`birthName` lesz kitöltve, mivel az egész `mother` értéke felülíródik az utóbb betöltött fájl adataival.
+
+### Tesztadatok `properties` fájlokban
+
+Az előzőekben tárgyal tesztadat-betöltési módok keveréke a java `properties` fájlokból történő betöltés. A betöltendő fájlokat szintén az
+`ibello/data` könyvtárba kell elhelyezni. A kiterjesztésük `.properties`. A fájlnév felépítése:
+
+- Egy tetszőleges azonosítóval kezdődik. Ez tartalmazhat kötőjelet is.
+- Ezt opcionálisan egy pont és a használt címkék követik (kötőjellel elválasztva).
+
+A betöltést a `testData().fromProperties(String).load()` metódussal lehet elvégezni. A sztring paraméter az azonosító kell legyen.
+Csak azok a fájlok töltődnek be, amiknek nincs olyan címkéje, amit a tesztfuttatásnál *nem* adtunk meg.
+
+A betöltés eredménye itt nem egy tetszőleges java objektum lesz. Az eredmény `Values` típusú. Ettől az egyes értékeket a `getValue(String)`
+metódussal kérhetjük le. Ennek az eredménye pedig `Value` típusú lesz, csakúgy, mint a `getConfigurationValue(String)` metódusnál. Példa:
+
+```java
+Values values = testData().fromProperties("user-valid").load();
+String userName = values.getValue("user.valid.name").toString();
+boolean isMale = values.getValue("user.valid.male").toBoolean(false);
+int age = values.getValue("user.valid.age").toInteger(0);
+```
+
+A később betöltött fájlok adatai itt mindig felülírják a korábban betöltöttekét. (De ha egy érték nincs megadva egy később
+betöltött fájlban, akkor az természetesen nem törlődik.)
 
 ## Függőségek injektálása
 
