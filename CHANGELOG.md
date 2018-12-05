@@ -1,5 +1,9 @@
 # ibello-api changelog
 
+## 1.10.1
+
+- Test data files can be placed into sub-directories
+
 ## 1.10.0
 
 - Get information about elements with the help of `PageObject.checkThat(WebElement)` and `PageObject.get(WebElement)` methods

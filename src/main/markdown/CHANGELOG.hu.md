@@ -1,5 +1,9 @@
 # ibello-api változási napló
 
+## 1.10.1
+
+- A tesztadatokat tartalmazó fájlok alkönyvtárakban is elhelyezhetőek.
+
 ## 1.10.0
 
 - Információszerzés elemekről a `PageObject.checkThat(WebElement)` és a `PageObject.get(WebElement)` metódusok segítségével
