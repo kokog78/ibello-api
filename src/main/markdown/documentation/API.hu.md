@@ -1063,6 +1063,10 @@ A többi rész az alábbiak szerint épül fel:
   szerint a "user-valid.hu.json" a "valid" azonosítóval ellátott felhasználó adatait tartalmazza "hu" címke esetén, míg a
   "user-valid.en.json" ugyanezen felhasználó adatait "en" címke esetén.
 
+Arra is lehetőségünk van, hogy a JSON fájlokat ne közvetlenül az `ibello/data` könyvtárba helyezzük el, hanem azon belül alkönyvtárakat készítsünk, és
+azokba kerüljenek a fájlok. Az alkönyvtárak neve bármi lehet. Természetesen érdemes valamilyen rendszert használnunk, például az azonos
+adattípussal rendelkező JSON fájlok kerülhetnek egy alkönyvtárba.
+
 A tesztadatot a `testData()` metódus segítségével tölthetjük be. Ez elérhető oldal-leírókban, tesztlépés-könyvtárakban és bővítmények
 inicializálásakor, a `PluginInitializer` interfészben is. JSON fájlból történő adatbetöltés esetén a `testData().fromJson(Class)`
 metódusláncot kell használnunk. Ennek megadható az egyedi azonosító is, a `withId(String)` metódussal. A végén a `load()` metódussal
@@ -1147,6 +1151,8 @@ user-valid.properties
 user-valid.hu.properties
 user-valid.hu-prod.properties
 ```
+
+Itt is lehetőségünk van arra, hogy a fájlokat az `ibello/data` könyvtáron belül alkönyvtárakba csoportosítsuk.
 
 A betöltést a `testData().fromProperties(String).load()` metódussal lehet elvégezni. A sztring paraméter az azonosító kell legyen.
 Csak azok a fájlok töltődnek be, amiknek nincs olyan címkéje, amit a tesztfuttatásnál *nem* adtunk meg.

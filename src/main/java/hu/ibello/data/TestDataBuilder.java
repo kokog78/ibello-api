@@ -65,6 +65,9 @@ public interface TestDataBuilder {
 	 * <p>
 	 * If two loaded files have the same property, then the latest file's property will be in the final result.
 	 * </p>
+	 * <p>
+	 * The files can be placed into sub-directories, the loader will find them automatically.
+	 * </p>
 	 * @param fileNamePrefix file name prefix, cannot be <code>null</code>
 	 * @return a loader object which loads test data from a java property file
 	 */
@@ -109,6 +112,9 @@ public interface TestDataBuilder {
 	 * <li><code>myclass.a.json</code> will be loaded before <code>myclass.b.json</code></li>
 	 * <li><code>myclass.c.json</code> will be loaded before <code>myclass.a-b.json</code></li>
 	 * </ul>
+	 * <p>
+	 * The files can be placed into sub-directories, the loader will find them automatically.
+	 * </p>
 	 * <p>
 	 * By default, the objects loaded from the JSON files will be fully merged in the result. Element of arrays will be joined together.
 	 * For example, the first two JSON object will result the third one:
