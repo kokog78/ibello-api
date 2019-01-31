@@ -115,6 +115,9 @@ public void t1_check_basic_functions() {
 }
 ```
 
+A megnevezés mellett a metódusokhoz rövid leírást is lehet adni egy vagy több `@Description` annotáció segítségével. Az egyes annotációk
+értékei egyetlen szöveggé lesznek összefűzve.
+
 ## A tesztlépés-könyvtár
 
 A tesztlépés-könyvtár osztály a `StepLibrary` ősosztályból származik. Minden publikus metódusa tesztlépésnek számít. A metódusok neveit érdemes beszédesre választani.
