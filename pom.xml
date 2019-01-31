@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>hu.ibello</groupId>
 	<artifactId>ibello-api</artifactId>
-	<version>1.10.1</version>
+	<version>1.11.0</version>
 	<name>Ibello API</name>
 	<description>Ibello is an easy-to-use automated test framework for web applications. It's public API is ibello-api.</description>
 	<url>http://ibello.hu</url>

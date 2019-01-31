@@ -1,5 +1,9 @@
 # ibello-api változási napló
 
+## 1.11.0
+
+- Új `@Description` annotáció a tesztlépések és tesztlépés-könyvtárak rövid leírásához.
+
 ## 1.10.1
 
 - A tesztadatokat tartalmazó fájlok alkönyvtárakban is elhelyezhetőek.

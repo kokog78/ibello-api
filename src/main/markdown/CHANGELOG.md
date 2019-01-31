@@ -1,5 +1,9 @@
 # ibello-api changelog
 
+## 1.11.0
+
+- New `@Description` annotation for adding short description to step libraries and step methods
+
 ## 1.10.1
 
 - Test data files can be placed into sub-directories
