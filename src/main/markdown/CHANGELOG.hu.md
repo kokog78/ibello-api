@@ -2,7 +2,8 @@
 
 ## 1.11.0
 
-- Új `@Description` annotáció a tesztlépések és tesztlépés-könyvtárak rövid leírásához.
+- Új `@Description` annotáció a tesztlépések és tesztlépés-könyvtárak rövid leírásához
+- Új `@Model` annotáció a tesztadatok betöltését fogadó osztályok jelöléséhez
 
 ## 1.10.1
 

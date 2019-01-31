@@ -3,6 +3,7 @@
 ## 1.11.0
 
 - New `@Description` annotation for adding short description to step libraries and step methods
+- New `@Model` annotation for marking classes what are able to store loaded test data
 
 ## 1.10.1
 

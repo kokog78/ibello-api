@@ -1032,6 +1032,7 @@ olvassunk fel egész objektumokat. Ehhez először is készítenünk kell egy ja
 ilyesmiről van szó:
 
 ```java
+@Model
 public class User {
     public String name;
     public String firstName;
@@ -1040,6 +1041,9 @@ public class User {
     public int age;
 }
 ```
+
+Az osztályhoz itt hozzárendeltük a `@Model` annotációt. Ez nem kötelező, viszont ezzel jelölhetjük, hogy tesztadatokat tároló osztályról van szó.
+Ezt az információt az ibello bizonyos esetekben felhasználja, és könnyebbé teszi a számunkra a fejlesztést.
 
 Az osztály meghatározza a JSON fájlok struktúráját is. Például az előző objektumhoz ilyen JSON tartalom képzelhető el:
 
