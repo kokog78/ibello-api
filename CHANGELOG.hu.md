@@ -4,6 +4,7 @@
 
 - Új `@Description` annotáció a tesztlépések és tesztlépés-könyvtárak rövid leírásához
 - Új `@Model` annotáció a tesztadatok betöltését fogadó osztályok jelöléséhez
+- Új `timeout-ms` mező a teszteredményeket tartalmazó XML fájlban
 
 ## 1.10.1
 

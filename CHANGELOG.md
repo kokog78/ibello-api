@@ -4,6 +4,7 @@
 
 - New `@Description` annotation for adding short description to step libraries and step methods
 - New `@Model` annotation for marking classes what are able to store loaded test data
+- New `timeout-ms` attribute in the XML file containing the test results
 
 ## 1.10.1
 
