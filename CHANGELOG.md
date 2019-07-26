@@ -1,5 +1,9 @@
 # ibello-api changelog
 
+## 1.12.0
+
+- New `StepLibrary.output()` method for specifying text of custom actions and expectations
+
 ## 1.11.0
 
 - New `@Description` annotation for adding short description to step libraries and step methods

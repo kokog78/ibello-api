@@ -1,5 +1,9 @@
 # ibello-api változási napló
 
+## 1.12.0
+
+- Új `StepLibrary.output()` metódus egyedi műveletek és ellenőrzések szövegének megadására
+
 ## 1.11.0
 
 - Új `@Description` annotáció a tesztlépések és tesztlépés-könyvtárak rövid leírásához
