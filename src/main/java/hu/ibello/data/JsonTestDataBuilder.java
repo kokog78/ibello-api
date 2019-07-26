@@ -17,7 +17,7 @@ package hu.ibello.data;
 
 /**
  * <p>
- * This interface specifies a test data loader which loads data from a JSON files.
+ * This interface specifies a test data loader which loads data from JSON files.
  * JSON files are describing a complex structure, therefore the loaded result is
  * also a complex java object.
  * </p>
@@ -69,9 +69,15 @@ public interface JsonTestDataBuilder<T> {
 	public JsonTestDataBuilder<T> doNotMergeObjects();
 	
 	/**
-	 * Loads the test data from JSON file(s).
-	 * @return the loaded test data
+	 * Loads the test data from JSON file(s), and convert it to a java object.
+	 * @return the loaded test data as a java object
 	 */
 	public T load();
+	
+	/**
+	 * Loads the test data from JSON file(s).
+	 * @return the loaded test data as {@link String}
+	 */
+	public String loadString();
 	
 }

@@ -37,4 +37,10 @@ public interface PropertiesTestDataBuilder {
 	 * @return the loaded test data
 	 */
 	public Values load();
+	
+	/**
+	 * Loads the test data from java property file(s).
+	 * @return the loaded test data as {@link String}
+	 */
+	public String loadString();
 }

@@ -37,7 +37,7 @@ import java.lang.annotation.Target;
  * }
  * </pre>
  * <p>
- * If we use the annotation, then in some circumstances, the ibello will be able to notice
+ * If we use the annotation, then in some circumstances, the ibello will be able to recognize
  * that the class can be used to load test data into it.
  * </p>
  * @author Kornél Simon
