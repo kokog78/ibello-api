@@ -22,6 +22,7 @@ import hu.ibello.data.TestDataBuilder;
 import hu.ibello.inject.Inject;
 import hu.ibello.inject.Injectable;
 import hu.ibello.inject.Scope;
+import hu.ibello.output.OutputHandler;
 import hu.ibello.pages.PageObject;
 import hu.ibello.search.Window;
 
@@ -146,6 +147,27 @@ public abstract class StepLibrary extends WindowRelated {
 	 */
 	protected TestDataBuilder testData() {
 		return tool.testData();
+	}
+	
+	/**
+	 * Returns the output handler tool. With that we can add custom actions and expectations to the test report.
+	 * For example, a custom logging can be performed as:
+	 * <pre>
+	 * output().recordCustomAction("Username is " + username);
+	 * </pre>
+	 * We can do custom expectation with the following code (using the junit assertion library):
+	 * <pre>
+	 * org.junit.Assert.assertEquals("Username is wrong", "Martin", username);
+	 * output().recordCustomExpectation("Username is the expected " + username);
+	 * </pre>
+	 * This code will throw an {@link AssertionError}, if the username is not the expected one. (All {@link AssertionError} type
+	 * exceptions are handled by the ibello automatically.) If the username is correct, then the second row will add a
+	 * message to the test report.
+	 * @return the output handler instance
+	 * @see OutputHandler
+	 */
+	protected OutputHandler output() {
+		return tool.output();
 	}
 	
 }
