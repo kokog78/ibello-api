@@ -3,6 +3,8 @@
 ## 1.12.0
 
 - New `StepLibrary.output()` method for specifying text of custom actions and expectations
+- New `name-format` attribute in the XML file containing the test results
+- New `expectations().expect(WebElement).toHave().textOrValue(...)` method to check the text content or `value` attribute of an element
 
 ## 1.11.0
 

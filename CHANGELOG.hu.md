@@ -3,6 +3,8 @@
 ## 1.12.0
 
 - Új `StepLibrary.output()` metódus egyedi műveletek és ellenőrzések szövegének megadására
+- Új `name-format` mező a teszteredményeket tartalmazó XML fájlban
+- Új `expectations().expect(WebElement).toHave().textOrValue(...)` metódus szöveges tartalom vagy `value` attribútum vizsgálatához
 
 ## 1.11.0
 

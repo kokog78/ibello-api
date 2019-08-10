@@ -214,6 +214,32 @@ public interface WebElementHaveExpectations {
 	void text(Pattern pattern);
 
 	/**
+	 * An <em>expectation</em> which comes true when the element's text or <code>value</code> attribute is the given one.
+	 * If this not occurs during the timeout, an exception will be thrown,
+	 * all information will be logged and the current test will fail.
+	 * <p>
+	 * If the method was called after {@link WebElementExpectationBuilder#toNotHave()},
+	 * then the outcome of the expectation is the opposite: it will fail if the text is the given one.
+	 * </p>
+	 * @param value text value to check
+	 */
+	void textOrValue(String value);
+	
+	/**
+	 * An <em>expectation</em> which comes true when the element's text or <code>value</code> attribute  matches the given
+	 * regular expression.
+	 * If this not occurs during the timeout, an exception will be thrown,
+	 * all information will be logged and the current test will fail.
+	 * <p>
+	 * If the method was called after {@link WebElementExpectationBuilder#toNotHave()},
+	 * then the outcome of the expectation is the opposite: it will fail if the text matches
+	 * the regular expression.
+	 * </p>
+	 * @param pattern a regular expression
+	 */
+	void textOrValue(Pattern pattern);
+
+	/**
 	 * An <em>expectation</em> which comes true when the element is a dropdown list and the text of the
 	 * currently selected option is the given one.
 	 * If this not occurs during the timeout, an exception will be thrown,
