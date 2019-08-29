@@ -20,8 +20,9 @@ package hu.ibello.data;
  * Test data can be stored in java property file, or in JSON file.
  * According to the file format, we can start a loader operation with one of these methods:
  * <ul>
- * <li>{@link #fromProperties(String)}: for data loading from java property files</li>
- * <li>{@link #fromJson(Class)}: for data loading from JSON file</li>
+ * <li>{@link #fromProperties(String)}: data loading from java property file(s)</li>
+ * <li>{@link #fromJson(Class)}: data loading from JSON file(s)</li>
+ * <li>{@link #fromFile(String)}: data loading from any kind of file(s)</li>
  * </ul>
  * Data files are stored in the data directory. By default this is the <code>ibello/data</code>
  * folder, but we can change this with the <code>ibello.dir.data</code> configuration parameter.
@@ -153,5 +154,7 @@ public interface TestDataBuilder {
 	 * @return the parsed (and optionally merged) JSON data
 	 */
 	public <T> JsonTestDataBuilder<T> fromJson(Class<T> dataType);
+	
+	public FileTestDataBuilder fromFile(String fileName);
 	
 }

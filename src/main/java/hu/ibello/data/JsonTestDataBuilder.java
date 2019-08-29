@@ -26,12 +26,14 @@ package hu.ibello.data;
  * </p>
  * <p>
  * The {@link #load()} method returns the loaded instance.
+ * The {@link #loadString()} method returns the JSON content of the test data.
+ * The {@link #openStream()} method opens a stream which contains this content.
  * </p>
  * @see TestDataBuilder#fromJson(Class)
  * @author Kornél Simon
  *
  */
-public interface JsonTestDataBuilder<T> {
+public interface JsonTestDataBuilder<T> extends TestDataBuilderBase {
 
 	/**
 	 * With this method we can specify an optional identifier for the loaded JSON files.
@@ -76,6 +78,7 @@ public interface JsonTestDataBuilder<T> {
 	
 	/**
 	 * Loads the test data from JSON file(s).
+	 * If the test data cannot be found then returns <code>null</code>.
 	 * @return the loaded test data as {@link String}
 	 */
 	public String loadString();

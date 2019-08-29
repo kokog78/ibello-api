@@ -24,13 +24,15 @@ import hu.ibello.core.Values;
  * also a plain {@link Values} instance which stores key-value pairs.
  * </p>
  * <p>
- * The only method of this interface is the {@link #load()}. It returns the loaded {@link Values} instance.
+ * The main method of this interface is the {@link #load()}. It returns the loaded {@link Values} instance.
+ * The {@link #loadString()} method returns the property file content of the test data.
+ * The {@link #openStream()} method opens a stream which contains this content.
  * </p>
  * @see TestDataBuilder#fromProperties(String)
  * @author Kornél Simon
  *
  */
-public interface PropertiesTestDataBuilder {
+public interface PropertiesTestDataBuilder extends TestDataBuilderBase {
 
 	/**
 	 * Loads the test data from java property file(s).
@@ -40,6 +42,7 @@ public interface PropertiesTestDataBuilder {
 	
 	/**
 	 * Loads the test data from java property file(s).
+	 * If the test data cannot be found then returns <code>null</code>.
 	 * @return the loaded test data as {@link String}
 	 */
 	public String loadString();
