@@ -17,6 +17,8 @@ package hu.ibello.pages;
 
 import hu.ibello.actions.BrowserActionBuilder;
 import hu.ibello.actions.KeyHelper;
+import hu.ibello.actions.Task;
+import hu.ibello.actions.TaskRunner;
 import hu.ibello.actions.WebElementActionBuilder;
 import hu.ibello.check.WebElementChecker;
 import hu.ibello.check.WebElementGetter;
@@ -86,6 +88,13 @@ public interface PageObjectTool {
 	 * @return an interface configured for doing actions with the browser
 	 */
 	BrowserActionBuilder doWith(Browser browser);
+	
+	/**
+	 * Returns a {@link TaskRunner} instance which is a tool for execution of complex tasks.
+	 * The methods of this instance receive a {@link Task} object which encapsulates the complex logic.
+	 * @return an interface configured for doing complex tasks
+	 */
+	TaskRunner doTask();
 	
 	/**
 	 * Returns a {@link WebElementChecker} instance which can be used to inspect a {@link WebElement}'s state and have
