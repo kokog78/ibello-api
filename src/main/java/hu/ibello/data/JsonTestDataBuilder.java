@@ -33,7 +33,7 @@ package hu.ibello.data;
  * @author Kornél Simon
  *
  */
-public interface JsonTestDataBuilder<T> extends TestDataBuilderBase {
+public interface JsonTestDataBuilder<T> extends StringBasedBuilder {
 
 	/**
 	 * With this method we can specify an optional identifier for the loaded JSON files.

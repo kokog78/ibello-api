@@ -155,6 +155,8 @@ public interface TestDataBuilder {
 	 */
 	public <T> JsonTestDataBuilder<T> fromJson(Class<T> dataType);
 	
-	public FileTestDataBuilder fromFile(String fileName);
+	public TxtTestDataBuilder fromTxt(String fileNamePrefix);
+	
+	public BinaryTestDataBuilder fromBinary(String fileName);
 	
 }

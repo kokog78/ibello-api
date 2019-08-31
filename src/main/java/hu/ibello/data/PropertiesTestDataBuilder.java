@@ -32,7 +32,7 @@ import hu.ibello.core.Values;
  * @author Kornél Simon
  *
  */
-public interface PropertiesTestDataBuilder extends TestDataBuilderBase {
+public interface PropertiesTestDataBuilder extends StringBasedBuilder {
 
 	/**
 	 * Loads the test data from java property file(s).

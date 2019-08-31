@@ -11,7 +11,7 @@ import org.junit.Test;
 public class TestDataBuilderBaseTest {
 
 	private String content;
-	private TestDataBuilderBase base = new TestDataBuilderBase() {
+	private StringBasedBuilder base = new StringBasedBuilder() {
 		
 		@Override
 		public String loadString() {
