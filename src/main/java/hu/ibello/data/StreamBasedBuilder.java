@@ -24,6 +24,7 @@ public interface StreamBasedBuilder {
 	 * Opens a stream with the content of the test data.
 	 * If the test data cannot be found then returns <code>null</code>.
 	 * @return an opened stream or <code>null</code>
+	 * @throws IOException if the stream cannot be opened
 	 */
 	public InputStream openStream() throws IOException;
 }

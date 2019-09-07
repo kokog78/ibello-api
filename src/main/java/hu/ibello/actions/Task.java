@@ -18,7 +18,7 @@ package hu.ibello.actions;
 /**
  * This interface is designed for complex task execution.
  * It has only a {@link #run()} method which does something - similarly to java {@link Runnable} interface.
- * This one can throw exception.
+ * The method is allowed to throw an exception. If it does, the task will be considered as failed.
  * @author Kornél Simon
  * @see TaskRunner
  */
@@ -27,7 +27,7 @@ public interface Task {
 
 	/**
 	 * Executes something, which can throw an exception.
-	 * @throws Exception
+	 * @throws Exception the method is allowed to throw an exception
 	 */
 	public void run() throws Exception;
 }

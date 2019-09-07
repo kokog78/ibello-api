@@ -22,7 +22,7 @@ package hu.ibello.data;
  * <ul>
  * <li>{@link #fromProperties(String)}: data loading from java property file(s)</li>
  * <li>{@link #fromJson(Class)}: data loading from JSON file(s)</li>
- * <li>{@link #fromFile(String)}: data loading from any kind of file(s)</li>
+ * <li>{@link #fromBinary(String)}: data loading from any kind of file(s)</li>
  * </ul>
  * Data files are stored in the data directory. By default this is the <code>ibello/data</code>
  * folder, but we can change this with the <code>ibello.dir.data</code> configuration parameter.
