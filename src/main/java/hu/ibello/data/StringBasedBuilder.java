@@ -27,13 +27,15 @@ public interface StringBasedBuilder extends StreamBasedBuilder {
 	 * For this, the UTF-8 character set is used.
 	 * If the test data cannot be found then returns <code>null</code>.
 	 * @return the loaded test data as {@link String}
+	 * @throws IOException if the test data cannot be loaded due to an I/O error
 	 */
-	public String loadString();
+	public String loadString() throws IOException;
 	
 	/**
 	 * Opens a stream with the UTF-8 content of the test data.
 	 * If the test data cannot be found then returns <code>null</code>.
 	 * @return an opened stream or <code>null</code>
+	 * @throws IOException if the stream cannot be opened due to an I/O error
 	 */
 	public default InputStream openStream() throws IOException {
 		String content = loadString();
