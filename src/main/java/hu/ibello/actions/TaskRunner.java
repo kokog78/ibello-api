@@ -17,6 +17,16 @@ package hu.ibello.actions;
 
 import hu.ibello.core.TimeoutRelated;
 
+/**
+ * <p>
+ * Executes a single task multiple times. The task itself is specified with the {@link Task} interface.
+ * </p><p>
+ * The methods of this interface are paying respect to the ibello timeout settings. With the {@link #withTimeout(Enum)}
+ * or {@link #withTimeout(String)} methods we can specify a concrete timeout value. If we don't do that then the default timeout will be used.
+ * </p>
+ * @author kokog
+ *
+ */
 public interface TaskRunner extends TimeoutRelated<TaskRunner> {
 
 	public void untilSucceeds(Task task);

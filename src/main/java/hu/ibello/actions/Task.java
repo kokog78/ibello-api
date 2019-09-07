@@ -20,7 +20,7 @@ package hu.ibello.actions;
  * It has only a {@link #run()} method which does something - similarly to java {@link Runnable} interface.
  * This one can throw exception.
  * @author Kornél Simon
- *
+ * @see TaskRunner
  */
 @FunctionalInterface
 public interface Task {
