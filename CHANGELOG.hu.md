@@ -1,5 +1,14 @@
 # ibello-api változási napló
 
+## 1.12.0
+
+- Új `PageObject.repeat(Task)` metódus, amivel adott feladatot lehet ismételtetni
+- Új `WebElementHaveExpectations.textOrValue(...)` metódusok elemek szövegének vagy értékének ellenőrzéséhez
+- Új `testData().fromTxt(String)` metódus szöveges tesztadat beolvasására
+- Új `testData().fromBinary(String)` bináris tesztadat beolvasására
+- Új `testData().fromProperties(String).loadString()` és `testData().fromJson(Class).loadString()` metódusok komplex tesztadatok szöveges formában történő beolvasásához
+- Új `testData().fromProperties(String).openStream()` és `testData().fromJson(Class).openStream()` metódusok komplex tesztadatok beolvasásához
+
 ## 1.11.0
 
 - Új `@Description` annotáció a tesztlépések és tesztlépés-könyvtárak rövid leírásához

@@ -1,5 +1,14 @@
 # ibello-api changelog
 
+## 1.12.0
+
+- New `PageObject.repeat(Task)` method which is able to repeat the given task multiple times
+- New `WebElementHaveExpectations.textOrValue(...)` methods for verifying element's text or value
+- New `testData().fromTxt(String)` method for loading textual test data
+- New `testData().fromBinary(String)` method for loading binary test data
+- New `testData().fromProperties(String).loadString()` and `testData().fromJson(Class).loadString()` methods for loading complex test data as text
+- New `testData().fromProperties(String).openStream()` and `testData().fromJson(Class).openStream()` methods for loading complex test data as stream
+
 ## 1.11.0
 
 - New `@Description` annotation for adding short description to step libraries and step methods
