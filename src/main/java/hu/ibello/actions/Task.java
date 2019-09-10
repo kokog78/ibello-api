@@ -20,7 +20,7 @@ package hu.ibello.actions;
  * It has only a {@link #run()} method which does something - similarly to java {@link Runnable} interface.
  * The method is allowed to throw an exception. If it does, the task will be considered as failed.
  * @author Kornél Simon
- * @see TaskRunner
+ * @see TaskRepeater
  */
 @FunctionalInterface
 public interface Task {

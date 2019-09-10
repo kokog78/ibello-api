@@ -24,13 +24,24 @@ import hu.ibello.core.TimeoutRelated;
  * The methods of this interface are paying respect to the ibello timeout settings. With the {@link #withTimeout(Enum)}
  * or {@link #withTimeout(String)} methods we can specify a concrete timeout value. If we don't do that then the default timeout will be used.
  * </p>
- * @author kokog
+ * <p>
+ * With the {@link #untilSucceeds()} and {@link #untilFails()} methods we can start the repeat process - with a specific exit condition.
+ * </p>
+ * @author Kornél Simon
  *
  */
-public interface TaskRunner extends TimeoutRelated<TaskRunner> {
+public interface TaskRepeater extends TimeoutRelated<TaskRepeater> {
 
-	public void untilSucceeds(Task task);
+	/**
+	 * Repeats the task until it succeeds or the time ends.
+	 * If the task fails during the timeout, it will be executed again.
+	 */
+	public void untilSucceeds();
 	
-	public void untilFails(Task task);
+	/**
+	 * Repeats the task until it fails or the time ends.
+	 * If the task succeeds during the timeout, it will be executed again.
+	 */
+	public void untilFails();
 	
 }
