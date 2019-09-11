@@ -82,7 +82,7 @@ public interface TestDataBuilder {
 	 * <p>
 	 * The name of the file starts with the lower-case name of the java class (without package name).
 	 * It may be followed by a dash sign and an identifier. Then comes a dot. At this position the file name may
-	 * contain tags, separated by dash signs. The extension of the file is always <code>.json</code>. Examples:
+	 * contain tags, separated by dash signs. The extension of the file is always <code>json</code>. Examples:
 	 * </p>
 	 * <ul>
 	 * <li><code>myclass.json</code></li>
@@ -98,7 +98,7 @@ public interface TestDataBuilder {
 	 * </p>
 	 * <p>
 	 * Each loaded files should have the class name prefix. If an identifier was specified, then the prefix should be
-	 * followed by a dash sign and the identifier. If a file name also have tags, then they will be validated
+	 * followed by a dash sign and the identifier. If a file name also have tags, then it will be validated
 	 * against the current ibello tags. If a file has a tag which was <b>not</b> specified as an ibello tag, then
 	 * that file will be <b>not</b> loaded. In other words, loaded files should not have unspecified tags.
 	 * </p>
@@ -151,12 +151,92 @@ public interface TestDataBuilder {
 	 * </p>
 	 * @param <T> type of the result object
 	 * @param dataType type of the result object
-	 * @return the parsed (and optionally merged) JSON data
+	 * @return object which loads the parsed (and optionally merged) JSON data
 	 */
 	public <T> JsonTestDataBuilder<T> fromJson(Class<T> dataType);
 	
+	/**
+	 * <p>
+	 * Returns an object which can be used to load test data from a TXT file.
+	 * For that, we must specify a prefix for the loaded file.
+	 * </p>
+	 * <p>
+	 * The name of the loaded file starts with the given prefix. Then comes a dot. Optionally, one or more tags can be
+	 * added to the name here, separated by dash signs. The extension of the file is always <code>txt</code>. Examples:
+	 * </p>
+	 * <ul>
+	 * <li><code>myprefix.txt</code></li>
+	 * <li><code>myprefix.tag1.txt</code></li>
+	 * <li><code>myprefix.tag1-tag2.txt</code></li>
+	 * </ul>
+	 * <p>
+	 * During the loading process, the loader creates a list of available and matching files,
+	 * then it sorts them by precedence. Only the last one will be loaded.
+	 * </p>
+	 * <p>
+	 * If a file name have tags, then it will be validated
+	 * against the current ibello tags. If a file has a tag which was <b>not</b> specified as an ibello tag, then
+	 * that file will be <b>not</b> selected. In other words, selected files should not have unspecified tags.
+	 * </p>
+	 * <p>
+	 * The first selected file will be the one without tags (if any). Then come the files
+	 * with one or more tags (in alphabetical order). Examples:
+	 * </p>
+	 * <ul>
+	 * <li><code>myprefix.txt</code> is before <code>myprefix.a.txt</code></li>
+	 * <li><code>myprefix.a.txt</code> is before <code>myprefix-id.txt</code></li>
+	 * <li><code>myprefix.a.txt</code> is before <code>myprefix.b.txt</code></li>
+	 * <li><code>myprefix.c.txt</code> is before <code>myprefix.a-b.txt</code></li>
+	 * </ul>
+	 * <p>
+	 * The files can be placed into sub-directories, the loader will find them automatically.
+	 * </p>
+	 * @param fileNamePrefix prefix of the file name
+	 * @return the object which loads the text data from a file
+	 */
 	public TxtTestDataBuilder fromTxt(String fileNamePrefix);
 	
+	/**
+	 * <p>
+	 * Returns an object which can be used to load test data from a binary file.
+	 * For that, we must specify the name of the loaded file.
+	 * </p>
+	 * <p>
+	 * The loader uses the given file name as a template for the finally loaded file. Based on that,
+	 * it creates a list of available and matching files,
+	 * then it sorts them by precedence. Only the last one will be loaded.
+	 * </p>
+	 * <p>
+	 * The name of the selected files should have the same extension as the given file name, and should start with the first part
+	 * of that name. Between them, optionally, one or more tags can be included, separated by dash signs. Between the first part and the
+	 * tags there should be a dot. For example, if the given file name is <code>myfile.dat</code>, then these files can be selected:
+	 * </p>
+	 * <ul>
+	 * <li><code>myfile.dat</code></li>
+	 * <li><code>myfile.tag1.dat</code></li>
+	 * <li><code>myfile.tag1-tag2.dat</code></li>
+	 * </ul>
+	 * <p>
+	 * If a file name have tags, then it will be validated
+	 * against the current ibello tags. If a file has a tag which was <b>not</b> specified as an ibello tag, then
+	 * that file will be <b>not</b> selected. In other words, selected files should not have unspecified tags.
+	 * </p>
+	 * <p>
+	 * The first selected file will be the one without tags (if any). Then come the files
+	 * with one or more tags (in alphabetical order). Examples:
+	 * </p>
+	 * <ul>
+	 * <li><code>myfile.dat</code> is before <code>myfile.a.dat</code></li>
+	 * <li><code>myfile.a.dat</code> is before <code>myfile-id.dat</code></li>
+	 * <li><code>myfile.a.dat</code> is before <code>myfile.b.dat</code></li>
+	 * <li><code>myfile.c.dat</code> is before <code>myfile.a-b.dat</code></li>
+	 * </ul>
+	 * <p>
+	 * The files can be placed into sub-directories, the loader will find them automatically.
+	 * </p>
+	 * @param fileName the name of the loaded file, with extension
+	 * @return the object which loads the binary data from a file
+	 */
 	public BinaryTestDataBuilder fromBinary(String fileName);
 	
 }
