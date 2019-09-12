@@ -18,10 +18,18 @@ package hu.ibello.data;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
-public interface StringBasedBuilder extends StreamBasedBuilder {
+public interface StringBasedBuilder<B extends StringBasedBuilder<?>> extends StreamBasedBuilder {
 
+	/**
+	 * Set the character set which is used to transform the loaded file into string.
+	 * @param charset a java character set
+	 * @return the builder instance
+	 */
+	public B withCharset(Charset charset);
+	
 	/**
 	 * Loads the test data from the target file.
 	 * For this, the UTF-8 character set is used.

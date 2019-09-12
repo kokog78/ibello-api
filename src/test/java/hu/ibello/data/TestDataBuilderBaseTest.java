@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
 import org.junit.Test;
@@ -11,11 +12,16 @@ import org.junit.Test;
 public class TestDataBuilderBaseTest {
 
 	private String content;
-	private StringBasedBuilder base = new StringBasedBuilder() {
+	private StringBasedBuilder<?> base = new StringBasedBuilder() {
 		
 		@Override
 		public String loadString() {
 			return content;
+		}
+		
+		@Override
+		public StringBasedBuilder<?> withCharset(Charset charset) {
+			return base;
 		}
 	};
 	
