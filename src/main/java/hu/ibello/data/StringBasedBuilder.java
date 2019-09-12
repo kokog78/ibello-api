@@ -15,11 +15,8 @@
  */
 package hu.ibello.data;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 
 public interface StringBasedBuilder<B extends StringBasedBuilder<?>> extends StreamBasedBuilder {
 
@@ -39,18 +36,4 @@ public interface StringBasedBuilder<B extends StringBasedBuilder<?>> extends Str
 	 */
 	public String loadString() throws IOException;
 	
-	/**
-	 * Opens a stream with the UTF-8 content of the test data.
-	 * If the test data cannot be found then returns <code>null</code>.
-	 * @return an opened stream or <code>null</code>
-	 * @throws IOException if the stream cannot be opened due to an I/O error
-	 */
-	public default InputStream openStream() throws IOException {
-		String content = loadString();
-		if (content != null) {
-			return new ByteArrayInputStream(content.getBytes(StandardCharsets.UTF_8));
-		} else {
-			return null;
-		}
-	}
 }

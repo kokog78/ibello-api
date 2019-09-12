@@ -3,6 +3,7 @@ package hu.ibello.data;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -17,6 +18,11 @@ public class TestDataBuilderBaseTest {
 		@Override
 		public String loadString() {
 			return content;
+		}
+		
+		@Override
+		public InputStream openStream() throws IOException {
+			return content == null ? null : new ByteArrayInputStream(content.getBytes(StandardCharsets.UTF_8));
 		}
 		
 		@Override
