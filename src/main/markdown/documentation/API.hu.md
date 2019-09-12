@@ -1030,11 +1030,15 @@ boolean isMale = getConfigurationValue("user.valid.male").toBoolean(false);
 int age = getConfigurationValue("user.valid.age").toInteger(0);
 ```
 
-### Tesztadatok JSON fájlokban
+### Tesztadatok fájlokban
 
-Komplex tesztadatokat már nehézkesebb konfigurációs fájlokban tárolni, ezért az ibello lehetőséget ad arra is, hogy JSON formátumú fájlokból
-olvassunk fel egész objektumokat. Ehhez először is készítenünk kell egy java osztályt, ami leírja a tesztadatot. Az előbbi példát továbbgondolva
-ilyesmiről van szó:
+Az ibello képes arra, hogy különböző típusú fájlokból tesztadatokat töltsön be. Ezek a fájlok az `ibello/data` mappán belül helyezkednek el.
+Akár almappákat is létrehozhatunk (tetszőleges névvel), és azokba tehetjük a fájlokat - az ibello úgy is megtalálja azokat.
+
+#### Tesztadatok JSON fájlokban
+
+Az ibello JSON formátumú fájlokból egész objektumokat tud felolvasni. Ehhez először is készítenünk kell egy java osztályt,
+ami leírja a tesztadatot. Az előbbi példát továbbgondolva ilyesmiről van szó:
 
 ```java
 @Model
@@ -1062,7 +1066,7 @@ Az osztály meghatározza a JSON fájlok struktúráját is. Például az előz�
 }
 ```
 
-A JSON fájlokat az `ibello/data` könyvtárban kell elhelyezni. A nevüknek is szabályszerűnek kell lennie. A kiterjesztés legyen ".json".
+A fájlok nevének szabályszerűnek kell lennie. A kiterjesztés legyen ".json".
 A többi rész az alábbiak szerint épül fel:
 
 - A fájl neve annak az osztálynak a rövid és kisbetűsre alakított nevével kezdődik, amivé a tesztadatot alakítani szeretnénk.
@@ -1074,10 +1078,6 @@ A többi rész az alábbiak szerint épül fel:
   Azok a fájlok, amiknek a nevében olyan címke szerepel, amit a tesztfuttatáskor *nem* adtunk meg, nem fognak betöltődni. A fenti példa
   szerint a "user-valid.hu.json" a "valid" azonosítóval ellátott felhasználó adatait tartalmazza "hu" címke esetén, míg a
   "user-valid.en.json" ugyanezen felhasználó adatait "en" címke esetén.
-
-Arra is lehetőségünk van, hogy a JSON fájlokat ne közvetlenül az `ibello/data` könyvtárba helyezzük el, hanem azon belül alkönyvtárakat készítsünk, és
-azokba kerüljenek a fájlok. Az alkönyvtárak neve bármi lehet. Természetesen érdemes valamilyen rendszert használnunk, például az azonos
-adattípussal rendelkező JSON fájlok kerülhetnek egy alkönyvtárba.
 
 A tesztadatot a `testData()` metódus segítségével tölthetjük be. Ez elérhető oldal-leírókban, tesztlépés-könyvtárakban és bővítmények
 inicializálásakor, a `PluginInitializer` interfészben is. JSON fájlból történő adatbetöltés esetén a `testData().fromJson(Class)`
@@ -1148,10 +1148,23 @@ Ha ezt a két fájlt ebben a sorrendben a `testData().fromJson(User.class).withI
 `testData().fromJson(User.class).withId("valid").doNotMergeObjects().load()` lánccal történik a betöltés, akkor a `mother` mezőben csak a
 `birthName` lesz kitöltve, mivel az egész `mother` értéke felülíródik az utóbb betöltött fájl adataival.
 
-### Tesztadatok `properties` fájlokban
+Az ibello alapértelmezés szerint UTF-8 karakterkódolással próbálja betölteni a JSON fájlokban tárolt információkat. Ha ezen változtatni szeretnénk,
+akkor a `withCharset(Charset)` metódust kell meghívnunk. Például:
 
-Az előzőekben tárgyal tesztadat-betöltési módok keveréke a java `properties` fájlokból történő betöltés. A betöltendő fájlokat szintén az
-`ibello/data` könyvtárba kell elhelyezni. A kiterjesztésük ".properties". A fájlnév felépítése:
+```java
+testData().fromJson(User.class).withId("valid").withCharset(StandardCharsets.ISO_8859_1).load();
+```
+
+A `load()` metódus helyett a hívási láncot zárhatjuk `loadString()` metódussal is. Ekkor nem objektumot kapunk, hanem egy szöveges értéket,
+ami a tesztadat JSON reprezentációját tartalmazza.
+
+Ha a hívási láncot az `openStream()` metódussal zárjuk, akkor egy `InputStream` típusú nyitott adatfolyamot kapunk, amiből kiolvashatjuk a
+JSON formátumú tartalmat.
+
+#### Tesztadatok `properties` fájlokban
+
+Az előzőekben tárgyal tesztadat-betöltési módok keveréke a java `properties` fájlokból történő betöltés. A betöltendő fájlok kiterjesztése
+".properties". A fájlnév felépítése:
 
 - Egy tetszőleges azonosítóval kezdődik. Ez tartalmazhat kötőjelet is.
 - Ezt opcionálisan egy pont és a használt címkék követik (kötőjellel elválasztva).
@@ -1163,8 +1176,6 @@ user-valid.properties
 user-valid.hu.properties
 user-valid.hu-prod.properties
 ```
-
-Itt is lehetőségünk van arra, hogy a fájlokat az `ibello/data` könyvtáron belül alkönyvtárakba csoportosítsuk.
 
 A betöltést a `testData().fromProperties(String).load()` metódussal lehet elvégezni. A sztring paraméter az azonosító kell legyen.
 Csak azok a fájlok töltődnek be, amiknek nincs olyan címkéje, amit a tesztfuttatásnál *nem* adtunk meg.
@@ -1181,6 +1192,19 @@ int age = values.getValue("user.valid.age").toInteger(0);
 
 A később betöltött fájlok adatai itt mindig felülírják a korábban betöltöttekét. (De ha egy érték nincs megadva egy később
 betöltött fájlban, akkor az természetesen nem törlődik.)
+
+Az ibello alapértelmezés szerint UTF-8 karakterkódolással próbálja betölteni a fájlokban tárolt információkat. Ha ezen változtatni szeretnénk,
+akkor a `withCharset(Charset)` metódust kell meghívnunk. Például:
+
+```java
+testData().fromProperties("user-valid").withCharset(StandardCharsets.ISO_8859_1).load();
+```
+
+A `load()` metódus helyett a hívási láncot zárhatjuk `loadString()` metódussal is. Ekkor nem objektumot kapunk, hanem egy szöveges értéket,
+ami a tesztadatokat `properties` fájl formában tartalmazza.
+
+Ha a hívási láncot az `openStream()` metódussal zárjuk, akkor egy `InputStream` típusú nyitott adatfolyamot kapunk, amiből kiolvashatjuk a
+szöveges tartalmat tartalmat.
 
 ## Függőségek injektálása
 
