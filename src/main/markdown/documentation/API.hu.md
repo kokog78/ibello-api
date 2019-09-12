@@ -598,6 +598,10 @@ doWith(button).withPageRefreshWait().click();
 | `dragAndDropTo(WebElement)` | "Fog és vidd" művelettel az elemet a paraméterben megadott másik elemre húzza. |
 | `scrollTo(WebElement)`      | Az elem görgetése úgy, hogy a paraméterben megadott másik elem látható legyen  |
 
+A `scrollTo(WebElement)` művelet olyan esetben használható, amikor egy konténer elemben görgetősávok vannak. Ez eléggé elterjedt gyakorlat,
+sok webalkalmazásban nem a teljes oldal görgethető, hanem annak egy része (egy konténer). Egy ilyen konténer görgetősávjait olyan
+állapotba hozhatjuk, hogy a konténerben levő gyerekelem látható legyen. Mindezt a `doWith(konténer).scrollTo(gyerekelem)` metódusláncal érjük el.
+
 ### Billentyűzet művelet
 
 Billentyűzet műveleteket a `sendKeys(...)` metódussal tudunk kiváltani. A metódus tetszőleges számú `CharSequence` típusú paramétert kaphat, amiket sorban elküld az elemnek,
@@ -734,24 +738,25 @@ szöveget adjanak ki.
 
 Az előző metódust követi a tulajdonság megnevezése. A lehetséges tulajdonságok a vizsgált objektum típusától függenek. `WebElement` típus esetén ezek érhetőek el:
 
-| Metódus                        | Jelentés                                                                                |
-| ------------------------------ | --------------------------------------------------------------------------------------- |
-| `id(...)`                      | Az elem `id` attribútuma a megadott értékkel rendelkezik.                               |
-| `value(...)`                   | Az elem `value` attribútuma a megadott értékkel rendelkezik.                            |
-| `fileName(...)`                | Az elem `input type=file` típusú, és a kiválasztott fájl a megadott névvel rendelkezik. |
-| `attribute(...)`               | Az elem rendelkezik a megadott nevű attribútummal.                                      |
-| `attributeWithValue(..., ...)` | Az elem adott attribútuma a megadott értéket veszi fel.                                 |
-| `tagName(...)`                 | Az elem a megadott típusú.                                                              |
-| `cssClassName(...)`            | Az elem rendelkezik a megadott CSS osztálynévvel.                                       |
-| `cssValue(..., ...)`           | Az elem adott CSS tulajdonsága a megadott értéket veszi fel.                            |
-| `text(...)`                    | Az elem tartalma a megadott.                                                            |
-| `cssClassName(...)`            | Az elem rendelkezik a megadott CSS osztálynévvel.                                       |
-| `displayed()`                  | Az elem láthatósága.                                                                    |
-| `enabled()`                    | Az elem engedélyezett / nem engedélyezett állapota.                                     |
-| `readonly()`                   | Az elem csak olvasható / írható állapota. Nem engedélyezett elem mindig csak olvasható. |
-| `clickable()`                  | Az elem kattinthatósága.                                                                |
-| `selected()`                   | Az elem kiválasztott / nem kiválasztott állapota.                                       |
-| `present()`                    | Az elem jelenléte a DOM-ban.                                                            |
+| Metódus                        | Jelentés                                                                                                                   |
+| ------------------------------ | -------------------------------------------------------------------------------------------------------------------------- |
+| `id(...)`                      | Az elem `id` attribútuma a megadott értékkel rendelkezik.                                                                  |
+| `value(...)`                   | Az elem `value` attribútuma a megadott értékkel rendelkezik.                                                               |
+| `fileName(...)`                | Az elem `input type=file` típusú, és a kiválasztott fájl a megadott névvel rendelkezik.                                    |
+| `attribute(...)`               | Az elem rendelkezik a megadott nevű attribútummal.                                                                         |
+| `attributeWithValue(..., ...)` | Az elem adott attribútuma a megadott értéket veszi fel.                                                                    |
+| `tagName(...)`                 | Az elem a megadott típusú.                                                                                                 |
+| `cssClassName(...)`            | Az elem rendelkezik a megadott CSS osztálynévvel.                                                                          |
+| `cssValue(..., ...)`           | Az elem adott CSS tulajdonsága a megadott értéket veszi fel.                                                               |
+| `text(...)`                    | Az elem tartalma a megadott szöveg (vagy megfelel a megadptt reguláris kifejezésnek).                                      |
+| `textOrValue(...)`             | Egyesíti a `text(...)` és a `value(...)` metódusokat. Vagy az elem tartalmát, vagy a `value` attribútum értékét ellenőrzi. |
+| `cssClassName(...)`            | Az elem rendelkezik a megadott CSS osztálynévvel.                                                                          |
+| `displayed()`                  | Az elem láthatósága.                                                                                                       |
+| `enabled()`                    | Az elem engedélyezett / nem engedélyezett állapota.                                                                        |
+| `readonly()`                   | Az elem csak olvasható / írható állapota. Nem engedélyezett elem mindig csak olvasható.                                    |
+| `clickable()`                  | Az elem kattinthatósága.                                                                                                   |
+| `selected()`                   | Az elem kiválasztott / nem kiválasztott állapota.                                                                          |
+| `present()`                    | Az elem jelenléte a DOM-ban.                                                                                               |
 
 Példák:
 
