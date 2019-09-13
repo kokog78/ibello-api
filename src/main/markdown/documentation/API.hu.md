@@ -889,7 +889,7 @@ repeat(() -> {
 ```
 
 Az alapértelmezett időtúllépés lejárta után a művelet kivétellel zárul. A `withTimeout(...)` metódussal megadhatunk saját időtúllépést is,
-még az `untilSucceeds()` és au `untilFails()` hívása előtt:
+még az `untilSucceeds()` és az `untilFails()` hívása előtt:
 
 ```java
 repeat(...).withTimeout(CustomTimeout.PAGE_LOADING).untilSucceeds();
