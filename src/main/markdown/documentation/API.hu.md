@@ -871,6 +871,30 @@ létrehozva, akkor a teszt futása is végetér, míg ha `assume(...)` metóduss
 Az `any(...)` metódussal létrehozott összetett ellenőrzéseknél kicsit más a helyzet. Ha a befoglalt ellenőrzések között akár egyetlen olyan is akad, amit `expect(...)` metódussal
 hoztunk létre, akkor a tesztfutás félbe fog szakadni akkor, amikor az összetett ellenőrzés elbukik. (Ilyenkor ugyanis biztos, hogy a kényszer-ellenőrzés is elbukott.)
 
+## Műveletek ismétlése
+
+Lehetőségünk van arra, hogy - időtúllépés figyelembevételével - többször egymás után lefuttassunk egy tetszőleges kódot. A rendszer újra és újra
+lefuttatja a kódot, egészen addig, amíg a kilépési feltétel nem teljesül, vagy a rendelkezésre álló idő le nem telik. Az egyes futtatások között
+rövid ideig várakozik.
+
+Az ismétlést a `repeat(Task).untilSucceeds()` és a `repeat(Task).untilFails()` hívási lánccal lehet elvégezni. Az első verzió akkor fejezi be a futtatást,
+amikor a kód először sikeresen lefut, míg a második akkor, amikor először kivételt dob. A kódot a `Task` interfésszel kell megadni, aminek egyetlen
+`run()` metódusa van - ezt kell implementálni. Példa:
+
+```java
+repeat(() -> {
+	doWith(button).click();
+	expectations().expect(image).toBe().displayed();
+}).untilSucceeds();
+```
+
+Az alapértelmezett időtúllépés lejárta után a művelet kivétellel zárul. A `withTimeout(...)` metódussal megadhatunk saját időtúllépést is,
+még az `untilSucceeds()` és au `untilFails()` hívása előtt:
+
+```java
+repeat(...).withTimeout(CustomTimeout.PAGE_LOADING).untilSucceeds();
+```
+
 ## Értéklekérések
 
 Az ibello arra is lehetőséget ad, hogy egy-egy elem valamely tulajdonságát visszakapjuk. Ehhez az oldal-leírók kétféle metódusát használhatjuk.
@@ -1163,11 +1187,11 @@ JSON formátumú tartalmat.
 
 #### Tesztadatok `properties` fájlokban
 
-Az előzőekben tárgyal tesztadat-betöltési módok keveréke a java `properties` fájlokból történő betöltés. A betöltendő fájlok kiterjesztése
-".properties". A fájlnév felépítése:
+Az előzőekben tárgyal tesztadat-betöltési módok keveréke a java `properties` fájlokból történő betöltés. A fájlnév felépítése:
 
 - Egy tetszőleges azonosítóval kezdődik. Ez tartalmazhat kötőjelet is.
 - Ezt opcionálisan egy pont és a használt címkék követik (kötőjellel elválasztva).
+- Végül a ".properties" kiterjesztés zárja.
 
 Példák:
 
@@ -1204,7 +1228,60 @@ A `load()` metódus helyett a hívási láncot zárhatjuk `loadString()` metódu
 ami a tesztadatokat `properties` fájl formában tartalmazza.
 
 Ha a hívási láncot az `openStream()` metódussal zárjuk, akkor egy `InputStream` típusú nyitott adatfolyamot kapunk, amiből kiolvashatjuk a
-szöveges tartalmat tartalmat.
+szöveges tartalmat.
+
+#### Tesztadatok szövegfájlokban
+
+Egyes esetekben nem strukturált adatra van szükségünk, hanem csak szövegre. Ezt ".txt" kiterjesztésű fájlokban tárolhatjuk. A fájlnév felépítése:
+
+- Egy tetszőleges azonosítóval kezdődik. Ez tartalmazhat kötőjelet is.
+- Ezt opcionálisan egy pont és a használt címkék követik (kötőjellel elválasztva).
+- Végül a ".txt" kiterjesztés zárja.
+
+Példák:
+
+```
+message.txt
+message.hu.txt
+message.hu-prod.txt
+```
+
+A betöltést a `testData().fromTxt(String).loadString()` metódussal lehet elvégezni. A sztring paraméter az azonosító kell legyen.
+Az eszköz csak azokat a fájlokat veszi figyelembe, amiknek nincs olyan címkéje, amit a tesztfuttatásnál *nem* adtunk meg. Az azonosítóhoz
+(és a címkékhez) passzoló fájlok közül a legutolsó lesz csak betöltve.
+
+Az ibello alapértelmezés szerint UTF-8 karakterkódolással próbálja betölteni a fájlokban tárolt információkat. Ha ezen változtatni szeretnénk,
+akkor a `withCharset(Charset)` metódust kell meghívnunk. Például:
+
+```java
+testData().fromTxt("message").withCharset(StandardCharsets.ISO_8859_1).loadString();
+```
+
+Ha a hívási láncot az `openStream()` metódussal zárjuk, akkor egy `InputStream` típusú nyitott adatfolyamot kapunk, amiből kiolvashatjuk a
+szöveges tartalmat.
+
+#### Tesztadatok bináris fájlokban
+
+Bináris fájlokból is végezhetünk adatbetöltést. Ehhez egy tetszőleges fájlnevet kell megadnunk, kiterjesztéssel együtt, amit a rendszer sablonként
+használ majd. Azokat a fájlokat keresi, amiknek a neve:
+
+- a megadott sablon első részével (a kiterjesztés előtti rész) kezdődik,
+- ez után opcionálisan egy pont következik, majd a használt címkék (kötőjellel elválasztva),
+- végül a megadott kiterjesztéssel végződik.
+
+Például, ha a "file.dat" nevet adjuk meg, akkor ezek a fájlok mind szóba jöhetnek a keresésnél:
+
+```
+file.dat
+file.hu.dat
+file.hu-prod.dat
+```
+
+A betöltést a `testData().fromBinary(String).openStream()` metódussal által visszaadott `InpusStream` példányon lehet elvégezni.
+Az eszköz csak azokat a fájlokat veszi figyelembe, amiknek nincs olyan címkéje, amit a tesztfuttatásnál *nem* adtunk meg. A megadott névhez
+(és a címkékhez) passzoló fájlok közül a legutolsó lesz csak betöltve.
+
+Ha a hívási láncot a `getFile()` metódussal zárjuk, akkor visszakapjuk a megtalált fájlt.
 
 ## Függőségek injektálása
 
