@@ -9,6 +9,7 @@
 - New `testData().fromProperties(String).loadString()` and `testData().fromJson(Class).loadString()` methods for loading complex test data as text
 - New `testData().fromProperties(String).openStream()` and `testData().fromJson(Class).openStream()` methods for loading complex test data as stream
 - New `testData().fromProperties(String).withCharset(Charset)` and `testData().fromJson(Class).withCharset(Charset)` methods to specify the character set used during test data loading
+- New `name-format` field for actions in the XML file containing the test results
 
 ## 1.11.0
 

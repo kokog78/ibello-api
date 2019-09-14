@@ -9,6 +9,7 @@
 - Új `testData().fromProperties(String).loadString()` és `testData().fromJson(Class).loadString()` metódusok komplex tesztadatok szöveges formában történő beolvasásához
 - Új `testData().fromProperties(String).openStream()` és `testData().fromJson(Class).openStream()` metódusok komplex tesztadatok beolvasásához
 - Új `testData().fromProperties(String).withCharset(Charset)` és `testData().fromJson(Class).withCharset(Charset)` metódusok a betöltéskor használatos karakterkészlet meghatározásához
+- Új `name-format` mező a műveletekhez a teszteredményeket tartalmazó XML fájlban
 
 ## 1.11.0
 
