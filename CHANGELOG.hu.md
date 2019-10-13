@@ -1,5 +1,9 @@
 # ibello-api változási napló
 
+## 1.12.1
+
+- Kisebb változtatás a `PageObject.repeat(Task)` működésében
+
 ## 1.12.0
 
 - Új `PageObject.repeat(Task)` metódus, amivel adott feladatot lehet ismételtetni

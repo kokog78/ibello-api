@@ -16,6 +16,7 @@
 package hu.ibello.actions;
 
 import hu.ibello.core.TimeoutRelated;
+import hu.ibello.expect.ExpectationBuilder;
 
 /**
  * <p>
@@ -33,14 +34,32 @@ import hu.ibello.core.TimeoutRelated;
 public interface TaskRepeater extends TimeoutRelated<TaskRepeater> {
 
 	/**
-	 * Repeats the task until it succeeds or the time ends.
-	 * If the task fails during the timeout, it will be executed again.
+	 * <p>
+	 * Repeats the task until it succeeds or the time ends. If the task fails during the timeout, it will be executed again.
+	 * If the timeout ends and the task did not succeeded at least once, this method will throw an exception (and will fail).
+	 * </p><p>
+	 * The minimum number of the retries is 2. Therefore the task is executed at least 3 times before this method ends with failure.
+	 * Between the executions the method waits a few milliseconds - the concrete size of the waiting time depends on the timeout of the
+	 * {@link TaskRepeater} instance. Bigger timeout means bigger waiting time.
+	 * </p><p>
+	 * The task fails if it throws an exception (or any {@link Throwable}). Ibello soft expectations (eg. {@link ExpectationBuilder#assume(hu.ibello.elements.WebElement)})
+	 * are not throwing exceptions. Therefore if we use a soft expectation in the task body, and it fails, the task will not fail because of it.
+	 * </p>
 	 */
 	public void untilSucceeds();
 	
 	/**
-	 * Repeats the task until it fails or the time ends.
-	 * If the task succeeds during the timeout, it will be executed again.
+	 * <p>
+	 * Repeats the task until it fails or the time ends. If the task succeeds during the timeout, it will be executed again.
+	 * If the timeout ends and the task did not failed at least once, this method will throw an exception (and will fail).
+	 * </p><p>
+	 * The minimum number of the retries is 2. Therefore the task is executed at least 3 times before this method ends with failure.
+	 * Between the executions the method waits a few milliseconds - the concrete size of the waiting time depends on the timeout of the
+	 * {@link TaskRepeater} instance. Bigger timeout means bigger waiting time.
+	 * </p><p>
+	 * The task fails if it throws an exception (or any {@link Throwable}). Ibello soft expectations (eg. {@link ExpectationBuilder#assume(hu.ibello.elements.WebElement)})
+	 * are not throwing exceptions. Therefore if we use a soft expectation in the task body, and it fails, the task will not fail because of it.
+	 * </p>
 	 */
 	public void untilFails();
 	

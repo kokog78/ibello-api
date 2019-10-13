@@ -1,5 +1,9 @@
 # ibello-api changelog
 
+## 1.12.1
+
+- Small change in the behavior of the `PageObject.repeat(Task)` method
+
 ## 1.12.0
 
 - New `PageObject.repeat(Task)` method which is able to repeat the given task multiple times
