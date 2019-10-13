@@ -895,6 +895,31 @@ még az `untilSucceeds()` és az `untilFails()` hívása előtt:
 repeat(...).withTimeout(CustomTimeout.PAGE_LOADING).untilSucceeds();
 ```
 
+Az időtúllépések használata lényeges. Fogalmilag kétféle időtúllépésről beszélhetünk: egy "külső" időtúllépésről, amit a
+teljes művelethet definiálunk, az előbb felvázolt módon. Maga a művelet meghívhat olyan más műveleteket és ellenőrzéseket, amik szintén
+használnak időtúllépéseket. Ezek a "belső" időtúllépések akkor jönnek számításba, amikor egy ilyen művelet vagy ellenőrzés elbukik - ekkor ugyanis
+a bukása előtt kivárja a saját időtúllépését. Ha túl sokáig vár, letelhet a teljes műveletre meghatározott "külső" időtúllépés is. Ezért fontos
+lehet a különböző időtúllépések összehangolása. A "belső" időtúllépésekhez mindig jóval kisebb értéket használjunk, mint a "külső"-höz!
+
+Például:
+
+```java
+repeat(() -> {
+	doWith(button).click();
+	expectations().withTimeout("short").expect(image).toBe().displayed();
+}).withTimeout("long").untilSucceeds();
+
+```
+
+Itt két "belső" időtúllépésünk van. A `click()` metódus az alapértelmezett időtúllépést használja, az `expect(image)` pedig a "short" elnevezésűt.
+Ha a `click()` eltörik, akkor az alapértelmezett időtúllépésig vár a rendszer, ha pedig az `expect(...)` törik el, akkor a "short" elnevezésűig.
+A kettő közül a nagyobbik lesz az effektív "belső" időtúllépésünk. A "long" elnevezésű időtúllépést ennek valahányszorosára (pl. 5-10-szeresére) kell
+beállítanunk ahhoz, hogy a `repeat(...)` hívásunk jól működjön.
+
+A `repeat(Task)` metódus legalább kétszer ismétli a műveletet, mielőtt sikertelenül záródna. Ez igaz akkor is, ha a teljes művelethez meghatározott
+"külső" időtúllépés egyébként lejárt volna. Ezzel a rendszer ellensúlyozni igyekszik a hibás működést, amit akkor tapasztalhatunk,
+ha nem igazítottuk egymáshoz a "külső" és a "belső" időtúllépéseket.
+
 ## Értéklekérések
 
 Az ibello arra is lehetőséget ad, hogy egy-egy elem valamely tulajdonságát visszakapjuk. Ehhez az oldal-leírók kétféle metódusát használhatjuk.
