@@ -39,6 +39,7 @@ public class TestRun extends ParentElement implements ITestRun {
 	private List<LogFile> logFile;
 	private List<String> tag;
 	private List<SpecElement> spec;
+	private List<MemoryUsage> memoryUsage;
 	
 	@Override
 	public Date getStartTime() {
@@ -150,6 +151,18 @@ public class TestRun extends ParentElement implements ITestRun {
 	
 	public void setSpec(List<SpecElement> spec) {
 		this.spec = spec;
+	}
+	
+	public List<MemoryUsage> getMemoryUsage() {
+		if (memoryUsage == null) {
+			memoryUsage = new ArrayList<>();
+		}
+		return memoryUsage;
+	}
+	
+	@XmlElement(name="memory-usage")
+	public void setMemoryUsage(List<MemoryUsage> memoryUsage) {
+		this.memoryUsage = memoryUsage;
 	}
 	
 }
