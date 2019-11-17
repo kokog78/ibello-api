@@ -1,5 +1,9 @@
 # ibello-api változási napló
 
+## 1.12.2
+
+- Új `memory-usage` mező a műveletekhez a teszteredményeket tartalmazó XML fájlban
+
 ## 1.12.1
 
 - Kisebb változtatás a `PageObject.repeat(Task)` működésében

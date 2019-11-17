@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement(name="test-run")
-@XmlType(propOrder={"startTime", "endTime", "baseDirectory", "browser", "headless", "defaultTimeout", "counters", "windowSize", "logFile", "tag", "spec"})
+@XmlType(propOrder={"startTime", "endTime", "baseDirectory", "browser", "headless", "defaultTimeout", "counters", "windowSize", "logFile", "tag", "spec", "memoryUsage"})
 public class TestRun extends ParentElement implements ITestRun {
 
 	private Date startTime;

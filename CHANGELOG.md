@@ -1,5 +1,9 @@
 # ibello-api changelog
 
+## 1.12.2
+
+- New `memory-usage` field in the the XML file containing the test results
+
 ## 1.12.1
 
 - Small change in the behavior of the `PageObject.repeat(Task)` method
