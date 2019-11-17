@@ -182,6 +182,32 @@
 				</executions>
 			</plugin>
 			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxb2-maven-plugin</artifactId>
+				<version>1.6</version>
+				<executions>
+					<execution>
+						<id>schemagen</id>
+						<goals>
+							<goal>schemagen</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<transformSchemas>
+						<transformSchema>
+							<uri>http://ibello.hu/model/1.2</uri>
+							<toPrefix>ibello</toPrefix>
+							<toFile>ibello.hu_model_1.2.xsd</toFile>
+						</transformSchema>
+					</transformSchemas>
+					<includes>
+						<include>hu/ibello/model/*</include>
+					</includes>
+					<verbose>true</verbose>
+				</configuration>
+			</plugin>
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-antrun-plugin</artifactId>
 				<version>1.8</version>
