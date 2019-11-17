@@ -16,10 +16,8 @@
 package hu.ibello.model;
 
 import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlRootElement(name="browser-memory")
 @XmlType(propOrder={"windowId", "total", "used"})
 public class BrowserMemoryUsage {
 

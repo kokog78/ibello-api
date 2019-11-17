@@ -16,10 +16,8 @@
 package hu.ibello.model;
 
 import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlRootElement(name="java-memory")
 @XmlType(propOrder={"total", "used"})
 public class JavaMemoryUsage {
 
