@@ -22,11 +22,11 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlType(propOrder={"time", "elementId", "java", "browser"})
+@XmlType(propOrder={"time", "refId", "java", "browser"})
 public class MemoryUsage {
 
 	private Date time;
-	private String elementId;
+	private String refId;
 	private JavaMemoryUsage java;
 	private List<BrowserMemoryUsage> browser;
 	
@@ -39,13 +39,13 @@ public class MemoryUsage {
 		this.time = time;
 	}
 	
-	public String getElementId() {
-		return elementId;
+	public String getRefId() {
+		return refId;
 	}
 	
-	@XmlAttribute(name="element-id")
-	public void setElementId(String elementId) {
-		this.elementId = elementId;
+	@XmlAttribute(name="ref-id")
+	public void setRefId(String refId) {
+		this.refId = refId;
 	}
 	
 	public JavaMemoryUsage getJava() {
