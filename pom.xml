@@ -188,9 +188,6 @@
 				<executions>
 					<execution>
 						<id>schemagen</id>
-						<goals>
-							<goal>schemagen</goal>
-						</goals>
 					</execution>
 				</executions>
 				<configuration>
