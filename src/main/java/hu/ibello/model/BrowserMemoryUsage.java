@@ -21,17 +21,17 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(propOrder={"windowId", "total", "used"})
 public class BrowserMemoryUsage {
 
-	private String WindowId;
+	private String windowId;
 	private Long total;
 	private Long used;
 	
 	public String getWindowId() {
-		return WindowId;
+		return windowId;
 	}
 	
 	@XmlAttribute(name="window-id")
 	public void setWindowId(String windowId) {
-		WindowId = windowId;
+		this.windowId = windowId;
 	}
 	
 	public Long getTotal() {
