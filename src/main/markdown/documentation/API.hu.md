@@ -1103,6 +1103,10 @@ public class User {
 Az osztályhoz itt hozzárendeltük a `@Model` annotációt. Ez nem kötelező, viszont ezzel jelölhetjük, hogy tesztadatokat tároló osztályról van szó.
 Ezt az információt az ibello bizonyos esetekben felhasználja, és könnyebbé teszi a számunkra a fejlesztést.
 
+Az osztályhoz hozzárendelhetünk `@Name` annotációt. Ezzel nevet adhatunk a tesztadatnak, amit az ibello bizonyos
+esetekben megjelenít majd. Hasonlóképpen, a `@Description` annotációval leírást adhatunk az osztályhoz - ebből
+lehet egynél több is.
+
 Az osztály meghatározza a JSON fájlok struktúráját is. Például az előző objektumhoz ilyen JSON tartalom képzelhető el:
 
 ```json
