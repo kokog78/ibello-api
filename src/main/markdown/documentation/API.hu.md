@@ -973,9 +973,7 @@ String[] classNames = get(button).withTimeout(Timeout.NORMAL).cssClassNames();
 
 ## Több böngészőablak vezérlése
 
-Az ibello rendszer lehetőséget ad arra, hogy egy tesztben több böngészőablakot is vezéreljünk. Alapesetben az összes művelet egy alapértelmezett ablakban
-hajtódik végre. Ha azonban egy oldal-leíró mezőre rátesszük a `Window` annotációt, aminek megadunk egy szöveges azonosítót, akkor az oldal-leíró által indított műveletek
-már egy új böngészőablakban fognak futni.
+Az ibello rendszer lehetőséget ad arra, hogy egy tesztben több böngészőablakot is vezéreljünk. Alapesetben az összes művelet egy alapértelmezett ablakban hajtódik végre. Ha azonban egy oldal-leíró mezőre rátesszük a `Window` annotációt, aminek megadunk egy szöveges azonosítót, akkor az oldal-leíró által indított műveletek már egy új böngészőablakban fognak futni.
 
 ```java
 public class MySteps extends StepLibrary {
@@ -990,12 +988,9 @@ public class MySteps extends StepLibrary {
 }
 ```
 
-Az újonnan megnyíló böngészőablakot az átadott szöveges azonosítóval azonosítjuk. Ha egy másik oldal-leíró mezőnél ugyanezt az azonosítót adjuk meg, akkor az ugyanabban az ablakban
-fog futni (nem fog új ablak nyílni).
+Az újonnan megnyíló böngészőablakot az átadott szöveges értékkel azonosítjuk. Ha egy másik oldal-leíró mezőnél ugyanezt az azonosítót adjuk meg, akkor az ugyanabban az ablakban fog futni (nem fog új ablak nyílni).
 
-Arra is lehetőségünk van, hogy új ablak helyett új fület nyissunk. Ha a `Window` annotáció azonosítója kettősponttal kezdődik, akkor az egy új fület fog nyitni, méghozzá az
-alapértelmezett ablakban. Ha az azonosító kettőspontot tartalmaz (de nem azzal kezdődik), akkor szintúgy új fület jelent, azonban egy új ablakban; az ablakot a kettőspont
-előtti szövegrész, míg a fület a kettőspont utáni rész fogja azonosítani.
+Arra is lehetőségünk van, hogy új ablak helyett új fület nyissunk. Ha a `@Window` annotáció értéke kettősponttal kezdődik, akkor az egy új fület fog nyitni, méghozzá az alapértelmezett ablakban. Ha az azonosító kettőspontot tartalmaz (de nem azzal kezdődik), akkor szintúgy új fület jelent, azonban egy új ablakban; az ablakot a kettőspont előtti szövegrész, míg a fület a kettőspont utáni rész fogja azonosítani.
 
 ```java
 public class MyTabbedSteps extends StepLibrary {
@@ -1011,8 +1006,7 @@ public class MyTabbedSteps extends StepLibrary {
 }
 ```
 
-Egyes böngészők (és böngésző-meghajtók) nem támogatják egyszerre több ablak megnyitását. Ezeknél az új ablak nyitására vonatkozó kérések rendre új füleket nyitnak meg, méghozzá
-az alapértelmezett ablakban. Az előbbi példát tekintve: a két oldal-leíró ilyenkor az alapértelmezett ablakban két új fület fog külön-külön vezérelni.
+Egyes böngészők (és böngésző-meghajtók) nem támogatják egyszerre több ablak megnyitását. Ezeknél az új ablak nyitására vonatkozó kérések rendre új füleket nyitnak meg, méghozzá az alapértelmezett ablakban. Az előbbi példát tekintve: a két oldal-leíró ilyenkor az alapértelmezett ablakban két új fület fog külön-külön vezérelni.
 
 A böngészőablakok azonosítói öröklődnek is az oldal-leírók között. Amennyiben egy oldal-leíró tartalmaz más oldal-leírókra történő hivatkozásokat, amiknél nincs `Window` annotáció, akkor azok
 öröklik a tartalmazó objektum böngészőablakát. Vagyis a `Window` annotáció hiánya nem feltétlenül jelenti azt, hogy a műveletek az alapértelmezett ablakban futnak.
@@ -1033,20 +1027,22 @@ public class MySpecs {
 A fenti példával azt érjük el, hogy a `steps.presenter` oldal-leíró a "presenter" ablakban fog futni - mivel az a `MySteps` osztályban nem kapott külön annotációt. Ugyanakkor a
 `steps.editor` oldal-leíró (az annotációjának köszönhetően) továbbra is az "editor" ablakot vezérli.
 
-### Az alkalmazás által megnyitott fül elérése
+### Az alkalmazás által megnyitott ablak/fül elérése
 
-Egyes esetekben a tesztelt alkalmazás nyit új fület, amit szeretnénk egy oldal-leíróval összekötni. Ehhez létre kell hoznunk egy oldal-leírót, amit a megfelelő `@Window`
-annotációval hozzákötünk a megnyitó oldal-leíró ablakához, viszont fül azonosítónak tetszőleges újat adunk:
+Egyes esetekben a tesztelt alkalmazás nyit új ablakot (vagy fület), amit szeretnénk egy oldal-leíróval összekötni. Ehhez létre kell hoznunk egy oldal-leírót, amit a megfelelő `@Window`
+annotációval hozzákötünk a megnyitó oldal-leíró ablakához, viszont a kettőspont után tetszőleges új azonosítót adunk:
 
 ```java
-// az alapértelmezett ablak által megnyitott új fül
+// az alapértelmezett ablak által megnyitott új fül vagy ablak
 @Window(":new-tab")
 private NewlyOpenedPage newPage;
 ```
 
+Fontos, hogy a kettőspont előtt a megnyitó ablak (már létező) azonosítója álljon, a kettőspont után pedig egy új azonosító, amivel még nem nyitottunk meg sem ablakot, sem fület.
+
 Az új oldal-leíróban az `expectations().expect(browser)).toBe().open()` ellenőrzéssel két legyet üthetünk egy csapásra: egyrészről megvárhatjuk az új fül megnyílását, másrészről
 összeköthetjük az oldal-leírót az új füllel. Ennek kell lennie az első műveletnek, amit az oldal-leíróban hívunk. A metódus (első hívásakor) megkeresi az első "szabad"
-(más oldal-leíróhóz nem tartozó) fület.
+(más oldal-leíróhoz nem tartozó) fület.
 
 ```java
 expectations().expect(browser)).toBe().open();
