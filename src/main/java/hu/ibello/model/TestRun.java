@@ -165,4 +165,9 @@ public class TestRun extends ParentElement implements ITestRun {
 		this.memoryUsage = memoryUsage;
 	}
 	
+	@Override
+	public ElementType getType() {
+		return ElementType.TESTRUN;
+	}
+	
 }

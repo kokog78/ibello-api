@@ -26,4 +26,9 @@ public class ActionElement extends Element {
 	public void setNameFormat(TextFormatKind nameFormat) {
 		this.nameFormat = nameFormat;
 	}
+	
+	@Override
+	public ElementType getType() {
+		return ElementType.ACTION;
+	}
 }

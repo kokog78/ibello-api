@@ -79,4 +79,8 @@ public class Element {
 		this.screenshot = screenshot;
 	}
 	
+	public ElementType getType() {
+		return null;
+	}
+	
 }

@@ -33,4 +33,9 @@ public class TestElement extends ParentElement {
 		this.step = step;
 	}
 	
+	@Override
+	public ElementType getType() {
+		return ElementType.TEST;
+	}
+	
 }

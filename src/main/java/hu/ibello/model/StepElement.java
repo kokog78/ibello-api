@@ -43,4 +43,9 @@ public class StepElement extends ParentElement {
 		this.children = children;
 	}
 	
+	@Override
+	public ElementType getType() {
+		return ElementType.STEP;
+	}
+	
 }

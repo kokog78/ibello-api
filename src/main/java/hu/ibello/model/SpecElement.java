@@ -46,4 +46,9 @@ public class SpecElement extends ParentElement {
 	public void setTest(List<TestElement> test) {
 		this.test = test;
 	}
+	
+	@Override
+	public ElementType getType() {
+		return ElementType.SPECIFICATION;
+	}
 }

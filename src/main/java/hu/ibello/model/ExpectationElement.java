@@ -31,4 +31,9 @@ public class ExpectationElement extends Element {
 	public void setTimeoutMs(long timeoutMs) {
 		this.timeoutMs = timeoutMs;
 	}
+	
+	@Override
+	public ElementType getType() {
+		return ElementType.EXPECTATION;
+	}
 }
