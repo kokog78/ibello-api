@@ -1152,12 +1152,52 @@ user-valid.hu.json
 user-valid.hu-prod.json
 ```
 
-A JSON fájlok egész komplex szerkezetűek is tudnak lenni, ezáltal képesek objektumstruktúra leírására is. A JSON fájl mezői lehetnek tömbök és
-más objektumok is. Ezek betöltődését picit módosíthatjuk az alábbi két metódus segítségével.
+##### Dátumok kezelése
+
+A JSON formátum nem definiál dátum típust. A dátummezőket mind sztringként kell megadnunk. Ehhez többféle formátumot is használhatunk.
+
+Az egyik lehetőségünk az XML séma dátumformátuma. Ez minden nyelvi beállítás esetén működik. Példa:
+
+```json
+{
+    "dateField": "2010-02-15",
+    "dateTimeField": "2010-02-15T20:44:13"
+}
+```
+
+Használhatjuk a java környezet alapértelmezett (rövid) dátumformátumát vagy dátum- és időformátumát. Ezek már nyelvi beállítástól függenek, ezért a használatuk csak körültekintéssel javasolt. Példa:
+
+```json
+{
+    "dateField": "2001.02.03.",
+    "dateTimeField: "2001.02.03. 10:11"
+}
+```
+
+Megadhatunk relatív dátumot is. Ekkor az ibello az éppen aktuális időponthoz képest fogja kiszámolni a mező értékét. A relatív dátum megadása mindig "+" vagy "-" jellel kezdődik aszerint, hogy jövőbeli vagy múltbeli dátumot szeretnénk. Ezt számok és betűk kombinációja követi. Minden szám után egy betű áll, ami megadja a szám mértékegységét. Ez lehet:
+
+- "Y": év
+- "M": hónap
+- "D": nap
+- "h": óra
+- "m": perc
+- "s": másodperc
+
+Példa:
+
+```json
+{
+    "dateTime1": "-1Y30h",
+    "dateTime2": "+3d"
+}
+```
+
+##### Speciális adatbetöltési lehetőségek
+
+A JSON fájlok egész komplex szerkezetűek is tudnak lenni, ezáltal képesek objektumstruktúra leírására is. A JSON fájl mezői lehetnek tömbök és más objektumok is. Ezek betöltődését picit módosíthatjuk az alábbi két metódus segítségével.
 
 Az ibello alapértelmezésben a különböző betöltött fájlokban levő tömböket összeolvasztja. A `doNotJoinArrays()` metódussal ezt tudjuk megtiltani.
-Ennek hatására a később betöltött fájlok tömb mezői felülírják a korábban betöltöttekből érkezett adatot. Nézzünk egy példát! Tegyük fel, hogy
-az alábbi két JSON fájl egymás után töltődik be:
+Ennek hatására a később betöltött fájlok tömb mezői felülírják a korábban betöltöttekből érkezett adatot. Nézzünk egy példát! Tegyük fel, hogy az alábbi két JSON fájl egymás után töltődik be:
 
 ```json
 {
@@ -1170,12 +1210,10 @@ az alábbi két JSON fájl egymás után töltődik be:
 }
 ```
 
-Ha ezeket a `testData().fromJson(User.class).withId("valid").load()` hívás segítségével töltjük be, akkor a `hobbies` mező értéke háromelemű
-tömb (vagy lista) lesz: "fishing", "singing" és "basketball". Ha azonban a `testData().fromJson(User.class).withId("valid").doNotJoinArrays().load()`
+Ha ezeket a `testData().fromJson(User.class).withId("valid").load()` hívás segítségével töltjük be, akkor a `hobbies` mező értéke háromelemű tömb (vagy lista) lesz: "fishing", "singing" és "basketball". Ha azonban a `testData().fromJson(User.class).withId("valid").doNotJoinArrays().load()`
 láncot használjuk, akkor a `hobbies` csak a "basketball" sztringet fogja tartalmazni.
 
-Hasonlóan, tesztadat betöltéskor az ibello alapértelmezésben az objektumokat is összefésüli. Ezt a `doNotMergeObjects()` metódussal tudjuk tiltani.
-Ilyenkor az utóbb betöltött objektumok felülírják az előbb betöltötteket. Egy példán kifejtve ezt:
+Hasonlóan, tesztadat betöltéskor az ibello alapértelmezésben az objektumokat is összefésüli. Ezt a  doNotMergeObjects()` metódussal tudjuk tiltani. Ilyenkor az utóbb betöltött objektumok felülírják az előbb betöltötteket. Egy példán kifejtve ezt:
 
 ```json
 {
