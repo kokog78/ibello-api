@@ -588,19 +588,18 @@ A `doWith(...)` metódussal létrehozott művelet leállítja a teszt futtatás�
 
 ### Egérműveletek
 
-| Metódus                     | Leírás                                                                         |
-| --------------------------- | ------------------------------------------------------------------------------ |
-| `click()`                   | Balgombos egérkattintás az elem közepére.                                      |
-| `contextClick()`            | Jobbgombos egérkattintás az elem közepére.                                     |
-| `doubleClick()`             | Dupla egérkattintás az elem közepére.                                          |
-| `selectOption(...)`         | Legördülő listában a megadott feliratú opció kiválasztása.                     |
-| `moveTo()`                  | Az egérmutatót az elem közepére állítja.                                       |
+| Metódus                     | Leírás                                                       |
+| --------------------------- | ------------------------------------------------------------ |
+| `click()`                   | Balgombos egérkattintás az elem közepére.                    |
+| `contextClick()`            | Jobbgombos egérkattintás az elem közepére.                   |
+| `doubleClick()`             | Dupla egérkattintás az elem közepére.                        |
+| `selectOption(...)`         | Legördülő listában a megadott feliratú opció kiválasztása.   |
+| `moveTo()`                  | Az egérmutatót az elem közepére állítja.                     |
 | `dragAndDropTo(WebElement)` | "Fog és vidd" művelettel az elemet a paraméterben megadott másik elemre húzza. |
-| `scrollTo(WebElement)`      | Az elem görgetése úgy, hogy a paraméterben megadott másik elem látható legyen  |
+| `scrollTo(WebElement)`      | Az elem görgetése úgy, hogy a paraméterben megadott másik elem látható legyen |
+| `setSelected(boolean)`      | Egy jelölőnégyzet kiválasztása, vagy éppen a kiválasztásának megszüntetése |
 
-A `scrollTo(WebElement)` művelet olyan esetben használható, amikor egy konténer elemben görgetősávok vannak. Ez eléggé elterjedt gyakorlat,
-sok webalkalmazásban nem a teljes oldal görgethető, hanem annak egy része (egy konténer). Egy ilyen konténer görgetősávjait olyan
-állapotba hozhatjuk, hogy a konténerben levő gyerekelem látható legyen. Mindezt a `doWith(konténer).scrollTo(gyerekelem)` metódusláncal érjük el.
+A `scrollTo(WebElement)` művelet olyan esetben használható, amikor egy konténer elemben görgetősávok vannak. Ez eléggé elterjedt gyakorlat, sok webalkalmazásban nem a teljes oldal görgethető, hanem annak egy része (egy konténer). Egy ilyen konténer görgetősávjait olyan állapotba hozhatjuk, hogy a konténerben levő gyerekelem látható legyen. Mindezt a `doWith(konténer).scrollTo(gyerekelem)` metódusláncal érjük el.
 
 ### Billentyűzet művelet
 

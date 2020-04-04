@@ -247,5 +247,21 @@ public interface WebElementActionBuilder extends ActionBuilder<WebElementActionB
 	default void fireEvent(Events event) {
 		fireEvent(event.eventName);
 	}
+	
+	/**
+	 * This method works for checkboxes and radio buttons. It sets the element's selection to the given value.
+	 * <p>
+	 * For radio buttons, the only acceptable parameter of this method is <code>true</code>.
+	 * There is no quick solution to unselect a radio button.
+	 * </p>
+	 * <p>
+	 * During the timeout, this method tries to execute the action until it is successfully
+	 * performed. If the time runs out and the action was not performed, an exception will
+	 * be thrown, the error will be logged and the current test will be interrupted and
+	 * marked as "error".
+	 * </p>
+	 * @param selected should be the checkbox selected
+	 */
+	void setSelected(boolean selected);
 
 }
