@@ -1,5 +1,11 @@
 # ibello-api changelog
 
+## 1.13.0
+
+- New `OutputHandler.recordCustomStep(...)` method
+- New `StepLibrary.restClient()` method for REST API tests
+- New `PageObject.tryWith(WebElement)` and `PageObject.tryWith(Browser)` methods for doing "soft" action
+
 ## 1.12.2
 
 - New `memory-usage` field in the the XML file containing the test results

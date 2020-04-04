@@ -93,7 +93,7 @@ import hu.ibello.search.SearchTool;
  * The abstract {@link PageObject} class contains some useful protected methods. These are for:
  * </p>
  * <ul>
- * <li>doing something with elements, see {@link PageObject#doWith(WebElement)},</li>
+ * <li>doing something with elements, see {@link PageObject#doWith(WebElement)} and {@link PageObject#tryWith(WebElement)},</li>
  * <li>accessing browser interface which can be used to open an URL, and to other things,
  * see {@link PageObject#browser()},</li>
  * <li>verifying some expectations, see {@link PageObject#expectations()},</li>
@@ -222,7 +222,8 @@ public abstract class PageObject extends WindowRelated {
 	}
 	
 	/**
-	 * Returns an {@link WebElementActionBuilder} instance which can be used to perform different actions on the web element.
+	 * Returns an {@link WebElementActionBuilder} instance which can be used to perform an action on the web element.
+	 * If the action fails then the test execution stops.
 	 * @param element we want to perform an action with this elements
 	 * @return an interface configured for doing actions with the element
 	 */
@@ -231,12 +232,33 @@ public abstract class PageObject extends WindowRelated {
 	}
 	
 	/**
+	 * Returns an {@link WebElementActionBuilder} instance which can be used to perform an action on the web element.
+	 * If the action fails then the test execution continues.
+	 * @param element we want to perform an action with this elements
+	 * @return an interface configured for doing actions with the element
+	 */
+	protected WebElementActionBuilder tryWith(WebElement element) {
+		return tool.tryWith(element);
+	}
+	
+	/**
 	 * Returns an {@link BrowserActionBuilder} instance which can be used to manager browser window related actions.
+	 * If the action fails then test execution stops.
 	 * @param browser the browser instance, can be obtained with the {@link PageObject#browser()} method
 	 * @return an interface configured for doing actions with the browser
 	 */
 	protected BrowserActionBuilder doWith(Browser browser) {
 		return tool.doWith(browser);
+	}
+	
+	/**
+	 * Returns an {@link BrowserActionBuilder} instance which can be used to manager browser window related actions.
+	 * If the action fails then test execution continues.
+	 * @param browser the browser instance, can be obtained with the {@link PageObject#browser()} method
+	 * @return an interface configured for doing actions with the browser
+	 */
+	protected BrowserActionBuilder tryWith(Browser browser) {
+		return tool.tryWith(browser);
 	}
 	
 	/**

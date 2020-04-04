@@ -348,7 +348,7 @@ Integer backendPort = getConfigurationValue("backend.port").toInteger(0);
 
 ## Elemek keresése
 
-Az ibello rendszer lehetőséget ad egyszerre egy vagy több elem keresésére. A keresés lehet _statikus_ vagy _dinamikus_.
+Az ibello rendszer lehetőséget ad egyszerre egy vagy több elem keresésére. A keresés lehet _statikus_ vagy _dinamikus_. A funkció csak oldal-leírókon belül érhető el.
 
 ### Statikus elemkeresés
 
@@ -586,6 +586,8 @@ eltüntet egyes elemeket. Ha a határidő lejár anélkül, hogy az oldal friss�
 doWith(button).withPageRefreshWait().click();
 ```
 
+A `doWith(...)` metódussal létrehozott művelet leállítja a teszt futtatását, ha sikertelenül végződik. Ha ezt el szeretnénk kerülni, vagyis a tesztfutást sikertelen művelet után is szeretnénk folytatni, akkor a `tryWith(...)` metódust kell használnunk. A metódus minden másban a `doWith(...)`-re hasonlít.
+
 ### Egérműveletek
 
 | Metódus                     | Leírás                                                                         |
@@ -708,6 +710,8 @@ végrehajtani. Itt is használhatóak a `withTimeout(...)` és a `withPageRefres
 | ------------------ | --------------------------------------------------------------------- |
 | `dismissAlert()`   | A riasztás bezárása a "mégsem" gombra kattintással.                   |
 | `acceptAlert()`    | A riasztás bezárása az "ok" gombra kattintással.                      |
+
+A `doWith(...)` metódussal létrehozott művelet leállítja a teszt futtatását, ha sikertelenül végződik. Ha ezt el szeretnénk kerülni, vagyis a tesztfutást sikertelen művelet után is szeretnénk folytatni, akkor a `tryWith(...)` metódust kell használnunk. A metódus minden másban a `doWith(...)`-re hasonlít.
 
 ## Ellenőrzések
 
@@ -1345,6 +1349,18 @@ Az eszköz csak azokat a fájlokat veszi figyelembe, amiknek nincs olyan címké
 (és a címkékhez) passzoló fájlok közül a legutolsó lesz csak betöltve.
 
 Ha a hívási láncot a `getFile()` metódussal zárjuk, akkor visszakapjuk a megtalált fájlt.
+
+## Egyedi loggolás
+
+Az ibello a tesztriportot a végrehajtott tesztlépések, művelet és ellenőrzések alapján automatikusan készíti el. Előfordulhatnak viszont olyan esetek, amikor saját szöveggel ki szeretnénk egészíteni a riportot. Erre a tesztlépés-könyvtárakon belül van lehetőségünk, az `output()` metódus által visszaadott objektum metódusaival.
+
+Ezek a metódusok paraméterként kapják azt a szöveget, amit majd meg fognak jeleníteni a tesztriportban. Automatikusan felismerik, ha a szöveg JSON vagy XML formátumú, ekkor azt a tesztriportban is kiemelt formázással jelölik.
+
+| Metódus                                                   | Leírás                                                       |
+| --------------------------------------------------------- | ------------------------------------------------------------ |
+| `output().recordCustomAction(String name)`                | Egy új egyedi műveletet szúr be a megadott tartalommal.      |
+| `output().recordCustomExpectation(String name)`           | Egy új egyedi ellenőrzést szúr be a megadott tartalommal. Az ellenőrzés sikeresnek minősül. |
+| `output().recordCustomStep(String stepName, String text)` | Egy új tesztlépést szúr be a megadott névvel, ami alá rögtön beszúr egy műveletet is a megadott tartalommal. |
 
 ## Függőségek injektálása
 

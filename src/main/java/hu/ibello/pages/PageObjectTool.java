@@ -76,18 +76,36 @@ public interface PageObjectTool {
 	Browser browser(String windowId);
 	
 	/**
-	 * Returns an {@link WebElementActionBuilder} instance which can be used to perform different actions on the web element.
+	 * Returns an {@link WebElementActionBuilder} instance which can be used to perform an action on the web element.
+	 * If the action fails then the test execution stops.
 	 * @param element we want to perform an action with this elements
 	 * @return an interface configured for doing actions with the element
 	 */
 	WebElementActionBuilder doWith(WebElement element);
 	
 	/**
+	 * Returns an {@link WebElementActionBuilder} instance which can be used to perform an action on the web element.
+	 * If the action fails then the test execution continues.
+	 * @param element we want to perform an action with this elements
+	 * @return an interface configured for doing actions with the element
+	 */
+	WebElementActionBuilder tryWith(WebElement element);
+	
+	/**
 	 * Returns an {@link BrowserActionBuilder} instance which can be used to manager browser window related actions.
+	 * If the action fails then test execution stops.
 	 * @param browser the browser instance, can be obtained with the {@link PageObject#browser()} method
 	 * @return an interface configured for doing actions with the browser
 	 */
 	BrowserActionBuilder doWith(Browser browser);
+	
+	/**
+	 * Returns an {@link BrowserActionBuilder} instance which can be used to manager browser window related actions.
+	 * If the action fails then test execution continues.
+	 * @param browser the browser instance, can be obtained with the {@link PageObject#browser()} method
+	 * @return an interface configured for doing actions with the browser
+	 */
+	BrowserActionBuilder tryWith(Browser browser);
 	
 	/**
 	 * Returns a {@link TaskRepeater} instance which will run the given task multiple times.

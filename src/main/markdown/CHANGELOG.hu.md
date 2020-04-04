@@ -1,5 +1,11 @@
 # ibello-api változási napló
 
+## 1.13.0
+
+- Új `OutputHandler.recordCustomStep(...)` metódus
+- Új `StepLibrary.restClient()` metódus REST API teszteléshez
+- Új `PageObject.tryWith(WebElement)` és `PageObject.tryWith(Browser)` metódusok "lágy" műveletekhez
+
 ## 1.12.2
 
 - Új `memory-usage` mező a műveletekhez a teszteredményeket tartalmazó XML fájlban
