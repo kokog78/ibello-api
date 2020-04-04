@@ -5,6 +5,7 @@
 - Új `OutputHandler.recordCustomStep(...)` metódus
 - Új `StepLibrary.restClient()` metódus REST API teszteléshez
 - Új `PageObject.tryWith(WebElement)` és `PageObject.tryWith(Browser)` metódusok "lágy" műveletekhez
+- Új `By.BUTTON_CLASS` típusú elemkeresés
 
 ## 1.12.2
 

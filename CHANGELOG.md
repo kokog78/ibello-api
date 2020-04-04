@@ -5,6 +5,7 @@
 - New `OutputHandler.recordCustomStep(...)` method
 - New `StepLibrary.restClient()` method for REST API tests
 - New `PageObject.tryWith(WebElement)` and `PageObject.tryWith(Browser)` methods for doing "soft" action
+- New `By.BUTTON_CLASS` element search
 
 ## 1.12.2
 

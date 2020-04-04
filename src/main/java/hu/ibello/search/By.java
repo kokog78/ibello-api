@@ -129,5 +129,19 @@ public enum By {
 	 * </li>
 	 * </ul>
 	 */
-	PARTIAL_LABEL;
+	PARTIAL_LABEL,
+	
+	/**
+	 * Search by the CSS class of a button. The search pattern is a CSS class name.
+	 * The class may belong to the button itself or to one of it's descendants.
+	 * The element itself can be:
+	 * <ul>
+	 * <li>a <code>button</code>,</li>
+	 * <li>an <code>input</code> field for which the <code>type</code> attribute is <code>button</code>,
+	 * <code>submit</code>, <code>reset</code> or <code>image</code>,</li>
+	 * <li>an <code>a</code> (link) element,</li>
+	 * <li>an element with <code>role=button</code> attribute.</li>
+	 * </ul>
+	 */
+	BUTTON_CLASS;
 }
