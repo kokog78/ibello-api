@@ -15,6 +15,7 @@
  */
 package hu.ibello.steps;
 
+import hu.ibello.apitest.RestClient;
 import hu.ibello.core.Value;
 import hu.ibello.data.TestDataBuilder;
 import hu.ibello.output.OutputHandler;
@@ -67,4 +68,12 @@ public interface StepLibraryTool {
 	 * @see OutputHandler
 	 */
 	OutputHandler output();
+	
+	/**
+	 * Returns a REST client. With that we can perform a REST operation - send a JSON REST call and receive it's response.
+	 * The request and response data will be logged automatically.
+	 * @return the REST client instance
+	 * @see RestClient
+	 */
+	RestClient restClient();
 }
