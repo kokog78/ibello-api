@@ -6,6 +6,8 @@
 - New `StepLibrary.restClient()` method for REST API tests
 - New `PageObject.tryWith(WebElement)` and `PageObject.tryWith(Browser)` methods for doing "soft" action
 - New `By.BUTTON_CLASS` element search
+- The `@Name` annotation can be added to fields
+- The `@Description` annotation can be added to fields
 
 ## 1.12.2
 
