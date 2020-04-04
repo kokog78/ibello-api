@@ -35,4 +35,11 @@ public interface OutputHandler {
 	 * @param name the name (text) of the expectation
 	 */
 	void recordCustomExpectation(String name);
+	
+	/**
+	 * Adds a custom step to the test report. The step will have a single (and successful) custom action with the given text content.
+	 * @param stepName the name of the step
+	 * @param text the content of the step's action
+	 */
+	void recordCustomStep(String stepName, String text);
 }
