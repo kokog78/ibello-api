@@ -2,6 +2,8 @@
 
 ## 1.13.0
 
+2020-04-05
+
 - Új `OutputHandler.recordCustomStep(...)` metódus
 - Új `StepLibrary.restClient()` metódus REST API teszteléshez
 - Új `PageObject.tryWith(WebElement)` és `PageObject.tryWith(Browser)` metódusok "lágy" műveletekhez
@@ -12,13 +14,19 @@
 
 ## 1.12.2
 
+2019-11-17
+
 - Új `memory-usage` mező a műveletekhez a teszteredményeket tartalmazó XML fájlban
 
 ## 1.12.1
 
+2019-10-13
+
 - Kisebb változtatás a `PageObject.repeat(Task)` működésében
 
 ## 1.12.0
+
+2019-09-13
 
 - Új `PageObject.repeat(Task)` metódus, amivel adott feladatot lehet ismételtetni
 - Új `WebElementHaveExpectations.textOrValue(...)` metódusok elemek szövegének vagy értékének ellenőrzéséhez
@@ -31,6 +39,8 @@
 
 ## 1.11.0
 
+2019-02-13
+
 - Új `@Description` annotáció a tesztlépések és tesztlépés-könyvtárak rövid leírásához
 - Új `@Model` annotáció a tesztadatok betöltését fogadó osztályok jelöléséhez
 - Új `timeout-ms` mező a teszteredményeket tartalmazó XML fájlban
@@ -41,6 +51,8 @@
 
 ## 1.10.0
 
+2018-09-24
+
 - Információszerzés elemekről a `PageObject.checkThat(WebElement)` és a `PageObject.get(WebElement)` metódusok segítségével
 - Teszt adat betöltés a `PageObject.testData()`, `StepLibrary.testData()` és `PluginInitializer.testData()` metódusok segítségével
 - Képernyőkép készítése a `PageObject.browser().saveScreenshot()` metódus segítségével
@@ -49,10 +61,14 @@
 
 ## 1.9.1
 
+2018-06-20
+
 - A `Plugin.initialize(...)` metódus paramétere képes a konfiguráció lekérdezésére is
 - Új `ITestRun.getName()` metódus
 
 ## 1.9.0
+
+2018-06-19
 
 - Új ibello plugin architektúra, egyedi beépülő modulok adhatóak a teszt futtatáshoz
 - Böngésző riasztások kezelése az `BrowserActionBuilder` osztállyal
@@ -63,6 +79,8 @@
 
 ## 1.8.0
 
+2018-05-28
+
 - Új `ActionBuilder.fireEvent(...)` metódus elemeken futó javascript események meghívásához
 - Új keresési módok: `By.PARTIAL_TEXT`, `By.PARTIAL_BUTTON_TEXT` és `By.PARTIAL_LABEL`
 - Új `Browser.localStorage()` és `Browser.sessionStorage()` metódusok a böngésző tárolóinak kezeléséhez
@@ -70,9 +88,13 @@
 
 ## 1.7.1
 
+2018-05-24
+
 - Az oldal-leírók és a tesztlépés-könyvtárak metódusainak nevében `$` karakter jelöli a paraméterek helyét
 
 ## 1.7.0
+
+2018-03-21
 
 - Új `Window` annotáció, amivel új böngészőablak (és fül) nyitható
 - Új reláció szerinti elemkeresési módosító: `RelationType.NEAREST_TO`
@@ -81,9 +103,13 @@
 
 ## 1.6.0
 
+2018-02-03
+
 - Új interfész email kommunikáció tesztelésére: `FakeEmailServer`
 
 ## 1.5.0
+
+2017-11-27
 
 - Új `ActionBuilder.selectOption(...)` metódusok legördülő listából történő választáshoz
 - Új `ActionBuilder.scrollTo(...)` metódus görgetéshez
@@ -95,10 +121,14 @@
 
 ## 1.4.0
 
+2017-11-15
+
 - A tesztek futtatása a teszt osztályok nevei alapján ábécé szerinti sorrendben történik
 - Az oldal-leírókhoz több `Frame` annotáció is hozzáadható azért, hogy HTML keretben levő keretet is elérhessünk
 
 ## 1.3.0
+
+2017-11-13
 
 - Új `assume` metódusok az ellenőrzési motorban "lágy" ellenőrzésekhez
 - Az ellenőrző motor `expectAny` és `expectAll` metódusai érvényüket vesztik
@@ -107,4 +137,14 @@
 
 ## 1.2.0
 
+2017-10-23
+
 - Új `Frame` annotáció, amivel HTML keretek tartalma is elérhető
+
+## 1.1.0
+
+2017-10-14
+
+## 1.0.0
+
+2017-09-09

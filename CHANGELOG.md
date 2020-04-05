@@ -2,6 +2,8 @@
 
 ## 1.13.0
 
+2020-04-05
+
 - New `OutputHandler.recordCustomStep(...)` method
 - New `StepLibrary.restClient()` method for REST API tests
 - New `PageObject.tryWith(WebElement)` and `PageObject.tryWith(Browser)` methods for doing "soft" action
@@ -12,13 +14,19 @@
 
 ## 1.12.2
 
+2019-11-17
+
 - New `memory-usage` field in the the XML file containing the test results
 
 ## 1.12.1
 
+2019-10-13
+
 - Small change in the behavior of the `PageObject.repeat(Task)` method
 
 ## 1.12.0
+
+2019-09-13
 
 - New `PageObject.repeat(Task)` method which is able to repeat the given task multiple times
 - New `WebElementHaveExpectations.textOrValue(...)` methods for verifying element's text or value
@@ -31,6 +39,8 @@
 
 ## 1.11.0
 
+2019-02-13
+
 - New `@Description` annotation for adding short description to step libraries and step methods
 - New `@Model` annotation for marking classes what are able to store loaded test data
 - New `timeout-ms` attribute in the XML file containing the test results
@@ -41,6 +51,8 @@
 
 ## 1.10.0
 
+2018-09-24
+
 - Get information about elements with the help of `PageObject.checkThat(WebElement)` and `PageObject.get(WebElement)` methods
 - Test data loading with `PageObject.testData()`, `StepLibrary.testData()` and `PluginInitializer.testData()` methods
 - Create screenshot with the `PageObject.browser().saveScreenshot()` method
@@ -49,10 +61,14 @@
 
 ## 1.9.1
 
+2018-06-20
+
 - Parameter of `Plugin.initialize(...)` method is able to read the configuration
 - New `ITestRun.getName()` method
 
 ## 1.9.0
+
+2018-06-19
 
 - New ibello plugin architecture, custom plugins can be added to test execution
 - New `BrowserActionBuilder` class for alert window handling
@@ -63,6 +79,8 @@
 
 ## 1.8.0
 
+2018-05-28
+
 - New `ActionBuilder.fireEvent(...)` for calling javascript events on elements
 - New search methods: `By.PARTIAL_TEXT`, `By.PARTIAL_BUTTON_TEXT` és `By.PARTIAL_LABEL`
 - New `Browser.localStorage()` és `Browser.sessionStorage()` methods for management of storages of the browser
@@ -70,9 +88,13 @@
 
 ## 1.7.1
 
+2018-05-24
+
 - Page objects and step libraries: `$` characters in method names will be replaced by parameters
 
 ## 1.7.0
+
+2018-03-21
 
 - New `Window` annotation for open new browser window (and tab)
 - New relation-based element-search modifier: `RelationType.NEAREST_TO`
@@ -81,9 +103,13 @@
 
 ## 1.6.0
 
+2018-02-03
+
 - New interface for testing email communication: `FakeEmailServer`
 
 ## 1.5.0
+
+2017-11-27
 
 - New `ActionBuilder.selectOption(...)` methods to select an item from a dropdown list
 - New `ActionBuilder.scrollTo(...)` method for scrolling
@@ -95,10 +121,14 @@
 
 ## 1.4.0
 
+2017-11-15
+
 - Test are executed in alphabetical order, based on the name of test classes.
 - It is possible to add multiple `Frame` annotations to a single page object, in order to access HTML frames included by frames.
 
 ## 1.3.0
+
+2017-11-13
 
 - New `assume` methods in expectation engine for "soft" expectations
 - `expectAny` and `expectAll` methods in expectation engine are deprecated
@@ -107,4 +137,14 @@
 
 ## 1.2.0
 
+2017-10-23
+
 - New `Frame` annotation to access content in HTML frames
+
+## 1.1.0
+
+2017-10-14
+
+## 1.0.0
+
+2017-09-09
