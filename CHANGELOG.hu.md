@@ -8,7 +8,7 @@
 - Új `StepLibrary.restClient()` metódus REST API teszteléshez
 - Új `PageObject.tryWith(WebElement)` és `PageObject.tryWith(Browser)` metódusok "lágy" műveletekhez
 - Új `By.BUTTON_CLASS` típusú elemkeresés
-- Új `WebElementActionBuilder.setSelected(boolean)` metódus jelölőnégyzetek kiválasztására
+- Új `WebElementActionBuilder.setSelected(boolean)` metódus jelölőnégyzetek és rádiógombok kiválasztására
 - A `@Name` annotációt mezőkhöz is hozzá lehet adni
 - A `@Description` annotációt mezőkhöz is hozzá lehet adni
 

@@ -8,7 +8,7 @@
 - New `StepLibrary.restClient()` method for REST API tests
 - New `PageObject.tryWith(WebElement)` and `PageObject.tryWith(Browser)` methods for doing "soft" action
 - New `By.BUTTON_CLASS` element search
-- New `WebElementActionBuilder.setSelected(boolean)` method for selecting checkboxes
+- New `WebElementActionBuilder.setSelected(boolean)` method for selecting checkboxes and radio buttons
 - The `@Name` annotation can be added to fields
 - The `@Description` annotation can be added to fields
 
