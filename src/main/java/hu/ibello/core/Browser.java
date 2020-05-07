@@ -15,6 +15,7 @@
  */
 package hu.ibello.core;
 
+import java.io.File;
 import java.net.URL;
 
 import hu.ibello.model.Screenshot;
@@ -46,6 +47,13 @@ import hu.ibello.model.Screenshot;
  * <li>{@link Browser#sessionStorage()}</li>
  * <li>{@link Browser#localStorage()}</li>
  * <li>{@link Browser#cookies()}</li>
+ * </ul>
+ * <p>
+ * To handle downloaded files, use these methods:
+ * </p>
+ * <ul>
+ * <li>{@link #getLatestDownloadedFile()}</li>
+ * <li>{@link #findDownloadedFile(String)}</li>
  * </ul>
  * @author Kornél Simon
  *
@@ -136,4 +144,24 @@ public interface Browser {
 	 * @return the storage of cookies
 	 */
 	public Storage cookies();
+	
+	/**
+	 * Returns a file which was downloaded with the browser earlier.
+	 * If the file with the given name does not exists then this method returns <code>null</code>.
+	 * <p>
+	 * The method tries to find the file in the download directory of the browser.
+	 * In some cases browsers rename files because of name collision. The <code>fileName</code>
+	 * parameter of this method should be the original name of the file. The method will try to find out the new name.
+	 * </p>
+	 * @param fileName the name of the downloaded file
+	 * @return the file or <code>null</code>
+	 */
+	public File findDownloadedFile(String fileName);
+	
+	/**
+	 * Returns the latest file from the browsers download directory.
+	 * If the directory is empty then this method returns <code>null</code>.
+	 * @return the file or <code>null</code>
+	 */
+	public File getLatestDownloadedFile();
 }
