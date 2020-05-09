@@ -15,6 +15,7 @@
  */
 package hu.ibello.steps;
 
+import hu.ibello.apitest.HttpClient;
 import hu.ibello.apitest.RestClient;
 import hu.ibello.core.Name;
 import hu.ibello.core.Value;
@@ -179,6 +180,16 @@ public abstract class StepLibrary extends WindowRelated {
 	 */
 	protected RestClient restClient() {
 		return tool.restClient();
+	}
+	
+	/**
+	 * Returns a HTTP client. With that we can perform a HTTP call - send a request and receive it's response.
+	 * The request and response data will be logged automatically.
+	 * @return the HTTP client instance
+	 * @see HttpClient
+	 */
+	protected HttpClient httpClient() {
+		return tool.httpClient();
 	}
 	
 }

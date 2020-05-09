@@ -32,14 +32,15 @@ import java.nio.charset.Charset;
  * <ul>
  * <li>Default HTTP method is GET. This can be changed with the {@link #method(HttpMethod)} method.</li>
  * <li>Default request charset is UTF-8. This can be changed with {@link #charset(Charset)} method.</li>
- * <li>By default the "Accept" header is added to the request with "application/json" value. This can be changed with the {@link #header(String, String)} method.</li>
+ * <li>Default request MIME type is "application/json". This can be changed with {@link #mimeType(String)} method.</li>
+ * <li>By default the "Accept" header is added to the request with "application/json" value. This can be changed with the {@link #accept(String)} method.</li>
  * </ul>
  * <p>
  * Example REST API call:
  * </p>
  * <pre>
  * MyRequest data = ...;
- * MyResponse response = restClient()
+ * HttpResponse&lt;MyResponse&gt; response = restClient()
  *     .url("http://myservice.xy/service")
  *     .body(data)
  *     .basicAuthorization("user", "pwd")
@@ -84,6 +85,13 @@ public interface RestClient {
 	public RestClient method(HttpMethod method);
 	
 	/**
+	 * Sets the MIME type of the REST call's content.
+	 * @param mimeType a valid MIME type
+	 * @return this {@link RestClient} instance
+	 */
+	public RestClient mimeType(String mimeType);
+	
+	/**
 	 * Sets the charset of the REST call's content.
 	 * @param charset a java {@link Charset} instance
 	 * @return this {@link RestClient} instance
@@ -95,9 +103,7 @@ public interface RestClient {
 	 * @param charsetName the name of the charset
 	 * @return this {@link RestClient} instance
 	 */
-	public default RestClient charset(String charsetName) {
-		return charset(Charset.forName(charsetName));
-	}
+	public RestClient charset(String charsetName);
 	
 	/**
 	 * Sets the body of the REST call.
@@ -115,6 +121,13 @@ public interface RestClient {
 	 * @return this {@link RestClient} instance
 	 */
 	public RestClient header(String name, String value);
+	
+	/**
+	 * Sets the "Accept" header of the REST call.
+	 * @param mimeType a valid MIME type
+	 * @return this {@link RestClient} instance
+	 */
+	public RestClient accept(String mimeType);
 	
 	/**
 	 * Sets the "Authorization" header of the REST call.
@@ -138,9 +151,7 @@ public interface RestClient {
 	 * @param token the authorization token
 	 * @return this {@link RestClient} instance
 	 */
-	public default RestClient bearerAuthorization(String token) {
-		return authorization("Bearer " + token);
-	}
+	public RestClient bearerAuthorization(String token);
 	
 	/**
 	 * Executes the REST call: sends the request and receives the response.
