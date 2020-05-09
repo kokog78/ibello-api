@@ -1,5 +1,10 @@
 # ibello-api changelog
 
+## 1.13.1
+
+- New `Browser.findDownloadedFile(String)` and `Browser.getLatestDownloadedFile()` methods to access downloaded files.
+- New `StepLibrary.httpClient()` method for HTTP API tests
+
 ## 1.13.0
 
 2020-04-05

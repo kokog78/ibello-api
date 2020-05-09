@@ -1,5 +1,10 @@
 # ibello-api változási napló
 
+## 1.13.1
+
+- Új `Browser.findDownloadedFile(String)` és `Browser.getLatestDownloadedFile()` metódusok a letöltött fájlok eléréséhez.
+- Új `StepLibrary.httpClient()` metódus HTTP API teszteléshez
+
 ## 1.13.0
 
 2020-04-05
