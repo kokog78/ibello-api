@@ -4,6 +4,7 @@
 
 - Új `Browser.findDownloadedFile(String)` és `Browser.getLatestDownloadedFile()` metódusok a letöltött fájlok eléréséhez.
 - Új `StepLibrary.httpClient()` metódus HTTP API teszteléshez
+- Új `@Internal` annotáció tesztlépés metódusok listázásból történő kizárásához
 
 ## 1.13.0
 

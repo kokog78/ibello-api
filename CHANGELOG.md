@@ -4,6 +4,7 @@
 
 - New `Browser.findDownloadedFile(String)` and `Browser.getLatestDownloadedFile()` methods to access downloaded files.
 - New `StepLibrary.httpClient()` method for HTTP API tests
+- New `@Internal` annotation, with it we can exlude test step methods from listing
 
 ## 1.13.0
 
