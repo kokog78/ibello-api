@@ -1193,6 +1193,22 @@ Példa:
 }
 ```
 
+##### Konfigurációs paraméterek behelyettesítése
+
+Arra is lehetőségünk van, hogy a JSON fájlokban tárolt szövegekbe konfigurációs paraméterek értékeit helyettesítsük be. Ehhez a `${...}` írásmódot kell használnunk, a zárójelekbe a konfigurációs paraméter neve kerül.
+
+Példa:
+
+A betöltendő fájl tartalma legyen az alábbi.
+
+```json
+{
+    "color": "#${color.value}"
+}
+```
+
+Ha a "color.value" konfigurációs paraméter értéke "FFFFFF", akkor a tesztadat betöltése után a "color" mezőben a "#FFFFFF" szöveg lesz.
+
 ##### Speciális adatbetöltési lehetőségek
 
 A JSON fájlok egész komplex szerkezetűek is tudnak lenni, ezáltal képesek objektumstruktúra leírására is. A JSON fájl mezői lehetnek tömbök és más objektumok is. Ezek betöltődését picit módosíthatjuk az alábbi két metódus segítségével.
@@ -1288,11 +1304,23 @@ akkor a `withCharset(Charset)` metódust kell meghívnunk. Például:
 testData().fromProperties("user-valid").withCharset(StandardCharsets.ISO_8859_1).load();
 ```
 
-A `load()` metódus helyett a hívási láncot zárhatjuk `loadString()` metódussal is. Ekkor nem objektumot kapunk, hanem egy szöveges értéket,
-ami a tesztadatokat `properties` fájl formában tartalmazza.
+A `load()` metódus helyett a hívási láncot zárhatjuk `loadString()` metódussal is. Ekkor nem objektumot kapunk, hanem egy szöveges értéket, ami a tesztadatokat `properties` fájl formában tartalmazza.
 
-Ha a hívási láncot az `openStream()` metódussal zárjuk, akkor egy `InputStream` típusú nyitott adatfolyamot kapunk, amiből kiolvashatjuk a
-szöveges tartalmat.
+Ha a hívási láncot az `openStream()` metódussal zárjuk, akkor egy `InputStream` típusú nyitott adatfolyamot kapunk, amiből kiolvashatjuk a szöveges tartalmat.
+
+##### Konfigurációs paraméterek behelyettesítése
+
+Arra is lehetőségünk van, hogy a fájlokban tárolt szövegekbe konfigurációs paraméterek értékeit helyettesítsük be. Ehhez a `${...}` írásmódot kell használnunk, a zárójelekbe a konfigurációs paraméter neve kerül.
+
+Példa:
+
+A betöltendő fájl tartalma legyen az alábbi.
+
+```properties
+color: #${color.value}
+```
+
+Ha a "color.value" konfigurációs paraméter értéke "FFFFFF", akkor a tesztadat betöltése után a "color" kulcshoz tartozó érték "#FFFFFF" lesz.
 
 #### Tesztadatok szövegfájlokban
 
@@ -1311,18 +1339,29 @@ message.hu-prod.txt
 ```
 
 A betöltést a `testData().fromTxt(String).loadString()` metódussal lehet elvégezni. A sztring paraméter az azonosító kell legyen.
-Az eszköz csak azokat a fájlokat veszi figyelembe, amiknek nincs olyan címkéje, amit a tesztfuttatásnál *nem* adtunk meg. Az azonosítóhoz
-(és a címkékhez) passzoló fájlok közül a legutolsó lesz csak betöltve.
+Az eszköz csak azokat a fájlokat veszi figyelembe, amiknek nincs olyan címkéje, amit a tesztfuttatásnál *nem* adtunk meg. Az azonosítóhoz (és a címkékhez) passzoló fájlok közül a legutolsó lesz csak betöltve.
 
-Az ibello alapértelmezés szerint UTF-8 karakterkódolással próbálja betölteni a fájlokban tárolt információkat. Ha ezen változtatni szeretnénk,
-akkor a `withCharset(Charset)` metódust kell meghívnunk. Például:
+Az ibello alapértelmezés szerint UTF-8 karakterkódolással próbálja betölteni a fájlokban tárolt információkat. Ha ezen változtatni szeretnénk, akkor a `withCharset(Charset)` metódust kell meghívnunk. Például:
 
 ```java
 testData().fromTxt("message").withCharset(StandardCharsets.ISO_8859_1).loadString();
 ```
 
-Ha a hívási láncot az `openStream()` metódussal zárjuk, akkor egy `InputStream` típusú nyitott adatfolyamot kapunk, amiből kiolvashatjuk a
-szöveges tartalmat.
+Ha a hívási láncot az `openStream()` metódussal zárjuk, akkor egy `InputStream` típusú nyitott adatfolyamot kapunk, amiből kiolvashatjuk a szöveges tartalmat.
+
+##### Konfigurációs paraméterek behelyettesítése
+
+Arra is lehetőségünk van, hogy a fájlok tartalmába konfigurációs paraméterek értékeit helyettesítsük be. Ehhez a `${...}` írásmódot kell használnunk, a zárójelekbe a konfigurációs paraméter neve kerül.
+
+Példa:
+
+A betöltendő fájl tartalma legyen az alábbi.
+
+```
+három ${color} kiscica
+```
+
+Ha a "color" konfigurációs paraméter értéke "szürke", akkor a betöltött tartalom "három szürke kiscica" lesz.
 
 #### Tesztadatok bináris fájlokban
 
