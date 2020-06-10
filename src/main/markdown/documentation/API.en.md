@@ -70,3 +70,37 @@ public class LocalTests {
 }
 ```
 
+### Order of running of test methods
+
+Test methods in the class run in alphabetical order. It can be changed be the `@Test` annotations `order` parameter. The order parameters default value is 0.
+
+```java
+@Test(order = 3)
+public void ordered_test_method() {
+    ...
+}
+```
+
+### Excluding test methods by labels
+
+Test methods could be also excluded with `@Test`annotations `includedTags` and `excludedTags`parameters. The parameters in `includedTags` turn on and the parameters in `excludedTags` turn off the test method.
+
+### Naming test methods
+
+Names of the test methods are shown in logs and riports about accomplishments. Ibello tries make the shown names more readable (converts the "camelcase" és "snake case" type method names), but it isn't enough in some case. To solve this problem methods could get new shown name with the `@Name` annotation.
+
+```java
+@Test
+@Name("Login with valid user")
+public void t0_login() {
+    ...
+}
+
+@Test
+@Name("Check basic functions")
+public void t1_check_basic_functions(){
+    ...
+}
+```
+
+Methods can get short descriptions with `@Description`annotation. Values of the annotations will be shown in one text.
