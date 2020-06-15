@@ -189,7 +189,7 @@ Ibello always logs test step-libraries' public methods calling, so their names a
 Expressions from methods name are shown in the log and the riport. E.g.: from `i_login_with_valid_credentials`to `I Login with Valid Credentials`. If this operation is needed to be changed, we can add a `@Name`annotation to the method, which has only one attribution: the name which have to be printed. Also parameters could be printed in the name. Their place can be indicated with `${0}`, `${1`, etc. strings. Parameters can be used without `@Name` annotation. In this case their place is indicated with `$`. (Type `String`parameters have to be given in  quation marks.)
 
 ```java
-@Name("A(z) ${0} elem megnyitása")
+@Name("Open ${0} element")
 public void openItem(int index) { ... }
 
 public void push_$_button(String title) { ... }
