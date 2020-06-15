@@ -148,7 +148,7 @@ public class LoginSteps extends StepLibrary {
 }
 ```
 
-Self-created classes can be also injected in test-step libraries. It could be greate if the username and the password didn't need to be given directly in the example below. There would be a tool-class through which these datas can be available, so if these datas or the methods of queries  will be changed in the future, the changing of the tool-class will be enough. Let's make a tool-class:
+Self-created classes can be also injected in test-step libraries. It could be greate if the username and the password didn't need to be given directly in the example above. There would be a tool-class through which these datas can be available, so if these datas or the methods of queries  will be changed in the future, the changing of the tool-class will be enough. Let's make a tool-class:
 
 ```java
 public class UserData {
@@ -182,5 +182,29 @@ public class LoginSteps extends StepLibrary {
 }
 ```
 
+### Naming test steps
 
+Ibello always logs test step-libraries' public methods calling, so their names are shown in the test riport.
+
+Expressions from methods name are shown in the log and the riport. E.g.: from `i_login_with_valid_credentials`to `I Login with Valid Credentials`. If this operation is needed to be changed, we can add a `@Name`annotation to the method, which has only one attribution: the name which have to be printed. Also parameters could be printed in the name. Their place can be indicated with `${0}`, `${1`, etc. strings. Parameters can be used without `@Name` annotation. In this case their place is indicated with `$`. (Type `String`parameters have to be given in  quation marks.)
+
+```java
+@Name("A(z) ${0} elem megnyitása")
+public void openItem(int index) { ... }
+
+public void push_$_button(String title) { ... }
+```
+
+If test step-library class also has `@Name` annotation, the given string added to all of the test steps' names as prefix. This prefix called namespace. 
+
+Test steps name is "Home Page: Open Page" in the example below.
+
+```java
+@Name("Home Page")
+public class HomePageSteps extends StepLibrary {
+
+	public void open_page() {
+	}
+}
+```
 
