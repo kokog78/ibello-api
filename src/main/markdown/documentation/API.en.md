@@ -30,7 +30,7 @@ public class LoginTests {
 
 In this example the instructions of the called test methods doesn't contain technical details. The tehcninal informations, like how we know, if we are in the login page or how we can log in with valid user are in the test-step library's methods.
 
-###Running order of test classes
+### Running order of test classes
 
 Methods of test classes with `@Specification` annotation run in alphabetical order by default. It can be changed by give the index in the annotations parameter, which ibello can use for systematization:
 
@@ -43,7 +43,7 @@ public class RunLater {
 
 If there isn't given index parameter, it's default value is 0.  If there is more than one class with the same index they run in alphabetical order.
 
-### Excluding test classes by labels###
+### Excluding test classes by labels
 
 Test classes can be excluded by `Specification.includedTags` and `Speficifation.excludedTags`parameters. We can specify labels, with which the actual test run can be described.
 
@@ -81,7 +81,7 @@ public void ordered_test_method() {
 }
 ```
 
-###Excluding test methods by labels
+### Excluding test methods by labels
 
 Test methods could be also excluded with `@Test`annotations `includedTags` and `excludedTags`parameters. The parameters in `includedTags` turn on and the parameters in `excludedTags` turn off the test method.
 
