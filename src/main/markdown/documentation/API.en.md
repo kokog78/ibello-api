@@ -1,7 +1,7 @@
-Tests have three layers in ibello framework. On the one hand, the *page-description* classes  summerize the pages' technical functions. On the other hand, test steps can be compiled by one or even more methods of the page-description class, which is put in a class, called *test-step-library class*. 
+Tests have three layers in ibello framework. On the one hand, the *page-definition* classes  summerize the pages' technical functions. On the other hand, test steps can be compiled by one or even more methods of the page-definition class, which is put in a class, called *test-step-library class*. 
 
 The business functions can be easily separated by this thee-layer structure, so the tests could be available from business perspective too. 
-Furthermore, little changes in websites do not affect on tests, only the page-description classes are needed to be changed, so the tests are more future-proof.
+Furthermore, little changes in websites do not affect on tests, only the page-definition classes are needed to be changed, so the tests are more future-proof.
 
 ## The test class
 
@@ -104,3 +104,83 @@ public void t1_check_basic_functions(){
 ```
 
 Methods can get short descriptions with `@Description`annotation. Values of the annotations will be shown in one text.
+
+### Test-step library
+
+Test step library is from `StepLibrary`upper class. Every public method of it is a test step. It could be useful if methods name are meaningful. There are three methods in good practice:
+
+- preparative methods are responsible for starting point in the browser.
+- executive methods execute the operation which is needed to be tested.
+- control methods monitor the created conditions and throw exception if it isn't the desired one.
+
+Test step libraries methods use page-definitions. Page-definitions could be (private) fields, ibello will create the instances automatically.  Test-step libraries can refer other test-step libraries too by (private) fields with the corresponding type.
+
+```java
+public class LoginSteps extends StepLibrary {
+
+    // an instance of page-definition is created automatically
+    private LoginPage loginPage;
+    
+    // it is also created automatically
+    private WelcomePage welcomePage;
+    
+    public void login_page_is_opened() {
+        loginPage.open();
+    }
+    
+    public void i_login_with_valid_credentials() {
+        loginPage.setUsername("testuser");
+        loginPage.setPassword("testpwd");
+        loginPage.clickLoginButton();
+    }
+    
+    public void i_get_to_the_welcome_page() {
+        welcomePage.expectOpened();
+    }
+    
+    public void i_see_that_valid_user_is_logged_in() {
+        welcomePage.expectCurrentUser("testuser");
+    }
+    
+    public void i_see_the_standard_operations() {
+        welcomePage.expectOperations("Data Recording", "Queries", "Settings");
+    }
+}
+```
+
+Self-created classes can be also injected in test-step libraries. It could be greate if the username and the password didn't need to be given directly in the example below. There would be a tool-class through which these datas can be available, so if these datas or the methods of queries  will be changed in the future, the changing of the tool-class will be enough. Let's make a tool-class:
+
+```java
+public class UserData {
+
+    private final String VALID_USERNAME = "testuser";
+    private final String VALID_PASSWORD = "testpwd";
+
+    public String getValidUsername() {
+        return VALID_USERNAME;
+    }
+    
+    public void getValidPassword() {
+        return VALID_PASSWORD;
+    }
+}
+```
+
+Let's put an instance of our new tool-class (UserData) in the test-step library! `@Inject` annotation is needed to be used in this case, so ibello knows, that the class which is needed to be inject is self-created.
+
+```Java
+public class LoginSteps extends StepLibrary {
+    
+    @Inject
+    private UserData userData;
+    
+    public void i_login_with_valid_credentials() {
+        loginPage.setUsername(userData.getValidUsername());
+        loginPage.setPassword(userData.getValidPassword());
+        loginPage.clickLoginButton();
+    }
+}
+```
+
+
+
