@@ -420,10 +420,11 @@ A `type` tulajdonság értéke a `PositionType` enum értékkészletéből szár
 A DOM struktúra szerinti keresést a  `@Relation` annotációval oldhatjuk meg. Hasonlóan a `@Position` annotációhoz, a `by` és a `using` tulajdonságokkal itt is egy referencia-elemet
 határozunk meg. A `type` tulajdonság értéke itt a `RelationType` enum egyik konstansa, ami meghatározza a keresett elem viszonyát a referencia-elemhez képest.
 
-| `RelationType`  | Jelentése                                                                  |
-| --------------- | -------------------------------------------------------------------------- |
-| `DESCENDANT_OF` | A keresett elem a referencia-elem leszármazottja.                          |
+| `RelationType`  | Jelentése                                                    |
+| --------------- | ------------------------------------------------------------ |
+| `DESCENDANT_OF` | A keresett elem a referencia-elem leszármazottja.            |
 | `ANCESTOR_OF`   | A keresett elem a referencia-elemet közvetlenül vagy közvetve tartalmazza. |
+| `NEAREST_TO`    | A referencia elemhez legközelebb eső (a feltételnek megfelelő) elem keresése. A távolság a DOM struktúrában van mérve. |
 
 Ha a `type` értéke nincs megadva, akkor az ibello rendszer azt `RelationType.DESCENDANT_OF`-nak veszi. Több `@Relation` annotációval lehetőségünk van több szülőelemen keresztül megadni
 a keresett elem helyét. Az alábbi példa a "modal-window" CSS osztállyal rendelkező elemen belül keres egy `form` element, majd azon belül egy "main-fields" osztállyal rendelkező elemet,
@@ -1189,7 +1190,18 @@ Példa:
 ```json
 {
     "dateTime1": "-1Y30h",
-    "dateTime2": "+3d"
+    "tomorrow": "+1D"
+}
+```
+
+Java oldalon a dátummezők lehetnek `XMLGregorianCalendar` típusúak is. Ennek a típusnak egy jellegzetessége az, hogy a dátum egyes részei (pl. nap, óra, perc) üresek maradhatnak. Ha egy ilyen mezőben üresen hagyjuk az óra, perc és másodperc elemeket, akkor időpont nélküli dátumot tudunk kezelni.
+
+Relatív dátummegadásnál, ha a dátummező java típusa `XMLGregorianCalendar`, akkor az ibello egyes elemeket üresen hagy. Azok maradnak üresen, amik nem voltak megnevezve a formátumban, és nálunk kisebb elem sem volt megnevezve. Vagyis például az alábbi esetek mindegyikében az óra, perc és másodperc üresen marad, az év, hónap nap viszont nem:
+
+```json
+{
+    "date1": "+3D",
+    "date2": "-1Y2D"
 }
 ```
 
