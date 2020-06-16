@@ -1189,7 +1189,7 @@ Példa:
 ```json
 {
     "dateTime1": "-1Y30h",
-    "dateTime2": "+3d"
+    "dateTime2": "+3m"
 }
 ```
 
