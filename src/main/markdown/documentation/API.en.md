@@ -214,7 +214,7 @@ Page-definition classes summarize a websites or a websites well-defined parts' t
 
 Every page-definition is a subtype of `PageObject` class. Ibello initializes page-definitions automatically.
 
-Browsers functions can be reached by page-definition, e.g. setting actual URL. For this function, we have to use `browser()` method. 
+Browsers functions can be reached by page-definition, e.g.: setting actual URL. For this function, we have to use `browser()` method. 
 
 ```java
 public class LoginPage extends PageObject {
@@ -294,3 +294,21 @@ public class WelcomePage extends PageObject {
 ```
 
 Page-definitions method are shown in the log and the riport too. The shown name can be customize with `@Name` annotation. The input parameter in page-definitions `@Name` annotation will be the prefix of the methods name. 
+
+Reading configuration parameters
+
+Ibello configuration parameters can be read by test step-libraries and page-definition classes, with `getConfigurationValue(String)` method.  This method have only one argument, which is the configuration parameters name and its return type is `Value`. With `Value` the parameters can be converted to any java type.  Conversion can be made by `Value` classes methods, e.g.: `Value.toString()`, `Value.toDouble()`, `Value.toStringArray()`. If the configuration parameter doesn't exist, the `getConfigurationValue` returns with a `Value` object anyway, but in this case, the value is `null`, e.g.:
+
+```java
+String username = getConfigurationValue("current.user").toString();
+Integer backendPort = getConfigurationValue("backend.port").toInteger();
+File parameterFile = getConfigurationValue("backend.parameter.file").toFile();
+```
+
+Methods, which start with "to" usually have a pair, which can get an input parameter as default. This parameter will be used, if the configuration parameter doesn't exist, e.g.:
+
+```java
+String username = getConfigurationValue("current.user").toString("default");
+Integer backendPort = getConfigurationValue("backend.port").toInteger(0);
+```
+
