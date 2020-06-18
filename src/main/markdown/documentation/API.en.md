@@ -208,3 +208,89 @@ public class HomePageSteps extends StepLibrary {
 }
 ```
 
+### Page-definition class
+
+Page-definition classes summarize a websites or a websites well-defined parts' technical functions, like clicking on a button, filling an input field or "drag and drop" operations. Furthermore, page-definitons contain methods, which check the status of the page, like visibility of elements or content of text fields.
+
+Every page-definition is subtype of `PageObject`class. Ibelli initializes page-definitions automatically.
+
+Browsers functions can be reached by page-definition, e.g. setting actual URL. For this function, we have to use `browser()` method. 
+
+```java
+public class LoginPage extends PageObject {
+    
+    public void open() {
+        browser().openURL("/login.html");
+    }
+}
+```
+
+Page-definition could have special fields, which contains searching parameters of elements in the page. These elements have `WebElement`type. These fields are needed for operations with elements and check ups. Ibello initializes these fields automatically, if searching parameters are given in `@Find` annotations parameters. 
+
+For operations with elements, we have to use `doWith` method, which has only one parameter called `WebElement`. 
+
+```java
+public class LoginPage extends PageObject {
+
+    // the field is created automatically, it contains elements data, which has "username" id
+    @Find(using="#username")
+    private WebElement usernameField;
+    
+    // the field is created automatically, it contains elements data, which has "password" id
+    @Find(by=By.ID, using="password")
+    private WebElement passwordField;
+    
+    // the field is created automatically, it contains the buttons or links of "Log in" data
+    @Find(by=By.BUTTON_TEXT, using="Log in")
+    private WebElement loginButton;
+    
+    public void setUsername(String username) {
+        doWith(usernameField).setValue(username);
+    }
+    
+    public void setPassword(String password) {
+        doWith(passwordField).setValue(password);
+    }
+    
+    public void clickLoginButton() {
+        doWith(loginButton).click();
+    }
+}
+```
+
+For check ups page-definitions `expectations()` method is needed to be called. The returned object has some `expect(...)` methods, which get the object which needed to be checked up as parameter. It could be a browser instance which is returned by `browser()` or an instance of `WebElement`. 
+
+```java
+public class WelcomePage extends PageObject {
+
+    @Find("#user-name")
+    private WebElement userField;
+
+    public void expectOpened() {
+        expectations().expect(browser()).toHave().url("/welcome.html");
+    }
+    
+    public void expectCurrentUser(String username) {
+        expectations().expect(userField).toHave().value(username);
+    }
+}
+```
+
+More than one elements can be searched. For this, we need to use `WebElements` class, which is an implementation of `List<WebElement>`. Ibello creates and monitors list of elements automatically and, if an element disappear or a new element shown  we don't need to create the field again.
+
+```java
+public class WelcomePage extends PageObject {
+
+    @Find(by=By.CLASS_NAME, using="operation-button")
+    private WebElements operations;
+    
+    public void expectOperations(String ... buttonTexts) {
+        expectations().expect(operations).toHave().size(buttonTexts.length);
+        for (int i = 0; i < buttonTexts.length; i++) {
+            expectations().expect(operations.get(i)).toHave().text(buttonTexts[i]);
+        }
+    }
+}
+```
+
+Page-definitions method are shown in the log and the riport too. The shown name can be customize with `@Name` annotation. The page-definitions `@Name` annotation is the prefix of the methods name. 
