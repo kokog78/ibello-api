@@ -105,7 +105,7 @@ public void t1_check_basic_functions(){
 
 Methods can get short descriptions with `@Description`annotation. Values of the annotations will be shown in one text.
 
-### Test-step library
+## Test-step library
 
 Test step library is from `StepLibrary`upper class. Every public method of it is a test step. It could be useful if methods name are meaningful. There are three methods in good practice:
 
@@ -208,7 +208,7 @@ public class HomePageSteps extends StepLibrary {
 }
 ```
 
-### Page-definition class
+## Page-definition class
 
 Page-definition classes summarize a websites or a websites well-defined parts' technical functions, like clicking on a button, filling an input field or "drag and drop" operations. Furthermore, page-definitons contain methods, which check the status of the page, like visibility of elements or content of text fields.
 
@@ -295,9 +295,9 @@ public class WelcomePage extends PageObject {
 
 Page-definitions method are shown in the log and the riport too. The shown name can be customize with `@Name` annotation. The input parameter in page-definitions `@Name` annotation will be the prefix of the methods name. 
 
-Reading configuration parameters
+## Reading configuration parameters
 
-Ibello configuration parameters can be read by test step-libraries and page-definition classes, with `getConfigurationValue(String)` method.  This method have only one argument, which is the configuration parameters name and its return type is `Value`. With `Value` the parameters can be converted to any java type.  Conversion can be made by `Value` classes methods, e.g.: `Value.toString()`, `Value.toDouble()`, `Value.toStringArray()`. If the configuration parameter doesn't exist, the `getConfigurationValue` returns with a `Value` object anyway, but in this case, the value is `null`, e.g.:
+Ibello configuration parameters can be read by test step-libraries and page-definition classes, with `getConfigurationValue(String)` method.  This method have only one argument, which is the configuration parameters name and its return type is `Value`. The parameters can be converted to any java type with `Value`.  Conversion can be made by `Value` class' methods, e.g.: `Value.toString()`, `Value.toDouble()`, `Value.toStringArray()`. If the configuration parameter doesn't exist, the `getConfigurationValue` returns with a `Value` object anyway, but in this case, the value is `null`, e.g.:
 
 ```java
 String username = getConfigurationValue("current.user").toString();
@@ -311,4 +311,31 @@ Methods, which start with "to" usually have a pair, which can get an input param
 String username = getConfigurationValue("current.user").toString("default");
 Integer backendPort = getConfigurationValue("backend.port").toInteger(0);
 ```
+
+## Searching elements
+
+With Ibello we have the chance to search one or more element. The searching can be static or dinamic. This function is only available through page-definitions.
+
+### Static element search
+
+A search is static if the page-definition's `WebElement` or `WebElements`typed field has `@Find` annotation, so ibello initializes this field automatically.  `@Find` annotation could have two attributions. 
+`by` attribution can get values from `By`enum's set of values, and it gives the method of searching. This attribution's default value is `By.CSS_SELECTOR` - if `by` doesn't get a value, it will be the method of searching. 
+`using` attribution is the parameter of searching method, it depends on it. 
+
+The table below shows the searching attributes and methods.
+
+| Searching method                 | Value of `by`            | Value of `using`                                             |
+| -------------------------------- | ------------------------ | ------------------------------------------------------------ |
+| by CSS selector                  | `By.CSS_SELECTOR`        | CSS selector                                                 |
+| by `id` attributes               | `By.ID`                  | the searched element's `id` attribute                        |
+| by `name` attributes             | `By.NAME`                | the searched element's `name` attribute                      |
+| by type of element               | `By.TAG_NAME`            | the searched element's type name                             |
+| by CSS class                     | `By.CLASS_NAME`          | the name of the searched element's CSS class                 |
+| by button text                   | `By.BUTTON_TEXT`         | the subtitle of the button which has the searched function   |
+| gomb részleges felirata szerinti | `By.PARTIAL_BUTTON_TEXT` | a part of the subtitle of the button which has the searched function |
+| by label                         | `By.LABEL`               | the subtitle of the searched element's label                 |
+| by partial label                 | `By.PARTIAL_LABEL`       | a part of the subtitle of the searched element's label       |
+| by content                       | `By.TEXT`                | the content of the searched label                            |
+| by partial content               | `By.PARTIAL_TEXT`        | a part of the searched label's content                       |
+| by class of the button           | `By.BUTTON_CLASS`        | the CSS class of the button which has the searched function  |
 
