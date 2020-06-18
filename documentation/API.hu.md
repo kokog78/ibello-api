@@ -1098,8 +1098,7 @@ public class User {
 }
 ```
 
-Az osztályhoz itt hozzárendeltük a `@Model` annotációt. Ez nem kötelező, viszont ezzel jelölhetjük, hogy tesztadatokat tároló osztályról van szó.
-Ezt az információt az ibello bizonyos esetekben felhasználja, és könnyebbé teszi a számunkra a fejlesztést.
+Az osztályhoz itt hozzárendeltük a `@Model` annotációt. Ez nem kötelező, viszont ezzel jelölhetjük, hogy tesztadatokat tároló osztályról van szó. Ezt az információt az ibello bizonyos esetekben felhasználja, és könnyebbé teszi a számunkra a fejlesztést.
 
 Az osztályhoz hozzárendelhetünk `@Name` annotációt. Ezzel nevet adhatunk a tesztadatnak, amit az ibello bizonyos
 esetekben megjelenít majd. Hasonlóképpen, a `@Description` annotációval leírást adhatunk az osztályhoz - ebből
@@ -1397,6 +1396,44 @@ Az eszköz csak azokat a fájlokat veszi figyelembe, amiknek nincs olyan címké
 (és a címkékhez) passzoló fájlok közül a legutolsó lesz csak betöltve.
 
 Ha a hívási láncot a `getFile()` metódussal zárjuk, akkor visszakapjuk a megtalált fájlt.
+
+### Felsorolás típusú osztályok mint tesztadatok
+
+A `@Model` annotációval felsorolás (enum) típusú osztályokat is megjelölhetünk. Az ibello így a felsorolás értékeit tesztadatként kezeli, és azokat megadhatjuk például teszt metódusok paramétereként.
+
+Példaként nézzük a következő felsorolás osztályt:
+
+```java
+@Model
+public enum UserKind {
+    ADMIN,
+    NORMAL;
+}
+```
+
+Ennek az osztálynak a konstansait paraméterként megadhatjuk egy tesztlépésben:
+
+```java
+public void I_log_in_with_$_user(UserKind userKind) {
+    ...
+}
+```
+
+Ha az előbbi metódust egy tesztben meghívjuk:
+
+```java
+...
+loginSteps.I_log_in_with_$_user(UserKind.ADMIN);
+...
+```
+
+akkor a teszt riportban és a logban is  valami hasonlót fogunk látni:
+
+```cucumber
+Login: I log in with ADMIN user
+```
+
+A fentiek működnek akkor is, ha a felsorolás osztályhoz nem adtunk meg `@Model` annotációt. Az annotáció nélkül viszont nem működik a fordított irány. Egy gherkin formátumú forgatókönyvben ugyanis akár meg is hívhatjuk a felsorolás paraméterrel rendelkező tesztlépéseket - feltéve, hogy az annotáció hozzá van adva az osztályhoz.
 
 ## Egyedi loggolás
 

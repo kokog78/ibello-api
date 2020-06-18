@@ -39,6 +39,7 @@ import java.lang.annotation.Target;
  * <p>
  * If we use the annotation, then in some circumstances, the ibello will be able to recognize
  * that the class can be used to load test data into it.
+ * Instances of the class can also be used as parameters for test steps.
  * </p>
  * @author Kornél Simon
  */
