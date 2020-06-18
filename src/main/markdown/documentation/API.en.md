@@ -212,7 +212,7 @@ public class HomePageSteps extends StepLibrary {
 
 Page-definition classes summarize a websites or a websites well-defined parts' technical functions, like clicking on a button, filling an input field or "drag and drop" operations. Furthermore, page-definitons contain methods, which check the status of the page, like visibility of elements or content of text fields.
 
-Every page-definition is subtype of `PageObject`class. Ibelli initializes page-definitions automatically.
+Every page-definition is a subtype of `PageObject` class. Ibello initializes page-definitions automatically.
 
 Browsers functions can be reached by page-definition, e.g. setting actual URL. For this function, we have to use `browser()` method. 
 
@@ -225,7 +225,7 @@ public class LoginPage extends PageObject {
 }
 ```
 
-Page-definition could have special fields, which contains searching parameters of elements in the page. These elements have `WebElement`type. These fields are needed for operations with elements and check ups. Ibello initializes these fields automatically, if searching parameters are given in `@Find` annotations parameters. 
+Page-definition could have special fields, which contains searching parameters of elements in the page. These elements have `WebElement `type. These fields are needed for operations with elements and check ups. Ibello initializes these fields automatically if searching parameters are given in `@Find` annotations parameters. 
 
 For operations with elements, we have to use `doWith` method, which has only one parameter called `WebElement`. 
 
@@ -276,7 +276,7 @@ public class WelcomePage extends PageObject {
 }
 ```
 
-More than one elements can be searched. For this, we need to use `WebElements` class, which is an implementation of `List<WebElement>`. Ibello creates and monitors list of elements automatically and, if an element disappear or a new element shown  we don't need to create the field again.
+More than one elements can be searched. For this, we need to use `WebElements` class, which is an implementation of `List<WebElement>`. Ibello creates and monitors list of elements automatically and if an element disappear or a new element shown  we don't need to create the field again.
 
 ```java
 public class WelcomePage extends PageObject {
@@ -293,4 +293,4 @@ public class WelcomePage extends PageObject {
 }
 ```
 
-Page-definitions method are shown in the log and the riport too. The shown name can be customize with `@Name` annotation. The page-definitions `@Name` annotation is the prefix of the methods name. 
+Page-definitions method are shown in the log and the riport too. The shown name can be customize with `@Name` annotation. The input parameter in page-definitions `@Name` annotation will be the prefix of the methods name. 
