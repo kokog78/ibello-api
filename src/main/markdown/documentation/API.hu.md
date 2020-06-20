@@ -750,7 +750,7 @@ Az előző metódust követi a tulajdonság megnevezése. A lehetséges tulajdon
 | `tagName(...)`                 | Az elem a megadott típusú.                                                                                                 |
 | `cssClassName(...)`            | Az elem rendelkezik a megadott CSS osztálynévvel.                                                                          |
 | `cssValue(..., ...)`           | Az elem adott CSS tulajdonsága a megadott értéket veszi fel.                                                               |
-| `text(...)`                    | Az elem tartalma a megadott szöveg (vagy megfelel a megadptt reguláris kifejezésnek).                                      |
+| `text(...)`                    | Az elem tartalma a megadott szöveg (vagy megfelel a megadott reguláris kifejezésnek).                                      |
 | `textOrValue(...)`             | Egyesíti a `text(...)` és a `value(...)` metódusokat. Vagy az elem tartalmát, vagy a `value` attribútum értékét ellenőrzi. |
 | `cssClassName(...)`            | Az elem rendelkezik a megadott CSS osztálynévvel.                                                                          |
 | `displayed()`                  | Az elem láthatósága.                                                                                                       |
