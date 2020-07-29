@@ -1,5 +1,10 @@
 # ibello-api changelog
 
+## 1.13.2
+
+- The `@Name` annotation can be added to packages
+- The `@Description` annotation can be added to packages
+
 ## 1.13.1
 
 - New `Browser.findDownloadedFile(String)` and `Browser.getLatestDownloadedFile()` methods to access downloaded files.
