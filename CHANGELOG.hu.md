@@ -4,6 +4,7 @@
 
 - A `@Name` annotációt csomagokhoz is hozzá lehet adni
 - A `@Description` annotációt csomagokhoz is hozzá lehet adni
+- Új `Browser.findDownloadedFile(Pattern)` metódus letöltött fájl keresésére 
 
 ## 1.13.1
 
