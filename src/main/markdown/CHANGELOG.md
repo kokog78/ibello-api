@@ -1,6 +1,6 @@
 # ibello-api changelog
 
-## 1.13.2
+## 1.14.0
 
 - The `@Name` annotation can be added to packages
 - The `@Description` annotation can be added to packages

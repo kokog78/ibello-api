@@ -1,6 +1,6 @@
 # ibello-api változási napló
 
-## 1.13.2
+## 1.14.0
 
 - A `@Name` annotációt csomagokhoz is hozzá lehet adni
 - A `@Description` annotációt csomagokhoz is hozzá lehet adni
