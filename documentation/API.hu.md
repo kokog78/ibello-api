@@ -1089,6 +1089,8 @@ ami leírja a tesztadatot. Az előbbi példát továbbgondolva ilyesmiről van s
 
 ```java
 @Model
+@Name("User data")
+@Description("Password is not included!")
 public class User {
     public String name;
     public String firstName;
@@ -1275,6 +1277,34 @@ ami a tesztadat JSON reprezentációját tartalmazza.
 
 Ha a hívási láncot az `openStream()` metódussal zárjuk, akkor egy `InputStream` típusú nyitott adatfolyamot kapunk, amiből kiolvashatjuk a
 JSON formátumú tartalmat.
+
+##### Tesztadat osztályok csoportosítása
+
+A java osztályokkal definiált tesztadat típusokat csoportosítani is lehet. A csoportosításnak csak az ibello szerkesztőfelületén van jelentősége, a tesztek futását nem befolyásolja. A csoportosításhoz a tesztadat osztály java csomagjához kell nevet (és igény szerint leírást) rendelni. Ehhez a java csomag definícióját el kell látni egy `@Name`  annotációval. A leírás a `@Description` annotáció segítségével adható meg, akár több sorban is.
+
+Példaként nézzük az alábbi tesztadat osztályt (MyTestData.java):
+
+```java
+package my.tests.model;
+
+@Model
+public class MyTestData {
+    ...
+}
+```
+
+A "my.tests.model" csomaghoz készítünk egy leíró fájlt (package-info.java) az alábbi tartalommal:
+
+```java
+@hu.ibello.core.Name("Tesztadat osztályok")
+@hu.ibello.core.Description("Első sor.")
+@hu.ibello.core.Description("Második sor")
+package my.tests.model;
+```
+
+A "mytestdata" tesztadat típus így a "Tesztadat osztályok" elnevezésű csoportba tartozik, mivel a java csomagjához ("my.tests.model") ezt az elnevezést rendeltük.
+
+Ha egy tesztadat osztály csomagja nincs elnevezve a `@Name` annotációval, akkor a tesztadat nem fog tartozni egyetlen csoportba sem.
 
 #### Tesztadatok `properties` fájlokban
 
