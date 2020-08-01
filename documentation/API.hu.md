@@ -1465,6 +1465,26 @@ Login: I log in with ADMIN user
 
 A fentiek működnek akkor is, ha a felsorolás osztályhoz nem adtunk meg `@Model` annotációt. Az annotáció nélkül viszont nem működik a fordított irány. Egy gherkin formátumú forgatókönyvben ugyanis akár meg is hívhatjuk a felsorolás paraméterrel rendelkező tesztlépéseket - feltéve, hogy az annotáció hozzá van adva az osztályhoz.
 
+#### Felsorolás értékek egyedi neve és leírása
+
+A felsorolás osztályok konstansaihoz `@Name` annotációval elnevezést rendelhetünk. Egy vagy több `@Description` annotáció megadásával leírást is fűzhetünk hozzájuk. Ezeket csak az ibello grafikus felülete használja. Az annotációk segítségével érthetőbb tesztadatokat tudunk definiálni.
+
+Példa:
+
+```json
+@Model
+public enum UserKind {
+    
+    @Name("Adminisztrátor")
+	@Description("Kiemelt felhasználó.")
+	@Description("Hozzáfér a beállításokhoz.")
+    ADMIN,
+
+	@Name("Normál felhasználó")
+    NORMAL;
+}
+```
+
 ## Egyedi loggolás
 
 Az ibello a tesztriportot a végrehajtott tesztlépések, művelet és ellenőrzések alapján automatikusan készíti el. Előfordulhatnak viszont olyan esetek, amikor saját szöveggel ki szeretnénk egészíteni a riportot. Erre a tesztlépés-könyvtárakon belül van lehetőségünk, az `output()` metódus által visszaadott objektum metódusaival.

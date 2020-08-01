@@ -5,6 +5,7 @@
 - The `@Name` annotation can be added to packages
 - The `@Description` annotation can be added to packages
 - New `Browser.findDownloadedFile(Pattern)` method for searching downloaded file
+- New `TestDataTools` utility class for test data related tasks
 
 ## 1.13.1
 

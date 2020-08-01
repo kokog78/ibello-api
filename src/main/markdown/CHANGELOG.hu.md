@@ -4,7 +4,8 @@
 
 - A `@Name` annotációt csomagokhoz is hozzá lehet adni
 - A `@Description` annotációt csomagokhoz is hozzá lehet adni
-- Új `Browser.findDownloadedFile(Pattern)` metódus letöltött fájl keresésére 
+- Új `Browser.findDownloadedFile(Pattern)` metódus letöltött fájl keresésére
+- Új `TestDataTools` eszköz osztály teszt adatokkal kapcsolatos feladatok kezelésére
 
 ## 1.13.1
 
