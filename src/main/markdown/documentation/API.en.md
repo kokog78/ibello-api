@@ -318,7 +318,7 @@ With Ibello we have the chance to search one or more element. The searching can 
 
 ### Static element search
 
-A search is static if the page-definition's `WebElement` or `WebElements`typed field has `@Find` annotation, so ibello initializes this field automatically.  `@Find` annotation could have two attributions. 
+A search is static if the page-definition's `WebElement` or `WebElements`type field has `@Find` annotation, so ibello initializes this field automatically.  `@Find` annotation could have two attributions. 
 `by` attribution can get values from `By`enum's set of values, and it gives the method of searching. This attribution's default value is `By.CSS_SELECTOR` - if `by` doesn't get a value, it will be the method of searching. 
 `using` attribution is the parameter of searching method, it depends on it. 
 
@@ -339,3 +339,23 @@ The table below shows the searching attributes and methods.
 | by partial content               | `By.PARTIAL_TEXT`        | a part of the searched label's content                       |
 | by class of the button           | `By.BUTTON_CLASS`        | the CSS class of the button which has the searched function  |
 
+`By.BUTTON_TEXT`, `By.PARTIAL_BUTTON_TEXT` and `By.BUTTON_class` find `button`, `input type=button`, `input type=reset`and `input type=image` type elements,  links and elements, which can have button like functions. 
+
+`By.LABEL` and `By.PARTIAL_LABEL` firstly search `label` type elements by content, then they find the searched element by `for` attribute. If `label` doesn't have `for` attributes, but its parents or grandparents have one `input`, `textarea` or `select` type element, then it will be the searched element. 
+
+If one element is searched, but the system find more than one elements, it will return the first one. 
+
+Parameters can be used in`@Find` annotation's `using` attribute. These parameters can be replaced by values. Ibello initializes these elements and the elements will be find latet, when we give values to the parameters by `WebElement.applyParameters` or `WebElements.applyParameters` methods. The replacement happens by indexes of parameters. `${0}` is the first parameter, `${1}` is the second parameter, etc.
+
+```java
+@Find(by=By.BUTTON_TEXT, using="${0}/${1} executing")
+private WebElement button;
+
+public void clickOperationButton(String operation, int index) {
+    doWith(button.applyParameters(operation, index)).click();
+}
+```
+
+Ibello make it possible to find elements by relations with other elements.  These search condition can be given by annotations next to `@Find` annotation. More than one conditions can be given by these annotations In this case, they work together.
+
+Searching by position works by `@Position` annotation. `@Position` gives search conditions to a reference element (`by` and `using` attribution), for which we would like to give the position of the searched element. Furthermore, this position can be given by `type` attribute. For example
