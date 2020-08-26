@@ -345,7 +345,7 @@ The table below shows the searching attributes and methods.
 
 If one element is searched, but the system find more than one elements, it will return the first one. 
 
-Parameters can be used in`@Find` annotation's `using` attribute. These parameters can be replaced by values. Ibello initializes these elements and the elements will be find latet, when we give values to the parameters by `WebElement.applyParameters` or `WebElements.applyParameters` methods. The replacement happens by indexes of parameters. `${0}` is the first parameter, `${1}` is the second parameter, etc.
+Parameters can be used in`@Find` annotation's `using` attribute. These parameters can be replaced by values. Ibello initializes these elements and the elements will be find later, when we give values to the parameters by `WebElement.applyParameters` or `WebElements.applyParameters` methods. The replacement happens by indexes of parameters. `${0}` is the first parameter, `${1}` is the second parameter, etc.
 
 ```java
 @Find(by=By.BUTTON_TEXT, using="${0}/${1} executing")
@@ -459,3 +459,28 @@ public class ChildFramedPage extends PageObject {
 }
 ```
 
+### Handling timeout
+
+Ibello is used for testing webapplications. The application to be tested is run in a browser - tests automatise it. Automatization is an asynchronous, because commands from test code and its affections aren't linked with java process which make tests running. So the result of the command execution can be expected in the near future, but the exact time can't be known. In these case it's a standard practice that the process, which make the command run waits, until it finds out the command was successful or unsuccessful. It is important because if the process doesn't wait and make another command run, it would make a competitive situation between the commands' execution, so its outcome is doubtful. These competitive situations are have to be avoided, because it's an expected operation in tests, that if we run and run them again. they give the same result. 
+
+E.g.:
+
+We would like to click on a link, which with the content of the page changes. The test code runs the click command so the browser execute it. Than the browser start to load and display the new page, which will be loaded in the near future (asynchronous process).
+
+If the new page's URL is shown in the browser's address bar or the new page's content is shown in the browser, we know the clicking was successful. If the link directed to another page - because program error, than another page was loaded and was shown in the browser.
+
+The best practice to hande this case is if the test code waits until the conditions about the new page's display is met. But if there is program error these conditions will never met, and we need to know that in time - so we have to specify a deadline. If the conditions don't met until this deadline we can assume that there is an error, and the test has to fail. 
+
+But what deadline should we choose? Some operations need more time than others. If, in the previous example, a long counting process starts by clicking in the browser the usual timeout time wouldn't be right. So timeout need to be determined individually. 
+
+Ibello - unlike other frameworks - doesn't have the possibility to set timeouts directly. Every timeout value has a text ID or az enum constant. Timeout can be referred by this way in the test code. Ibello reads concrete time - measured in seconds from configuration files. So if we would like to change the test environment by increase the time of timeout we just need to change the configuration file and don't need to change the test code. 
+
+Ibello define some timeout by default.
+
+To use default timeout we need to use "default", which is (if we don't change it in the configuration files) 5 sec. In most cases, if other value isn't given it is used. 
+
+If we load a new URL directly (with the page-definition class' `browser().openURL(...)` method) ibello tries to wait until the new page is loaded. For this it uses timeout called "page.load", which has 10 seconds as default value. If during this time the page isn't loaded the test running continous without error (but if other test cases are based on the loaded page, they can fail).
+
+In dinamic pages, where content made by javascript code, it is a common case, that after the operation the content isn't available, because the scripts run in the page are working. Ibello can solve this case by check if there is any change in the page. We have the possibility to wait until changes done, before test running continous. There is a timeout for this waiting, called "page.refresh", which as the default value as default timeout. 
+
+We can define other timeouts. Best solution for it is to make a java enum. Constants of the enum will identify timeouts. We can give these constants during executions of operations. The concrete value can be given in configuration files of ibello, in seconds. 
