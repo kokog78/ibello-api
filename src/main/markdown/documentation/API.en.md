@@ -459,7 +459,7 @@ public class ChildFramedPage extends PageObject {
 }
 ```
 
-### Handling timeout
+### Handling timeouts
 
 Ibello is used for testing webapplications. The application to be tested is run in a browser - tests automatise it. Automatization is an asynchronous, because commands from test code and its affections aren't linked with java process which make tests running. So the result of the command execution can be expected in the near future, but the exact time can't be known. In these case it's a standard practice that the process, which make the command run waits, until it finds out the command was successful or unsuccessful. It is important because if the process doesn't wait and make another command run, it would make a competitive situation between the commands' execution, so its outcome is doubtful. These competitive situations are have to be avoided, because it's an expected operation in tests, that if we run and run them again. they give the same result. 
 
