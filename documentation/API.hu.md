@@ -420,10 +420,11 @@ A `type` tulajdonság értéke a `PositionType` enum értékkészletéből szár
 A DOM struktúra szerinti keresést a  `@Relation` annotációval oldhatjuk meg. Hasonlóan a `@Position` annotációhoz, a `by` és a `using` tulajdonságokkal itt is egy referencia-elemet
 határozunk meg. A `type` tulajdonság értéke itt a `RelationType` enum egyik konstansa, ami meghatározza a keresett elem viszonyát a referencia-elemhez képest.
 
-| `RelationType`  | Jelentése                                                                  |
-| --------------- | -------------------------------------------------------------------------- |
-| `DESCENDANT_OF` | A keresett elem a referencia-elem leszármazottja.                          |
+| `RelationType`  | Jelentése                                                    |
+| --------------- | ------------------------------------------------------------ |
+| `DESCENDANT_OF` | A keresett elem a referencia-elem leszármazottja.            |
 | `ANCESTOR_OF`   | A keresett elem a referencia-elemet közvetlenül vagy közvetve tartalmazza. |
+| `NEAREST_TO`    | A referencia elemhez legközelebb eső (a feltételnek megfelelő) elem keresése. A távolság a DOM struktúrában van mérve. |
 
 Ha a `type` értéke nincs megadva, akkor az ibello rendszer azt `RelationType.DESCENDANT_OF`-nak veszi. Több `@Relation` annotációval lehetőségünk van több szülőelemen keresztül megadni
 a keresett elem helyét. Az alábbi példa a "modal-window" CSS osztállyal rendelkező elemen belül keres egy `form` element, majd azon belül egy "main-fields" osztállyal rendelkező elemet,
@@ -749,7 +750,7 @@ Az előző metódust követi a tulajdonság megnevezése. A lehetséges tulajdon
 | `tagName(...)`                 | Az elem a megadott típusú.                                                                                                 |
 | `cssClassName(...)`            | Az elem rendelkezik a megadott CSS osztálynévvel.                                                                          |
 | `cssValue(..., ...)`           | Az elem adott CSS tulajdonsága a megadott értéket veszi fel.                                                               |
-| `text(...)`                    | Az elem tartalma a megadott szöveg (vagy megfelel a megadptt reguláris kifejezésnek).                                      |
+| `text(...)`                    | Az elem tartalma a megadott szöveg (vagy megfelel a megadott reguláris kifejezésnek).                                      |
 | `textOrValue(...)`             | Egyesíti a `text(...)` és a `value(...)` metódusokat. Vagy az elem tartalmát, vagy a `value` attribútum értékét ellenőrzi. |
 | `cssClassName(...)`            | Az elem rendelkezik a megadott CSS osztálynévvel.                                                                          |
 | `displayed()`                  | Az elem láthatósága.                                                                                                       |
@@ -1088,6 +1089,8 @@ ami leírja a tesztadatot. Az előbbi példát továbbgondolva ilyesmiről van s
 
 ```java
 @Model
+@Name("User data")
+@Description("Password is not included!")
 public class User {
     public String name;
     public String firstName;
@@ -1097,8 +1100,7 @@ public class User {
 }
 ```
 
-Az osztályhoz itt hozzárendeltük a `@Model` annotációt. Ez nem kötelező, viszont ezzel jelölhetjük, hogy tesztadatokat tároló osztályról van szó.
-Ezt az információt az ibello bizonyos esetekben felhasználja, és könnyebbé teszi a számunkra a fejlesztést.
+Az osztályhoz itt hozzárendeltük a `@Model` annotációt. Ez nem kötelező, viszont ezzel jelölhetjük, hogy tesztadatokat tároló osztályról van szó. Ezt az információt az ibello bizonyos esetekben felhasználja, és könnyebbé teszi a számunkra a fejlesztést.
 
 Az osztályhoz hozzárendelhetünk `@Name` annotációt. Ezzel nevet adhatunk a tesztadatnak, amit az ibello bizonyos
 esetekben megjelenít majd. Hasonlóképpen, a `@Description` annotációval leírást adhatunk az osztályhoz - ebből
@@ -1189,13 +1191,24 @@ Példa:
 ```json
 {
     "dateTime1": "-1Y30h",
-    "dateTime2": "+3d"
+    "tomorrow": "+1D"
+}
+```
+
+Java oldalon a dátummezők lehetnek `XMLGregorianCalendar` típusúak is. Ennek a típusnak egy jellegzetessége az, hogy a dátum egyes részei (pl. nap, óra, perc) üresek maradhatnak. Ha egy ilyen mezőben üresen hagyjuk az óra, perc és másodperc elemeket, akkor időpont nélküli dátumot tudunk kezelni.
+
+Relatív dátummegadásnál, ha a dátummező java típusa `XMLGregorianCalendar`, akkor az ibello egyes elemeket üresen hagy. Azok maradnak üresen, amik nem voltak megnevezve a formátumban, és nálunk kisebb elem sem volt megnevezve. Vagyis például az alábbi esetek mindegyikében az óra, perc és másodperc üresen marad, az év, hónap nap viszont nem:
+
+```json
+{
+    "date1": "+3D",
+    "date2": "-1Y2D"
 }
 ```
 
 ##### Konfigurációs paraméterek behelyettesítése
 
-Arra is lehetőségünk van, hogy a JSON fájlokban tárolt szövegekbe konfigurációs paraméterek értékeit helyettesítsük be. Ehhez a `MavenProject: hu.ibello:ibello-api:1.13.1 @ C:\Work\workspaces\ibello\ibello-api\pom.xml` írásmódot kell használnunk, a zárójelekbe a konfigurációs paraméter neve kerül.
+Arra is lehetőségünk van, hogy a JSON fájlokban tárolt szövegekbe konfigurációs paraméterek értékeit helyettesítsük be. Ehhez a `MavenProject: hu.ibello:ibello-api:1.14.0 @ C:\Work\workspaces\ibello\ibello-api\pom.xml` írásmódot kell használnunk, a zárójelekbe a konfigurációs paraméter neve kerül.
 
 Példa:
 
@@ -1265,6 +1278,34 @@ ami a tesztadat JSON reprezentációját tartalmazza.
 Ha a hívási láncot az `openStream()` metódussal zárjuk, akkor egy `InputStream` típusú nyitott adatfolyamot kapunk, amiből kiolvashatjuk a
 JSON formátumú tartalmat.
 
+##### Tesztadat osztályok csoportosítása
+
+A java osztályokkal definiált tesztadat típusokat csoportosítani is lehet. A csoportosításnak csak az ibello szerkesztőfelületén van jelentősége, a tesztek futását nem befolyásolja. A csoportosításhoz a tesztadat osztály java csomagjához kell nevet (és igény szerint leírást) rendelni. Ehhez a java csomag definícióját el kell látni egy `@Name`  annotációval. A leírás a `@Description` annotáció segítségével adható meg, akár több sorban is.
+
+Példaként nézzük az alábbi tesztadat osztályt (MyTestData.java):
+
+```java
+package my.tests.model;
+
+@Model
+public class MyTestData {
+    ...
+}
+```
+
+A "my.tests.model" csomaghoz készítünk egy leíró fájlt (package-info.java) az alábbi tartalommal:
+
+```java
+@hu.ibello.core.Name("Tesztadat osztályok")
+@hu.ibello.core.Description("Első sor.")
+@hu.ibello.core.Description("Második sor")
+package my.tests.model;
+```
+
+A "mytestdata" tesztadat típus így a "Tesztadat osztályok" elnevezésű csoportba tartozik, mivel a java csomagjához ("my.tests.model") ezt az elnevezést rendeltük.
+
+Ha egy tesztadat osztály csomagja nincs elnevezve a `@Name` annotációval, akkor a tesztadat nem fog tartozni egyetlen csoportba sem.
+
 #### Tesztadatok `properties` fájlokban
 
 Az előzőekben tárgyal tesztadat-betöltési módok keveréke a java `properties` fájlokból történő betöltés. A fájlnév felépítése:
@@ -1310,7 +1351,7 @@ Ha a hívási láncot az `openStream()` metódussal zárjuk, akkor egy `InputStr
 
 ##### Konfigurációs paraméterek behelyettesítése
 
-Arra is lehetőségünk van, hogy a fájlokban tárolt szövegekbe konfigurációs paraméterek értékeit helyettesítsük be. Ehhez a `MavenProject: hu.ibello:ibello-api:1.13.1 @ C:\Work\workspaces\ibello\ibello-api\pom.xml` írásmódot kell használnunk, a zárójelekbe a konfigurációs paraméter neve kerül.
+Arra is lehetőségünk van, hogy a fájlokban tárolt szövegekbe konfigurációs paraméterek értékeit helyettesítsük be. Ehhez a `MavenProject: hu.ibello:ibello-api:1.14.0 @ C:\Work\workspaces\ibello\ibello-api\pom.xml` írásmódot kell használnunk, a zárójelekbe a konfigurációs paraméter neve kerül.
 
 Példa:
 
@@ -1351,7 +1392,7 @@ Ha a hívási láncot az `openStream()` metódussal zárjuk, akkor egy `InputStr
 
 ##### Konfigurációs paraméterek behelyettesítése
 
-Arra is lehetőségünk van, hogy a fájlok tartalmába konfigurációs paraméterek értékeit helyettesítsük be. Ehhez a `MavenProject: hu.ibello:ibello-api:1.13.1 @ C:\Work\workspaces\ibello\ibello-api\pom.xml` írásmódot kell használnunk, a zárójelekbe a konfigurációs paraméter neve kerül.
+Arra is lehetőségünk van, hogy a fájlok tartalmába konfigurációs paraméterek értékeit helyettesítsük be. Ehhez a `MavenProject: hu.ibello:ibello-api:1.14.0 @ C:\Work\workspaces\ibello\ibello-api\pom.xml` írásmódot kell használnunk, a zárójelekbe a konfigurációs paraméter neve kerül.
 
 Példa:
 
@@ -1385,6 +1426,64 @@ Az eszköz csak azokat a fájlokat veszi figyelembe, amiknek nincs olyan címké
 (és a címkékhez) passzoló fájlok közül a legutolsó lesz csak betöltve.
 
 Ha a hívási láncot a `getFile()` metódussal zárjuk, akkor visszakapjuk a megtalált fájlt.
+
+### Felsorolás típusú osztályok mint tesztadatok
+
+A `@Model` annotációval felsorolás (enum) típusú osztályokat is megjelölhetünk. Az ibello így a felsorolás értékeit tesztadatként kezeli, és azokat megadhatjuk például teszt metódusok paramétereként.
+
+Példaként nézzük a következő felsorolás osztályt:
+
+```java
+@Model
+public enum UserKind {
+    ADMIN,
+    NORMAL;
+}
+```
+
+Ennek az osztálynak a konstansait paraméterként megadhatjuk egy tesztlépésben:
+
+```java
+public void I_log_in_with_$_user(UserKind userKind) {
+    ...
+}
+```
+
+Ha az előbbi metódust egy tesztben meghívjuk:
+
+```java
+...
+loginSteps.I_log_in_with_$_user(UserKind.ADMIN);
+...
+```
+
+akkor a teszt riportban és a logban is  valami hasonlót fogunk látni:
+
+```cucumber
+Login: I log in with ADMIN user
+```
+
+A fentiek működnek akkor is, ha a felsorolás osztályhoz nem adtunk meg `@Model` annotációt. Az annotáció nélkül viszont nem működik a fordított irány. Egy gherkin formátumú forgatókönyvben ugyanis akár meg is hívhatjuk a felsorolás paraméterrel rendelkező tesztlépéseket - feltéve, hogy az annotáció hozzá van adva az osztályhoz.
+
+#### Felsorolás értékek egyedi neve és leírása
+
+A felsorolás osztályok konstansaihoz `@Name` annotációval elnevezést rendelhetünk. Egy vagy több `@Description` annotáció megadásával leírást is fűzhetünk hozzájuk. Ezeket csak az ibello grafikus felülete használja. Az annotációk segítségével érthetőbb tesztadatokat tudunk definiálni.
+
+Példa:
+
+```json
+@Model
+public enum UserKind {
+    
+    @Name("Adminisztrátor")
+	@Description("Kiemelt felhasználó.")
+	@Description("Hozzáfér a beállításokhoz.")
+    ADMIN,
+
+	@Name("Normál felhasználó")
+    NORMAL;
+}
+```
 
 ## Egyedi loggolás
 

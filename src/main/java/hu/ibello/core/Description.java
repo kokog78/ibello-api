@@ -18,6 +18,7 @@ package hu.ibello.core;
 import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.ElementType.TYPE;
+import static java.lang.annotation.ElementType.PACKAGE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 import java.lang.annotation.Repeatable;
@@ -26,17 +27,20 @@ import java.lang.annotation.Target;
 
 /**
  * <p>
- * With this annotation we can assign visible description to a class (step library) or a method
- * (test step). The description is used by the graphical interface of ibello.
+ * With this annotation we can assign visible description to a class (step library, test data class) or a method
+ * (test step) or an enum constant (test data enum value) or a package (test data group).
+ * The description is used by the graphical interface of ibello.
  * </p>
  * <p>
- * It is possible to add multiple annotations to a method or class. If this is the case, all the texts
+ * It is possible to add multiple annotations to a target. If this is the case, all the texts
  * specified in those annotations will be appended together as description.
  * </p>
  * @author Kornél Simon
+ * @see Descriptions
+ * @see Name
  */
 @Retention(RUNTIME)
-@Target({METHOD, TYPE, FIELD})
+@Target({METHOD, TYPE, FIELD, PACKAGE})
 @Repeatable(Descriptions.class)
 public @interface Description {
 

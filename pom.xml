@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>hu.ibello</groupId>
 	<artifactId>ibello-api</artifactId>
-	<version>1.13.1</version>
+	<version>1.14.0</version>
 	<name>Ibello API</name>
 	<description>Ibello is an easy-to-use automated test framework for web applications. It's public API is ibello-api.</description>
 	<url>http://ibello.hu</url>
@@ -233,4 +233,24 @@
 			</plugin>
 		</plugins>
 	</build>
+	<profiles>
+		<profile>
+	        <id>no-sign</id>
+	        <build>
+	            <plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>1.5</version>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>none</phase>
+							</execution>
+						</executions>
+					</plugin>
+	            </plugins>
+	        </build>
+	    </profile>
+	</profiles>
 </project>
