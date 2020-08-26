@@ -316,7 +316,7 @@ Integer backendPort = getConfigurationValue("backend.port").toInteger(0);
 
 With Ibello we have the chance to search one or more element. The searching can be static or dinamic. This function is only available through page-definitions.
 
-### Static element search
+### Searching static elements
 
 A search is static if the page-definition's `WebElement` or `WebElements`type field has `@Find` annotation, so ibello initializes this field automatically.  `@Find` annotation could have two attributions. 
 `by` attribution can get values from `By`enum's set of values, and it gives the method of searching. This attribution's default value is `By.CSS_SELECTOR` - if `by` doesn't get a value, it will be the method of searching. 
@@ -358,4 +358,104 @@ public void clickOperationButton(String operation, int index) {
 
 Ibello make it possible to find elements by relations with other elements.  These search condition can be given by annotations next to `@Find` annotation. More than one conditions can be given by these annotations In this case, they work together.
 
-Searching by position works by `@Position` annotation. `@Position` gives search conditions to a reference element (`by` and `using` attribution), for which we would like to give the position of the searched element. Furthermore, this position can be given by `type` attribute. For example
+Searching by position works by `@Position` annotation. `@Position` gives search conditions to a reference element (`by` and `using` attribution), for which we would like to give the position of the searched element. Furthermore, this position can be given by `type` attribute. In the exam below we try to find a "field" element with CSS class which is left from "Save" button.
+
+```java
+@Position(type=PositionType.LEFT_FROM, by=By.BUTTON_TEXT, using="Save")
+@Find(using=".field")
+private WebElement usernameField;
+```
+
+Value of `type` is from the range of `PositionType` enum.
+
+| ``PositionType`` | Meaning                                               |
+| ---------------- | ----------------------------------------------------- |
+| `ROW`            | Elements in the same row as the reference element.    |
+| `COLUMN`         | Elements in the same column as the reference element. |
+| `LEFT_FROM`      | Elements left from reference element.                 |
+| `RIGHT_FROM`     | Elements right from reference element.                |
+| `ABOVE`          | Elements above reference element.                     |
+| `BELOW`          | Elements below reference element.                     |
+
+Searching by DOM structure can work with `@Relation` annotation. Reference element can be given by `by` and `using` like with `@Position` annotation. In this case value of `type` is from `RelationType` enum. It show the relationship of searhed element and reference element. 
+
+| ``RelationType`` | Meaning                                                  |
+| ---------------- | -------------------------------------------------------- |
+| `DESCENDANT_OF`  | The searched element is descendant of reference element. |
+| `ANCESTOR_OF`    | The searched element is ancestor of reference element.   |
+
+In ibello the default value of `type` is `RelationType.DESCENDANT_OF`. Place of the searhed element can be given by more parent elements. In the exam below we try to find a `form` element through an element which has "modal-window" CSS class, than inside it element with "main-fields" class, than inside it the element which has name attribute "username".
+
+```java
+@Relation(using=".modal-window")
+@Relation(using="form")
+@Relation(using=".main-fields")
+@Find(by=By.NAME, using="username")
+
+
+private WebElement usernameField;
+```
+
+### Searching dinamic elements
+
+During dinamic element search we use classic java methods. There are two ways to do this. First, every `WebElement` instance has a `find()` method, which we can start a new searchint the instance of `WebElement`. Second, we can start a search in the whole page by `PageObject.find()` method. Both `find()` methods give back an instance of `SearchTool`, which with searching parameters can be given  continuously. Searching can be closed by one of these methods: `first()`, `nth(int)` or `all()`. `first()`  gives back the first found element. `nth(int)` gives back the element by index. These methods are equivalent. `all()` gives back all of the found elements.
+
+Examples from previous chapters:
+
+```java
+// searching parameters
+WebElement button = find()
+    .using(By.BUTTON_TEXT, "${0}/${1} végrehajtása", "save", 1)
+    .first();
+// pozíció szerinti keresés
+WebElement usernameField = find()
+    .using(".field")
+    .leftFrom( find().using(By.BUTTON_TEXT, "Mentés").first() )
+    .first();
+// DOM struktúra szerinti keresés
+usernameField = find()
+    .using(".modal-window")
+    .first().find()
+        .using("form")
+        .first().find()
+            .using(".main-fields")
+            .first().find()
+                .using(By.NAME, "username")
+                .first();
+```
+
+### Handling HTML frames
+
+Some webpages still use `iframe` element. `iframe` element contains another page's HTML code, which is inserted in the parent page's defined area. Without specified information element searching can't see in the   content of`iframe`, because content of `iframe` counts as an independent HTML page. 
+
+We can search element inside `iframe` if we add a `@Frame` annotation to the page-definition class, where searching parameters for `iframe` can be given. Every seacrhing of (dinamic and static) elements will be in `iframe` in this case.
+
+```java
+@Frame(by=By.ID, using="my-frame")
+public class FramedPage extends PageObject {
+    ...
+}
+```
+
+It is recommended to identify `iframe` by `id`. 
+
+```java
+@Frame(using="#my-frame")
+```
+
+If the page has only one `iframe` the name of the type is enough.
+
+```java
+@Frame(using="iframe")
+```
+
+`iframe` elements' contents in `iframe` can be reached if we add more `Frame` annotations to a page-definition class.  The first annotation contains the outermost frame's data, the second contains the inner frame and so on. 
+
+```java
+@Frame(using="#parent-frame")
+@Frame(using="#child-frame")
+public class ChildFramedPage extends PageObject {
+    ...
+}
+```
+
