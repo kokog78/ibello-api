@@ -510,3 +510,18 @@ doWith(button).withPageRefreshWait().click();
 ```
 
 `doWith(...)` method stops test running, if it failed. If we would like to avoid it (we would like it to run in the case is failure), we have to use `tryWith(...)` method. It is like `doWith(...)` method from every other aspect.
+
+### Mouse operations
+
+| Methods                     | Description                                                  |
+| --------------------------- | ------------------------------------------------------------ |
+| `click()`                   | Left-click by mouse to the center of the element.            |
+| `contextClick()`            | Right-click by mouse to the center of the element.           |
+| `doubleClick()`             | Double mouse click to the center of the element.             |
+| `selectOption(...)`         | Choose option with the given subtitle from drop-down list.   |
+| `moveTo()`                  | Move cursor the the center of the element.                   |
+| `dragAndDropTo(WebElement)` | Move element to another element with "Drag and drop" operation. |
+| `scrollTo(WebElement)`      | Scroll element to make seen another element given as parameter. |
+| `setSelected(boolean)`      | Check or uncheck a checkbox.                                 |
+
+`scrollTo(WebElement)` operation can be used in the case, when a container elem has scroll bars. It is a widespread practice that in webapplications just a part of the page is scrollable (a container). In a container child elements can be made seen with `doWith(container).scrollTo(child element)` method chain. 
