@@ -484,3 +484,29 @@ If we load a new URL directly (with the page-definition class' `browser().openUR
 In dinamic pages, where content made by javascript code, it is a common case, that after the operation the content isn't available, because the scripts run in the page are working. Ibello can solve this case by check if there is any change in the page. We have the possibility to wait until changes done, before test running continous. There is a timeout for this waiting, called "page.refresh", which as the default value as default timeout. 
 
 We can define other timeouts. Best solution for it is to make a java enum. Constants of the enum will identify timeouts. We can give these constants during executions of operations. The concrete value can be given in configuration files of ibello, in seconds. 
+
+## Operations with elements
+
+Operations with elements works by `doWith(WebElement)` methods in page-definition classes. From the returned object we can call other required methods. 
+
+```java
+WebElement usernameField = find().using("#user-name").first();
+// setting the found field's value
+doWith(usernameField).setValue("testuser");
+```
+
+When we call an operation, it's not sure, that the required element is available in the browser, so every operation has an implicit timeout - that is the time limit while ibello tries to execute the operation. If during this limit the operation can't be executed the test fails and the it count as a fail. This waiting time has the same value as default timeout, but it can be changed by `withTimeout()` method. The parameter is the value of timeout as text or enum constant.
+
+```java
+// setting waiting time by own Timeouts.MEDIUM constants
+doWith(usernameField).withTimeout(Timeouts.MEDIUM).setValue("testuser");
+```
+
+With `withPageRefreshWait()` method ibello waits until every changes in the page happened or the set time limit expired ("page.refresh" timeout). It can be useful in cases when we know an operation makes changes - e.g. directing to another page or delete elements from DOM. If time limit expire while the page refreshing isn't done the test running without error.
+
+```java
+// it waits after mouse clicking until the page is refreshed
+doWith(button).withPageRefreshWait().click();
+```
+
+`doWith(...)` method stops test running, if it failed. If we would like to avoid it (we would like it to run in the case is failure), we have to use `tryWith(...)` method. It is like `doWith(...)` method from every other aspect.
