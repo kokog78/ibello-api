@@ -546,3 +546,11 @@ If we want to send characters with `CTRL`, `ALT` or `SHIFT` the first parameter 
 doWith(usernameField).sendKeys(keys().CONTROL(), "a");
 ```
 
+### Other operations
+
+| Method             | Description                                                  |
+| ------------------ | ------------------------------------------------------------ |
+| `setValue(String)` | Set the value of `input` or `textarea` fields.               |
+| `setFile(String)`  | Set the value of `input type = file` fields to a given file. |
+| `submit()`         | Send the content of `form` type element.                     |
+| `fireEvent(...)`   | Call a javascript event in an element.                       |
