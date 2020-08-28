@@ -554,3 +554,9 @@ doWith(usernameField).sendKeys(keys().CONTROL(), "a");
 | `setFile(String)`  | Set the value of `input type = file` fields to a given file. |
 | `submit()`         | Send the content of `form` type element.                     |
 | `fireEvent(...)`   | Call a javascript event in an element.                       |
+
+## Object operations of browser
+
+In page-definition class browser object can be get by `browser()`, with which we can do operations in the browser controlled by tests. 
+
+These methods are simple method callings.
