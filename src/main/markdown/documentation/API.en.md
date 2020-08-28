@@ -525,3 +525,24 @@ doWith(button).withPageRefreshWait().click();
 | `setSelected(boolean)`      | Check or uncheck a checkbox.                                 |
 
 `scrollTo(WebElement)` operation can be used in the case, when a container elem has scroll bars. It is a widespread practice that in webapplications just a part of the page is scrollable (a container). In a container child elements can be made seen with `doWith(container).scrollTo(child element)` method chain. 
+
+### Keyboard operations
+
+To choose keyboard operations we need to use `sendKeys()` method. This method could have any number of `CharSequence` type parameters, which are sent as they are typed. These characters can be given az a `String` instance. 
+
+```java
+doWith(usernameField).sendKeys("testuser");
+```
+
+Also, special characters can be sent. Page-definition's `keys()` method can be used for this, which has constants for this aim. 
+
+```java
+doWith(usernameField).sendKeys(keys().HOME);
+```
+
+If we want to send characters with `CTRL`, `ALT` or `SHIFT` the first parameter of `sendKeys` need to have a modifier.
+
+```java
+doWith(usernameField).sendKeys(keys().CONTROL(), "a");
+```
+
