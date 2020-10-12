@@ -1,8 +1,6 @@
 # Internal annotáció használata
 
-`@Internal` annotációt akkor használunk, ha nem szeretnénk, hogy egy teszt lépés az ibello forgatókönyv kezelőjén belül kiválasztható legyen. Erre olyan publikus allépések esetén lehet szükség, amik nem számítanak önálló teszt lépésnek, hanem egy másik publikus metódus hívja meg.
-
-Tételezzük fel, hogy az alábbi kód egy teszt lépés osztály tartalma és a `fill_out_form()` metódust másik teszt lépés osztály is használja (emiatt nem lehet private).
+`@Internal` annotációt akkor használunk, ha egy tesztlépés osztályban lévő metódus tesztlépéseit szeretnénk a metódus neve alatt csoportosítva látni a tesztriportban, viszont nem szeretnénk hogy a tesztlépések listájában megtalálható legyen. Alapesetben ilyenkor a `private` kulcsszó használata megoldást jelentene, viszont ilyenkor a metódus tesztlépései csoportosítás nélkül jelennének meg.
 
 ```
 public void send_form() {
@@ -19,5 +17,3 @@ public void fill_out_form() {
     formPage.set_message();
 }
 ```
-
-A fenti kódban azért használjuk az `@Internal` annotációt, hogy a `fill_out_form()` metódust ne lehessen önálló tesztlépésként használni.

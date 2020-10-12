@@ -4,7 +4,7 @@ Gyakran előfordulhat olyan, eset amikor tetszőleges információval szeretnén
 
 ## output().recordCustomExpectation(String name);
 
-Az `output().recordCustomExpectation()` metódus segítségével egy általunk létrehozott kivételt jeleníthetünk meg a riportban.
+Az `output().recordCustomExpectation()` metódus segítségével egy általunk létrehozott vizsgálatot jeleníthetünk meg a riportban.
 
 ```
 output().recordCustomExpectation(String.format("The %s is in: %s", name, item));
