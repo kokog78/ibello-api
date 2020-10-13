@@ -12,7 +12,7 @@ public void click_details_button_with_$_index(int buttonIndex) {
     if (detailsButtons.size() >= buttonIndex) {
         doWith(detailsButtons.get(buttonIndex)).click();
     } else {
-        throw new AssertionError(String.format("Nem található %d indexű gomb!", 														buttonIndex));
+        throw new AssertionError(String.format("Nem található %d indexű gomb!", buttonIndex));
     }
 }
 ```
