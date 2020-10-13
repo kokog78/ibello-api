@@ -4,7 +4,7 @@ Elemkeresés során nagyon fontos, hogy a megfelelő feltételeket határozzuk m
 
 Az alábbi példa az attribútum tartalmazza selector használatát mutatja be.
 
-Szituáció: van egy alkalmazás ami termékek raktárkészleteit kezeli. Az oldalon van három termék és hozzájuk egy-egy beviteli mező amibe be lehet írni az elérhető mennyiségeket. Minden beviteli mező külön `id`-val rendelkezik, amik az alábbiak: prodQuantity1, prodQuantity2, prodQuantity3. Ezeken kívűl más beviteli mezőket is tartalmaz az oldal de azok teljesen más `id`-val rendelkeznek és más funkciót töltenek be.
+Szituáció: van egy alkalmazás ami termékek raktárkészletét kezeli. Az oldalon van három termék és hozzájuk egy-egy beviteli mező amibe be lehet írni az elérhető mennyiségeket. Minden beviteli mező külön `id`-val rendelkezik, amik az alábbiak: prodQuantity1, prodQuantity2, prodQuantity3. Ezeken kívül más beviteli mezőket is tartalmaz az oldal de azok teljesen más `id`-val rendelkeznek és más funkciót töltenek be.
 
 Feladat: minden termék mennyiségéhez adjunk meg 10-et. 
 
@@ -25,7 +25,7 @@ public void set_quantities_to_ten() {
 }
 ```
 
-A fenti példában felvettünk minden mennyiséget tartalmazó beviteli mezőhöz egy-egy `WebElement`-et, majd azoknak az értékét a `set_quantities_to_ten()` metődusban 10-re állítottuk. Ez három elem esetén még nem okoz különösebb problémát, de sokkal több beviteli mező esetén már felesleges munkát jelent. Ennek a feladatnak az egyszerűbb megoldását az alábbi példa mutatja.
+A fenti példában felvettünk minden mennyiséget tartalmazó beviteli mezőhöz egy-egy `WebElement`-et, majd azoknak az értékét a `set_quantities_to_ten()` metódusban 10-re állítottuk. Ez három elem esetén még nem okoz különösebb problémát, de sokkal több beviteli mező esetén már felesleges munkát jelent. Ennek a feladatnak az egyszerűbb megoldását az alábbi példa mutatja.
 
 ```
 @Find(by = By.CSS_SELECTOR, using = "[id*=Quantity]")

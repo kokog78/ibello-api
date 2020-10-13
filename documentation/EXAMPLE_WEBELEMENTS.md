@@ -3,7 +3,7 @@
 Van lehetőségünk arra, hogy egyszerre több elemet keressünk és ellenőrizzünk. Ehhez a `WebElements` osztályt kell használnunk, ami egy `List<WebElement>` implementáció.
 Az ibello rendszer automatikusan létrehozza és monitorozza az elemlistákat, ha eltűnik egy elem, vagy új jelenik meg, nem kell újra létrehozzuk a mezőt.
 
-Gyakori eset lehet, hogy egy elemcsoport valahanyadik elemével szeretnénk műveletet végezi. Az alábbi példán látszik, hogy a `.get(index)`függvény segítségével ez könnyedén megoldható.
+Gyakori eset lehet, hogy egy elemcsoport valahanyadik elemével szeretnénk műveletet végezni. Az alábbi példán látszik, hogy a `.get(index)`függvény segítségével ez könnyedén megoldható.
 
 A példában az összes "Details" feliratú gomb közül az utolsót szeretnénk megnyomni. 
 

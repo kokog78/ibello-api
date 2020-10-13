@@ -28,7 +28,7 @@ public void move_to_text_ten() {
 }
 ```
 
-Mivel alap esetben csak az első 5 elem látszódik a listában ezért, a 'textTen' `WebElement` megkeresése sikertelen lesz. Ahhoz, hogy a keresés sikeres legyen először addig kell görgetni a listát, hogy a 'text 10' szöveg láthatóvá váljon. Ehhez a `scrollTo()` metódust tudjuk alkalmazni, az alábbi módon.
+Mivel alapesetben csak az első 5 elem látszódik a listában ezért, a 'textTen' `WebElement` megkeresése sikertelen lesz. Ahhoz, hogy a keresés sikeres legyen először addig kell görgetni a listát, hogy a 'text 10' szöveg láthatóvá váljon. Ehhez a `scrollTo()` metódust tudjuk alkalmazni, az alábbi módon.
 
 ```
 @Find(by = By.ID, using = "select_list_1")
@@ -46,4 +46,4 @@ public void move_to_text_ten() {
 }
 ```
 
-Ebben a példában a 'selectList' `WebElement` tulajdonképpen a belső, görgetősávval rendelkező panel. A `doWith()` metódusban kijelöljük a panelt, majd a `.scrollTo(textTen)` metódusban megadjuk, hogy a listán belül melyik elemet szerenénkt a látómezőbe görgetni.  
+Ebben a példában a 'selectList' `WebElement` tulajdonképpen a belső, görgetősávval rendelkező panel. A `doWith()` metódusban kijelöljük a panelt, majd a `.scrollTo(textTen)` metódusban megadjuk, hogy a listán belül melyik elemet szerenénk a látómezőbe görgetni.  
