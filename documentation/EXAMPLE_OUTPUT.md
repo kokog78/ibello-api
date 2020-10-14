@@ -1,22 +1,22 @@
 # Tetszőleges információk riporton való megjelenítése
 
-Gyakran előfordulhat olyan, eset amikor tetszőleges információval szeretnénk kiegészíteni a teszt riportot. Ehhez az alábbi metódusokat tudjuk használni. 
+Gyakran előfordulhat olyan eset, amikor tetszőleges információval szeretnénk kiegészíteni a teszt riportot. Ehhez az alábbi metódusokat tudjuk használni. 
 
-## Egyedi ellenőrzés eredményének megjelenítése
+## output().recordCustomExpectation(String name);
 
-Az `output().recordCustomExpectation(String)` metódus segítségével egy általunk létrehozott vizsgálatot jeleníthetünk meg a riportban.
+Az `output().recordCustomExpectation()` metódus segítségével egy általunk létrehozott vizsgálatot jeleníthetünk meg a riportban.
 
 ```
-output().recordCustomExpectation(String.format("The %s is in the %s", name, item));
+output().recordCustomExpectation(String.format("The %s is in: %s", name, item));
 ```
 
 A fenti példa az alábbi formában fog megjelenni a riportban:
 
-`Expectation came true: The apple is in the basket`
+`INFO Expectation came true: The "name" is in: "item"`
 
-## Egyedi művelettel kapcsolatos szöveg megjelenítése
+## output().recordCustomAction(String name);
 
-Az `output().recordCustomAction(String)` metódus segítségével kiegészítő információt tudunk a riportban megjeleníteni.
+Az `output().recordCustomAction()` metódus segítségével kiegészítő információt tudunk a riportban megjeleníteni. Amennyiben a megjelenített szöveg több soros, lehetőség van a riportban összecsukni azt. Ezáltal a riport olvashatósága nem romlik a hosszú szöveg megjelenítésével.
 
 ```
 output().recordCustomAction("The index of the row: " + index);
@@ -24,11 +24,11 @@ output().recordCustomAction("The index of the row: " + index);
 
 A fenti példa az alábbi formában fog megjelenni a riportban:
 
-`The index of the row: 3`
+`INFO The index of the row: "index"`
 
-## Egyedi tesztlépés megjelenítése
+## output().recordCustomStep(String name, String text);
 
-Az előbbi példához hasonlóan az  `output().recordCustomStep(String, String)` is kiegészítő információ megjelenítésére szolgál. A különbség csupán annyi, hogy ebben az esetben a szöveg egy külön lépésként (step) jelenik meg a riportban. Ezzel tovább növelhető a riport áttekinthetősége.
+Az előbbi példához hasonlóan, az  `output().recordCustomStep()` is kiegészítő információ megjelenítésére szolgál. A különbség csupán annyi, hogy ebben az esetben a szöveg külön lépésként (step) jelenik meg a riportban. Ezzel tovább növelhető a riport áttekinthetősége.
 
 ```
 File fileJson = new File("example.json");
@@ -39,6 +39,7 @@ output().recordCustomStep("JSON content", text);
 A fenti példában a JSON fájl tartalma egy "JSON content" tesztlépés alatt fog megjelenni a riportban.
 
 ```
-JSON content
-    {"field": "value"}
+INFO 	Start step "JSON content"
+INFO     "text"    
+INFO    Stop step "JSON content"
 ```
