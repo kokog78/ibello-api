@@ -1,6 +1,6 @@
 # Tetszőleges információk riporton való megjelenítése
 
-Gyakran előfordulhat olyan, eset amikor tetszőleges információval szeretnénk kiegészíteni a teszt riportot. Ehhez az alábbi metódusokat tudjuk használni. 
+Gyakran előfordulhat olyan eset, amikor tetszőleges információval szeretnénk kiegészíteni a teszt riportot. Ehhez az alábbi metódusokat tudjuk használni. 
 
 ## output().recordCustomExpectation(String name);
 
@@ -28,7 +28,7 @@ A fenti példa az alábbi formában fog megjelenni a riportban:
 
 ## output().recordCustomStep(String name, String text);
 
-Az előbbi példához hasonlóan az  `output().recordCustomStep()` is kiegészítő információ megjelenítésére szolgál. A különbség csupán annyi, hogy ebben az esetben egy külön lépésként (step) jelenik meg a riportban a szöveg. Ezzel tovább növelhető a riport áttekinthetősége.
+Az előbbi példához hasonlóan, az  `output().recordCustomStep()` is kiegészítő információ megjelenítésére szolgál. A különbség csupán annyi, hogy ebben az esetben a szöveg külön lépésként (step) jelenik meg a riportban. Ezzel tovább növelhető a riport áttekinthetősége.
 
 ```
 File fileJson = new File("example.json");
