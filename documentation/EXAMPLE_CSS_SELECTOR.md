@@ -1,4 +1,4 @@
-# CSS selector-ok alkalmazása
+# CSS szelektorok használata
 
 Elemkeresés során nagyon fontos a megfelelő feltételek meghatározása. Sok esetben, a beépített keresési feltételek (`By.ID`, `By.CLASS_NAME`, stb.) nem elegendőek. Ilyenkor lehetőségünk van CSS selector-okat alkalmazni. 
 

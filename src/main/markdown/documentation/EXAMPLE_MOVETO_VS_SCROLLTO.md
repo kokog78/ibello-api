@@ -1,6 +1,6 @@
-# MoveTo és ScrollTo közötti különbség
+# A `moveTo` és a `scrollTo` közötti különbség
 
-A `.moveTo()` metódus egy `WebElement` közepére mozgatja az egérmutatót. 
+A `moveTo()` metódus egy `WebElement` által képviselt elem közepére mozgatja az egérmutatót. 
 
 ```
 @Find(by = By.TEXT, using = "Example text")
