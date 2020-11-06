@@ -2,6 +2,7 @@
 
 ## 1.15.0
 
+- Új `ElementRepository` osztály elemek és oldal-leírók szétválasztására
 - Új `HttpClient.url(URL)` és `RestClient.url(URL)` metódusok.
 - Új `PageObject.getMergedURL(...)` és `StepLibrary.getMergedURL(...)` metódusok.
 - A `Browser.openURL(String)`, a `HttpClient.url(String)` és `RestClient.url(String)` metódusok többé nem változtatják meg a megadott abszolút URL-t
