@@ -213,6 +213,21 @@ public abstract class PageObject extends WindowRelated {
 	}
 	
 	/**
+	 * Returns an URL which is merged with the <code>ibello.url.base</code> configuration property.
+	 * <p>
+	 * If the given URL is an absolute one with protocol, then it will be returned (without any changes).
+	 * </p>
+	 * <p>
+	 * If the URL is relative, then it will be concatenated to the configuration property, and the result will be returned.
+	 * </p>
+	 * @param url the absolute or relative URL
+	 * @return the merged URL
+	 */
+	protected String getMergedURL(String url) {
+		return tool.getMergedURL(url);
+	}
+	
+	/**
 	 * Returns a {@link Browser} instance which can be used for different browser-specific actions,
 	 * including element search and opening URL.
 	 * @return an interface which offers browser-specific actions
