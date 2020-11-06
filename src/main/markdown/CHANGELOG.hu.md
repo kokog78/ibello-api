@@ -1,5 +1,10 @@
 # ibello-api változási napló
 
+## 1.15.0
+
+- Új `HttpClient.url(URL)` és `RestClient.url(URL)` metódusok.
+- A `Browser.openURL(String)`, a `HttpClient.url(String)` és `RestClient.url(String)` metódusok többé nem változtatják meg a megadott abszolút URL-t
+
 ## 1.14.0
 
 - A `@Name` annotációt csomagokhoz is hozzá lehet adni

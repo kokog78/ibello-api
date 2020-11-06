@@ -1,5 +1,10 @@
 # ibello-api changelog
 
+## 1.15.0
+
+- New `HttpClient.url(URL)` and `RestClient.url(URL)` methods.
+- The `Browser.openURL(String)`, `HttpClient.url(String)` and `RestClient.url(String)` methods do not change the given absolute URL anymore.
+
 ## 1.14.0
 
 - The `@Name` annotation can be added to packages
