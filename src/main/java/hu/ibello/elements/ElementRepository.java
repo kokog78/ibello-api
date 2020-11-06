@@ -18,12 +18,16 @@ public abstract class ElementRepository extends WindowRelated {
 	@Inject
 	private ElementRepositoryTool tool;
 	
+	private String repositoryPath;
+	
 	/**
-	 * Should return the path of the file which contains the data of the repository.
+	 * Sets the path of the file which contains the data of the repository.
 	 * The path should be relative to the ibello page object directory.
-	 * @return the relative path of the repository file
+	 * @param path the relative path of the repository file
 	 */
-	public abstract String getPath();
+	protected void setRepositoryPath(String repositoryPath) {
+		this.repositoryPath = repositoryPath;
+	}
 	
 	/**
 	 * Reads the named element configuration data from the repository and searches the element.
@@ -31,7 +35,7 @@ public abstract class ElementRepository extends WindowRelated {
 	 * @return the web element
 	 */
 	protected WebElement element(String name) {
-		tool.initialize(getPath(), getWindowId());
+		tool.initialize(repositoryPath, getWindowId());
 		return tool.element(name);
 	}
 	
@@ -41,7 +45,7 @@ public abstract class ElementRepository extends WindowRelated {
 	 * @return the web elements
 	 */
 	protected WebElements elements(String name) {
-		tool.initialize(getPath(), getWindowId());
+		tool.initialize(repositoryPath, getWindowId());
 		return tool.elements(name);
 	}
 
@@ -59,7 +63,7 @@ public abstract class ElementRepository extends WindowRelated {
 	 * @return an object used for element search on the page
 	 */
 	protected SearchTool find() {
-		tool.initialize(getPath(), getWindowId());
+		tool.initialize(repositoryPath, getWindowId());
 		return tool.find();
 	}
 

@@ -5,7 +5,7 @@ import hu.ibello.search.SearchTool;
 
 public interface ElementRepositoryTool {
 	
-	void initialize(String path, String windowId);
+	void initialize(String repositoryPath, String windowId);
 
 	WebElement element(String elementId);
 	
