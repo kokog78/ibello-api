@@ -2,12 +2,15 @@ package hu.ibello.elements;
 
 import hu.ibello.core.WindowRelated;
 import hu.ibello.inject.Inject;
+import hu.ibello.inject.Injectable;
+import hu.ibello.inject.Scope;
 
 /**
  * Abstract class for a web element repository.
  * @author Kornél Simon
  *
  */
+@Injectable(Scope.ELEMENTS)
 public abstract class ElementRepository extends WindowRelated {
 
 	@Inject
