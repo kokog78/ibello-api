@@ -1,9 +1,11 @@
 package hu.ibello.elements;
 
+import hu.ibello.core.Value;
 import hu.ibello.core.WindowRelated;
 import hu.ibello.inject.Inject;
 import hu.ibello.inject.Injectable;
 import hu.ibello.inject.Scope;
+import hu.ibello.search.SearchTool;
 
 /**
  * Abstract class for a web element repository.
@@ -43,4 +45,33 @@ public abstract class ElementRepository extends WindowRelated {
 		return tool.elements(name);
 	}
 
+	/**
+	 * <p>
+	 * Returns a {@link SearchTool} instance which is used to search elements on the current page.
+	 * </p>
+	 * <p>
+	 * The returned instance offers a fluent interface for element search. Example:
+	 * </p>
+	 * <pre>
+	 * WebElement image = ...;
+	 * WebElement child = find().using(By.TAG_NAME, "span").leftFrom(image).first();
+	 * </pre>
+	 * @return an object used for element search on the page
+	 */
+	protected SearchTool find() {
+		tool.initialize(getPath(), getWindowId());
+		return tool.find();
+	}
+
+	/**
+	 * Returns a configuration property as a {@link Value}. The returned value offers some public methods to
+	 * transform the configuration property into different java types.
+	 * This method always has a non-null result, even if the configuration value does not exist - in this case,
+	 * the wrapped value will be <code>null</code>.
+	 * @param name name of the configuration parameter
+	 * @return value of the configuration parameter wrapped into a {@link Value} instance
+	 */
+	protected Value getConfigurationValue(String name) {
+		return tool.getConfigurationValue(name);
+	}
 }
