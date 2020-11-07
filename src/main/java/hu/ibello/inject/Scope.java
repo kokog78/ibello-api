@@ -105,8 +105,7 @@ public enum Scope {
 
 	/**
 	 * Marks an element repository class with {@link Injectable} annotation.
-	 * The marked class will be in session scope. It means that during a session (in a single thread) the same instance is used.
-	 * Instances are not shared between sessions.
+	 * The marked class will be in prototype scope. It means that for each declared usage location of this class a new instance will be created.
 	 * Additionally the class is considered as an element repository, and some special injections are performed on every instances.
 	 * <p>
 	 * <i>About the <em>ibello</em> dependency injection system, see {@link hu.ibello.inject}.</i>
