@@ -6,6 +6,7 @@
 - New `HttpClient.url(URL)` and `RestClient.url(URL)` methods.
 - New `PageObject.getMergedURL(...)` and `StepLibrary.getMergedURL(...)` methods.
 - The `Browser.openURL(String)`, `HttpClient.url(String)` and `RestClient.url(String)` methods do not change the given absolute URL anymore.
+- New `@Timeout` annotation which marks enum classes defining timeout constants.
 
 ## 1.14.0
 

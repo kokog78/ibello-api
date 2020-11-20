@@ -6,6 +6,7 @@
 - Új `HttpClient.url(URL)` és `RestClient.url(URL)` metódusok.
 - Új `PageObject.getMergedURL(...)` és `StepLibrary.getMergedURL(...)` metódusok.
 - A `Browser.openURL(String)`, a `HttpClient.url(String)` és `RestClient.url(String)` metódusok többé nem változtatják meg a megadott abszolút URL-t
+- Új `@Timeout` annotáció az időtúllépéseket felsoroló enum osztályok jelöléséhez.
 
 ## 1.14.0
 
