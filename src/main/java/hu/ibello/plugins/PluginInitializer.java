@@ -15,6 +15,8 @@
  */
 package hu.ibello.plugins;
 
+import hu.ibello.apitest.HttpClient;
+import hu.ibello.apitest.RestClient;
 import hu.ibello.core.Value;
 import hu.ibello.data.TestDataBuilder;
 
@@ -79,5 +81,21 @@ public interface PluginInitializer {
 	 * @see TestDataBuilder
 	 */
 	public TestDataBuilder testData();
+	
+	/**
+	 * Returns a REST client. With that we can perform a REST operation - send a JSON REST request and receive it's response.
+	 * The request and response data will be logged automatically.
+	 * @return the REST client instance
+	 * @see RestClient
+	 */
+	public RestClient restClient();
+	
+	/**
+	 * Returns a HTTP client. With that we can perform a HTTP call - send a request and receive it's response.
+	 * The request and response data will be logged automatically.
+	 * @return the HTTP client instance
+	 * @see HttpClient
+	 */
+	public HttpClient httpClient();
 	
 }
