@@ -15,6 +15,8 @@
  */
 package hu.ibello.plugins;
 
+import hu.ibello.apitest.HttpClient;
+import hu.ibello.apitest.RestClient;
 import hu.ibello.core.Value;
 import hu.ibello.data.TestDataBuilder;
 
@@ -60,11 +62,40 @@ public interface PluginInitializer {
 	public Value getConfigurationValue(String name);
 	
 	/**
+	 * Returns an URL which is merged with the <code>ibello.url.base</code> configuration property.
+	 * <p>
+	 * If the given URL is an absolute one with protocol, then it will be returned (without any changes).
+	 * </p>
+	 * <p>
+	 * If the URL is relative, then it will be concatenated to the configuration property, and the result will be returned.
+	 * </p>
+	 * @param url the absolute or relative URL
+	 * @return the merged URL
+	 */
+	public String getMergedURL(String url);
+	
+	/**
 	 * Starts a new test data loading. The result is a {@link TestDataBuilder} instance which can be used
 	 * to configure and perform the test loading operation.
 	 * @return a test data loader instance
 	 * @see TestDataBuilder
 	 */
 	public TestDataBuilder testData();
+	
+	/**
+	 * Returns a REST client. With that we can perform a REST operation - send a JSON REST request and receive it's response.
+	 * The request and response data will be logged automatically.
+	 * @return the REST client instance
+	 * @see RestClient
+	 */
+	public RestClient restClient();
+	
+	/**
+	 * Returns a HTTP client. With that we can perform a HTTP call - send a request and receive it's response.
+	 * The request and response data will be logged automatically.
+	 * @return the HTTP client instance
+	 * @see HttpClient
+	 */
+	public HttpClient httpClient();
 	
 }

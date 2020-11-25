@@ -1,6 +1,18 @@
 # ibello-api changelog
 
+## 1.15.0
+
+- New `ElementRepository` class for separate elements from page objects
+- New `HttpClient.url(URL)` and `RestClient.url(URL)` methods.
+- New `PageObject.getMergedURL(...)` and `StepLibrary.getMergedURL(...)` methods.
+- The `Browser.openURL(String)`, `HttpClient.url(String)` and `RestClient.url(String)` methods do not change the given absolute URL anymore.
+- New `@Timeout` annotation which marks enum classes defining timeout constants.
+- New `PluginInitializer.getMergedURL(String)` method
+- New `IbelloTaskRunner` plugin interface for running tasks
+
 ## 1.14.0
+
+2020-08-13
 
 - The `@Name` annotation can be added to packages
 - The `@Description` annotation can be added to packages
@@ -8,6 +20,8 @@
 - New `TestDataTools` utility class for test data related tasks
 
 ## 1.13.1
+
+2020-06-03
 
 - New `Browser.findDownloadedFile(String)` and `Browser.getLatestDownloadedFile()` methods to access downloaded files.
 - New `StepLibrary.httpClient()` method for HTTP API tests

@@ -142,6 +142,21 @@ public abstract class StepLibrary extends WindowRelated {
 	}
 	
 	/**
+	 * Returns an URL which is merged with the <code>ibello.url.base</code> configuration property.
+	 * <p>
+	 * If the given URL is an absolute one with protocol, then it will be returned (without any changes).
+	 * </p>
+	 * <p>
+	 * If the URL is relative, then it will be concatenated to the configuration property, and the result will be returned.
+	 * </p>
+	 * @param url the absolute or relative URL
+	 * @return the merged URL
+	 */
+	protected String getMergedURL(String url) {
+		return tool.getMergedURL(url);
+	}
+
+	/**
 	 * Starts a new test data loading. The result is a {@link TestDataBuilder} instance which can be used
 	 * to configure and perform the test loading operation.
 	 * @return a test data loader instance

@@ -1,3 +1,5 @@
 /target/
 .*.md.html
 /schemagen.cmd
+/ibello-api.iml
+/.idea/

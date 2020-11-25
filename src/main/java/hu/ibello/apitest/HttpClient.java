@@ -1,6 +1,7 @@
 package hu.ibello.apitest;
 
 import java.io.IOException;
+import java.net.URL;
 import java.nio.charset.Charset;
 
 /**
@@ -40,27 +41,28 @@ public interface HttpClient {
 	 * Sets the URL of the HTTP request. The argument can be:
 	 * <ul>
 	 * <li>a full absolute URL with protocol and hostname, eg. <code>http://localhost:8080/page</code>,</li>
-	 * <li>an absolute URL without protocol, eg. <code>localhost:8080/page</code>,</li>
-	 * <li>a relative URL without host, eg. <code>/page</code>.</li>
+	 * <li>a relative URL, eg. <code>/page</code> or <code>index.html</code>.</li>
 	 * </ul>
 	 * <p>
-	 * The result depends on the value of the <code>ibello.url.base</code> configuration property.
+	 * If the URL is absolute, then it will be used by the HTTP client.
 	 * </p>
 	 * <p>
-	 * If it is not specified and an absolute URL is given without protocol, then the <code>http</code>
-	 * protocol will be used. Relative URL without the configuration property results a runtime exception.
-	 * </p>
-	 * <p>
-	 * If the configuration property is specified, then the method merges the argument with the property.
-	 * If the argument is an absolute URL (with or without protocol), then only it's path will be used,
-	 * the protocol, host and port will come from the configuration. If the URL is relative, then it will
-	 * concatenated to the configuration property.
+	 * If the URL is relative, then it will be appended to the value of the <code>ibello.url.base</code> configuration property,
+	 * and the result URL will be used.
 	 * </p>
 	 * @param url relative or absolute URL
 	 * @return this {@link HttpClient} instance
 	 * @throws NullPointerException when the argument is <code>null</code>
 	 */
 	public HttpClient url(String url);
+	
+	/**
+	 * Sets the URL of the HTTP request.
+	 * @param url the URL
+	 * @return this {@link HttpClient} instance
+	 * @throws NullPointerException when the argument is <code>null</code>
+	 */
+	public HttpClient url(URL url);
 	
 	/**
 	 * Sets the HTTP method of the request.

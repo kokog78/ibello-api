@@ -1,6 +1,18 @@
 # ibello-api változási napló
 
+## 1.15.0
+
+- Új `ElementRepository` osztály elemek és oldal-leírók szétválasztására
+- Új `HttpClient.url(URL)` és `RestClient.url(URL)` metódusok.
+- Új `PageObject.getMergedURL(...)` és `StepLibrary.getMergedURL(...)` metódusok
+- A `Browser.openURL(String)`, a `HttpClient.url(String)` és `RestClient.url(String)` metódusok többé nem változtatják meg a megadott abszolút URL-t
+- Új `@Timeout` annotáció az időtúllépéseket felsoroló enum osztályok jelöléséhez
+- Új `PluginInitializer.getMergedURL(String)` metódus
+- Új `IbelloTaskRunner` bővítmény interfész feladatok futtatásához
+
 ## 1.14.0
+
+2020-08-13
 
 - A `@Name` annotációt csomagokhoz is hozzá lehet adni
 - A `@Description` annotációt csomagokhoz is hozzá lehet adni
@@ -8,6 +20,8 @@
 - Új `TestDataTools` eszköz osztály teszt adatokkal kapcsolatos feladatok kezelésére
 
 ## 1.13.1
+
+2020-06-03
 
 - Új `Browser.findDownloadedFile(String)` és `Browser.getLatestDownloadedFile()` metódusok a letöltött fájlok eléréséhez.
 - Új `StepLibrary.httpClient()` metódus HTTP API teszteléshez

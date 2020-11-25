@@ -36,6 +36,10 @@
  * receive information about test execution steps and may do something with it. (For example, generate a test report with a
  * custom format.)
  * </p>
+ * <p>
+ * A plugin class which implements the {@link hu.ibello.plugins.IbelloTaskRunner} interface is a task runner plugin.
+ * It receives a task name and should perform that task - or return <code>false</code>. Tasks can be executed from command line.
+ * </p>
  * @author Kornél Simon
  */
 package hu.ibello.plugins;
