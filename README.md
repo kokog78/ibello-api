@@ -18,7 +18,7 @@ For Maven users:
 For Gradle users:
 
 ```groovy
-testCompile 'hu.ibello:ibello-api:1.15.0'
+compile 'hu.ibello:ibello-api:1.15.0'
 ```
 
 ## Documentation
@@ -27,5 +27,5 @@ Full API documentation in other languages: [magyar](documentation/API.hu.md).
 
 Check the examples: [magyar](documentation/EXAMPLES.hu.md).
 
-Check the ibello framework: http://ibello.hu
+Check the ibello framework: http://ibello.eu
 
