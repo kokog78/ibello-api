@@ -34,6 +34,7 @@ public class TestDataTools {
 	 * Otherwise the constant's original name will be used.
 	 * </p>
 	 * @param item the enum constant
+	 * @param <E> type of the enum constant
 	 * @return the translated name of the constant
 	 */
 	public static <E extends Enum<?>> String getEnumName(E item) {

@@ -96,6 +96,7 @@ public interface HttpClient {
 	 * Sets the body of the HTTP request.
 	 * The parameter's value will be transformed to a {@link String}.
 	 * @param object the object to be sent
+	 * @param <T> the type of the body object
 	 * @return this {@link HttpClient} instance
 	 */
 	public <T> HttpClient body(T object);

@@ -143,7 +143,7 @@ public interface ExpectationBuilder extends TimeoutRelated<ExpectationBuilder> {
 	 * <p>Example (in a page object):</p>
 	 * <pre>
 	 * expectations().all(() -&gt; {
-	 *     expectations().expect(browser()).toHave().url("www.ibello.com");
+	 *     expectations().expect(browser()).toHave().url("https://ibello.eu");
 	 *     expectations().expect(registerButton).toBe().clickable();
 	 * });
 	 * </pre>

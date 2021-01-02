@@ -112,6 +112,7 @@ public interface RestClient {
 	 * If the given object is a string, then it will be considered as a JSON value.
 	 * Otherwise it will be transformed to JSON.
 	 * @param object the object (or JSON string) to be sent
+	 * @param <T> the type of the body object
 	 * @return this {@link RestClient} instance
 	 */
 	public <T> RestClient body(T object);
@@ -160,7 +161,8 @@ public interface RestClient {
 	 * It automatically transforms the response JSON to a java object.
 	 * If the <code>responseType</code> argument is <code>String.class</code>,
 	 * then the original JSON response will be returned in the result (without any transformation).
-	 * @param responseType type of the response
+	 * @param responseType class of the response
+	 * @param <T> type of the response
 	 * @return the response as java object
 	 * @throws IOException if the communication with the REST server failed
 	 * @throws IllegalArgumentException if the response of the REST server was invalid
