@@ -560,3 +560,7 @@ doWith(usernameField).sendKeys(keys().CONTROL(), "a");
 In page-definition class browser object can be get by `browser()`, with which we can do operations in the browser controlled by tests. 
 
 These methods are simple method callings.
+
+### Open the page and refresh
+
+Actually opened URL can be set by `browser().openURL(...)`. Firstly, it set the URL, then it waits the elements of the page are loaded. If 
