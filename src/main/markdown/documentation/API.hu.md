@@ -847,7 +847,7 @@ egy `Runnable` interfészen keresztül adhatjuk át, a legegyszerűbb a java 8 l
 
 ```java
 expectations().all(() -> {
-    expectations().expect(browser()).toHave().url("ibello.hu");
+    expectations().expect(browser()).toHave().url("https://ibello.eu");
     expectations().expect(registerButton).toBe().clickable();
 });
 ```

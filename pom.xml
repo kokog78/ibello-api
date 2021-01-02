@@ -6,7 +6,7 @@
 	<version>1.15.0</version>
 	<name>Ibello API</name>
 	<description>Ibello is an easy-to-use automated test framework for web applications. It's public API is ibello-api.</description>
-	<url>http://ibello.hu</url>
+	<url>http://ibello.eu</url>
 	<inceptionYear>2017</inceptionYear>
 	<licenses>
 		<license>
