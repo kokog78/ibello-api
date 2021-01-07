@@ -1,3 +1,5 @@
+# The ibello API
+
 Tests have three layers in ibello framework. On the one hand, the *page-definition* classes  summerize the pages' technical functions. On the other hand, test steps can be compiled by one or even more methods of the page-definition class, which is put in a class, called *test-step-library class*. 
 
 The business functions can be easily separated by this thee-layer structure, so the tests could be available from business perspective too. 

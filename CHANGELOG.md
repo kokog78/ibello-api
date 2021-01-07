@@ -1,6 +1,12 @@
 # ibello-api changelog
 
+## 1.16.0
+
+- New `PluginInitializer.features()` method to handle Cucumber features
+
 ## 1.15.0
+
+2020-11-26
 
 - New `ElementRepository` class for separate elements from page objects
 - New `HttpClient.url(URL)` and `RestClient.url(URL)` methods.
