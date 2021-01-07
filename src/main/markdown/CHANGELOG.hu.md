@@ -1,6 +1,12 @@
 # ibello-api változási napló
 
+## 1.16.0
+
+- Új `PluginInitializer.features()` metódus a Cucumber jellemzők kezelésére
+
 ## 1.15.0
+
+2020-11-26
 
 - Új `ElementRepository` osztály elemek és oldal-leírók szétválasztására
 - Új `HttpClient.url(URL)` és `RestClient.url(URL)` metódusok.
