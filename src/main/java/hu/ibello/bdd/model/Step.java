@@ -46,5 +46,10 @@ public class Step {
 	public void setText(String text) {
 		this.text = text;
 	}
+	
+	@Override
+	public String toString() {
+		return String.format("%s %s", keyword, text);
+	}
     
 }

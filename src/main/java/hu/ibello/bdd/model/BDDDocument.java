@@ -93,6 +93,9 @@ public class BDDDocument {
 		this.description = description;
 	}
 	
-
+	@Override
+	public String toString() {
+		return String.format("%s: %s", keyword, name);
+	}
 
 }

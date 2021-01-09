@@ -62,4 +62,13 @@ public class BDDDocumentItem<STEP extends Step> {
     	}
 		return steps;
 	}
+	
+	public void setSteps(List<STEP> steps) {
+		this.steps = steps;
+	}
+	
+	@Override
+	public String toString() {
+		return String.format("%s: %s", keyword, name);
+	}
 }

@@ -32,5 +32,9 @@ public class ParentStep extends Step {
     	}
 		return steps;
 	}
+    
+    public void setSteps(List<ParentStep> steps) {
+		this.steps = steps;
+	}
 
 }
