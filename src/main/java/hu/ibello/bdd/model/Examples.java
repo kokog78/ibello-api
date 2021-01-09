@@ -18,14 +18,27 @@ package hu.ibello.bdd.model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Describes a Cucumber example file from the ibello project.
+ * @author Kornél Simon
+ */
 public class Examples extends BDDDocument {
 
 	private List<Example> examples;
 
+	/**
+	 * Are there any example scenarios in the item?
+	 * @return <code>true</code> if item has examples
+	 */
 	public boolean hasExample() {
 		return examples != null && !examples.isEmpty();
 	}
 	
+	/**
+	 * Returns the example scenarios of the item.
+	 * If the item does not have examples, it returns an empty list.
+	 * @return the example scenarios of the item
+	 */
 	public List<Example> getExamples() {
 		if (examples == null) {
 			examples = new ArrayList<>();

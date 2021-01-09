@@ -16,9 +16,33 @@
 package hu.ibello.bdd.model;
 
 /**
- * Describes an example scenario from a Cucumber example file.
+ * Contains the different parameter kinds from a test step.
  * @author Kornél Simon
  */
-public class Example extends BDDDocumentItem<Step> {
+public enum ParameterKind {
 
+	/**
+	 * String parameter type.
+	 */
+	STRING,
+	
+	/**
+	 * Integer number parameter type.
+	 */
+	INTEGER,
+	
+	/**
+	 * Decimal number parameter type.
+	 */
+	DECIMAL,
+	
+	/**
+	 * Date/time parameter type.
+	 */
+	DATETIME,
+	
+	/**
+	 * Boolean parameter type.
+	 */
+	BOOLEAN;
 }

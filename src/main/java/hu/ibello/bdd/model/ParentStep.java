@@ -18,14 +18,27 @@ package hu.ibello.bdd.model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Describes a test step which may contain child steps.
+ * @author Kornél Simon
+ */
 public class ParentStep extends Step {
 
     private List<ParentStep> steps;
 
+    /**
+	 * Are there any child steps in the step?
+	 * @return <code>true</code> if step has child steps
+	 */
 	public boolean hasStep() {
 		return steps != null && !steps.isEmpty();
 	}
 	
+	/**
+	 * Returns the child steps of the step.
+	 * If the step does not have child steps, it returns an empty list.
+	 * @return the child steps of the step
+	 */
     public List<ParentStep> getSteps() {
     	if (steps == null) {
     		steps = new ArrayList<>();
@@ -33,6 +46,11 @@ public class ParentStep extends Step {
 		return steps;
 	}
     
+    /**
+	 * Sets the child steps of the step.
+	 * If the method is called with <code>null</code>, the result of the {@link #getSteps()} method will be an empty list.
+	 * @param steps the child steps of the step
+	 */
     public void setSteps(List<ParentStep> steps) {
 		this.steps = steps;
 	}

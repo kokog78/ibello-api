@@ -18,16 +18,29 @@ package hu.ibello.bdd.model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Describes a Cucumber feature file from the ibello project.
+ * @author Kornél Simon
+ */
 public class Feature extends BDDDocument {
 
 	private List<String> tags;
 	
 	private List<Scenario> scenarios;
 
+	/**
+	 * Are there any tags in the feature?
+	 * @return <code>true</code> if the feature has tags
+	 */
 	public boolean hasTag() {
 		return tags != null && !tags.isEmpty();
 	}
 	
+	/**
+	 * Returns the tags of the feature.
+	 * If the feature does not have tags, it returns an empty list.
+	 * @return the tags of the feature
+	 */
 	public List<String> getTags() {
 		if (tags == null) {
 			tags = new ArrayList<>();
@@ -35,10 +48,19 @@ public class Feature extends BDDDocument {
 		return tags;
 	}
 
+	/**
+	 * Are there any scenarios in the feature?
+	 * @return <code>true</code> if the feature has scenarios
+	 */
 	public boolean hasScenario() {
 		return scenarios != null && !scenarios.isEmpty();
 	}
 	
+	/**
+	 * Returns the scenarios of the feature.
+	 * If the feature does not have scenarios, it returns an empty list.
+	 * @return the scenarios of the feature
+	 */
 	public List<Scenario> getScenarios() {
 		if (scenarios == null) {
 			scenarios = new ArrayList<>();

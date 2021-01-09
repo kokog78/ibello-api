@@ -20,10 +20,31 @@ import java.util.regex.Pattern;
 
 import hu.ibello.bdd.model.Examples;
 
+/**
+ * With the method of this class we can load Cucumber example files.
+ * The files will be loaded from the current ibello project.
+ * <p>
+ * The return values are in ibello's own format. The {@link Examples} class describes a Cucumber example
+ * with scenarios and steps.
+ * </p>
+ * @author Kornél Simon
+ */
 public interface ExamplesHandler {
 
+	/**
+	 * Loads a single Cucumber example file.
+	 * @param relativePath the path to the file, relative to the "examples" directory of the project
+	 * @return the loaded Cucumber example data
+	 */
 	Examples loadExamples(String relativePath);
 	
+	/**
+	 * Loads multiple Cucumber example files.
+	 * The method uses a regular expression to find the files.
+	 * If a file's relative path matches the regular expression, it will be loaded.
+	 * @param relativePath regular expression for the path to the file (which is relative to the "examples" directory of the project)
+	 * @return the list of the loaded Cucumber examples
+	 */
 	List<Examples> loadExamples(Pattern relativePath);
 	
 }

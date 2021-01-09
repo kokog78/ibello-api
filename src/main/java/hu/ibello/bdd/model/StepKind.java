@@ -15,13 +15,36 @@
  */
 package hu.ibello.bdd.model;
 
+/**
+ * Contains the keyword type of a BDD test step.
+ * @author Kornél Simon
+ */
 public enum StepKind {
 	
+	/**
+	 * Unknown step type.
+	 */
 	UNKNOWN,
+	
+	/**
+	 * A given.
+	 */
 	GIVEN,
+	
+	/**
+	 * A when.
+	 */
 	WHEN,
+	
+	/**
+	 * A then.
+	 */
 	THEN;
 
+	/**
+	 * Return the gherkin representation of the keyword, in english.
+	 * @return gherkin representation of the keyword
+	 */
 	public String toGherkin() {
 		String n = name();
 		return n.substring(0, 1) + n.substring(1).toLowerCase();
