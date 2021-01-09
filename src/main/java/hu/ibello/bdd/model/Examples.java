@@ -13,19 +13,23 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package hu.ibello.features;
+package hu.ibello.bdd.model;
 
-import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Pattern;
 
-import hu.ibello.features.model.Feature;
+public class Examples extends BDDDocument {
 
-public interface FeatureHandler {
+	private List<Example> examples;
 
-	Feature loadFeature(String relativePath) throws IOException;
+	public boolean hasExample() {
+		return examples != null && !examples.isEmpty();
+	}
 	
-	List<Feature> loadFeatures(Pattern relativePath) throws IOException;
-	
-	List<Feature> loadFeaturesWithTags(String ... tags) throws IOException;
+	public List<Example> getExamples() {
+		if (examples == null) {
+			examples = new ArrayList<>();
+		}
+		return examples;
+	}
 }

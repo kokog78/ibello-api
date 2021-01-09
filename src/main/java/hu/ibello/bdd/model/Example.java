@@ -13,12 +13,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package hu.ibello.features.model;
+package hu.ibello.bdd.model;
 
-public enum StepKind {
-	
-	GIVEN,
-	WHEN,
-	THEN;
+public class Example extends BDDDocumentItem<Step> {
 
 }

@@ -3,6 +3,7 @@
 ## 1.16.0
 
 - Új `PluginInitializer.features()` metódus a Cucumber jellemzők kezelésére
+- Új `PluginInitializer.examples()` metódus a Cucumber példák kezelésére
 
 ## 1.15.0
 

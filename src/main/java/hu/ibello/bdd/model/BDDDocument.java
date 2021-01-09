@@ -13,32 +13,71 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package hu.ibello.features.model;
+package hu.ibello.bdd.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Scenario {
+public class BDDDocument {
 
+	private String fullPath;
+	
+	private String relativePath;
+	
+	private List<String> comments;
+	
+	private String language;
+	
 	private String keyword;
 	
 	private String name;
 	
-    private String description;
-    
-    private List<String> tags;
-    
-    private List<Step> steps;
-    
-    public String getKeyword() {
+	private String description;
+	
+	public String getFullPath() {
+		return fullPath;
+	}
+
+	public void setFullPath(String fullPath) {
+		this.fullPath = fullPath;
+	}
+
+	public String getRelativePath() {
+		return relativePath;
+	}
+
+	public void setRelativePath(String relativePath) {
+		this.relativePath = relativePath;
+	}
+
+	public boolean hasComment() {
+		return comments != null && !comments.isEmpty();
+	}
+	
+	public List<String> getComments() {
+		if (comments == null) {
+			comments = new ArrayList<>();
+		}
+		return comments;
+	}
+
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+
+	public String getKeyword() {
 		return keyword;
 	}
 
 	public void setKeyword(String keyword) {
 		this.keyword = keyword;
 	}
-    
-    public String getName() {
+	
+	public String getName() {
 		return name;
 	}
 
@@ -54,25 +93,6 @@ public class Scenario {
 		this.description = description;
 	}
 	
-	public boolean hasTag() {
-		return tags != null && !tags.isEmpty();
-	}
-	
-	public List<String> getTags() {
-		if (tags == null) {
-			tags = new ArrayList<>();
-		}
-		return tags;
-	}
-	
-	public boolean hasStep() {
-		return steps != null && !steps.isEmpty();
-	}
-	
-	public List<Step> getSteps() {
-    	if (steps == null) {
-    		steps = new ArrayList<>();
-    	}
-		return steps;
-	}
+
+
 }

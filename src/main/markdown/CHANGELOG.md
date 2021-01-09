@@ -3,6 +3,7 @@
 ## 1.16.0
 
 - New `PluginInitializer.features()` method to handle Cucumber features
+- New `PluginInitializer.examples()` method to handle Cucumber examples
 
 ## 1.15.0
 

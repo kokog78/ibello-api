@@ -17,9 +17,10 @@ package hu.ibello.plugins;
 
 import hu.ibello.apitest.HttpClient;
 import hu.ibello.apitest.RestClient;
+import hu.ibello.bdd.ExamplesHandler;
+import hu.ibello.bdd.FeatureHandler;
 import hu.ibello.core.Value;
 import hu.ibello.data.TestDataBuilder;
-import hu.ibello.features.FeatureHandler;
 
 /**
  * A simple interface, which is used in ibello plugins.
@@ -104,5 +105,11 @@ public interface PluginInitializer {
 	 * @return the feature handler object
 	 */
 	public FeatureHandler features();
+	
+	/**
+	 * Returns an object which is designed to load Cucumber example files from an ibello project.
+	 * @return the example handler object
+	 */
+	public ExamplesHandler examples();
 	
 }

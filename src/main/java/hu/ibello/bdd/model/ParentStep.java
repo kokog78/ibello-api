@@ -13,53 +13,24 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package hu.ibello.features.model;
+package hu.ibello.bdd.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Step {
+public class ParentStep extends Step {
 
-	private String keyword;
-	
-	private StepKind kind;
-	
-    private String text;
-    
-    private List<Step> steps;
+    private List<ParentStep> steps;
 
-	public String getKeyword() {
-		return keyword;
-	}
-
-	public void setKeyword(String keyword) {
-		this.keyword = keyword;
-	}
-
-	public StepKind getKind() {
-		return kind;
-	}
-
-	public void setKind(StepKind kind) {
-		this.kind = kind;
-	}
-
-	public String getText() {
-		return text;
-	}
-
-	public void setText(String text) {
-		this.text = text;
-	}
-    
 	public boolean hasStep() {
 		return steps != null && !steps.isEmpty();
 	}
 	
-    public List<Step> getSteps() {
+    public List<ParentStep> getSteps() {
     	if (steps == null) {
     		steps = new ArrayList<>();
     	}
 		return steps;
 	}
+
 }
