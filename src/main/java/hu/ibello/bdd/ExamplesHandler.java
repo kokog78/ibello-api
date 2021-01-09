@@ -15,7 +15,6 @@
  */
 package hu.ibello.bdd;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -23,8 +22,8 @@ import hu.ibello.bdd.model.Examples;
 
 public interface ExamplesHandler {
 
-	Examples loadExample(String relativePath) throws IOException;
+	Examples loadExamples(String relativePath);
 	
-	List<Examples> loadExamples(Pattern relativePath) throws IOException;
+	List<Examples> loadExamples(Pattern relativePath);
 	
 }

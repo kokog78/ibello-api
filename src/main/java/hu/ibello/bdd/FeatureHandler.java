@@ -15,7 +15,6 @@
  */
 package hu.ibello.bdd;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -23,9 +22,9 @@ import hu.ibello.bdd.model.Feature;
 
 public interface FeatureHandler {
 
-	Feature loadFeature(String relativePath) throws IOException;
+	Feature loadFeature(String relativePath);
 	
-	List<Feature> loadFeatures(Pattern relativePath) throws IOException;
+	List<Feature> loadFeatures(Pattern relativePath);
 	
-	List<Feature> loadFeaturesWithTags(String ... tags) throws IOException;
+	List<Feature> loadFeaturesWithTags(String ... tags);
 }
