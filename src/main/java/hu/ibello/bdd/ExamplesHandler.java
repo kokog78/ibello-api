@@ -35,8 +35,9 @@ public interface ExamplesHandler {
 	 * Loads a single Cucumber example file.
 	 * @param relativePath the path to the file, relative to the "examples" directory of the project
 	 * @return the loaded Cucumber example data
+	 * @throws BDDException if there was an error during loading the file
 	 */
-	Examples loadExamples(String relativePath);
+	Examples loadExamples(String relativePath) throws BDDException;
 	
 	/**
 	 * Loads multiple Cucumber example files.
@@ -44,7 +45,8 @@ public interface ExamplesHandler {
 	 * If a file's relative path matches the regular expression, it will be loaded.
 	 * @param relativePath regular expression for the path to the file (which is relative to the "examples" directory of the project)
 	 * @return the list of the loaded Cucumber examples
+	 * @throws BDDException if there was an error during loading a file
 	 */
-	List<Examples> loadExamples(Pattern relativePath);
+	List<Examples> loadExamples(Pattern relativePath) throws BDDException;
 	
 }

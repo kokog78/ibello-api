@@ -35,8 +35,9 @@ public interface FeatureHandler {
 	 * Loads a single Cucumber feature file.
 	 * @param relativePath the path to the file, relative to the "features" directory of the project
 	 * @return the loaded Cucumber feature data
+	 * @throws BDDException if there was an error during loading the file
 	 */
-	Feature loadFeature(String relativePath);
+	Feature loadFeature(String relativePath) throws BDDException;
 	
 	/**
 	 * Loads multiple Cucumber features files.
@@ -44,8 +45,9 @@ public interface FeatureHandler {
 	 * If a file's relative path matches the regular expression, it will be loaded.
 	 * @param relativePath regular expression for the path to the file (which is relative to the "features" directory of the project)
 	 * @return the list of the loaded Cucumber features
+	 * @throws BDDException if there was an error during loading a file
 	 */
-	List<Feature> loadFeatures(Pattern relativePath);
+	List<Feature> loadFeatures(Pattern relativePath) throws BDDException;
 	
 	/**
 	 * Loads multiple Cucumber features files.
@@ -53,6 +55,7 @@ public interface FeatureHandler {
 	 * If a feature has one of the specified tags, it will be loaded.
 	 * @param tags the tags of the loaded features
 	 * @return the list of the loaded Cucumber features
+	 * @throws BDDException if there was an error during loading a file
 	 */
-	List<Feature> loadFeaturesWithTags(String ... tags);
+	List<Feature> loadFeaturesWithTags(String ... tags) throws BDDException;
 }
