@@ -57,6 +57,7 @@ public class Step {
 	 * The "And" and "But" keywords are not returned, instead of it
 	 * they are replaced with the correct GIVEN, WHEN or THEN type.
 	 * If the type cannot be recognized, this method returns {@link StepKind#UNKNOWN}.
+	 * This is the case (for example) if the first step has the "And" keyword.
 	 * @return the type of the test step's keyword
 	 */
 	public StepKind getKind() {
