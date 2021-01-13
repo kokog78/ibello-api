@@ -3,6 +3,7 @@
 ## 1.16.1
 
 - Új `Scenario.getFlattenSteps()` és `ParentStep.getFlattenSteps()` metódusok
+- Új `Browser.getURL()` metódus, ami visszaadja az aktuális oldal címét
 
 ## 1.16.0
 

@@ -3,6 +3,7 @@
 ## 1.16.1
 
 - New `Scenario.getFlattenSteps()` and `ParentStep.getFlattenSteps()` methods
+- New `Browser.getURL()` method which returns the address of the current page
 
 ## 1.16.0
 
