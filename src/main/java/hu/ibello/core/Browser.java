@@ -63,6 +63,12 @@ import hu.ibello.model.Screenshot;
 public interface Browser {
 	
 	/**
+	 * Returns the current URL in the browser.
+	 * @return the current URL
+	 */
+	public String getURL();
+	
+	/**
 	 * Opens the given URL in the browser. The argument can be:
 	 * <ul>
 	 * <li>a full absolute URL with protocol and hostname, eg. <code>http://localhost:8080/page</code>,</li>
