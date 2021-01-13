@@ -1,5 +1,9 @@
 # ibello-api changelog
 
+## 1.16.1
+
+- New `Scenario.getFlattenSteps()` and `ParentStep.getFlattenSteps()` methods
+
 ## 1.16.0
 
 - New `PluginInitializer.features()` method to handle Cucumber features

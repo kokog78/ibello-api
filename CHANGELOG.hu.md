@@ -1,5 +1,9 @@
 # ibello-api változási napló
 
+## 1.16.1
+
+- Új `Scenario.getFlattenSteps()` és `ParentStep.getFlattenSteps()` metódusok
+
 ## 1.16.0
 
 - Új `PluginInitializer.features()` metódus a Cucumber jellemzők kezelésére
