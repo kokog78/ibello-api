@@ -46,4 +46,13 @@ public class Scenario extends BDDDocumentItem<ParentStep> {
 		return tags;
 	}
 	
+    /**
+     * Returns the list of the descendant steps, collected into a flat list.
+     * If a child step has children, then instead of the original child it's children will be included in the result.
+     * This method avoids infinite loops caused by recursive step references.
+     * @return all the descendant steps in a flat list
+     */
+	public List<Step> getFlattenSteps() {
+		return StepUtils.getFlattenSteps(getSteps());
+	}
 }
