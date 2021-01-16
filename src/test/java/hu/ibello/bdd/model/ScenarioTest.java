@@ -30,6 +30,13 @@ public class ScenarioTest {
 	}
 	
 	@Test
+	public void getFlattenSteps_should_collect_parent_if_parameter_is_true() throws Exception {
+		Scenario scenario = scenario(step("A", step("A1")), step("B", step("B1"), step("B2")));
+		List<Step> steps = scenario.getFlattenSteps(true);
+		assertThat(steps).extracting(step -> step.getText()).containsExactly("A", "A1", "B", "B1", "B2");
+	}
+	
+	@Test
 	public void getFlattenSteps_should_avoid_infinite_cycle_1() throws Exception {
 		ParentStep step1 = step("A");
 		ParentStep step2 = step("B");

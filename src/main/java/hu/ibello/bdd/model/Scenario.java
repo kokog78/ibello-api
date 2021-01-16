@@ -53,6 +53,19 @@ public class Scenario extends BDDDocumentItem<ParentStep> {
      * @return all the descendant steps in a flat list
      */
 	public List<Step> getFlattenSteps() {
-		return StepUtils.getFlattenSteps(getSteps());
+		return getFlattenSteps(false);
+	}
+	
+	/**
+	 * Returns the list of the descendant steps, collected into a flat list.
+     * If a child step has children, then it can be included in the result,
+     * if the <code>includeParentSteps</code> parameter is <code>true</code>.
+     * Otherwise, only its children will be included.
+     * This method avoids infinite loops caused by recursive step references.
+	 * @param includeParentSteps should the parent steps be included in the result?
+	 * @return all the descendant steps in a flat list
+	 */
+	public List<Step> getFlattenSteps(boolean includeParentSteps) {
+		return StepUtils.getFlattenSteps(getSteps(), includeParentSteps);
 	}
 }
