@@ -25,7 +25,7 @@ compile 'hu.ibello:ibello-api:${version}'
 
 Full API documentation in other languages: [magyar](documentation/API.hu.md).
 
-Check the examples: [magyar](documentation/EXAMPLES.hu.md).
+Check the examples: [magyar](documentation/API-EXAMPLES.hu.md).
 
 Check the ibello framework: http://ibello.eu
 
