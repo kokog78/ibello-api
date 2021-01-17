@@ -2,10 +2,14 @@
 
 ## 1.16.1
 
+2021-01-17
+
 - New `Scenario.getFlattenSteps()` and `ParentStep.getFlattenSteps()` methods
 - New `Browser.getURL()` method which returns the address of the current page
 
 ## 1.16.0
+
+2021-01-09
 
 - New `PluginInitializer.features()` method to handle Cucumber features
 - New `PluginInitializer.examples()` method to handle Cucumber examples

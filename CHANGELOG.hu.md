@@ -2,10 +2,14 @@
 
 ## 1.16.1
 
+2021-01-17
+
 - Új `Scenario.getFlattenSteps()` és `ParentStep.getFlattenSteps()` metódusok
 - Új `Browser.getURL()` metódus, ami visszaadja az aktuális oldal címét
 
 ## 1.16.0
+
+2021-01-09
 
 - Új `PluginInitializer.features()` metódus a Cucumber jellemzők kezelésére
 - Új `PluginInitializer.examples()` metódus a Cucumber példák kezelésére
