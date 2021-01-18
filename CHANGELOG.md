@@ -1,5 +1,9 @@
 # ibello-api changelog
 
+## 1.16.2
+
+- New `PluginInitializer.testResults()` method to load test result
+
 ## 1.16.1
 
 2021-01-17

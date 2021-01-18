@@ -21,6 +21,7 @@ import hu.ibello.bdd.ExamplesHandler;
 import hu.ibello.bdd.FeatureHandler;
 import hu.ibello.core.Value;
 import hu.ibello.data.TestDataBuilder;
+import hu.ibello.output.TestResultLoader;
 
 /**
  * A simple interface, which is used in ibello plugins.
@@ -111,5 +112,11 @@ public interface PluginInitializer {
 	 * @return the example handler object
 	 */
 	public ExamplesHandler examples();
+	
+	/**
+	 * Returns an object which can load ibello tests results.
+	 * @return the test result reader tool
+	 */
+	public TestResultLoader testResults();
 	
 }

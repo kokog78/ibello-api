@@ -1,5 +1,9 @@
 # ibello-api változási napló
 
+## 1.16.2
+
+- Új `PluginInitializer.testResults()` metódus a teszteredmények betöltésére
+
 ## 1.16.1
 
 2021-01-17
