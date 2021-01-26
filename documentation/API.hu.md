@@ -659,6 +659,10 @@ paraméter ötvözete lesz:
 
 A megnyitott URL-t a `browser().reload()` metódus segítségével újratölthetjül.
 
+### Oldal bezárása
+
+Azt az oldalt, amire az oldal-leíró objektum hivatkozik, a `browser().close()` metódussal lehet bezárni. Ez lehet egy fül is.
+
 ### Böngészőablak mérete
 
 A `browser().maximize()` metódus maximalizálja a böngészőablak méretét. A `broswer().resize(int, int)` metódussal közvetlenül megadhatjuk a böngészőablak új szélességét és
