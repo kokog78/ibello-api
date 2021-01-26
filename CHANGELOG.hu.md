@@ -1,5 +1,9 @@
 # ibello-api változási napló
 
+## 1.16.3
+
+- Új `Browser.close()` metódus
+
 ## 1.16.2
 
 - Új `PluginInitializer.testResults()` metódus a teszteredmények betöltésére

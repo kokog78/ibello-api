@@ -117,6 +117,11 @@ public interface Browser {
 	public void resize(int width, int height);
 	
 	/**
+	 * Closes the browser window or tab.
+	 */
+	public void close();
+	
+	/**
 	 * Save screenshot about the active window or tab.
 	 * The screenshot will be added to the result report too.
 	 * @return screenshot data with the file and URL

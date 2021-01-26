@@ -1,5 +1,9 @@
 # ibello-api changelog
 
+## 1.16.3
+
+- New `Browser.close()` method
+
 ## 1.16.2
 
 - New `PluginInitializer.testResults()` method to load test result
