@@ -2,9 +2,14 @@
 
 ## 1.16.3
 
+2021-01-29
+
 - New `Browser.close()` method
+- New `PluginInitializer.json()` and `StepLibrary.json()` methods for JSON transformation
 
 ## 1.16.2
+
+2021-01-21
 
 - New `PluginInitializer.testResults()` method to load test result
 

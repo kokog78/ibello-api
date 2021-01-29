@@ -22,6 +22,7 @@ import hu.ibello.bdd.FeatureHandler;
 import hu.ibello.core.Value;
 import hu.ibello.data.TestDataBuilder;
 import hu.ibello.output.TestResultLoader;
+import hu.ibello.transform.JsonTransformer;
 
 /**
  * A simple interface, which is used in ibello plugins.
@@ -118,5 +119,11 @@ public interface PluginInitializer {
 	 * @return the test result reader tool
 	 */
 	public TestResultLoader testResults();
+	
+	/**
+	 * Returns an object which van be used to transform java objects into JSON and back.
+	 * @return JSON transformer instance
+	 */
+	public JsonTransformer json();
 	
 }

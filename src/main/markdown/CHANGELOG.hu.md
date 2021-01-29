@@ -2,9 +2,14 @@
 
 ## 1.16.3
 
+2021-01-29
+
 - Új `Browser.close()` metódus
+- Új `PluginInitializer.json()` és `StepLibrary.json()` metódusok JSON transzformációhoz
 
 ## 1.16.2
+
+2021-01-21
 
 - Új `PluginInitializer.testResults()` metódus a teszteredmények betöltésére
 

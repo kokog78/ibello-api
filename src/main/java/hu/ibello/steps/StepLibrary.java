@@ -27,6 +27,7 @@ import hu.ibello.inject.Scope;
 import hu.ibello.output.OutputHandler;
 import hu.ibello.pages.PageObject;
 import hu.ibello.search.Window;
+import hu.ibello.transform.JsonTransformer;
 
 /**
  * <p>
@@ -207,4 +208,12 @@ public abstract class StepLibrary extends WindowRelated {
 		return tool.httpClient();
 	}
 	
+	/**
+	 * Returns an object which van be used to transform java objects into JSON and back.
+	 * @return JSON transformer instance
+	 */
+	protected JsonTransformer json() {
+		return tool.json();
+	}
+
 }

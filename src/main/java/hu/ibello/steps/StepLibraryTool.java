@@ -20,6 +20,7 @@ import hu.ibello.apitest.RestClient;
 import hu.ibello.core.Value;
 import hu.ibello.data.TestDataBuilder;
 import hu.ibello.output.OutputHandler;
+import hu.ibello.transform.JsonTransformer;
 
 /**
  * Helper interface for step libraries.
@@ -98,4 +99,11 @@ public interface StepLibraryTool {
 	 * @see HttpClient
 	 */
 	HttpClient httpClient();
+	
+	/**
+	 * Returns an object which van be used to transform java objects into JSON and back.
+	 * @return JSON transformer instance
+	 */
+	JsonTransformer json();
+
 }
