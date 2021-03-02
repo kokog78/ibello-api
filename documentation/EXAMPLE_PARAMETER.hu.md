@@ -14,11 +14,27 @@ public void clickOperationButton(String operation, int index) {
 }
 ```
 
-A szelektorokba konfigurációs paramétereket is behelyettesíthetünk. Ezek nevét szintén `MavenProject: hu.ibello:ibello-api:1.16.3 @ C:\Work\workspaces\ibello\ibello-api\pom.xml` írásmóddal kell megadnunk.
+Ha a fenti példában szereplő metódust az "A" és a 2 paraméterekkel hívjuk meg, akkor a teszt az "A/2 végrehajtása" feliratú gombot fogja megkeresni és megnyomni.
+
+A szelektorokba konfigurációs paramétereket is behelyettesíthetünk. Ezek nevét az előzőhöz hasonló írásmóddal kell megadnunk.
 
 ```java
 @Find(by=By.BUTTON_TEXT, using="${button.text} végrehajtása")
 private WebElement button;
 ```
 
+Az ilyen szelektort tesztfutás közben már nem tudjuk módosítani, ugyanis a konfigurációs paraméterek értéke még a tesztek indítása előtt eldől.
+A megadott címkék viszont hatással vannak arra, hogy mely konfigurációs fájlok töltődnek be, így befolyásolják a konfigurációs paraméterek értékét is.
+Ezen a módon tehát címkék megadásával módosíthatjuk a tesztfutás menetét.
+
 Nemcsak a `@Find` annotáció szelektoránál használhatunk behelyettesítést. Mindez a `@Position` és a `@Relation` annotációknál is működik.
+
+```java
+@Find(by=By.BUTTON_TEXT, using="Letöltés")
+@Relation(type=RelationType.DESCENDANT_OF, using=".${0}")
+private WebElement button;
+
+public void click_$_download_button(String className) {
+	doWith(button.applyParameters(className)).click();
+}
+```
