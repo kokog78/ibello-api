@@ -6,7 +6,7 @@
 - [Ablakok és fülek kezelése][EXAMPLE-WINDOWS-TABS]
 - [Annak vizsgálata, hogy nem történt változás][EXAMPLE-NO-CHANGE]
 - [Tetszőleges információk riporton való megjelenítése][EXAMPLE-CUSTOM-OUTPUT]
-- [Hibakezelés `AssertionError` használatával][EXAMPLE-ASSERTION-ERROR]
+- [Hibakezelés `AssertionError` használatával][EXAMPLE-ASSERTIONERROR]
 - [Ellenőrzés `checkThat()` metódus használatával][EXAMPLE-CHECKTHAT]
 - [CSS szelektorok használata][EXAMPLE-CSS-SELECTORS]
 - [Az `@Internal` annotáció használata][EXAMPLE-INTERNAL]
@@ -20,7 +20,7 @@
 [EXAMPLE-WINDOWS-TABS]: EXAMPLE-WINDOWS-TABS.hu.md
 [EXAMPLE-FRAMES]: EXAMPLE-FRAMES.hu.md
 [EXAMPLE-CUSTOM-OUTPUT]: EXAMPLE-CUSTOM-OUTPUT.hu.md
-[EXAMPLE-ASSERTION-ERROR]: EXAMPLE-ASSERTION-ERROR.hu.md
+[EXAMPLE-ASSERTIONERROR]: EXAMPLE-ASSERTIONERROR.hu.md
 [EXAMPLE-CHECKTHAT]: EXAMPLE-CHECKTHAT.hu.md
 [EXAMPLE-CSS-SELECTORS]: EXAMPLE-CSS-SELECTORS.hu.md
 [EXAMPLE-INTERNAL]: EXAMPLE-INTERNAL.hu.md
