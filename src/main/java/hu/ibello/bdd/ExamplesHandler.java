@@ -59,8 +59,10 @@ public interface ExamplesHandler {
 	/**
 	 * Saves the given examples into a gherkin feature file.
 	 * It overwrites the existing file.
+	 * The file path should be specified with the {@link Examples#setFullPath(String)} or {@link Examples#setRelativePath(String)}
+	 * method.
 	 * @param examples the examples we want to save
-	 * @throws BDDException if there was an error during saving the file
+	 * @throws BDDException if there was an error during saving the file or the file path is not specified
 	 */
 	void saveExamples(Examples examples) throws BDDException;
 }
