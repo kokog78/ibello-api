@@ -69,9 +69,8 @@ public interface FeatureHandler {
 	/**
 	 * Saves the given feature into a gherkin feature file.
 	 * It overwrites the existing file.
-	 * @param relativePath the path to the file, relative to the "features" directory of the project
 	 * @param feature the feature we want to save
 	 * @throws BDDException if there was an error during saving the file
 	 */
-	void saveFeature(String relativePath, Feature feature) throws BDDException;
+	void saveFeature(Feature feature) throws BDDException;
 }
