@@ -1,5 +1,16 @@
 # ibello-api changelog
 
+## 1.17.0
+
+- New `Browser.getKind()` method
+- New `Browser.getVersion()` method
+- New `Browser.getCompositeId()` method
+- New `Browser.getPageSource()` method
+- New `FeatureHandler.existsFeatureFile()` method
+- New `FeatureHandler.saveFeature(...)` method
+- New `ExamplesHandler.existsExamplesFile()` method
+- New `ExamplesHandler.saveExamples(...)` method
+
 ## 1.16.3
 
 2021-01-29

@@ -58,4 +58,20 @@ public interface FeatureHandler {
 	 * @throws BDDException if there was an error during loading a file
 	 */
 	List<Feature> loadFeaturesWithTags(String ... tags) throws BDDException;
+	
+	/**
+	 * Checks if a feature file exists.
+	 * @param relativePath the path to the file, relative to the "features" directory of the project
+	 * @return <code>true</code> if the given file exists, <code>false</code> otherwise
+	 */
+	boolean existsFeatureFile(String relativePath);
+	
+	/**
+	 * Saves the given feature into a gherkin feature file.
+	 * It overwrites the existing file.
+	 * @param relativePath the path to the file, relative to the "features" directory of the project
+	 * @param feature the feature we want to save
+	 * @throws BDDException if there was an error during saving the file
+	 */
+	void saveFeature(String relativePath, Feature feature) throws BDDException;
 }
