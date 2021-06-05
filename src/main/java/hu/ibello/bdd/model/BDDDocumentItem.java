@@ -117,6 +117,7 @@ public abstract class BDDDocumentItem<STEP extends Step> {
 	
 	@Override
 	public String toString() {
-		return String.format("%s: %s", keyword, name);
+		String key = keyword == null || keyword.isEmpty() ? "Scenario" : keyword;
+		return String.format("%s: %s", key, name);
 	}
 }

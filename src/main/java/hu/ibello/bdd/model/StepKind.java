@@ -46,6 +46,9 @@ public enum StepKind {
 	 * @return gherkin representation of the keyword
 	 */
 	public String toGherkin() {
+		if (this == UNKNOWN) {
+			return "*";
+		}
 		String n = name();
 		return n.substring(0, 1) + n.substring(1).toLowerCase();
 	}

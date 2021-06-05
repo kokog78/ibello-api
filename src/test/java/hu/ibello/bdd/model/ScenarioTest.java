@@ -60,6 +60,27 @@ public class ScenarioTest {
 		assertThat(steps).extracting(step -> step.getText()).containsExactly("A1", "B1", "C1", "A");
 	}
 	
+	@Test
+	public void toString_should_concatenate_keyword_and_name() throws Exception {
+		Scenario scenario = scenario("Scenario", "A");
+		assertThat(scenario.toString()).isEqualTo("Scenario: A");
+	}
+	
+	@Test
+	public void toString_should_use_default_keyword() throws Exception {
+		Scenario scenario1 = scenario("", "A");
+		assertThat(scenario1.toString()).isEqualTo("Scenario: A");
+		Scenario scenario2 = scenario(null, "B");
+		assertThat(scenario2.toString()).isEqualTo("Scenario: B");
+	}
+	
+	private Scenario scenario(String keyword, String name) {
+		Scenario scenario = new Scenario();
+		scenario.setKeyword(keyword);
+		scenario.setName(name);
+		return scenario;
+	}
+	
 	private Scenario scenario(ParentStep ... steps) {
 		Scenario scenario = new Scenario();
 		for (ParentStep step : steps) {

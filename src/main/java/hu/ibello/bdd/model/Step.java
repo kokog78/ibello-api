@@ -119,7 +119,19 @@ public class Step {
 	
 	@Override
 	public String toString() {
-		return String.format("%s %s", keyword, text);
+		String key = keyword;
+		if (key == null || key.isEmpty()) {
+			if (kind != null) {
+				key = kind.toGherkin();
+			} else {
+				key = null;
+			}
+		}
+		if (key != null) {
+			return String.format("%s %s", key, text);
+		} else {
+			return text;
+		}
 	}
     
 }

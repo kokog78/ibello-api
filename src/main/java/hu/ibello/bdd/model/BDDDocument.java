@@ -173,7 +173,8 @@ public abstract class BDDDocument {
 	
 	@Override
 	public String toString() {
-		return String.format("%s: %s", keyword, name);
+		String key = keyword == null || keyword.isEmpty() ? "Feature" : keyword;
+		return String.format("%s: %s", key, name);
 	}
 
 }
