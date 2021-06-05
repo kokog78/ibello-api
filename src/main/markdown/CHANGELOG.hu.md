@@ -1,5 +1,12 @@
 # ibello-api változási napló
 
+## 1.17.0
+
+- Új `Browser.getKind()` metódus
+- Új `Browser.getVersion()` metódus
+- Új `Browser.getCompositeId()` metódus
+- Új `Browser.getPageSource()` metódus
+
 ## 1.16.3
 
 2021-01-29

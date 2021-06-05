@@ -19,7 +19,9 @@ import java.io.File;
 import java.net.URL;
 import java.util.regex.Pattern;
 
+import hu.ibello.model.BrowserKind;
 import hu.ibello.model.Screenshot;
+import hu.ibello.search.Window;
 
 /**
  * <p>
@@ -35,11 +37,22 @@ import hu.ibello.model.Screenshot;
  * <li>{@link Browser#reload()}</li>
  * </ul>
  * <p>
- * To set the size of the browser window, see these methods:
+ * To handle the browser window, see these methods:
  * </p>
  * <ul>
  * <li>{@link Browser#maximize()}</li>
  * <li>{@link Browser#resize(int, int)}</li>
+ * <li>{@link Browser#close()}</li>
+ * </ul>
+ * <p>
+ * To get some information about the current window or tab, see these methods:
+ * </p>
+ * <ul>
+ * <li>{@link Browser#getKind()}</li>
+ * <li>{@link Browser#getVersion()}</li>
+ * <li>{@link Browser#getCompositeId()}</li>
+ * <li>{@link Browser#getPageSource()}</li>
+ * <li>{@link Browser#saveScreenshot()}</li>
  * </ul>
  * <p>
  * To manage storages, see these methods:
@@ -53,9 +66,9 @@ import hu.ibello.model.Screenshot;
  * To handle downloaded files, use these methods:
  * </p>
  * <ul>
- * <li>{@link #getLatestDownloadedFile()}</li>
- * <li>{@link #findDownloadedFile(String)}</li>
- * <li>{@link #findDownloadedFile(Pattern)}</li>
+ * <li>{@link Browser#getLatestDownloadedFile()}</li>
+ * <li>{@link Browser#findDownloadedFile(String)}</li>
+ * <li>{@link Browser#findDownloadedFile(Pattern)}</li>
  * </ul>
  * @author Kornél Simon
  *
@@ -122,11 +135,47 @@ public interface Browser {
 	public void close();
 	
 	/**
+	 * Returns the HTML code of the current page.
+	 * This contains every elements of the current state of DOM.
+	 * @return the source HTML code of the current page
+	 */
+	public String getPageSource();
+	
+	/**
 	 * Save screenshot about the active window or tab.
 	 * The screenshot will be added to the result report too.
 	 * @return screenshot data with the file and URL
 	 */
 	public Screenshot saveScreenshot();
+	
+	/**
+	 * Returns an enumeration value which reflects the kind of the browser.
+	 * @return the browser's kind
+	 */
+	public BrowserKind getKind();
+	
+	/**
+	 * Returns the version of the browser.
+	 * @return the browser's version
+	 */
+	public String getVersion();
+	
+	/**
+	 * Returns the composite ID of the current browser and tab.
+	 * This is the ID which was specified with a {@link Window} annotation.
+	 * <p>
+	 * If the ID is empty then the browser is the default one.
+	 * </p><p>
+	 * If the ID starts with a colon then it represents a new tab in the default window.
+	 * </p><p>
+	 * If the ID contains a colon (but not starts with it), then it represents a tab in an additional
+	 * browser window. The characters before the colon are assigned to the window.
+	 * </p><p>
+	 * If the ID does not contain a colon and it is not empty, then it represents the first tab of an additional window.
+	 * </p>
+	 * @return the composite ID of the browser
+	 */
+	public String getCompositeId();
 	
 	/**
 	 * Returns a {@link Storage} instance which can be used to manipulate the session storage of the browser.
