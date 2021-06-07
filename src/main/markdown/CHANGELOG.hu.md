@@ -10,6 +10,8 @@
 - Új `FeatureHandler.saveFeature(...)` metódus
 - Új `ExamplesHandler.existsExamplesFile()` metódus
 - Új `ExamplesHandler.saveExamples(...)` metódus
+- Új `Feature.namespace` mező
+- Új `Feature.coverage` mező
 
 ## 1.16.3
 

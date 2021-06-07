@@ -24,10 +24,52 @@ import java.util.List;
  */
 public class Feature extends BDDDocument {
 
+	private String namespace;
+	
+	private Integer coverage;
+	
 	private List<String> tags;
 	
 	private List<Scenario> scenarios;
 
+	/**
+	 * Returns the namespace of the feature.
+	 * The namespace is not be automatically added to the test steps.
+	 * Each step can have it's own namespace.
+	 * This value is just a hint for editors.
+	 * @return the namespace of the feature
+	 */
+	public String getNamespace() {
+		return namespace;
+	}
+	
+	/**
+	 * Sets the namespace of the feature.
+	 * The namespace is not be automatically added to the test steps.
+	 * Each step can have it's own namespace.
+	 * This value is just a hint for editors.
+	 * @param namespace the namespace of the feature
+	 */
+	public void setNamespace(String namespace) {
+		this.namespace = namespace;
+	}
+	
+	/**
+	 * Returns the test coverage of this feature, in percentage.
+	 * @return test coverage
+	 */
+	public Integer getCoverage() {
+		return coverage;
+	}
+	
+	/**
+	 * Sets the test coverage of this feature, in percentage.
+	 * @param coverage test coverage
+	 */
+	public void setCoverage(Integer coverage) {
+		this.coverage = coverage;
+	}
+	
 	/**
 	 * Are there any tags in the feature?
 	 * @return <code>true</code> if the feature has tags

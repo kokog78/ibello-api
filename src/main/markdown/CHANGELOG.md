@@ -10,6 +10,8 @@
 - New `FeatureHandler.saveFeature(...)` method
 - New `ExamplesHandler.existsExamplesFile()` method
 - New `ExamplesHandler.saveExamples(...)` method
+- New `Feature.namespace` field
+- New `Feature.coverage` field
 
 ## 1.16.3
 
