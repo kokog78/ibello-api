@@ -2,6 +2,8 @@
 
 ## 1.17.0
 
+2021-07-03
+
 - Új `Browser.getKind()` metódus
 - Új `Browser.getVersion()` metódus
 - Új `Browser.getCompositeId()` metódus

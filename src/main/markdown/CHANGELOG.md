@@ -2,6 +2,8 @@
 
 ## 1.17.0
 
+2021-07-03
+
 - New `Browser.getKind()` method
 - New `Browser.getVersion()` method
 - New `Browser.getCompositeId()` method
