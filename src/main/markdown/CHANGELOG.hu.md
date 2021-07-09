@@ -1,5 +1,9 @@
 # ibello-api változási napló
 
+## 1.18.0
+
+- Új `PluginInitializer.regression()` metódus adathalmazokon végzett regressziós műveletekhez
+
 ## 1.17.0
 
 2021-07-03

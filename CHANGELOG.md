@@ -1,6 +1,12 @@
 # ibello-api changelog
 
+## 1.18.0
+
+- New `PluginInitializer.regression()` method for regression operations on datasets
+
 ## 1.17.0
+
+2021-07-03
 
 - New `Browser.getKind()` method
 - New `Browser.getVersion()` method
