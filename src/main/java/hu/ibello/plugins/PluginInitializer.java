@@ -21,6 +21,7 @@ import hu.ibello.bdd.ExamplesHandler;
 import hu.ibello.bdd.FeatureHandler;
 import hu.ibello.core.Value;
 import hu.ibello.data.TestDataBuilder;
+import hu.ibello.functions.RegressionTool;
 import hu.ibello.output.TestResultLoader;
 import hu.ibello.transform.JsonTransformer;
 
@@ -125,5 +126,12 @@ public interface PluginInitializer {
 	 * @return JSON transformer instance
 	 */
 	public JsonTransformer json();
+	
+	/**
+	 * Returns a regression tool instance.
+	 * With this tool, we can run linear and non-linear regression on datasets.
+	 * @return a regression tool instance
+	 */
+	public RegressionTool regression();
 	
 }
