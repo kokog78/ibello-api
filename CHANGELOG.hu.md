@@ -13,6 +13,7 @@
 - Új `Browser.getVersion()` metódus
 - Új `Browser.getCompositeId()` metódus
 - Új `Browser.getPageSource()` metódus
+<<<<<<< HEAD
 - Új `FeatureHandler.existsFeatureFile()` metódus
 - Új `FeatureHandler.saveFeature(...)` metódus
 - Új `ExamplesHandler.existsExamplesFile()` metódus
