@@ -13,7 +13,6 @@
 - New `Browser.getVersion()` method
 - New `Browser.getCompositeId()` method
 - New `Browser.getPageSource()` method
-<<<<<<< HEAD
 - New `FeatureHandler.existsFeatureFile()` method
 - New `FeatureHandler.saveFeature(...)` method
 - New `ExamplesHandler.existsExamplesFile()` method
