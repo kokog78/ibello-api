@@ -23,6 +23,7 @@ import hu.ibello.core.Value;
 import hu.ibello.data.TestDataBuilder;
 import hu.ibello.functions.RegressionTool;
 import hu.ibello.output.TestResultLoader;
+import hu.ibello.transform.CsvTransformer;
 import hu.ibello.transform.JsonTransformer;
 
 /**
@@ -122,10 +123,16 @@ public interface PluginInitializer {
 	public TestResultLoader testResults();
 	
 	/**
-	 * Returns an object which van be used to transform java objects into JSON and back.
+	 * Returns an object which can be used to transform java objects into JSON and back.
 	 * @return JSON transformer instance
 	 */
 	public JsonTransformer json();
+	
+	/**
+	 * Returns an object which can be used to transform CSV file to java objects.
+	 * @return CSV transformer instance
+	 */
+	public CsvTransformer csv();
 	
 	/**
 	 * Returns a regression tool instance.

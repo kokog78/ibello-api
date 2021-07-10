@@ -20,6 +20,7 @@ import hu.ibello.apitest.RestClient;
 import hu.ibello.core.Value;
 import hu.ibello.data.TestDataBuilder;
 import hu.ibello.output.OutputHandler;
+import hu.ibello.transform.CsvTransformer;
 import hu.ibello.transform.JsonTransformer;
 
 /**
@@ -105,5 +106,11 @@ public interface StepLibraryTool {
 	 * @return JSON transformer instance
 	 */
 	JsonTransformer json();
+	
+	/**
+	 * Returns an object which can be used to transform CSV file to java objects.
+	 * @return CSV transformer instance
+	 */
+	CsvTransformer csv();
 
 }

@@ -3,6 +3,7 @@
 ## 1.18.0
 
 - New `PluginInitializer.regression()` method for regression operations on datasets
+- New `StepLibrary.csv()` and `PluginInitializer.csv()` methods for reading CSV files
 
 ## 1.17.0
 

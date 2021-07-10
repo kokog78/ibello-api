@@ -27,6 +27,7 @@ import hu.ibello.inject.Scope;
 import hu.ibello.output.OutputHandler;
 import hu.ibello.pages.PageObject;
 import hu.ibello.search.Window;
+import hu.ibello.transform.CsvTransformer;
 import hu.ibello.transform.JsonTransformer;
 
 /**
@@ -214,6 +215,14 @@ public abstract class StepLibrary extends WindowRelated {
 	 */
 	protected JsonTransformer json() {
 		return tool.json();
+	}
+	
+	/**
+	 * Returns an object which can be used to transform CSV file to java objects.
+	 * @return CSV transformer instance
+	 */
+	protected CsvTransformer csv() {
+		return tool.csv();
 	}
 
 }

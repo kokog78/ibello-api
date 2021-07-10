@@ -3,6 +3,7 @@
 ## 1.18.0
 
 - Új `PluginInitializer.regression()` metódus adathalmazokon végzett regressziós műveletekhez
+- Új `StepLibrary.csv()` és `PluginInitializer.csv()` metódusok CSV fájlok beolvasásához
 
 ## 1.17.0
 
