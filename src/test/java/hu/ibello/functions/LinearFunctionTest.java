@@ -9,7 +9,7 @@ public class LinearFunctionTest {
 
 	@Test
 	public void toString_should_display_formula() throws Exception {
-		assertThat(linear(1, 2).toString()).isEqualTo("1 + 2 * x");
+		assertThat(linear(1, -2).toString()).isEqualTo("1 + (-2) * x");
 		assertThat(linear(0.5, 0.0006).toString()).isEqualTo("0.5 + 0.0006 * x");
 	}
 	
@@ -57,6 +57,15 @@ public class LinearFunctionTest {
 		LinearFunction f = linear(1, 2);
 		assertThatThrownBy(() -> f.setParameter(-1, 0)).isInstanceOf(IllegalArgumentException.class);
 		assertThatThrownBy(() -> f.setParameter(3, 0)).isInstanceOf(IllegalArgumentException.class);
+	}
+	
+	@Test
+	public void setParameters_should_set_all_parameters() throws Exception {
+		LinearFunction f = linear(1, 2);
+		f.setParameters(new double[]{3, 4});
+		assertThat(f.getParameters()).containsExactly(3.0, 4.0);
+		assertThat(f.getA()).isEqualTo(3.0);
+		assertThat(f.getB()).isEqualTo(4.0);
 	}
 	
 	private LinearFunction linear(double a, double b) {

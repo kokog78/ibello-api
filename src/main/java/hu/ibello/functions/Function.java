@@ -37,6 +37,31 @@ public interface Function {
 	public void setParameter(int paramIndex, double value);
 	
 	/**
+	 * Returns an array with the parameters.
+	 * The index in this array correlates with the index in the {@link #getParameter(int)} and {@link #setParameter(int, double)} methods.
+	 * @return array of parameters
+	 */
+	public default double[] getParameters() {
+		int count = getParameterCount();
+		double[] parameters = new double[count];
+		for (int i=0; i<count; i++) {
+			parameters[i] = getParameter(i);
+		}
+		return parameters;
+	}
+	
+	/**
+	 * Sets all the parameters.
+	 * The index in the input array should correlate with the index in the {@link #getParameter(int)} and {@link #setParameter(int, double)} methods.
+	 * @param parameters array of parameters
+	 */
+	public default void setParameters(double ... parameters) {
+		for (int i=0; i<parameters.length; i++) {
+			setParameter(i, parameters[i]);
+		}
+	}
+	
+	/**
 	 * Formats the value of an indexed parameter.
 	 * The index of the first parameter is 0.
 	 * Negative value will be in parenthesis.
