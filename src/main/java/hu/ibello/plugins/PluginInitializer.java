@@ -22,6 +22,7 @@ import hu.ibello.bdd.FeatureHandler;
 import hu.ibello.core.Value;
 import hu.ibello.data.TestDataBuilder;
 import hu.ibello.functions.RegressionTool;
+import hu.ibello.graph.GraphTool;
 import hu.ibello.output.TestResultLoader;
 import hu.ibello.transform.CsvTransformer;
 import hu.ibello.transform.JsonTransformer;
@@ -140,5 +141,15 @@ public interface PluginInitializer {
 	 * @return a regression tool instance
 	 */
 	public RegressionTool regression();
+	
+	/**
+	 * Returns a graph drawing tool instance.
+	 * With it, we can create and display graphs.
+	 * <p>
+	 * Warning: graph drawing functionality works only if {@link GraphTool#isAvailable()} method return <code>true</code>.
+	 * In all other cases, graphs will be not displayed.
+	 * @return a graph tool instance
+	 */
+	public GraphTool graph();
 	
 }
