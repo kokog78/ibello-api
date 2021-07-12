@@ -15,6 +15,14 @@ package hu.ibello.functions;
  */
 public class LinearFunction implements Function {
 
+	public LinearFunction() {
+	}
+	
+	public LinearFunction(double a, double b) {
+		this.a = a;
+		this.b = b;
+	}
+	
 	private double a;
 	private double b;
 	

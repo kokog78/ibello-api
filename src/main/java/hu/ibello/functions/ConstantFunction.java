@@ -13,6 +13,13 @@ package hu.ibello.functions;
  *
  */
 public class ConstantFunction implements Function {
+	
+	public ConstantFunction() {
+	}
+
+	public ConstantFunction(double a) {
+		this.a = a;
+	}
 
 	protected double a;
 	
