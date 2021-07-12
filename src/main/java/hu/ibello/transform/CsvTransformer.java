@@ -15,8 +15,9 @@ public interface CsvTransformer {
 	 * This method reads the given CSV data and loads it into a list.
 	 * The first line in the CSV should be the header.
 	 * Every other lines will be considered as new object in the list, with the given type.
+	 * @param <T> type of the result objects
 	 * @param csv the CSV content
-	 * @param typeOfT type of the objects
+	 * @param typeOfT type of the result objects
 	 * @return list of objects
 	 * @throws TransformerException if csv is not a valid CSV file
 	 */
@@ -26,6 +27,7 @@ public interface CsvTransformer {
 	 * This method reads the given CSV data and loads it into a list.
 	 * The first line in the CSV should be the header.
 	 * Every other lines will be considered as new object in the list, with the given type.
+	 * @param <T> type of the result objects
 	 * @param csv the Reader containing CSV data
 	 * @param typeOfT type of the objects
 	 * @return list of objects
