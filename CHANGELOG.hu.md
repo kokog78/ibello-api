@@ -3,6 +3,9 @@
 ## 1.18.0
 
 - Új `PluginInitializer.regression()` metódus adathalmazokon végzett regressziós műveletekhez
+- Új osztályok a `hu.ibello.functions` csomagban, amelyek matematikai függvényeket implementálnak (konstans, lineáris és logisztikus függvények)
+- Új `PluginInitializer.graph()` metódus grafikonok rajzolásához
+- Új `PluginInitializer.table()` metódus táblázatok kiíratásához
 - Új `StepLibrary.csv()` és `PluginInitializer.csv()` metódusok CSV fájlok beolvasásához
 
 ## 1.17.0

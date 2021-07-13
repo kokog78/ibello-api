@@ -3,6 +3,9 @@
 ## 1.18.0
 
 - New `PluginInitializer.regression()` method for regression operations on datasets
+- New classes in `hu.ibello.functions` package implementing mathematical functions (constant, linear and logistic functions)
+- New `PluginInitializer.graph()` method for drawing graphs
+- New `PluginInitializer.table()` method for printing tables
 - New `StepLibrary.csv()` and `PluginInitializer.csv()` methods for reading CSV files
 
 ## 1.17.0
