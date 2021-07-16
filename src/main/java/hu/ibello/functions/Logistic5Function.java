@@ -1,5 +1,21 @@
 package hu.ibello.functions;
 
+/**
+ * A 5-parameter logistic function (5PL or asymmetrical sigmodial).
+ * <pre>
+ * f(x) = y0 + (y1 - y0) / (1 + (x / c)^b)^m
+ * </pre>
+ * Parameters are:
+ * <ul>
+ * <li>y0</li>
+ * <li>y1</li>
+ * <li>b</li>
+ * <li>c</li>
+ * <li>m</li>
+ * </ul>
+ * @author kokog
+ *
+ */
 public class Logistic5Function implements Function {
 
 	protected double y0;

@@ -1,5 +1,11 @@
 package hu.ibello.functions;
 
+/**
+ * Inverse of the 4-parameter logistic function.
+ * 
+ * @author kokog
+ *
+ */
 public class Logistic4InverseFunction extends Logistic4Function {
 
 	@Override

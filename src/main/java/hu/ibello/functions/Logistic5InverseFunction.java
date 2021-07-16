@@ -1,5 +1,11 @@
 package hu.ibello.functions;
 
+/**
+ * Inverse of the 5-parameter logistic function.
+ * 
+ * @author kokog
+ *
+ */
 public class Logistic5InverseFunction extends Logistic5Function {
 
 	@Override

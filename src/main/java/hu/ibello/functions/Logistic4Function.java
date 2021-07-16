@@ -1,5 +1,20 @@
 package hu.ibello.functions;
 
+/**
+ * A 4-parameter logistic function (4PL or symmetrical sigmodial).
+ * <pre>
+ * f(x) = y0 + (y1 - y0) / (1 + (x / c)^b)
+ * </pre>
+ * Parameters are:
+ * <ul>
+ * <li>y0</li>
+ * <li>y1</li>
+ * <li>b</li>
+ * <li>c</li>
+ * </ul>
+ * @author kokog
+ *
+ */
 public class Logistic4Function implements Function {
 
 	protected double y0;

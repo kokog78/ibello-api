@@ -1,5 +1,18 @@
 package hu.ibello.functions;
 
+/**
+ * A power function.
+ * <pre>
+ * f(x) = a * x^b
+ * </pre>
+ * Parameters are:
+ * <ul>
+ * <li>a</li>
+ * <li>b</li>
+ * </ul>
+ * @author kokog
+ *
+ */
 public class PowerFunction implements Function {
 
 	public PowerFunction() {
