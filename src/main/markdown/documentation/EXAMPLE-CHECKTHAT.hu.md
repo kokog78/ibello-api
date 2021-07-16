@@ -12,7 +12,7 @@ public void click_send_message_button() {
 }
 ```
 
-A fenti példánál látszik, hogy a `sendMessageButton` megnyomása után ellenőrizzük a felugró hibaüzenetet. Azonban ha az üzenet csak az ellenőrzés megtörténte után ugrik fel, akkor a feltétel nem teljesül. Ennek a problémának a kiküszöbölésére egy várakozó, ellenőrző metódus (`assume()`, `expect()`) használata kínál megoldást. Érdemes olyan feltételre várnunk, aminek teljesülése után a későbbi `checkThat` vizsgálat már biztosan elvégezhető.
+A fenti példánál látszik, hogy a `sendMessageButton` megnyomása után ellenőrizzük a felugró hibaüzenetet. Azonban ha az üzenet csak az ellenőrzés megtörténte után ugrik fel, akkor a feltétel nem teljesül. Ennek a problémának a kiküszöbölésére egy várakozó-ellenőrző metódus (`assume()`, `expect()`) használata kínál megoldást. Érdemes olyan feltételre várnunk, aminek teljesülése után a későbbi `checkThat` vizsgálat már biztosan elvégezhető.
 
 ```
 public void click_send_message_button() {

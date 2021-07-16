@@ -19,7 +19,7 @@ public void click_details_button_with_$_index(int buttonIndex) {
 ```
 
 Ez a funkció arra is lehetőséget ad, hogy a tesztjeinkben más, ellenőrzés célját szolgáló könyvtárakat használjunk. Ezekről ugyanis
-általánosságban elmondható, hogy sikertelenség esetén `AssertionError`-t dobnak - amit az ibello is megért. AZ előbbi példa az
+általánosságban elmondható, hogy sikertelenség esetén `AssertionError`-t dobnak - amit az ibello is megért. Az előbbi példa az
 AssertJ eszköz használatával például így nézne ki:
 
 ```java

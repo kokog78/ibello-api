@@ -23,7 +23,7 @@ public class FrameContentPage extends PageObject {
 
 }
 ```
-Az annotációval ellátott oldal-leírón belül minden elemkeresést a keretkez képest relatívan kell értenünk.
+Az annotációval ellátott oldal-leírón belül minden elemkeresést a kerethez képest relatívan kell értenünk.
 
 ```html
 <button>First</button>
@@ -82,7 +82,7 @@ Előfordulhat olyan eset, amikor hasonló tartalmat kell különböző kereteken
 
 Mivel a `@Frame` annotációt közvetlenül az oldal-leíró osztályhoz adjuk hozzá, ezért azt nem lehet megváltoztatni. De így sem kell feltétlenül két ugyanolyan
 oldal-leíró osztályt készítenünk. Készíthetünk egy "tiszta", annotáció nélküli oldal-leírót, ami leírja a tartalmat, majd ebből leszármaztatjuk a keretekhez
-használt olfal-leírókat, immár annotációval ellátva.
+használt oldal-leírókat, immár annotációval ellátva.
 
 ```java
 public class BasePage extends PageObject {
