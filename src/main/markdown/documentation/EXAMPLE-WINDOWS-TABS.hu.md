@@ -1,9 +1,9 @@
 # Ablakok és fülek kezelése
 
 Az alapértelmezettől eltérő böngésző-ablakokat és füleket a `@Window` annotáció segítségével érhetünk el. Az annotációt oldal-leíró vagy tesztlépés-könyvtár
-mezőre lehet tenni. Az annotáció értéke öröklődik azokra a hivatkozott oldal-leírókra, amik nem rendelkeznek külön annotációval.
+típusú mezőre lehet tenni. Az annotáció értéke öröklődik azokra a hivatkozott oldal-leírókra, amik nem rendelkeznek külön annotációval.
 
-Az annotáció értéke az oldal/fül (általunk adott) azonosítója. Egy böngésző fül azonosítója kettősponttal kezdődik. (Egy ablaké pedig kettőspont nélkül.)
+Az annotáció értéke az ablak/fül (általunk adott) azonosítója. Egy böngésző fül azonosítója kettősponttal kezdődik. (Egy ablaké pedig kettőspont nélkül.)
 
 ## Újonnan megnyílt fül kezelése
 

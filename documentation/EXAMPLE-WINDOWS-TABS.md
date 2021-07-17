@@ -1,16 +1,17 @@
-# Ablakok és fülek kezelése
+# Handling of windows and tabs
 
-Az alapértelmezettől eltérő böngésző-ablakokat és füleket a `@Window` annotáció segítségével érhetünk el. Az annotációt oldal-leíró vagy tesztlépés-könyvtár
-típusú mezőre lehet tenni. Az annotáció értéke öröklődik azokra a hivatkozott oldal-leírókra, amik nem rendelkeznek külön annotációval.
+Browser windows and tabs other than the default can be accessed using the `@Window` annotation. The annotation can be placed on a page object or step library
+type field. The annotation value is inherited by the referenced page objects that do not have a separate annotation.
 
-Az annotáció értéke az ablak/fül (általunk adott) azonosítója. Egy böngésző fül azonosítója kettősponttal kezdődik. (Egy ablaké pedig kettőspont nélkül.)
+The value of the annotation is the identifier (given by us) of the window/tab. A browser tab ID starts with a colon. (And a window without a colon.)
 
-## Újonnan megnyílt fül kezelése
+## Manage a newly opened tab
 
-Szituáció: a tesztelendő alkalmazás gombnyomásra új fület nyit, amibe betölt egy beviteli mezőt tartalmazó oldalt.
-Az alkalmazás az alapértelmezett ablakban fut, az új oldal is itt nyílik meg, egy új fülön.
+Situation: the application under test opens a new tab with a button click, and loads a page containing an input field.
+The application runs in the default window, the new page opens here, on a new tab.
 
-Az új fület megnyitó oldal:
+The page that opens the new tab:
+
 ```java
 public class OpenerPage extends PageObject {
 
@@ -24,7 +25,7 @@ public class OpenerPage extends PageObject {
 }
 ```
 
-A megnyílt fül oldal-leírója:
+Page object of the opened tab:
 ```java
 public class OpenedPage extends PageObject {
 
@@ -42,14 +43,14 @@ public class OpenedPage extends PageObject {
 }
 ```
 
-A tesztlépés-könyvtár a két oldal-leíróval:
+The step library with the two page objects:
 ```java
 public class Steps extends StepLibrary {
 
-	// az alapértelmezett ablakban, az alapértelmezett fülön fut
+	// runs in the default window, in the default tab
 	private OpenerPage opener;
 	
-	// az alapértelmezett ablakban megnyílt új fülön fut
+	// runs in a new tab opened in the default window
 	@Window(":new-tab");
 	private OpenedPage opened;
 	
@@ -62,13 +63,12 @@ public class Steps extends StepLibrary {
 }
 ```
 
-## Tesztek futtatása egyszerre két ablakban
+## Run tests in two windows at once
 
-Szituáció: a tesztelendő alkalmazás két részből áll össze. A szerkesztőben tartamat tudunk szerkeszteni, míg a megtekintőben a tartalmat tekinthetjük meg. A két rész különböző URL-eken
-érhető el. A szerkesztő ráadásul lassan töltődik be. Szeretnénk letesztelni, hogy amikor a szerkesztőben átírjuk a tartalmat, akkor az a megtekintőben is megváltozik. Mindezt szeretnénk
-minél gyorsabban végrehajtani, ezért két külön böngészőablakot nyitunk, az egyikbe a szerkesztőt, a másikba a megtekintőt töltjük be.
+Situation: the application to be tested consists of two parts. In the editor we can edit content, while in the viewer we can view the content. The two parts are available at different URLs. In addition, the editor loads slowly. We would like to test that when we change the content in the editor, it changes in the viewer as well. We would like to do this as quickly as possible, so we open two separate browser windows, one for the editor and one for the viewer.
 
-A szerkesztő oldal:
+The editor page:
+
 ```java
 public class EditorPage extends PageObject {
 
@@ -100,7 +100,7 @@ public class EditorPage extends PageObject {
 }
 ```
 
-A megjelenítő oldal:
+The viewer page:
 ```java
 public class ViewerPage extends PageObject {
 
@@ -125,14 +125,14 @@ public class ViewerPage extends PageObject {
 }
 ```
 
-A tesztlépés-könyvtár a két oldal-leíróval:
+The step library with the two page objects:
 ```java
 public class Steps extends StepLibrary {
 
-	// az alapértelmezett ablakban fut
+	// runs in the default window
 	private EditorPage editor;
 	
-	// egy új ablakban fut
+	// runs in a new window
 	@Window("viewer-window")
 	private ViewerPage viewer;
 	

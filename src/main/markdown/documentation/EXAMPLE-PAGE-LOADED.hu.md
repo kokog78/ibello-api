@@ -1,11 +1,11 @@
 # Elemcsoportok megjelenése és eltűnése
 
-Gyakori feladat lehet, hogy a tesztek futása közben ki kell várni bizonyos dinamikus változásokat, amik során egészen új elemcsoportok, oldalak jelennek meg a
-képernyőn - vagy tűnnek el. Ennek a lehetőségeit nézzük át röviden.
+Gyakori feladat lehet, hogy a tesztek futása közben ki kell várni bizonyos dinamikus változásokat, amik során egészen új elemcsoportok, oldalak jelennek meg (vagy tűnnek el) a
+képernyőn. Ennek a lehetőségeit nézzük át röviden.
 
 ## A dinamikus változások kivárása
 
-Ha a változás elég gyorsan és folyamatosan lezajlik akkor esetleg elég lehet egy egyszerű várakozást beállítani annál a műveletnél,
+Ha a változás elég gyorsan és folyamatosan lezajlik, akkor elég lehet egy egyszerű várakozást beállítani annál a műveletnél,
 ami a változást kiváltja. Például, ha ez egy gombnyomás, akkor a következő módszer használható:
 
 ```java
@@ -86,7 +86,7 @@ public void expectOpened() {
 }
 ```
 
-Összetett ellenőrzésnél ahhoz, hogy a várakozási idő a teljes (összetett) vizsgálatra vonatkozzon, a `withTimeout` metódust a legkülső helyen kell hívni:
+Összetett ellenőrzésnél ahhoz, hogy a várakozási idő a teljes (összetett) vizsgálatra vonatkozzon, a `withTimeout` metódust a legkülsőbb helyen kell hívni:
 
 ```java
 public void expectOpened() {
@@ -107,7 +107,7 @@ public void expectClosed() {
 ```
 
 A modern webalkalmazásokban a modális dialógus-dobozok egy teljes képernyős árnyékolás előtt jelennek meg. Az árnyékolás semlegesíti az egérműveleteket,
-így nem lehet a modális dialógus mellé/mögé kattintani. Ha ilyen dialógusunk van, akkor nem feltétlenül kell `expectClosed` metódust készítenünk. Valószínű ugyanis,
+így nem lehet a dialógus mellé/mögé kattintani. Ha ilyen dialógusunk van, akkor nem feltétlenül kell `expectClosed` metódust készítenünk. Valószínű ugyanis,
 hogy a dialógus bezárásakor az árnyék tűnik el utoljára, így a tesztjeink nem fognak addig az árnyék mögötti elemekkel műveletet végezni, amíg a dialógus egy darabkája
 is a képernyőn van. Előfordulhat azonban, hogy ez nem így van, és előbb az árnyék tűnik el. Ekkor a dialógus mögötti elemek felszabadulnak, és mivel a tesztek sokkal
 gyorsabban végzik a műveleteket, mint egy felhasználó, még a dialógus tényleges eltűnése előtt rákattinthatnak valamire, amire még nem lenne szabad. Ha biztosak akarunk
