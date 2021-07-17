@@ -1,12 +1,12 @@
 # CSS szelektorok használata
 
-Elemkeresés során nagyon fontos a megfelelő feltételek meghatározása. Sok esetben, a beépített keresési feltételek (`By.ID`, `By.CLASS_NAME`, stb.) nem elegendőek. Ilyenkor lehetőségünk van CSS selector-okat alkalmazni. 
+Elemkeresés során nagyon fontos a megfelelő feltételek meghatározása. Sok esetben, a beépített keresési feltételek (`By.ID`, `By.CLASS_NAME`, stb.) nem elegendők. Ilyenkor lehetőségünk van CSS szelektorokat alkalmazni.
 
-Az alábbi példa szemlélteti az "attribútum tartalmazza" selector használatát.
+Az alábbi példa szemlélteti az "attribútum tartalmazza" szelektor használatát.
 
-Szituáció: van egy alkalmazás ami termékek raktárkészletét kezeli. Az oldalon van három termék és hozzájuk egy-egy beviteli mező, amibe be lehet írni az elérhető mennyiségeket. Minden beviteli mező külön `id`-val rendelkezik, amik az alábbiak: prodQuantity1, prodQuantity2, prodQuantity3. Ezeken kívül más beviteli mezőket is tartalmaz az oldal, de azok teljesen más `id`-val rendelkeznek és más funkciót töltenek be.
+Szituáció: van egy alkalmazás ami termékek raktárkészletét kezeli. Az oldalon van három termék és hozzájuk egy-egy beviteli mező, amibe be lehet írni az elérhető mennyiségeket. Minden beviteli mező külön `id`-val rendelkezik, amik az alábbiak: "prodQuantity1", "prodQuantity2", "prodQuantity3". Ezeken kívül az oldal más beviteli mezőket is tartalmaz, de azok teljesen más `id`-val rendelkeznek és más funkciót töltenek be.
 
-Feladat: minden termék mennyiségéhez adjunk meg 10-et. 
+Feladat: minden termék mennyiségét állítsuk be 10-re! 
 
 ```
 @Find(by = By.ID, using = "prodQuantity1")
@@ -38,4 +38,4 @@ public void set_quantities_to_ten() {
 }
 ```
 
-Ebben az esetben összegyüjtöttük az összes "Quantity" szót **tartalmazó** azonosítóval ellátott beviteli mezőt, majd azokon végigiterálva beállítottuk az értéküket. 
+Ebben az esetben összegyűjtöttük az összes "Quantity" szót **tartalmazó** azonosítóval ellátott beviteli mezőt, majd azokon végiglépkedve beállítottuk az értéküket. 
