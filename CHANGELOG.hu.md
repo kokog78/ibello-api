@@ -7,6 +7,8 @@
 - Új `PluginInitializer.graph()` metódus grafikonok rajzolásához
 - Új `PluginInitializer.table()` metódus táblázatok kiíratásához
 - Új `StepLibrary.csv()` és `PluginInitializer.csv()` metódusok CSV fájlok beolvasásához
+- Új `TestException` kivétel osztály teszthibák jelöléséhez
+- Új `SystemFailureException` kivétel osztály rendszerhibák jelöléséhez
 
 ## 1.17.0
 

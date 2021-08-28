@@ -7,6 +7,8 @@
 - New `PluginInitializer.graph()` method for drawing graphs
 - New `PluginInitializer.table()` method for printing tables
 - New `StepLibrary.csv()` and `PluginInitializer.csv()` methods for reading CSV files
+- Új `TestException` exception class for marking test errors
+- Új `SystemFailureException` exception class for marking system errors
 
 ## 1.17.0
 
