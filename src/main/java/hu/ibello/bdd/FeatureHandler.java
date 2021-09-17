@@ -21,7 +21,7 @@ import java.util.regex.Pattern;
 import hu.ibello.bdd.model.Feature;
 
 /**
- * With the method of this class we can load Cucumber feature files.
+ * With the methods of this class we can load and save Cucumber feature files.
  * The files will be loaded from the current ibello project.
  * <p>
  * The return values are in ibello's own format. The {@link Feature} class describes a Cucumber feature
