@@ -24,15 +24,30 @@ import hu.ibello.data.TestDataBuilder;
 import hu.ibello.functions.RegressionTool;
 import hu.ibello.graph.GraphTool;
 import hu.ibello.output.TestResultLoader;
+import hu.ibello.requirements.RequirementHandler;
 import hu.ibello.table.TableTool;
 import hu.ibello.transform.CsvTransformer;
 import hu.ibello.transform.JsonTransformer;
 
 /**
  * A simple interface, which is used in ibello plugins.
+ * <p>
  * It can be used for logging: all log messages received by the {@link #info(String)} or {@link #error(String)}
- * methods will be added to the ibello logs automatically. Another use case of this interface is to get
- * configuration parameters with the {@link #getConfigurationValue(String)} method.
+ * methods will be added to the ibello logs automatically.
+ * </p><p>
+ * Another use case of this interface is to get configuration parameters with the {@link #getConfigurationValue(String)} method.
+ * </p><p>
+ * It has different method to access ibello's infrastructure in the current project. With the {@link #testData()} method, we access
+ * test data stored in files. With {@link #features()} and {@link #examples()}, we can access the BDD features and examples.
+ * With {@link #requirements()}, we can access the requirements. The {@link #testResults()} method gives a handler object
+ * which loads local test results.
+ * </p><p>
+ * Some methods can be used to transform data from one format to another. The {@link #json()} and the {@link #csv()} are used to JSON
+ * and CSV transformation.
+ * </p><p>
+ * Some methods return objects which give us dome extra functions to build better output for the task. With the {@link #graph()}
+ * method we can define graphs, with the {@link #table()} method we can create tabular data.
+ * </p>
  * @author Kornél Simon
  *
  */
@@ -117,6 +132,12 @@ public interface PluginInitializer {
 	 * @return the example handler object
 	 */
 	public ExamplesHandler examples();
+	
+	/**
+	 * Returns an object which is designed to load requirement files from an ibello project.
+	 * @return the requirement handler object
+	 */
+	public RequirementHandler requirements();
 	
 	/**
 	 * Returns an object which can load ibello tests results.
