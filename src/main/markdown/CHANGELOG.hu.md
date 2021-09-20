@@ -2,6 +2,8 @@
 
 ## 1.18.0
 
+2021-09-20
+
 - Új `PluginInitializer.regression()` metódus adathalmazokon végzett regressziós műveletekhez
 - Új osztályok a `hu.ibello.functions` csomagban, amelyek matematikai függvényeket implementálnak (konstans, lineáris és logisztikus függvények)
 - Új `PluginInitializer.graph()` metódus grafikonok rajzolásához

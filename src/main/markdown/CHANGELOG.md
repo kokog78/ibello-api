@@ -2,6 +2,8 @@
 
 ## 1.18.0
 
+2021-09-20
+
 - New `PluginInitializer.regression()` method for regression operations on datasets
 - New classes in `hu.ibello.functions` package implementing mathematical functions (constant, linear and logistic functions)
 - New `PluginInitializer.graph()` method for drawing graphs
