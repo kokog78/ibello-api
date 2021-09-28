@@ -1213,7 +1213,7 @@ Relatív dátummegadásnál, ha a dátummező java típusa `XMLGregorianCalendar
 
 ##### Konfigurációs paraméterek behelyettesítése
 
-Arra is lehetőségünk van, hogy a JSON fájlokban tárolt szövegekbe konfigurációs paraméterek értékeit helyettesítsük be. Ehhez a `${paraméter}` írásmódot kell használnunk, a zárójelekbe a konfigurációs paraméter neve kerül.
+Arra is lehetőségünk van, hogy a JSON fájlokban tárolt szövegekbe konfigurációs paraméterek értékeit helyettesítsük be. Ehhez a `${paraméter}` írásmódot kell használnunk, a zárójelek közé a konfigurációs paraméter neve kerül.
 
 Példa:
 
@@ -1397,7 +1397,7 @@ Ha a hívási láncot az `openStream()` metódussal zárjuk, akkor egy `InputStr
 
 ##### Konfigurációs paraméterek behelyettesítése
 
-Arra is lehetőségünk van, hogy a fájlok tartalmába konfigurációs paraméterek értékeit helyettesítsük be. Ehhez a `${paraméter}` írásmódot kell használnunk, a zárójelekbe a konfigurációs paraméter neve kerül.
+Arra is lehetőségünk van, hogy a fájlok tartalmába konfigurációs paraméterek értékeit helyettesítsük be. Ehhez a `${paraméter}` írásmódot kell használnunk, a zárójelek közé a konfigurációs paraméter neve kerül.
 
 Példa:
 
