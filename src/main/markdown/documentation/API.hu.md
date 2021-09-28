@@ -1426,7 +1426,7 @@ file.hu.dat
 file.hu-prod.dat
 ```
 
-A betöltést a `testData().fromBinary(String).openStream()` metódussal által visszaadott `InpusStream` példányon lehet elvégezni.
+A betöltést a `testData().fromBinary(String).openStream()` metódussal által visszaadott `InputStream` példányon lehet elvégezni.
 Az eszköz csak azokat a fájlokat veszi figyelembe, amiknek nincs olyan címkéje, amit a tesztfuttatásnál *nem* adtunk meg. A megadott névhez
 (és a címkékhez) passzoló fájlok közül a legutolsó lesz csak betöltve.
 
