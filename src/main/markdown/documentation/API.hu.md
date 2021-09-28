@@ -1397,7 +1397,7 @@ Ha a hívási láncot az `openStream()` metódussal zárjuk, akkor egy `InputStr
 
 ##### Konfigurációs paraméterek behelyettesítése
 
-Arra is lehetőségünk van, hogy a fájlok tartalmába konfigurációs paraméterek értékeit helyettesítsük be. Ehhez a `${...}` írásmódot kell használnunk, a zárójelekbe a konfigurációs paraméter neve kerül.
+Arra is lehetőségünk van, hogy a fájlok tartalmába konfigurációs paraméterek értékeit helyettesítsük be. Ehhez a `${paraméter}` írásmódot kell használnunk, a zárójelekbe a konfigurációs paraméter neve kerül.
 
 Példa:
 
