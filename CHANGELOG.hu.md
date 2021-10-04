@@ -1,5 +1,9 @@
 # ibello-api változási napló
 
+## 1.19.0
+
+- Az `Initializable` interfész kapott egy új `isInitialized()` metódust
+
 ## 1.18.0
 
 2021-09-20

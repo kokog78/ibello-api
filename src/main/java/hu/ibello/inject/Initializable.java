@@ -31,7 +31,17 @@ public interface Initializable {
 
 	/**
 	 * Intializes the injected instance.
-	 * It is called after every fields in this instance are initialized by the injector.
+	 * This method is called automatically after every fields in this instance are initialized by the injector.
+	 * If {@link #isInitialized()} returns <code>true</code>, then this method will NOT be called.
 	 */
 	void initialize();
+	
+	/**
+	 * Was the instance already initialized? Should return <code>true</code> if yes.
+	 * Otherwise an initialization with the {@link #initialize()} method will be performed automatically.
+	 * @return <code>true</code> if instance was initialized
+	 */
+	default boolean isInitialized() {
+		return false;
+	}
 }

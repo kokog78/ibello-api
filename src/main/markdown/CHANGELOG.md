@@ -1,5 +1,9 @@
 # ibello-api changelog
 
+## 1.19.0
+
+- There is a new `isInitialized()` method in the `Initializable` interface
+
 ## 1.18.0
 
 2021-09-20
