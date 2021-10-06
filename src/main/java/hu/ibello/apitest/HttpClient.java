@@ -1,6 +1,8 @@
 package hu.ibello.apitest;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.nio.charset.Charset;
 
@@ -94,7 +96,12 @@ public interface HttpClient {
 	
 	/**
 	 * Sets the body of the HTTP request.
-	 * The parameter's value will be transformed to a {@link String}.
+	 * The parameter can be:
+	 * <ul>
+	 * <li>a {@link File} instance, in this case a multipart attachment will be added to the body,</li>
+	 * <li>an {@link InputStream} instance, in this case the content of the stream will be the request body,</li>
+	 * <li>or anything else - which will be transformed to a {@link String}.</li>
+	 * </ul>
 	 * @param object the object to be sent
 	 * @param <T> the type of the body object
 	 * @return this {@link HttpClient} instance
