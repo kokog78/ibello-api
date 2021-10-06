@@ -157,6 +157,13 @@ public interface RestClient {
 	public RestClient bearerAuthorization(String token);
 	
 	/**
+	 * Turns off SSL certificate validation.
+	 * This is useful if the SSL certificate of the host is not valid from any reason but we need to communicate with it with HTTPS protocol.
+	 * @return this {@link RestClient} instance
+	 */
+	public RestClient withoutCertificateValidation();
+	
+	/**
 	 * Executes the REST call: sends the request and receives the response.
 	 * It automatically transforms the response JSON to a java object.
 	 * If the <code>responseType</code> argument is <code>String.class</code>,

@@ -3,6 +3,7 @@
 ## 1.19.0
 
 - Az `Initializable` interfész kapott egy új `isInitialized()` metódust
+- A `HttpClient` és a `RestClient` osztályok kaptak egy új `withoutCertificateValidation()` metódust
 
 ## 1.18.0
 

@@ -3,6 +3,7 @@
 ## 1.19.0
 
 - There is a new `isInitialized()` method in the `Initializable` interface
+- There are new `withoutCertificateValidation()` methods in `HttpClient` and `RestClient` classes
 
 ## 1.18.0
 

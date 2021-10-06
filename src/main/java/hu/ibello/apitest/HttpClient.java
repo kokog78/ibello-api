@@ -141,6 +141,13 @@ public interface HttpClient {
 	public HttpClient bearerAuthorization(String token);
 	
 	/**
+	 * Turns off SSL certificate validation.
+	 * This is useful if the SSL certificate of the host is not valid from any reason but we need to communicate with it with HTTPS protocol.
+	 * @return this {@link HttpClient} instance
+	 */
+	public HttpClient withoutCertificateValidation();
+	
+	/**
 	 * Executes the HTTP request: sends the request and receives the response.
 	 * It automatically transforms the response to a java string.
 	 * @return the response as java string
