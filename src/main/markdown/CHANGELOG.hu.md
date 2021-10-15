@@ -4,6 +4,8 @@
 
 - Az `Initializable` interfész kapott egy új `isInitialized()` metódust
 - A `HttpClient` és a `RestClient` osztályok kaptak egy új `withoutCertificateValidation()` metódust
+- A tesztadatokhoz használt `@Model` annotáció kapott egy új `properties` mezőt
+- Új `@Calculated` annotáció, amivel a számolt tesztadat mezőket lehet megjelölni és a számoláshoz használt kifejezést megadni
 
 ## 1.18.0
 

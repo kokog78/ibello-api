@@ -4,6 +4,8 @@
 
 - There is a new `isInitialized()` method in the `Initializable` interface
 - There are new `withoutCertificateValidation()` methods in `HttpClient` and `RestClient` classes
+- The `@Model` annotation - which is used for test data classes - has a new `properties` field
+- New `@Calculated` annotation to mark calculated test data fields and specify the expression for the calculation
 
 ## 1.18.0
 
