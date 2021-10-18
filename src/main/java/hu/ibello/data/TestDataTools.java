@@ -16,6 +16,9 @@
 package hu.ibello.data;
 
 import java.lang.reflect.Field;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.UUID;
 
 import hu.ibello.core.Name;
 
@@ -67,5 +70,43 @@ public class TestDataTools {
 			return name.value();
 		}
 		return clazz.getSimpleName();
+	}
+	
+	private static String timestamp;
+	private static String uuid;
+	
+	static {
+		Date now = new Date();
+		SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+		timestamp = fmt.format(now);
+		uuid = UUID.randomUUID().toString();
+	}
+	
+	/**
+	 * <p>
+	 * Returns a timestamp value. The timestamp does not change during the whole test run.
+	 * It is generated at the beginning. With timestamp we can create unique (time-related) identifiers in a database.
+	 * </p>
+	 * <p>
+	 * This method returns the first <code>length</code> characters of the timestamp. For example, the first 8 characters
+	 * contains the year, the month and the day, the first 12 characters contains the hours and the minutes too.
+	 * </p>
+	 * @param length maximum length of the returned timestamp
+	 * @return
+	 */
+	public static String getTimestamp(int length) {
+		if (length >= timestamp.length()) {
+			return timestamp;
+		} else {
+			return timestamp.substring(0, length);
+		}
+	}
+	
+	/**
+	 * Returns a UUID as string. This UUID is generated at the beginning of the test execution and does not change during the test run.
+	 * @return the static UUID
+	 */
+	public static String getUUID() {
+		return uuid;
 	}
 }
