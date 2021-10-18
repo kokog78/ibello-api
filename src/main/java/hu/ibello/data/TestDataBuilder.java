@@ -239,14 +239,4 @@ public interface TestDataBuilder {
 	 */
 	public BinaryTestDataBuilder fromBinary(String fileName);
 	
-	/**
-	 * Evaluate a test data expression and returns the result value.
-	 * 
-	 * @param expression the expression
-	 * @param returnType the type of the returned object
-	 * @param properties object containing properties referenced in the expression
-	 * @return the result of the evaluation
-	 */
-	public <T> T evaluate(String expression, Class<T> returnType, Object properties);
-	
 }
