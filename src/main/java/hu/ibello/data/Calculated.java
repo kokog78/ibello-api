@@ -33,13 +33,8 @@ import java.lang.annotation.Target;
  * </p>
  * <ul>
  * <li>another field in the same class; in this case the name of the field should be in the reference, for example <i>${anotherField}</i>,</li>
- * <li>an environment value; in this case the reference should start with the "$." prefix, for example:
- * <ul>
- * <li><i>${$.id}</i> is the identifier of the loaded test data,</li>
- * <li><i>${$.timestamp}</i> is a timestamp value generated from the current time,</li>
- * <li><i>${$.uuid}</i> is newly generated java UUID</li>
- * </ul>
- * </li>
+ * <li>the data identifier which was used to load the test data; in this case the reference should be <i>${$id}</i>,</li>
+ * <li>a configuration value, for example <i>${ibello.browser.type}</i>,</li>
  * <li>a field in the properties object; in this case the reference should start with the "properties." prefix, for example <i>${properties.timestamp}</i>.</li>
  * </ul>
  * <p>
