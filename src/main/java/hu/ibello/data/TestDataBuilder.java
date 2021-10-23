@@ -15,6 +15,8 @@
  */
 package hu.ibello.data;
 
+import hu.ibello.core.Value;
+
 /**
  * This class is designed for load test data from the filesystem.
  * Test data can be stored in java property file, or in JSON file.
@@ -238,5 +240,52 @@ public interface TestDataBuilder {
 	 * @return the object which loads the binary data from a file
 	 */
 	public BinaryTestDataBuilder fromBinary(String fileName);
+	
+	/**
+	 * Creates an objects which can be used to evaluate a test data expression.
+	 * <p>
+	 * In the expression we can use references with the form: <code>${...}</code>.
+	 * References can be even complex ones, for example: <code>${person.fullName}</code>.
+	 * Complex references are using fields and not getter methods, so the previous example will return with the
+	 * content of the <code>fullName</code> field of the <code>person</code> object.
+	 * </p>
+	 * <p>
+	 * Referenced objects can be defined with the {@link TestDataExpressionEvaluator#withReference(String, Object)} method.
+	 * </p>
+	 * <p>
+	 * If a referenced object is not defined, then ibello tries to read the reference as a configuration property name.
+	 * In this case, the value of the property will be used.
+	 * </p>
+	 * <p>
+	 * The result of the evaluation is a {@link Value} instance. Specific typed value can be accessed from that interface,
+	 * for example with the {@link Value#toInteger()} method.
+	 * </p>
+	 * <p>
+	 * Example:
+	 * </p>
+	 * <pre>
+	 * Screenshot screenshot = new Screenshot("http://ibello.eu", "/var/log/screenshot.png", "12");
+	 * 
+	 * // result is 12.0
+	 * Double number = expression("${ref.label}")
+	 *   .withReference("ref", object)
+	 *   .evaluate()
+	 *   .toDouble();
+	 * 
+	 * // result is "Screenshot path: /var/log/screenshot.png"
+	 * String text = expression("Screenshot path: ${ref.path}.")
+	 *   .withReference("ref", object)
+	 *   .evaluate()
+	 *   .toString();
+	 * 
+	 * // result is the value of the ibello.report.name configuration property
+	 * String configValue = expression("${ibello.report.name}")
+	 *   .evaluate()
+	 *   .toString();
+	 * </pre>
+	 * @param expression the expression we want to evaluate
+	 * @return an objects which can be used to evaluate the expression
+	 */
+	public TestDataExpressionEvaluator expression(String expression);
 	
 }
