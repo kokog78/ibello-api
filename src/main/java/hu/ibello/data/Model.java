@@ -41,26 +41,9 @@ import java.lang.annotation.Target;
  * that the class can be used to load test data into it.
  * Instances of the class can also be used as parameters for test steps.
  * </p>
- * <p>
- * The annotation can hold an class which points to an instance which contains parameters for calculated fields.
- * If it is specified, then ibello will load the instance from the dependency injector and use it to set value of calculated fields.
- * </p>
- * <pre>
- * {@literal @}Model(properties = MyData.class)
- * public class User {
- * 
- *     // the field will contain the timestamp property of the MyData instance
- *     {@literal @}Calculated(expression = "${properties.timestamp}")
- *     public String id;
- * 
- * }
- * </pre>
- * @see Calculated
  * @author Kornél Simon
  */
 @Retention(RUNTIME)
 @Target(TYPE)
 public @interface Model {
-	
-	Class<?> properties() default Object.class;
 }
