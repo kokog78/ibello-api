@@ -37,7 +37,7 @@ public interface Initializable {
 	void initialize();
 	
 	/**
-	 * Was the instance already initialized? Should return <code>true</code> if yes.
+	 * Was the instance already initialized? Should return <code>true</code> if it was.
 	 * Otherwise an initialization with the {@link #initialize()} method will be performed automatically.
 	 * @return <code>true</code> if instance was initialized
 	 */
