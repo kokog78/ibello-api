@@ -1,5 +1,9 @@
 # ibello-api változási napló
 
+## 1.20.0
+
+- A teszteredményt tartalmazó XML struktúrában a `SpecElement` és a `TestElement` osztályok új `tag` mezőt kaptak
+
 ## 1.19.0
 
 2021-11-20

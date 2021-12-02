@@ -1,5 +1,9 @@
 # ibello-api changelog
 
+## 1.20.0
+
+- In the XML structure containing the test result the `SpecElement` and `TestElement` classes has a new `tag` field
+
 ## 1.19.0
 
 2021-11-20
