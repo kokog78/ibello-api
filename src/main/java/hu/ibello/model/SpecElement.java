@@ -21,10 +21,11 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlType(propOrder={"version", "test"})
+@XmlType(propOrder={"version", "tag", "test"})
 public class SpecElement extends ParentElement {
 
 	private String version;
+	private List<String> tag;
 	private List<TestElement> test;
 	
 	public String getVersion() {
@@ -36,6 +37,17 @@ public class SpecElement extends ParentElement {
 		this.version = version;
 	}
 	
+	public List<String> getTag() {
+		if (tag == null) {
+			tag = new ArrayList<>();
+		}
+		return tag;
+	}
+	
+	public void setTag(List<String> tag) {
+		this.tag = tag;
+	}
+
 	public List<TestElement> getTest() {
 		if (test == null) {
 			test = new ArrayList<>();

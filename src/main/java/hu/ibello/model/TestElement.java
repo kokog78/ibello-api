@@ -18,9 +18,24 @@ package hu.ibello.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlType;
+
+@XmlType(propOrder={"tag", "step"})
 public class TestElement extends ParentElement {
 
+	private List<String> tag;
 	private List<StepElement> step;
+	
+	public List<String> getTag() {
+		if (tag == null) {
+			tag = new ArrayList<>();
+		}
+		return tag;
+	}
+	
+	public void setTag(List<String> tag) {
+		this.tag = tag;
+	}
 	
 	public List<StepElement> getStep() {
 		if (step == null) {
