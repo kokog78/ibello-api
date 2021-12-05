@@ -3,7 +3,8 @@
 ## 1.20.0
 
 - In the XML structure containing the test result the `SpecElement` and `TestElement` classes has a new `tag` field
-- The XML structure containing the test result has the version number
+- The test result XML structure contains the model version number
+- The test result XML structure contains the version number of the application under test
 
 ## 1.19.0
 
