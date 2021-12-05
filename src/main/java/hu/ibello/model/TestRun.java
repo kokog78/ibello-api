@@ -25,9 +25,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement(name="test-run")
-@XmlType(propOrder={"startTime", "endTime", "baseDirectory", "browser", "headless", "defaultTimeout", "counters", "windowSize", "logFile", "tag", "spec", "memoryUsage"})
+@XmlType(propOrder={"version", "startTime", "endTime", "baseDirectory", "browser", "headless", "defaultTimeout", "counters", "windowSize", "logFile", "tag", "spec", "memoryUsage"})
 public class TestRun extends ParentElement implements ITestRun {
 
+	private String version;
 	private Date startTime;
 	private Date endTime;
 	private String baseDirectory;
@@ -40,6 +41,14 @@ public class TestRun extends ParentElement implements ITestRun {
 	private List<String> tag;
 	private List<SpecElement> spec;
 	private List<MemoryUsage> memoryUsage;
+	
+	public String getVersion() {
+		return version;
+	}
+	
+	public void setVersion(String version) {
+		this.version = version;
+	}
 	
 	@Override
 	public Date getStartTime() {

@@ -3,6 +3,7 @@
 ## 1.20.0
 
 - A teszteredményt tartalmazó XML struktúrában a `SpecElement` és a `TestElement` osztályok új `tag` mezőt kaptak
+- A teszteredményt tartalmazó XML struktúrába bekerült a verziószám
 
 ## 1.19.0
 
