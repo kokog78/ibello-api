@@ -188,9 +188,11 @@
 				<executions>
 					<execution>
 						<id>schemagen</id>
+						<!-- sometimes this goal throws an exception (Maven bug) therefore we do not include this permanently
 						<goals>
 			              <goal>schemagen</goal>
 			            </goals>
+			            -->
 					</execution>
 				</executions>
 				<configuration>
