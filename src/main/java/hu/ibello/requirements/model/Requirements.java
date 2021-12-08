@@ -53,6 +53,14 @@ public interface Requirements {
 	public String getBaseId();
 	
 	/**
+	 * List of links (eg. identifiers of related tasks from a task management system).
+	 * These links are related to each requirement in this object.
+	 * If there are no links then this methos returns an empty list.
+	 * @return list of links
+	 */
+	public List<String> getLinks();
+	
+	/**
 	 * Lisst of individual requirements.
 	 * @return requirement list
 	 */

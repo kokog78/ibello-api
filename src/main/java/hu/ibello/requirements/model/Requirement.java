@@ -50,6 +50,14 @@ public interface Requirement {
 	public String getDescription();
 	
 	/**
+	 * List of links (eg. identifiers of related tasks from a task management system).
+	 * These links are related to this requirement and to each child requirement.
+	 * If there are no links then this methos returns an empty list.
+	 * @return list of links
+	 */
+	public List<String> getLinks();
+	
+	/**
 	 * List of child requirements.
 	 * If this requirement may have child requirements, then the returned value is a {@link List}.
 	 * Otherwise, <code>null</code> is returned.

@@ -5,6 +5,7 @@
 - In the XML structure containing the test result the `SpecElement` and `TestElement` classes has a new `tag` field
 - The test result XML structure contains the model version number
 - The test result XML structure contains the version number of the application under test
+- The `Requirements` and `Requirement` interfaces has a new `getLinks()` method
 
 ## 1.19.0
 
