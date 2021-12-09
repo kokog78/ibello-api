@@ -6,6 +6,7 @@
 - A teszteredményt tartalmazó XML struktúrába bekerült a modell verziószám
 - A teszteredményt tartalmazó XML struktúrába bekerült a tesztelt alkalmazás verziószáma
 - A `Requirements` és a `Requirement` interfészek kaptak egy új `getLinks()` metódust
+- Új `setConfigurationValue(...)` metódus a `PluginInitializer` interfészben
 
 ## 1.19.0
 

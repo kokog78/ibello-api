@@ -85,6 +85,14 @@ public interface PluginInitializer {
 	public Value getConfigurationValue(String name);
 	
 	/**
+	 * Sets a configuration property to the given value.
+	 * The type of the value can be any type which is known by the {@link Value} interface.
+	 * @param name name of the configuration parameter
+	 * @param value value of the configuration parameter
+	 */
+	public void setConfigurationValue(String name, Object value);
+	
+	/**
 	 * Returns an URL which is merged with the <code>ibello.url.base</code> configuration property.
 	 * <p>
 	 * If the given URL is an absolute one with protocol, then it will be returned (without any changes).
