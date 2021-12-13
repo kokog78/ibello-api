@@ -1,23 +1,20 @@
-# Tesztelendő alkalmazás verziószámának megadása
+# **Tesztelendő alkalmazás verzió számának megadása**
 
-Fontos lehet, mikor visszatekintünk a tesztfutások eredményeire, lássuk az alkalmazásunk épp milyen verziószámot viselt. Erre most lehetőség nyílik az ibello 1.20.-es verziójától. Több lehetőségünk is van hogy beállíthassuk ezt:
+Fontos lehet, mikor visszatekintünk a tesztfutások eredményeire, lássuk az alkalmazásunk épp milyen verzió számot viselt. Erre most lehetőség nyílik az ibello 1.20.-es verziótól. Több lehetőségünk is van:
 
-* A projectkönyvtárban lévő default.properties fájlban az _ibello.application.version=_ segítségével.
-* A kódban majd a default.properties fájlban a plugin megadásával.
+## A konfigurációs fájlban az _ibello.application.version_ segítségével
 
-Előbb az *első* aztán a *második* módszert mutatom meg. Adott egy ibello project. Itt meg kell keressük, a mappa struktúrában a default.properties fájlt, ezt a következő útvonalon találjuk meg: _ibello projekt mappa\ibello\config\default.properties_. Majd egy tetszőleges szerkesztővel megnyitjuk a fájlt, és hozzá adunk egy új sort :
+A `default.properties` konfigurációs fájlhoz a következő sort adjuk:
 
-`ibello.application.version=kívánt verziószám megadása`
+`ibello.application.version=5.5.50`
 
-Mentjük a beállításokat, majd ha lefuttatjuk az előbb beállított project tesztjeit, láthatjuk, hogy mint a ._html_ ,  _.xml_ riportba, mint az ibello felületén megjelenik a beállított verziószám.
+A következő teszt futtatáskor a riportokban benne lesz a verziószám. 
 
+## Kódból történő megadás
 
-
-Kódból történő megadás esetén, létre kell hozzunk, az ibellós mappaszerkezet belül egy plugins mappát (packaget) ha még nem volna. Tehát az _ibello projekt mappa/src/main/java/**akármi**/plugins_. Majd ide hozzunk létre egy új java osztályt: ApplicationVersionCollector.java néven. Ezt célszerű valamilyen IDE-ből csinálni, így a létrehozott java osztály tartalmazza már a csomag elérést. Illesszük be az alábbi kódot,
+Kódból történő megadás esetén, létre kell hozzunk, az ibellos mappa szerkezeten belül egy plugins csomagot, ha még nem volna. Majd ide létrehozunk egy új java osztályt: `ApplicationVersionCollector.java` néven. Illesszük be az alábbi kódot:
 
 ```java
-package az én plugin csomag elérésem
-
 import hu.ibello.core.Name;
 import hu.ibello.plugins.Plugin;
 import hu.ibello.plugins.PluginException;
@@ -28,7 +25,7 @@ public class ApplicationVersionCollector implements Plugin {
 
   @Override
   public void initialize(PluginInitializer initializer) throws PluginException {
-      String version = "verziószám";
+      String version = "5.5.55";
       initializer.info("Application version: " + version);
       initializer.setConfigurationValue("ibello.application.version", version);
   }
@@ -37,15 +34,12 @@ public class ApplicationVersionCollector implements Plugin {
   public void shutdown() throws PluginException {
     // do nothing
   }
+    
 }
 ```
 
-majd írjuk be a logokban látni kívánt verziószámot a 
-
- ` String version = "verziószám";`(verziószám helyére).
-
-Most már csak annyi dolgunk van, hogy a default.properties fájlban, hozzáadjuk az  ApplicationVersionCollector plugint. Ezt a következőképp tehetjük meg: megnyitjuk egy szerkesztővel az alábbi fájlt: _projekt könyvtár\ibello\config\default.properties_. Ha még nem volna ibello.plugin kezdetű sor adjuk hozzá új sorba (ha már van vesszővel elválasztva). Írjuk be a plugin elérést (az ibello acceptance-test esetében hu.ibello.test.plugins.ApplicationVersionCollector). Tehát több plugin esetén, az acceptance-test plugin `ibello.plugin` sora így fog kinézni:
+A default.properties fájlban, hozzáadjuk az ApplicationVersionCollector plugint. Ha még nem volna ibello.plugin kezdetű sor, adjuk hozzá új sorba (ha már van vesszővel elválasztva). Írjuk be a plugin elérését (ibello-acceptance-test esetén hu.ibello.test.plugins.ApplicationVersionCollector). Az acceptance-test `ibello.plugin` sora így alakul:
 
 `ibello.plugin=hu.ibello.test.plugins.TestPlugin2,hu.ibello.test.plugins.TaskTestPlugin,hu.ibello.test.plugins.TaskTestPlugin2,hu.ibello.test.plugins.ApplicationVersionCollector`
 
-Mentsük el a konfigurációs fájlt. Ezt követően, a tesztfutásokkor bekerül a beállított verziószám.
+Ezt követően, a teszt futtatáskor bekerül a beállított verziószám.
