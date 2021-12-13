@@ -1,6 +1,6 @@
 # Egyedi teszteredmény riportolás az IbelloReporter interfésszel
 
-Az `IbelloReporter` interfész implementálásával egyedi riportolást tudunk megvalósítani az ibello-ban. Az alábbi példában létrehozunk egy java osztály a plugins csomagban, `IbelloReporterTester.java` néven. Mind az `IbelloReporter` mind a `Plugin` interface, metódusait implementálni kell :
+Az `IbelloReporter` interfész implementálásával egyedi riportolást tudunk megvalósítani az ibello-ban. Az alábbi példában létrehozunk egy java osztály a plugins csomagban, `IbelloReporterTester.java` néven. Mind az `IbelloReporter` mind a `Plugin` interfész, metódusait implementálni kell :
 
 ```java
 import hu.ibello.model.ITestRun;
@@ -63,6 +63,6 @@ public class IbelloReporterTester implements IbelloReporter {
 }
 ```
 
-Az alábbi példával a teszt futás hosszát jelenítjük meg a logfájlba :
+Az alábbi példával a teszt futás hosszát jelenítjük meg a logfájlban :
 
 `2021-12-13 22:58:00.903 INFO Ibello Reporter Tester: Test run finished in: 12.6588547 seconds`
