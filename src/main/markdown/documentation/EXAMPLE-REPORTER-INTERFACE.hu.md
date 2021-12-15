@@ -1,6 +1,6 @@
 # Egyedi riportozás megvalósítása
 
-Az `IbelloReporter` interfész implementálásával egyedi riportozást tudunk megvalósítani az ibello-ban. Az alábbi példa osztály a teszt futásánának időtartamát jeleníti meg a logok között.
+Az `IbelloReporter` interfész implementálásával egyedi riportozást tudunk megvalósítani az ibello-ban. Az alábbi példa osztály a teszt futásának időtartamát jeleníti meg a logok között.
 
 ```java
 import hu.ibello.model.ITestRun;
