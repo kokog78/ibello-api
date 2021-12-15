@@ -1,18 +1,18 @@
-# **Tesztelendő alkalmazás verzió számának megadása**
+# **Tesztelendő alkalmazás verziószámának megadása**
 
-Fontos lehet, mikor visszatekintünk a tesztfutások eredményeire, lássuk az alkalmazásunk épp milyen verzió számot viselt. Erre most lehetőség nyílik az ibello 1.20.-es verziótól. Több lehetőségünk is van:
+Fontos lehet, hogy a tesztfutások eredményeiben lássuk a tesztelt alkalmazás verziószámát. Az ibello 1.20.0 verziótól erre az alábbi módokon van lehetőségünk.
 
-## A konfigurációs fájlban az _ibello.application.version_ segítségével
+## A konfigurációs paraméter megadásával
 
-A `default.properties` konfigurációs fájlhoz a következő sort adjuk:
+A `default.properties` konfigurációs fájlhoz adjuk hozzá a következő sort:
 
 `ibello.application.version=5.5.50`
 
-A következő teszt futtatáskor a riportokban benne lesz a verziószám. 
+A legközelebbi teszt futtatáskor a verziószám benne lesz a riportban. 
 
 ## Kódból történő megadás
 
-Kódból történő megadás esetén, létre kell hozzunk, az ibellos mappa szerkezeten belül egy plugins csomagot, ha még nem volna. Majd ide létrehozunk egy új java osztályt: `ApplicationVersionCollector.java` néven. Illesszük be az alábbi kódot:
+Kódból történő megadás esetén, hozzunk létre az ibello mappa szerkezetén belül egy plugins csomagot. Majd adjunk hozzá egy új osztályt  `ApplicationVersionCollector.java` néven, az alábbi tartalommal:
 
 ```java
 import hu.ibello.core.Name;
@@ -38,8 +38,8 @@ public class ApplicationVersionCollector implements Plugin {
 }
 ```
 
-A default.properties fájlban, hozzáadjuk az ApplicationVersionCollector plugint. Ha még nem volna ibello.plugin kezdetű sor, adjuk hozzá új sorba (ha már van vesszővel elválasztva). Írjuk be a plugin elérését (ibello-acceptance-test esetén hu.ibello.test.plugins.ApplicationVersionCollector). Az acceptance-test `ibello.plugin` sora így alakul:
+A `default.properties` fájlban lévő `ibello.plugin` paraméterhez adjuk hozzá az újonnan létrehozott plugin osztályt. Több plugin osztály esetén, azokat vesszővel elválasztva soroljuk fel.
 
-`ibello.plugin=hu.ibello.test.plugins.TestPlugin2,hu.ibello.test.plugins.TaskTestPlugin,hu.ibello.test.plugins.TaskTestPlugin2,hu.ibello.test.plugins.ApplicationVersionCollector`
+`ibello.plugin=hu.ibello.test.plugins.TestPlugin1, hu.ibello.test.plugins.ApplicationVersionCollector`
 
-Ezt követően, a teszt futtatáskor bekerül a beállított verziószám.
+A legközelebbi teszt futtatáskor a verziószám benne lesz a riportban. 
