@@ -65,4 +65,6 @@ A példa eredménye teszt futást követően:
 
 `2021-12-13 22:58:00.903 INFO Ibello Reporter Tester: Test run finished in: 12.6588547 seconds`
 
-TODO osztály regisztrálása a konfigurációs fájlban
+A `default.properties` fájlban lévő `ibello.plugin` paraméterhez adjuk hozzá az újonnan létrehozott reporter osztályt. Több plugin osztály esetén, azokat vesszővel elválasztva soroljuk fel.
+
+`ibello.plugin=hu.ibello.test.plugins.TestPlugin1, hu.ibello.test.plugins.IbelloReporterTester`
