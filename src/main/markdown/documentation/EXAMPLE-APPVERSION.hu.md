@@ -10,7 +10,7 @@ A `default.properties` konfigurációs fájlhoz adjuk hozzá a következő sort:
 
 A legközelebbi teszt futtatáskor a verziószám benne lesz a riportban. 
 
-## Kódból történő megadás
+## Kódból történő megadással
 
 Kódból történő megadás esetén, hozzunk létre az ibello mappa szerkezetén belül egy plugins csomagot. Majd adjunk hozzá egy új osztályt  `ApplicationVersionCollector.java` néven, az alábbi tartalommal:
 
