@@ -1,6 +1,6 @@
-# Egyedi riportozás megvalósítása
+# Implementing custom reporting
 
-Az `IbelloReporter` interfész implementálásával egyedi riportozást tudunk megvalósítani az ibello-ban. Az alábbi példa osztály a teszt futásának időtartamát jeleníti meg a logok között.
+By implementing the `IbelloReporter` interface, we can implement custom reporting in ibello. The following example class logs the duration of the test run.
 
 ```java
 import hu.ibello.model.ITestRun;
@@ -61,10 +61,10 @@ public class IbelloReporterTester implements IbelloReporter {
 }
 ```
 
-A példa eredménye teszt futást követően:
+The result of the example after the test run:
 
 `2021-12-13 22:58:00.903 INFO Ibello Reporter Tester: Test run finished in: 12.6588547 seconds`
 
-A `default.properties` fájlban lévő `ibello.plugin` paraméterhez adjuk hozzá az újonnan létrehozott reporter osztályt. Több plugin osztály esetén, azokat vesszővel elválasztva soroljuk fel.
+Add the newly created reporter class to the `ibello.plugin` parameter in the `default.properties` file. For multiple plugin classes, list them separated by commas.
 
 `ibello.plugin=hu.ibello.test.plugins.TestPlugin1, hu.ibello.test.plugins.IbelloReporterTester`
