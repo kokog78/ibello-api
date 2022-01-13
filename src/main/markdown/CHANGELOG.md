@@ -7,6 +7,7 @@
 - The test result XML structure contains the version number of the application under test
 - The `Requirements` and `Requirement` interfaces has a new `getLinks()` method
 - The `PluginInitializer` interface has a new `setConfigurationValue(...)` method
+- New `HttpResponse.getHeader(...)` method for accessing HTTP response headers from `HttpClient`
 
 ## 1.19.0
 

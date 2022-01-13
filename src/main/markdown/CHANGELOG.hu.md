@@ -7,6 +7,7 @@
 - A teszteredményt tartalmazó XML struktúrába bekerült a tesztelt alkalmazás verziószáma
 - A `Requirements` és a `Requirement` interfészek kaptak egy új `getLinks()` metódust
 - Új `setConfigurationValue(...)` metódus a `PluginInitializer` interfészben
+- Új `HttpResponse.getHeader(...)` metódus, amikkel a HTTP válasz fejlécek érhetők el a `HttpClient` osztályon keresztül
 
 ## 1.19.0
 

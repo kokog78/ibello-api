@@ -35,4 +35,12 @@ public interface HttpResponse<T> {
 	 * @return the response code.
 	 */
 	public int getCode();
+	
+	/**
+	 * Returns the HTTP header from the response, or <code>null</code> if it does not exist.
+	 * If the header contains multiple values then the first one will be returned.
+	 * @param name the name of the header we are looking for
+	 * @return the value of the header or <code>null</code>
+	 */
+	public String getHeader(String name);
 }
