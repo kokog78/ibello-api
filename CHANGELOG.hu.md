@@ -8,6 +8,7 @@
 - A `Requirements` és a `Requirement` interfészek kaptak egy új `getLinks()` metódust
 - Új `setConfigurationValue(...)` metódus a `PluginInitializer` interfészben
 - Új `HttpResponse.getHeader(...)` metódus, amikkel a HTTP válasz fejlécek érhetők el a `HttpClient` osztályon keresztül
+- Új `SerializedName` annotáció, amivel a java mezők nevét lehet megadni JSON szerializáció és deszerializáció során
 
 ## 1.19.0
 
