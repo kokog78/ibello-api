@@ -23,6 +23,9 @@ import javax.xml.bind.JAXBElement;
 
 /**
  * Utility class which transforms java object into JSON and JSON to java object.
+ * <p>
+ * During the serialization / deserialization the JSON name of the fields will be the same as in java.
+ * To change that, you can use {@link SerializedName} annotation on the java field.
  * 
  * @author Kornél Simon
  *

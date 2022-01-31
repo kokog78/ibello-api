@@ -8,6 +8,7 @@
 - The `Requirements` and `Requirement` interfaces has a new `getLinks()` method
 - The `PluginInitializer` interface has a new `setConfigurationValue(...)` method
 - New `HttpResponse.getHeader(...)` method for accessing HTTP response headers from `HttpClient`
+- New `SerializedName` annotation for specifying JSON name of fields during serialization and deserialization
 
 ## 1.19.0
 
