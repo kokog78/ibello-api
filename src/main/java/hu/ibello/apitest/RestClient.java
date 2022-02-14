@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.util.List;
 
 /**
  * This interface describes a REST client which sends a single request and receives a response.
@@ -183,4 +184,14 @@ public interface RestClient {
 	 */
 	public <T> HttpResponse<T> sendAndReceive(Class<T> responseType) throws IOException, IllegalArgumentException;
 	
+	/**
+	 * Executes the REST call: sends the request and receives the response.
+	 * It automatically transforms the response JSON to a java list.
+	 * @param itemType class of the items in the response list
+	 * @param <T> type of the items in the response list
+	 * @return the response as java list
+	 * @throws IOException if the communication with the REST server failed
+	 * @throws IllegalArgumentException if the response of the REST server was invalid
+	 */
+	public <T> HttpResponse<List<T>> sendAndReceiveList(Class<T> itemType) throws IOException, IllegalArgumentException;
 }
