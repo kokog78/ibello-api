@@ -1,6 +1,13 @@
 # ibello-api changelog
 
+## 1.20.1
+
+- New `RestClient.sendAndReceiveList(...)` method for communicating with REST endpoints returning a list
+- It is possible to place labeled data point on a diagram with the graph creator tool.
+
 ## 1.20.0
+
+2022-02-11
 
 - In the XML structure containing the test result the `SpecElement` and `TestElement` classes has a new `tag` field
 - The test result XML structure contains the model version number
