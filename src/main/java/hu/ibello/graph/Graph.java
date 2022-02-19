@@ -66,8 +66,17 @@ public interface Graph {
 	 * Creates a new 2-dimension data point object.
 	 * @param x the x value
 	 * @param y the y value
-	 * @return
+	 * @return the data point object
 	 */
 	public DataPoint point(double x, double y);
+	
+	/**
+	 * Creates a new 2-dimension data point object with label.
+	 * @param label the label of the data point
+	 * @param x the x value
+	 * @param y the y value
+	 * @return the data point object
+	 */
+	public LabeledDataPoint point(String label, double x, double y);
 	
 }
