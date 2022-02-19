@@ -3,7 +3,7 @@
 ## 1.20.1
 
 - Új `RestClient.sendAndReceiveList(...)` metódus listát visszaadó REST végpontokkal történő kommunikációhoz
-- A grafikon készító eszközzel címkézett adatpontokat is el lehet helyezni egy diagramon.
+- A grafikon készítő eszközzel időskálával rendelkező diagramot is lehet készíteni
 
 ## 1.20.0
 

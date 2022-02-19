@@ -3,7 +3,7 @@
 ## 1.20.1
 
 - New `RestClient.sendAndReceiveList(...)` method for communicating with REST endpoints returning a list
-- It is possible to place labeled data point on a diagram with the graph creator tool.
+- With the graph creator tool it is possible to create a chart with a time scale
 
 ## 1.20.0
 
