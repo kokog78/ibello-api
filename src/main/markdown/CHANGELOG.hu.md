@@ -2,6 +2,8 @@
 
 ## 1.20.0
 
+2022-02-11
+
 - A teszteredményt tartalmazó XML struktúrában a `SpecElement` és a `TestElement` osztályok új `tag` mezőt kaptak
 - A teszteredményt tartalmazó XML struktúrába bekerült a modell verziószám
 - A teszteredményt tartalmazó XML struktúrába bekerült a tesztelt alkalmazás verziószáma
