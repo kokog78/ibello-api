@@ -17,5 +17,17 @@ package hu.ibello.graph;
 
 public interface GraphTool {
 
+	/**
+	 * Creates a new graph/chart which displays XY values and functions.
+	 * @param name the name of the chart
+	 * @return the graph/chart instance
+	 */
 	public Graph createGraph(String name);
+	
+	/**
+	 * Creates a new graph/chart which displays time-related values. 
+	 * @param name the name of the chart
+	 * @return the graph/chart instance
+	 */
+	public TimeGraph createTimeGraph(String name);
 }

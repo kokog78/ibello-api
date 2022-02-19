@@ -15,18 +15,19 @@
  */
 package hu.ibello.graph;
 
-import hu.ibello.functions.DataPoint;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
- * Represents a labeled value on a plot.
+ * Represents a data point on a time series plot.
  *
  * @author Kornél Simon
  */
-public interface LabeledDataPoint extends DataPoint {
+public interface TimeDataPoint {
 
-	/**
-	 * The label.
-	 * @return the label
-	 */
-	public String getLabel();
+	public LocalDate getDate();
+	
+	public LocalDateTime getDateTime();
+	
+	public double getY();
 }

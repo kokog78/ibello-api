@@ -21,7 +21,7 @@ import hu.ibello.functions.DataPoint;
 import hu.ibello.functions.Function;
 
 /**
- * Represents a graph/chart. The ibello can print the graph on the screen or can save into file.
+ * Represents a graph/chart. Ibello can print the graph on the screen or can save into file.
  *
  * @author Kornél Simon
  */
@@ -49,18 +49,36 @@ public interface Graph {
 	public void setYAxis(String name);
 	
 	/**
-	 * Adda a new function plot to the chart.
+	 * Adds a new function plot to the chart.
 	 * @param name the name of the plot
 	 * @param function the function which should be plotted
 	 */
-	public void add(String name, Function function);
+	public void addFunction(String name, Function function);
+	
+	/**
+	 * Adds a new function plot to the chart.
+	 * @param name the name of the plot
+	 * @param function the function which should be plotted
+	 */
+	public default void add(String name, Function function) {
+		addFunction(name, function);
+	}
 	
 	/**
 	 * Adds a new scatter plot to the chart.
 	 * @param name the name of the plot
 	 * @param data the data points
 	 */
-	public void add(String name, List<DataPoint> data);
+	public void addSeries(String name, List<DataPoint> data);
+	
+	/**
+	 * Adds a new scatter plot to the chart.
+	 * @param name the name of the plot
+	 * @param data the data points
+	 */
+	public default void add(String name, List<DataPoint> data) {
+		addSeries(name, data);
+	}
 	
 	/**
 	 * Creates a new 2-dimension data point object.
@@ -69,14 +87,5 @@ public interface Graph {
 	 * @return the data point object
 	 */
 	public DataPoint point(double x, double y);
-	
-	/**
-	 * Creates a new 2-dimension data point object with label.
-	 * @param label the label of the data point
-	 * @param x the x value
-	 * @param y the y value
-	 * @return the data point object
-	 */
-	public LabeledDataPoint point(String label, double x, double y);
 	
 }
