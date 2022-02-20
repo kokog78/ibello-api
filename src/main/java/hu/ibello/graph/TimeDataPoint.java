@@ -18,16 +18,16 @@ package hu.ibello.graph;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import hu.ibello.functions.DataPoint;
+
 /**
  * Represents a data point on a time series plot.
  *
  * @author Kornél Simon
  */
-public interface TimeDataPoint {
+public interface TimeDataPoint extends DataPoint {
 
 	public LocalDate getDate();
 	
 	public LocalDateTime getDateTime();
-	
-	public double getY();
 }

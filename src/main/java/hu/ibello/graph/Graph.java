@@ -35,6 +35,12 @@ public interface Graph {
 
 	/**
 	 * Sets the X axis parameters on the chart.
+	 * @param name the name of the axis
+	 */
+	public void setXAxis(String name);
+	
+	/**
+	 * Sets the X axis parameters on the chart.
 	 * If the minimum and/or maximum values are <code>null</code>s, ibello will determine them automatically from the content.
 	 * @param name the name of the axis
 	 * @param min minimum value of the axis, can be <code>null</code>

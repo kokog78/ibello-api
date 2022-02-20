@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import hu.ibello.functions.Function;
+
 /**
  * 
  * Represents a graph/chart where the domain axis is the time. Ibello can print the graph on the screen or can save into file.
@@ -25,6 +27,24 @@ public interface TimeGraph {
 	public void setXAxis(String name);
 	
 	/**
+	 * Sets the X axis parameters on the chart.
+	 * If the minimum and/or maximum values are <code>null</code>s, ibello will determine them automatically from the content.
+	 * @param name the name of the axis
+	 * @param min minimum value of the axis, can be <code>null</code>
+	 * @param max maximum value of the axis, can be <code>null</code>
+	 */
+	public void setXAxis(String name, LocalDate min, LocalDate max);
+	
+	/**
+	 * Sets the X axis parameters on the chart.
+	 * If the minimum and/or maximum values are <code>null</code>s, ibello will determine them automatically from the content.
+	 * @param name the name of the axis
+	 * @param min minimum value of the axis, can be <code>null</code>
+	 * @param max maximum value of the axis, can be <code>null</code>
+	 */
+	public void setXAxis(String name, LocalDateTime min, LocalDateTime max);
+	
+	/**
 	 * Sets Y axis parameters on the chart.
 	 * @param name the name of the axis
 	 */
@@ -36,6 +56,15 @@ public interface TimeGraph {
 	 * @param data the data points
 	 */
 	public void addTimeSeries(String name, List<TimeDataPoint> data);
+	
+	/**
+	 * Adds a new function plot to the chart.
+	 * The domain axis is the function will be converted into time values.
+	 * For the conversion, each x value will be considered as epoch millis.
+	 * @param name the name of the plot
+	 * @param function the function which should be plotted
+	 */
+	public void addFunction(String name, Function function);
 	
 	/**
 	 * Creates a new 2-dimension data point object.
