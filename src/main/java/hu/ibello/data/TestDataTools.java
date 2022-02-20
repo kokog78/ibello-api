@@ -92,7 +92,7 @@ public class TestDataTools {
 	 * contains the year, the month and the day, the first 12 characters contains the hours and the minutes too.
 	 * </p>
 	 * @param length maximum length of the returned timestamp
-	 * @return
+	 * @return timestamp value as string
 	 */
 	public static String getTimestamp(int length) {
 		if (length >= timestamp.length()) {
