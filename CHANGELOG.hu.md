@@ -4,6 +4,7 @@
 
 - Új `RestClient.sendAndReceiveList(...)` metódus listát visszaadó REST végpontokkal történő kommunikációhoz
 - A grafikon készítő eszközzel időskálával rendelkező diagramot is lehet készíteni
+- Új `Value.toDate(...)` és `Value.toCalendar(...)` metódusok értékek dátummá alakításához
 
 ## 1.20.0
 

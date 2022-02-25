@@ -4,6 +4,7 @@
 
 - New `RestClient.sendAndReceiveList(...)` method for communicating with REST endpoints returning a list
 - With the graph creator tool it is possible to create a chart with a time scale
+- New `Value.toDate(...)` and `Value.toCalendar(...)` to transform values to dates
 
 ## 1.20.0
 
