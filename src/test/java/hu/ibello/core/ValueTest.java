@@ -4,6 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.io.File;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.EnumSet;
 
 import org.junit.Test;
@@ -81,6 +83,29 @@ public class ValueTest {
 	}
 	
 	@Test
+	public void toDate_uses_default_value() throws Exception {
+		Date date1 = new Date();
+		Calendar calendar = Calendar.getInstance();
+		calendar.clear();
+		Date date2 = calendar.getTime();
+		value.value = date2;
+		assertThat(value.toDate(date1)).isEqualTo(date2);
+		value.value = null;
+		assertThat(value.toDate(date1)).isEqualTo(date1);
+	}
+	
+	@Test
+	public void toCalendar_uses_default_value() throws Exception {
+		Calendar calendar1 = Calendar.getInstance();
+		Calendar calendar2 = Calendar.getInstance();
+		calendar2.clear();
+		value.value = calendar2;
+		assertThat(value.toCalendar(calendar1)).isEqualTo(calendar2);
+		value.value = null;
+		assertThat(value.toCalendar(calendar1)).isEqualTo(calendar1);
+	}
+	
+	@Test
 	public void toEnum_uses_default_value() throws Exception {
 		value.value = By.BUTTON_TEXT;
 		assertThat(value.toEnum(By.CLASS_NAME)).isEqualTo(By.BUTTON_TEXT);
@@ -131,6 +156,16 @@ public class ValueTest {
 		@Override
 		public Boolean toBoolean() {
 			return (Boolean)value;
+		}
+		
+		@Override
+		public Date toDate() {
+			return (Date)value;
+		}
+		
+		@Override
+		public Calendar toCalendar() {
+			return (Calendar)value;
 		}
 
 		@SuppressWarnings("unchecked")
