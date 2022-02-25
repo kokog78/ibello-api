@@ -16,6 +16,8 @@
 package hu.ibello.core;
 
 import java.io.File;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.EnumSet;
 
 /**
@@ -197,6 +199,20 @@ public interface Value {
 	public default boolean toBoolean(boolean defaultValue) {
 		Boolean result = toBoolean();
 		return (result == null ? defaultValue : result.booleanValue());
+	}
+	
+	public Date toDate();
+	
+	public default Date toDate(Date defaultValue) {
+		Date result = toDate();
+		return (result == null ? defaultValue : result);
+	}
+	
+	public Calendar toCalendar();
+	
+	public default Calendar toCalendar(Calendar defaultValue) {
+		Calendar result = toCalendar();
+		return (result == null ? defaultValue : result);
 	}
 	
 	/**
