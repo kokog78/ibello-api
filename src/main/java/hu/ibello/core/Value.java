@@ -16,9 +16,16 @@
 package hu.ibello.core;
 
 import java.io.File;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+import java.time.ZonedDateTime;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.EnumSet;
+
+import javax.xml.datatype.XMLGregorianCalendar;
 
 /**
  * A wrapper class which encapsulates a value.
@@ -201,15 +208,49 @@ public interface Value {
 		return (result == null ? defaultValue : result.booleanValue());
 	}
 	
+	/**
+	 * Transforms the encapsulated value int a {@link Date}. If the value is <code>null</code>, the result will be also <code>null</code>.
+	 * If the value is a {@link Date}, then it will be returned. If the value is a date-like object ( {@link Calendar}, {@link Instant},
+	 * {@link XMLGregorianCalendar}, {@link OffsetDateTime}, {@link ZonedDateTime}, {@link LocalDate}, {@link LocalDateTime}), then
+	 * it will be transformed into a {@link Date}. Otherwise, the method parses the
+	 * String representation of the value as a {@link Date}.
+	 * @return value as Date
+	 */
 	public Date toDate();
 	
+	/**
+	 * Transforms the encapsulated value int a {@link Date}. If the value is <code>null</code>, the result will be the given <code>defaultValue</code>.
+	 * If the value is a {@link Date}, then it will be returned. If the value is a date-like object ( {@link Calendar}, {@link Instant},
+	 * {@link XMLGregorianCalendar}, {@link OffsetDateTime}, {@link ZonedDateTime}, {@link LocalDate}, {@link LocalDateTime}), then
+	 * it will be transformed into a {@link Date}. Otherwise, the method parses the
+	 * String representation of the value as a {@link Date}.
+	 * @param defaultValue default value which is used when the encapsulated value is <code>null</code>
+	 * @return value as Date
+	 */
 	public default Date toDate(Date defaultValue) {
 		Date result = toDate();
 		return (result == null ? defaultValue : result);
 	}
 	
+	/**
+	 * Transforms the encapsulated value int a {@link Calendar}. If the value is <code>null</code>, the result will be also <code>null</code>.
+	 * If the value is a {@link Calendar}, then it will be returned. If the value is a date-like object ( {@link Date}, {@link Instant},
+	 * {@link XMLGregorianCalendar}, {@link OffsetDateTime}, {@link ZonedDateTime}, {@link LocalDate}, {@link LocalDateTime}), then
+	 * it will be transformed into a {@link Calendar}. Otherwise, the method parses the
+	 * String representation of the value as a {@link Calendar}.
+	 * @return value as Calendar
+	 */
 	public Calendar toCalendar();
 	
+	/**
+	 * Transforms the encapsulated value int a {@link Calendar}. If the value is <code>null</code>, the result will be the given <code>defaultValue</code>.
+	 * If the value is a {@link Calendar}, then it will be returned. If the value is a date-like object ( {@link Date}, {@link Instant},
+	 * {@link XMLGregorianCalendar}, {@link OffsetDateTime}, {@link ZonedDateTime}, {@link LocalDate}, {@link LocalDateTime}), then
+	 * it will be transformed into a {@link Calendar}. Otherwise, the method parses the
+	 * String representation of the value as a {@link Calendar}.
+	 * @param defaultValue default value which is used when the encapsulated value is <code>null</code>
+	 * @return value as Calendar
+	 */
 	public default Calendar toCalendar(Calendar defaultValue) {
 		Calendar result = toCalendar();
 		return (result == null ? defaultValue : result);
