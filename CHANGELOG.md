@@ -1,6 +1,12 @@
 # ibello-api changelog
 
+## 1.20.2
+
+- It is possible to load test data from CSV files
+
 ## 1.20.1
+
+2022-02-26
 
 - New `RestClient.sendAndReceiveList(...)` method for communicating with REST endpoints returning a list
 - With the graph creator tool it is possible to create a chart with a time scale

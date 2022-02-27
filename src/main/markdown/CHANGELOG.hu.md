@@ -1,6 +1,12 @@
 # ibello-api változási napló
 
+## 1.20.2
+
+- Tesztadatok betöltése CSV fájlból is lehetséges
+
 ## 1.20.1
+
+2022-02-26
 
 - Új `RestClient.sendAndReceiveList(...)` metódus listát visszaadó REST végpontokkal történő kommunikációhoz
 - A grafikon készítő eszközzel időskálával rendelkező diagramot is lehet készíteni

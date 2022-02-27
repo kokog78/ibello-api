@@ -16,6 +16,7 @@
 package hu.ibello.data;
 
 import hu.ibello.core.Value;
+import hu.ibello.transform.SerializedName;
 
 /**
  * This class is designed for load test data from the filesystem.
@@ -156,6 +157,90 @@ public interface TestDataBuilder {
 	 * @return object which loads the parsed (and optionally merged) JSON data
 	 */
 	public <T> JsonTestDataBuilder<T> fromJson(Class<T> dataType);
+	
+	/**
+	 * <p>
+	 * Returns an object which can be used to load test data from a CSV file.
+	 * For that we must specify a java class which will be the type of the loaded items.
+	 * </p>
+	 * <p>
+	 * The name of the file starts with the lower-case name of the java class (without package name).
+	 * It may be followed by a dash sign and an identifier. Then comes a dot. At this position the file name may
+	 * contain tags, separated by dash signs. The extension of the file is always <code>csv</code>. Examples:
+	 * </p>
+	 * <ul>
+	 * <li><code>myclass.csv</code></li>
+	 * <li><code>myclass.tag1.csv</code></li>
+	 * <li><code>myclass-id.tag1.csv</code></li>
+	 * <li><code>myclass-id.tag1-tag2.csv</code></li>
+	 * </ul>
+	 * <p>
+	 * During the loading process, the loader creates a list of available and matching files,
+	 * then it sorts them by precedence. At first, the first file will be loaded. If they are other matching files,
+	 * then the second one will be loaded, and it's content will be appended to the result.
+	 * Other matching files are loaded in that order, and also are appended the result.
+	 * </p>
+	 * <p>
+	 * Each loaded files should have the class name prefix. If an identifier was specified, then the prefix should be
+	 * followed by a dash sign and the identifier. If a file name also have tags, then it will be validated
+	 * against the current ibello tags. If a file has a tag which was <b>not</b> specified as an ibello tag, then
+	 * that file will be <b>not</b> loaded. In other words, loaded files should not have unspecified tags.
+	 * </p>
+	 * <p>
+	 * The first loaded file will be the one without identifier and tags (if any). Then comes the files without identifier but
+	 * with one or more tags. The remaining files (with identifier) will be sorted by the number of tags and
+	 * the tags itself (in alphabetical order). Examples:
+	 * </p>
+	 * <ul>
+	 * <li><code>myclass.csv</code> will be loaded before <code>myclass.a.csv</code></li>
+	 * <li><code>myclass.a.csv</code> will be loaded before <code>myclass-id.csv</code></li>
+	 * <li><code>myclass.a.csv</code> will be loaded before <code>myclass.b.csv</code></li>
+	 * <li><code>myclass.c.csv</code> will be loaded before <code>myclass.a-b.csv</code></li>
+	 * </ul>
+	 * <p>
+	 * The files can be placed into sub-directories, the loader will find them automatically.
+	 * </p>
+	 * <p>
+	 * The data values in the CSV file should be separated by comma (and not semicolon or tabulator).
+	 * </p>
+	 * <p>
+	 * Each CSV file should have a header - this is the first line in the file.
+	 * This line should contain the field names of the data type where we want to place the values. Complex field names are also
+	 * allowed - the field separator is the dot character. If a field has a {@link SerializedName} annotation, then - instead of the field name -
+	 * the value of that annotation should be in the header.
+	 * </p>
+	 * <p>
+	 * Let's say we have these java classes:
+	 * </p>
+	 * <pre>
+	 * public class MyClass {
+	 *     
+	 *     public int number;
+	 *     
+	 *     {@literal @}SerializedName("x-y")
+	 *     public String xy;
+	 *     
+	 *     public ChildClass child;
+	 * }
+	 * 
+	 * public class ChildClass {
+	 * 
+	 *     public LocalDate date;
+	 *     
+	 * }
+	 * </pre>
+	 * <p>
+	 * For that data structure we may have a CSV file with this content:
+	 * </p>
+	 * <pre>
+	 * number,x-y,child.date
+	 * 1,"test","2001-02-03"
+	 * </pre>
+	 * @param <T> type of the items in the result list
+	 * @param dataType type of the items in the result list
+	 * @return object which loads the CSV data
+	 */
+	public <T> CsvTestDataBuilder<T> fromCsv(Class<T> dataType);
 	
 	/**
 	 * <p>
