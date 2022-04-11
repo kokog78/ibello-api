@@ -60,4 +60,25 @@ public interface RequirementHandler {
 	 */
 	boolean existsRequirementsFile(String relativePath);
 	
+	/**
+	 * Calculate the test coverage of the requirements defined in the specified file.
+	 * The test coverage is calculated from the Cucumber feature files related to the requirements.
+	 * The relation is made by the requirement ID: if a scenario has a tag with the ID of a requirement, then the requirement is covered by the test.
+	 * @param relativePath the path to the file, relative to the requirements directory of the project
+	 * @return the test coverage of the requirements
+	 * @throws RequirementException if there was an error during loading the file or calculating the coverage
+	 */
+	RequirementsCoverage calculateTestCoverage(String relativePath) throws RequirementException;
+	
+	/**
+	 * Calculate the example coverage of the requirements defined in the specified file.
+	 * The example coverage is calculated from the Cucumber example files related to the requirements.
+	 * The relation is made by the requirement ID: if a scenario has a tag with the ID of a requirement, then the requirement is covered by the example.
+	 * @param relativePath the path to the file, relative to the requirements directory of the project
+	 * @return the example coverage of the requirements
+	 * @throws RequirementException if there was an error during loading the file or calculating the coverage
+	 */
+	RequirementsCoverage calculateExampleCoverage(String relativePath) throws RequirementException;
+	
+	
 }
