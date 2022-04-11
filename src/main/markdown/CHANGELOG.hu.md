@@ -1,8 +1,9 @@
 # ibello-api változási napló
 
-## 1.20.2
+## 1.21.0
 
 - Tesztadatok betöltése CSV fájlból is lehetséges
+- Új `FeatureHandler.loadFeatures()` metódus
 
 ## 1.20.1
 

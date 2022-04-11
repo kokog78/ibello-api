@@ -1,8 +1,9 @@
 # ibello-api changelog
 
-## 1.20.2
+## 1.21.0
 
 - It is possible to load test data from CSV files
+- New `FeatureHandler.loadFeatures()` method
 
 ## 1.20.1
 

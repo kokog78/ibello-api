@@ -50,6 +50,13 @@ public interface FeatureHandler {
 	List<Feature> loadFeatures(Pattern relativePath) throws BDDException;
 	
 	/**
+	 * Loads all Cucumber features files.
+	 * @return the list of the loaded Cucumber features
+	 * @throws BDDException if there was an error during loading a file
+	 */
+	List<Feature> loadFeatures() throws BDDException;
+	
+	/**
 	 * Loads multiple Cucumber features files.
 	 * This method loads features by tags.
 	 * If a feature has one of the specified tags, it will be loaded.
