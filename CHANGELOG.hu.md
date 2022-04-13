@@ -5,6 +5,7 @@
 - Tesztadatok betöltése CSV fájlból is lehetséges
 - Új `FeatureHandler.loadFeatures()` metódus
 - Új `RequirementHandler.calculateTestCoverage(...)` és `RequirementHandler.calculateExampleCoverage(...)` metódusok követelmények lefedettségének számításához
+- Új `Requirements.getRelativePath()` metódus
 
 ## 1.20.1
 

@@ -26,6 +26,12 @@ import java.util.List;
 public interface Requirements {
 
 	/**
+	 * The path to the requirements file, relative to the ibello requirements directory. 
+	 * @return the relative path to the file
+	 */
+	public String getRelativePath();
+	
+	/**
 	 * Title of the requirement list. This describes the main purpose of the containing requirements.
 	 * @return title of the requirement list
 	 */
