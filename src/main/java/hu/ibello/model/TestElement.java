@@ -18,13 +18,24 @@ package hu.ibello.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlType(propOrder={"tag", "step"})
+@XmlType(propOrder={"performanceGroup", "tag", "step"})
 public class TestElement extends ParentElement {
 
+	private String performanceGroup;
 	private List<String> tag;
 	private List<StepElement> step;
+	
+	public String getPerformanceGroup() {
+		return performanceGroup;
+	}
+	
+	@XmlAttribute(name="performance-group")
+	public void setPerformanceGroup(String performanceGroup) {
+		this.performanceGroup = performanceGroup;
+	}
 	
 	public List<String> getTag() {
 		if (tag == null) {

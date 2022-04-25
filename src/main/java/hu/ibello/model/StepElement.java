@@ -18,14 +18,27 @@ package hu.ibello.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement(name="step")
+@XmlType(propOrder={"performanceGroup", "children"})
 public class StepElement extends ParentElement {
 
+	private String performanceGroup;
 	private List<Element> children;
+	
+	public String getPerformanceGroup() {
+		return performanceGroup;
+	}
+	
+	@XmlAttribute(name="performance-group")
+	public void setPerformanceGroup(String performanceGroup) {
+		this.performanceGroup = performanceGroup;
+	}
 	
 	public List<Element> getChildren() {
 		if (children == null) {

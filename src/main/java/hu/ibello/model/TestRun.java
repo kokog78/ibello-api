@@ -187,6 +187,9 @@ public class TestRun extends ParentElement implements ITestRun {
 	}
 	
 	public List<ApdexValue> getApdex() {
+		if (apdex == null) {
+			apdex = new ArrayList<>();
+		}
 		return apdex;
 	}
 	
