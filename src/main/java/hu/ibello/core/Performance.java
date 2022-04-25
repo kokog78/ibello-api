@@ -38,6 +38,6 @@ public @interface Performance {
 	 * The test steps with the same identifier will grouped in the same APDEX calculation.
 	 * @return the identifier of the measurement group
 	 */
-	String group() default "";
+	String group() default "default";
 	
 }
