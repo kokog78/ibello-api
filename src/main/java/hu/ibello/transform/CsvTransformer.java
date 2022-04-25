@@ -72,7 +72,7 @@ public interface CsvTransformer {
 	 * <li>transient fields,</li>
 	 * <li>fields from {@link Object} class.</li>
 	 * </ul>
-	 * The cell separator will be the <code>,<code> (comma) character.
+	 * The cell separator will be the <code>,</code> (comma) character.
 	 * @param <T> type of the objects
 	 * @param rows the list of objects
 	 * @param typeOfT the class which will be used to construct the header
@@ -89,7 +89,7 @@ public interface CsvTransformer {
 	 * <li>transient fields,</li>
 	 * <li>fields from {@link Object} class.</li>
 	 * </ul>
-	 * The cell separator will be the <code>,<code> (comma) character.
+	 * The cell separator will be the <code>,</code> (comma) character.
 	 * The charset of the data will be UTF-8.
 	 * @param <T> type of the objects
 	 * @param stream the stream which will receive the CSV data
@@ -107,7 +107,7 @@ public interface CsvTransformer {
 	 * <li>transient fields,</li>
 	 * <li>fields from {@link Object} class.</li>
 	 * </ul>
-	 * The cell separator will be the <code>,<code> (comma) character.
+	 * The cell separator will be the <code>,</code> (comma) character.
 	 * The charset of the data will be UTF-8.
 	 * @param <T> type of the objects
 	 * @param file the CSV file
