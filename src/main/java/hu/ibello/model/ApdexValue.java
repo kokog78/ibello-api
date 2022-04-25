@@ -17,30 +17,31 @@ package hu.ibello.model;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.XmlValue;
 
-@XmlType(propOrder={"id", "path"})
-public class LogFile {
+@XmlType(propOrder={"id", "value"})
+public class ApdexValue {
 
 	private String id;
-	private String path;
 	
+	private double value;
+
 	public String getId() {
 		return id;
 	}
-	
+
 	@XmlAttribute
 	public void setId(String id) {
 		this.id = id;
 	}
-	
-	public String getPath() {
-		return path;
+
+	public double getValue() {
+		return value;
+	}
+
+	@XmlAttribute
+	public void setValue(double value) {
+		this.value = value;
 	}
 	
-	@XmlValue
-	public void setPath(String path) {
-		this.path = path;
-	}
 	
 }

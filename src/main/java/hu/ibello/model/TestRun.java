@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement(name="test-run")
-@XmlType(propOrder={"modelVersion", "applicationVersion", "startTime", "endTime", "baseDirectory", "browser", "headless", "defaultTimeout", "counters", "windowSize", "logFile", "tag", "spec", "memoryUsage"})
+@XmlType(propOrder={"modelVersion", "applicationVersion", "startTime", "endTime", "baseDirectory", "browser", "headless", "defaultTimeout", "counters", "windowSize", "logFile", "tag", "spec", "memoryUsage", "apdex"})
 public class TestRun extends ParentElement implements ITestRun {
 
 	private String modelVersion;
@@ -42,6 +42,7 @@ public class TestRun extends ParentElement implements ITestRun {
 	private List<String> tag;
 	private List<SpecElement> spec;
 	private List<MemoryUsage> memoryUsage;
+	private List<ApdexValue> apdex;
 	
 	public String getModelVersion() {
 		return modelVersion;
@@ -183,6 +184,15 @@ public class TestRun extends ParentElement implements ITestRun {
 	@XmlElement(name="memory-usage")
 	public void setMemoryUsage(List<MemoryUsage> memoryUsage) {
 		this.memoryUsage = memoryUsage;
+	}
+	
+	public List<ApdexValue> getApdex() {
+		return apdex;
+	}
+	
+	@XmlElement
+	public void setApdex(List<ApdexValue> apdex) {
+		this.apdex = apdex;
 	}
 	
 	@Override

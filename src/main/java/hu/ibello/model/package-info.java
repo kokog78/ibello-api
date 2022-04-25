@@ -15,9 +15,9 @@
  */
 @XmlSchema (
 		xmlns = {
-				@XmlNs(namespaceURI="http://ibello.hu/model/1.2", prefix="")
+				@XmlNs(namespaceURI="http://ibello.hu/model/1.4", prefix="")
 		},
-		namespace = "http://ibello.hu/model/1.2",
+		namespace = "http://ibello.hu/model/1.4",
 		elementFormDefault = XmlNsForm.QUALIFIED,
 		attributeFormDefault = XmlNsForm.UNQUALIFIED
 		)
