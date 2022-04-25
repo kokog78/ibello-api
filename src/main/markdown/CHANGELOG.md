@@ -7,6 +7,7 @@
 - New `RequirementHandler.calculateTestCoverage(...)` and `RequirementHandler.calculateExampleCoverage(...)` methods to calculate coverage of requirements
 - New `Requirements.getRelativePath()` method
 - New `@Performance` annotation to support performance measurements
+- New `fromCsv(...)` and `toCsv(...)` methods in the `CsvTransformer` interface
 
 ## 1.20.1
 

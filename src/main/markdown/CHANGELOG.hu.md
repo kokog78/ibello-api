@@ -7,6 +7,7 @@
 - Új `RequirementHandler.calculateTestCoverage(...)` és `RequirementHandler.calculateExampleCoverage(...)` metódusok követelmények lefedettségének számításához
 - Új `Requirements.getRelativePath()` metódus
 - Új `@Performance` annotáció performancia mérések támogatásához
+- Új `fromCsv(...)` és `toCsv(...)` metódusok a `CsvTransformer` interfészben
 
 ## 1.20.1
 
