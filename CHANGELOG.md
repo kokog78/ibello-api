@@ -9,6 +9,7 @@
 - New `@Performance` annotation to support performance measurements
 - The measured APDEX value appears in the test results
 - New `fromCsv(...)` and `toCsv(...)` methods in the `CsvTransformer` interface
+- New `TextFormatKind.HTML` constant to mark HTML texts
 
 ## 1.20.1
 

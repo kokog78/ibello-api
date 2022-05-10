@@ -9,6 +9,7 @@
 - Új `@Performance` annotáció performancia mérések támogatásához
 - A mért APDEX értékek megjelennek a teszteredményekben
 - Új `fromCsv(...)` és `toCsv(...)` metódusok a `CsvTransformer` interfészben
+- Új `TextFormatKind.HTML` konstans HTML formátumú szövegek jelölésére
 
 ## 1.20.1
 

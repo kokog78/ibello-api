@@ -6,5 +6,10 @@ public enum TextFormatKind {
 	NUMBER,
 	BOOLEAN,
 	JSON,
-	XML;
+	XML,
+	HTML;
+	
+	public boolean isDocument() {
+		return this == JSON || this == XML || this == HTML;
+	}
 }
