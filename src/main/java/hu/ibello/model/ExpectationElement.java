@@ -21,14 +21,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name="expectation")
 public class ExpectationElement extends Element {
 
-	private long timeoutMs;
+	private Long timeoutMs;
 	
-	public long getTimeoutMs() {
+	public Long getTimeoutMs() {
 		return timeoutMs;
 	}
 	
 	@XmlAttribute(name="timeout-ms")
-	public void setTimeoutMs(long timeoutMs) {
+	public void setTimeoutMs(Long timeoutMs) {
 		this.timeoutMs = timeoutMs;
 	}
 	

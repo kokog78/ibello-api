@@ -6,15 +6,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name="action")
 public class ActionElement extends Element {
 
-	private long timeoutMs;
+	private Long timeoutMs;
 	private TextFormatKind nameFormat;
 	
-	public long getTimeoutMs() {
+	public Long getTimeoutMs() {
 		return timeoutMs;
 	}
 	
 	@XmlAttribute(name="timeout-ms")
-	public void setTimeoutMs(long timeoutMs) {
+	public void setTimeoutMs(Long timeoutMs) {
 		this.timeoutMs = timeoutMs;
 	}
 	
