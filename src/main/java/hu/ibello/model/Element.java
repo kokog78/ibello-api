@@ -26,7 +26,7 @@ public class Element {
 
 	private String name;
 	private Outcome outcome;
-	private long durationMs;
+	private Long durationMs;
 	private List<ExceptionInfo> exception;
 	private List<Screenshot> screenshot;
 	
@@ -48,12 +48,12 @@ public class Element {
 		this.outcome = outcome;
 	}
 	
-	public long getDurationMs() {
+	public Long getDurationMs() {
 		return durationMs;
 	}
 	
 	@XmlAttribute(name="duration-ms")
-	public void setDurationMs(long durationMs) {
+	public void setDurationMs(Long durationMs) {
 		this.durationMs = durationMs;
 	}
 	

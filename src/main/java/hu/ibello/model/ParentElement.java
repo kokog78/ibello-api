@@ -22,10 +22,10 @@ import javax.xml.bind.annotation.XmlType;
 public class ParentElement extends Element {
 
 	private String id;
-	private int successCount;
-	private int failureCount;
-	private int errorCount;
-	private int pendingCount;
+	private Integer successCount;
+	private Integer failureCount;
+	private Integer errorCount;
+	private Integer pendingCount;
 	
 	public String getId() {
 		return id;
@@ -36,39 +36,80 @@ public class ParentElement extends Element {
 		this.id = id;
 	}
 	
-	public int getSuccessCount() {
+	public Integer getSuccessCount() {
 		return successCount;
 	}
 	
 	@XmlAttribute(name="success-count")
-	public void setSuccessCount(int successCount) {
+	public void setSuccessCount(Integer successCount) {
 		this.successCount = successCount;
 	}
 	
-	public int getPendingCount() {
+	public void addSuccessCount(int value) {
+		if (value != 0) {
+			if (successCount == null) {
+				successCount = value;
+			} else {
+				successCount += value;
+			}
+		}
+	}
+	
+	public Integer getPendingCount() {
 		return pendingCount;
 	}
 	
 	@XmlAttribute(name="pending-count")
-	public void setPendingCount(int pendingCount) {
+	public void setPendingCount(Integer pendingCount) {
 		this.pendingCount = pendingCount;
 	}
 	
-	public int getFailureCount() {
+	public void addPendingCount(int value) {
+		if (value != 0) {
+			if (pendingCount == null) {
+				pendingCount = value;
+			} else {
+				pendingCount += value;
+			}
+		}
+	}
+	
+	public Integer getFailureCount() {
 		return failureCount;
 	}
 	
 	@XmlAttribute(name="failure-count")
-	public void setFailureCount(int failureCount) {
+	public void setFailureCount(Integer failureCount) {
 		this.failureCount = failureCount;
 	}
 	
-	public int getErrorCount() {
+	public void addFailureCount(int value) {
+		if (value != 0) {
+			if (failureCount == null) {
+				failureCount = value;
+			} else {
+				failureCount += value;
+			}
+		}
+	}
+	
+	public Integer getErrorCount() {
 		return errorCount;
 	}
 	
 	@XmlAttribute(name="error-count")
-	public void setErrorCount(int errorCount) {
+	public void setErrorCount(Integer errorCount) {
 		this.errorCount = errorCount;
 	}
+
+	public void addErrorCount(int value) {
+		if (value != 0) {
+			if (errorCount == null) {
+				errorCount = value;
+			} else {
+				errorCount += value;
+			}
+		}
+	}
+	
 }
