@@ -10,6 +10,8 @@
 - The measured APDEX value appears in the test results
 - New `fromCsv(...)` and `toCsv(...)` methods in the `CsvTransformer` interface
 - New `TextFormatKind.HTML` constant to mark HTML texts
+- In the `ParentElement` class the value of `successCount`, `failureCount`, `errorCount` and `pendingCount` fields can be `null`
+- In the `Element` class the value of `durationMs` field can be `null`
 
 ## 1.20.1
 

@@ -10,6 +10,8 @@
 - A mért APDEX értékek megjelennek a teszteredményekben
 - Új `fromCsv(...)` és `toCsv(...)` metódusok a `CsvTransformer` interfészben
 - Új `TextFormatKind.HTML` konstans HTML formátumú szövegek jelölésére
+- A `ParentElement` osztályban a `successCount`, `failureCount`, `errorCount` és `pendingCount` mezők értéke lehet `null` is
+- Az `Element` osztályban a `durationMs` mező értéke lehet `null` is
 
 ## 1.20.1
 
