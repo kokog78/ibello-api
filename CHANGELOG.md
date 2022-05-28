@@ -12,6 +12,8 @@
 - New `TextFormatKind.HTML` constant to mark HTML texts
 - In the `ParentElement` class the value of `successCount`, `failureCount`, `errorCount` and `pendingCount` fields can be `null`
 - In the `Element` class the value of `durationMs` field can be `null`
+- In the `ActionElement` class the value of `timeoutMs` field can be `null`
+- In the `ExpectationElement` class the value of `timeoutMs` field can be `null`
 
 ## 1.20.1
 

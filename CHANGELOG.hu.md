@@ -12,6 +12,8 @@
 - Új `TextFormatKind.HTML` konstans HTML formátumú szövegek jelölésére
 - A `ParentElement` osztályban a `successCount`, `failureCount`, `errorCount` és `pendingCount` mezők értéke lehet `null` is
 - Az `Element` osztályban a `durationMs` mező értéke lehet `null` is
+- Az `ActionElement` osztályban a `timeoutMs` mező értéke lehet `null` is
+- Az `ExpectationElement` osztályban a `timeoutMs` mező értéke lehet `null` is
 
 ## 1.20.1
 
