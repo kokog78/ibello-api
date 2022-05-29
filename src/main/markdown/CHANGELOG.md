@@ -2,6 +2,8 @@
 
 ## 1.21.0
 
+2022-05-29
+
 - It is possible to load test data from CSV files
 - New `FeatureHandler.loadFeatures()` method
 - New `RequirementHandler.calculateTestCoverage(...)` and `RequirementHandler.calculateExampleCoverage(...)` methods to calculate coverage of requirements

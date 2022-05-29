@@ -2,6 +2,8 @@
 
 ## 1.21.0
 
+2022-05-29
+
 - Tesztadatok betöltése CSV fájlból is lehetséges
 - Új `FeatureHandler.loadFeatures()` metódus
 - Új `RequirementHandler.calculateTestCoverage(...)` és `RequirementHandler.calculateExampleCoverage(...)` metódusok követelmények lefedettségének számításához
