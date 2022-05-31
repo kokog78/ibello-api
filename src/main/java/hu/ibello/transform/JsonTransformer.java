@@ -21,8 +21,8 @@ package hu.ibello.transform;
  * During the serialization / deserialization the JSON name of the fields will be the same as in java.
  * To change that, you can use {@link SerializedName} annotation on the java field.
  * <p>
- * With this interface it is possible to register special JSON deserializer instances into the entire ibello
- * - see {@link #registerDeserializer(JsonTypeDeserializer)}.
+ * With this interface it is possible to register special JSON serializer / deserializer instances into the entire ibello
+ * - see {@link #registerSerializer(JsonTypeSerializer)} and {@link #registerDeserializer(JsonTypeDeserializer)}.
  * 
  * @author Kornél Simon
  *
@@ -36,5 +36,12 @@ public interface JsonTransformer extends JsonSerializer, JsonDeserializer {
 	 * @throws TransformerException if the registration of the deserializer is not possible
 	 */
 	public <T> void registerDeserializer(JsonTypeDeserializer<T> deserializer) throws TransformerException;
+	
+	/**
+	 * Registers a serializer instance into the ibello. The registered instance will serialize a JSON string into a specific java type.
+	 * @param serializer the serializer instance we want to register
+	 * @throws TransformerException if the registration of the serializer is not possible
+	 */
+	public <T> void registerSerializer(JsonTypeSerializer<T> serializer) throws TransformerException;
 	
 }

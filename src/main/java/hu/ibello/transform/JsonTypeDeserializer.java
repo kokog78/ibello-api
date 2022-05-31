@@ -36,7 +36,7 @@ public interface JsonTypeDeserializer<TYPE> {
 	 * @param source the JSON string to deserialize
 	 * @param context a context object which can be used to deserialize another JSON strings
 	 * @return the deserialized java object
-	 * @throws TransformerException if the deserialization does not possible
+	 * @throws TransformerException if the deserialization is not possible
 	 */
 	public TYPE deserialize(String source, JsonDeserializer context) throws TransformerException;
 	
