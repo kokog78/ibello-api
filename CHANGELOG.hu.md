@@ -3,6 +3,7 @@
 ## 1.21.1
 
 - Új `JsonTransformer.registerDeserializer` metódus, aminek a segítségével finomhangolhatjuk a JSON deszerializálás folyamatát
+- Új `JsonTransformer.registerSerializer` metódus, aminek a segítségével finomhangolhatjuk a JSON szerializálás folyamatát
 
 ## 1.21.0
 
