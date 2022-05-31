@@ -1,5 +1,9 @@
 # ibello-api changelog
 
+## 1.21.1
+
+- New `JsonTransformer.registerDeserializer` method to fine-tune the JSON deserialization process
+
 ## 1.21.0
 
 2022-05-29

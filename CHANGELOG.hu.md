@@ -1,6 +1,12 @@
 # ibello-api változási napló
 
+## 1.21.1
+
+- Új `JsonTransformer.registerDeserializer` metódus, aminek a segítségével finomhangolhatjuk a JSON deszerializálás folyamatát
+
 ## 1.21.0
+
+2022-05-29
 
 - Tesztadatok betöltése CSV fájlból is lehetséges
 - Új `FeatureHandler.loadFeatures()` metódus
