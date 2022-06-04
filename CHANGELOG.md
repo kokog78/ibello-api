@@ -2,6 +2,8 @@
 
 ## 1.21.1
 
+2022-06-04
+
 - New `JsonTransformer.registerDeserializer` method to fine-tune the JSON deserialization process
 - New `JsonTransformer.registerSerializer` method to fine-tune the JSON serialization process
 
