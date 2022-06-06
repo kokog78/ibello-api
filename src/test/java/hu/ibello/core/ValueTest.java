@@ -8,6 +8,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.EnumSet;
 
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
+
 import org.junit.Test;
 
 import hu.ibello.search.By;
@@ -95,6 +98,17 @@ public class ValueTest {
 	}
 	
 	@Test
+	public void toXMLGregorianCalendar_uses_default_value() throws Exception {
+		XMLGregorianCalendar calendar1 = DatatypeFactory.newInstance().newXMLGregorianCalendar();
+		XMLGregorianCalendar calendar2 = DatatypeFactory.newInstance().newXMLGregorianCalendar();
+		calendar2.clear();
+		value.value = calendar2;
+		assertThat(value.toXMLGregorianCalendar(calendar1)).isEqualTo(calendar2);
+		value.value = null;
+		assertThat(value.toXMLGregorianCalendar(calendar1)).isEqualTo(calendar1);
+	}
+	
+	@Test
 	public void toCalendar_uses_default_value() throws Exception {
 		Calendar calendar1 = Calendar.getInstance();
 		Calendar calendar2 = Calendar.getInstance();
@@ -166,6 +180,11 @@ public class ValueTest {
 		@Override
 		public Calendar toCalendar() {
 			return (Calendar)value;
+		}
+		
+		@Override
+		public XMLGregorianCalendar toXMLGregorianCalendar() {
+			return (XMLGregorianCalendar)value;
 		}
 
 		@SuppressWarnings("unchecked")

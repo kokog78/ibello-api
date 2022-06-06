@@ -209,7 +209,7 @@ public interface Value {
 	}
 	
 	/**
-	 * Transforms the encapsulated value int a {@link Date}. If the value is <code>null</code>, the result will be also <code>null</code>.
+	 * Transforms the encapsulated value into a {@link Date}. If the value is <code>null</code>, the result will be also <code>null</code>.
 	 * If the value is a {@link Date}, then it will be returned. If the value is a date-like object ( {@link Calendar}, {@link Instant},
 	 * {@link XMLGregorianCalendar}, {@link OffsetDateTime}, {@link ZonedDateTime}, {@link LocalDate}, {@link LocalDateTime}), then
 	 * it will be transformed into a {@link Date}. Otherwise, the method parses the String representation of the value as a {@link Date}.
@@ -231,7 +231,7 @@ public interface Value {
 	public Date toDate();
 	
 	/**
-	 * Transforms the encapsulated value int a {@link Date}. If the value is <code>null</code>, the result will be the given <code>defaultValue</code>.
+	 * Transforms the encapsulated value into a {@link Date}. If the value is <code>null</code>, the result will be the given <code>defaultValue</code>.
 	 * If the value is a {@link Date}, then it will be returned. If the value is a date-like object ( {@link Calendar}, {@link Instant},
 	 * {@link XMLGregorianCalendar}, {@link OffsetDateTime}, {@link ZonedDateTime}, {@link LocalDate}, {@link LocalDateTime}), then
 	 * it will be transformed into a {@link Date}. Otherwise, the method parses the String representation of the value as a {@link Date}.
@@ -257,7 +257,7 @@ public interface Value {
 	}
 	
 	/**
-	 * Transforms the encapsulated value int a {@link Calendar}. If the value is <code>null</code>, the result will be also <code>null</code>.
+	 * Transforms the encapsulated value into a {@link Calendar}. If the value is <code>null</code>, the result will be also <code>null</code>.
 	 * If the value is a {@link Calendar}, then it will be returned. If the value is a date-like object ( {@link Date}, {@link Instant},
 	 * {@link XMLGregorianCalendar}, {@link OffsetDateTime}, {@link ZonedDateTime}, {@link LocalDate}, {@link LocalDateTime}), then
 	 * it will be transformed into a {@link Calendar}. Otherwise, the method parses the String representation of the value as a {@link Calendar}.
@@ -279,7 +279,7 @@ public interface Value {
 	public Calendar toCalendar();
 	
 	/**
-	 * Transforms the encapsulated value int a {@link Calendar}. If the value is <code>null</code>, the result will be the given <code>defaultValue</code>.
+	 * Transforms the encapsulated value into a {@link Calendar}. If the value is <code>null</code>, the result will be the given <code>defaultValue</code>.
 	 * If the value is a {@link Calendar}, then it will be returned. If the value is a date-like object ( {@link Date}, {@link Instant},
 	 * {@link XMLGregorianCalendar}, {@link OffsetDateTime}, {@link ZonedDateTime}, {@link LocalDate}, {@link LocalDateTime}), then
 	 * it will be transformed into a {@link Calendar}. Otherwise, the method parses the String representation of the value as a {@link Calendar}.
@@ -301,6 +301,54 @@ public interface Value {
 	 */
 	public default Calendar toCalendar(Calendar defaultValue) {
 		Calendar result = toCalendar();
+		return (result == null ? defaultValue : result);
+	}
+	
+	/**
+	 * Transforms the encapsulated value into an {@link XMLGregorianCalendar}. If the value is <code>null</code>, the result will be also <code>null</code>.
+	 * If the value is an {@link XMLGregorianCalendar}, then it will be returned. If the value is a date-like object ( {@link Date}, {@link Instant},
+	 * {@link Calendar}, {@link OffsetDateTime}, {@link ZonedDateTime}, {@link LocalDate}, {@link LocalDateTime}), then
+	 * it will be transformed into am {@link XMLGregorianCalendar}. Otherwise, the method parses the String representation of the value as an {@link XMLGregorianCalendar}.
+	 * In this case relative date is noticed as well.
+	 * A relative date always begins with a "+" or "-" sign, depending on whether you want a future or past date.
+	 * This is followed by a combination of numbers and letters. Each number is followed by a letter that gives the unit of measure for the number.
+	 * This may be:
+	 * <ul>
+	 * <li>"Y": year</li>
+	 * <li>"M": month</li>
+	 * <li>"D": day of month</li>
+	 * <li>"h": hour</li>
+	 * <li>"m": minute</li>
+	 * <li>"s": second</li>
+	 * </ul>
+	 * Examples: "-1Y30h", "+1D".
+	 * @return value as XMLGregorianCalendar
+	 */
+	public XMLGregorianCalendar toXMLGregorianCalendar();
+	
+	/**
+	 * Transforms the encapsulated value into an {@link XMLGregorianCalendar}. If the value is <code>null</code>, the result will be the given <code>defaultValue</code>.
+	 * If the value is an {@link XMLGregorianCalendar}, then it will be returned. If the value is a date-like object ( {@link Date}, {@link Instant},
+	 * {@link Calendar}, {@link OffsetDateTime}, {@link ZonedDateTime}, {@link LocalDate}, {@link LocalDateTime}), then
+	 * it will be transformed into am {@link XMLGregorianCalendar}. Otherwise, the method parses the String representation of the value as an {@link XMLGregorianCalendar}.
+	 * In this case relative date is noticed as well.
+	 * A relative date always begins with a "+" or "-" sign, depending on whether you want a future or past date.
+	 * This is followed by a combination of numbers and letters. Each number is followed by a letter that gives the unit of measure for the number.
+	 * This may be:
+	 * <ul>
+	 * <li>"Y": year</li>
+	 * <li>"M": month</li>
+	 * <li>"D": day of month</li>
+	 * <li>"h": hour</li>
+	 * <li>"m": minute</li>
+	 * <li>"s": second</li>
+	 * </ul>
+	 * Examples: "-1Y30h", "+1D".
+	 * @param defaultValue default value which is used when the encapsulated value is <code>null</code>
+	 * @return value as XMLGregorianCalendar
+	 */
+	public default XMLGregorianCalendar toXMLGregorianCalendar(XMLGregorianCalendar defaultValue) {
+		XMLGregorianCalendar result = toXMLGregorianCalendar();
 		return (result == null ? defaultValue : result);
 	}
 	

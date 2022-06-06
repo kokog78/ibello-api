@@ -1,5 +1,9 @@
 # ibello-api változási napló
 
+## 1.21.2
+
+- Új `Value.toXMLGregorianCalendar` metódus
+
 ## 1.21.1
 
 2022-06-04

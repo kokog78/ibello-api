@@ -1,5 +1,9 @@
 # ibello-api changelog
 
+## 1.21.2
+
+- New `Value.toXMLGregorianCalendar` method
+
 ## 1.21.1
 
 2022-06-04
