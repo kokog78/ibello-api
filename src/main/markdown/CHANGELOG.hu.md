@@ -2,6 +2,7 @@
 
 ## 1.21.2
 
+- Új `latencyMs` mező a teszteredmény elemeiben 
 - Új `Value.toXMLGregorianCalendar` metódus
 
 ## 1.21.1

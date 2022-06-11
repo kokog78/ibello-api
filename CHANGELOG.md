@@ -2,6 +2,7 @@
 
 ## 1.21.2
 
+- Elements of the test result now have `latencyMs` field
 - New `Value.toXMLGregorianCalendar` method
 
 ## 1.21.1

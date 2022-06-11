@@ -21,12 +21,13 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlType(propOrder={"name", "outcome", "durationMs", "exception", "screenshot"})
+@XmlType(propOrder={"name", "outcome", "durationMs", "latencyMs", "exception", "screenshot"})
 public class Element {
 
 	private String name;
 	private Outcome outcome;
 	private Long durationMs;
+	private Long latencyMs;
 	private List<ExceptionInfo> exception;
 	private List<Screenshot> screenshot;
 	
@@ -55,6 +56,15 @@ public class Element {
 	@XmlAttribute(name="duration-ms")
 	public void setDurationMs(Long durationMs) {
 		this.durationMs = durationMs;
+	}
+	
+	public Long getLatencyMs() {
+		return latencyMs;
+	}
+	
+	@XmlAttribute(name="latency-ms")
+	public void setLatencyMs(Long latencyMs) {
+		this.latencyMs = latencyMs;
 	}
 	
 	public List<ExceptionInfo> getException() {
