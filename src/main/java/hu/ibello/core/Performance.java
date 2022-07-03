@@ -34,9 +34,9 @@ import java.lang.annotation.Target;
 public @interface Performance {
 
 	/**
-	 * If specified, it groups the performance measurements into groups.
-	 * The test steps with the same identifier will grouped in the same APDEX calculation.
-	 * @return the identifier of the measurement group
+	 * If specified, it divides the performance measurements into groups.
+	 * Test steps with the same group identifier will be added to the same APDEX calculation.
+	 * @return the identifiers of the measurement groups, separated by comma
 	 */
 	String group() default "";
 	

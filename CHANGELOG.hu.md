@@ -4,6 +4,7 @@
 
 - Új `latencyMs` mező a teszteredmény elemeiben 
 - Új `Value.toXMLGregorianCalendar` metódus
+- A `@Performance` annotációban több csoportazonosító is megadható
 
 ## 1.21.1
 

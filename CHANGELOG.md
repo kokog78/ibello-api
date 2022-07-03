@@ -4,6 +4,7 @@
 
 - Elements of the test result now have `latencyMs` field
 - New `Value.toXMLGregorianCalendar` method
+- The `@Performance` annotation may contain multiple group identifiers
 
 ## 1.21.1
 
