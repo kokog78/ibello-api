@@ -5,7 +5,7 @@
 - Új `latencyMs` mező a teszteredmény elemeiben 
 - Új `Value.toXMLGregorianCalendar` metódus
 - A `@Performance` annotációban több csoportazonosító is megadható
-- A teszteredmény APDEX listájába bekerül az elégedettségi és tolerancia határ is
+- A teszteredmény APDEX listájába bekerül a mérési pontok száma, az elégedettségi és a tolerancia határ is
 
 ## 1.21.1
 

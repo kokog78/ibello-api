@@ -5,7 +5,7 @@
 - Elements of the test result now have `latencyMs` field
 - New `Value.toXMLGregorianCalendar` method
 - The `@Performance` annotation may contain multiple group identifiers
-- Satisfed and tolerated threshold is added to the APDEX list of test results
+- Number of measurement points, satisfed and tolerated threshold are added to the APDEX list of test results
 
 ## 1.21.1
 
