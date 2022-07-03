@@ -18,12 +18,16 @@ package hu.ibello.model;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlType(propOrder={"id", "value"})
+@XmlType(propOrder={"id", "value", "satisfiedThresholdMs", "toleratedThresholdMs"})
 public class ApdexValue {
 
 	private String id;
 	
 	private double value;
+	
+	private long satisfiedThresholdMs;
+	
+	private long toleratedThresholdMs;
 
 	public String getId() {
 		return id;
@@ -43,5 +47,22 @@ public class ApdexValue {
 		this.value = value;
 	}
 	
+	public long getSatisfiedThresholdMs() {
+		return satisfiedThresholdMs;
+	}
+	
+	@XmlAttribute(name="satisfied-threshold-ms")
+	public void setSatisfiedThresholdMs(long satisfiedThresholdMs) {
+		this.satisfiedThresholdMs = satisfiedThresholdMs;
+	}
+	
+	public long getToleratedThresholdMs() {
+		return toleratedThresholdMs;
+	}
+	
+	@XmlAttribute(name="tolerated-threshold-ms")
+	public void setToleratedThresholdMs(long toleratedThresholdMs) {
+		this.toleratedThresholdMs = toleratedThresholdMs;
+	}
 	
 }
