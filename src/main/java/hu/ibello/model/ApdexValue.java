@@ -29,7 +29,7 @@ public class ApdexValue {
 	
 	private long toleratedThresholdMs;
 	
-	private int count;
+	private long count;
 
 	public String getId() {
 		return id;
@@ -49,12 +49,12 @@ public class ApdexValue {
 		this.value = value;
 	}
 	
-	public int getCount() {
+	public long getCount() {
 		return count;
 	}
 	
 	@XmlAttribute
-	public void setCount(int count) {
+	public void setCount(long count) {
 		this.count = count;
 	}
 	
