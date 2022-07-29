@@ -1087,6 +1087,9 @@ int age = getConfigurationValue("user.valid.age").toInteger(0);
 Az ibello képes arra, hogy különböző típusú fájlokból tesztadatokat töltsön be. Ezek a fájlok az `ibello/data` mappán belül helyezkednek el.
 Akár almappákat is létrehozhatunk (tetszőleges névvel), és azokba tehetjük a fájlokat - az ibello úgy is megtalálja azokat.
 
+Az ibello parancssori eszköz segítségével a fájlokat titkosíthatjuk is. Ekkor azok a megszokott módon nem lesznek érthetők, viszont az
+ibello továbbra is képes lesz olvasni azokban. A titkosított fájlok nevébe bekerül az "@encrypted" szöveg.
+
 #### Tesztadatok JSON fájlokban
 
 Az ibello JSON formátumú fájlokból egész objektumokat tud felolvasni. Ehhez először is készítenünk kell egy java osztályt,
