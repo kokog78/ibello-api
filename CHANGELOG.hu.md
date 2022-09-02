@@ -1,5 +1,9 @@
 # ibello-api változási napló
 
+## 1.22.0
+
+- Új `Feature.getBackground()` metódus, ami a jellemzők hátterének tesztlépéseit tartalmazó objektumot adja vissza
+
 ## 1.21.2
 
 - Új `latencyMs` mező a teszteredmény elemeiben 

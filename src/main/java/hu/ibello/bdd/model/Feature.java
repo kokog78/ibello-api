@@ -30,6 +30,8 @@ public class Feature extends BDDDocument {
 	
 	private List<String> tags;
 	
+	private Scenario background;
+	
 	private List<Scenario> scenarios;
 
 	/**
@@ -96,6 +98,22 @@ public class Feature extends BDDDocument {
 	 */
 	public boolean hasScenario() {
 		return scenarios != null && !scenarios.isEmpty();
+	}
+	
+	/**
+	 * The background of the feature as a {@link Scenario} object.
+	 * @return the background (or <code>null</code>)
+	 */
+	public Scenario getBackground() {
+		return background;
+	}
+	
+	/**
+	 * Sets the background of the feature.
+	 * @param background the background
+	 */
+	public void setBackground(Scenario background) {
+		this.background = background;
 	}
 	
 	/**

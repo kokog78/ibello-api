@@ -1,5 +1,9 @@
 # ibello-api changelog
 
+## 1.22.0
+
+- New `Feature.getBackground()` method, which returns an object containing the test steps of the background of the features
+
 ## 1.21.2
 
 - Elements of the test result now have `latencyMs` field
