@@ -174,8 +174,14 @@ public interface RestClient {
 	/**
 	 * Executes the REST call: sends the request and receives the response.
 	 * It automatically transforms the response JSON to a java object.
-	 * If the <code>responseType</code> argument is <code>String.class</code>,
-	 * then the original JSON response will be returned in the result (without any transformation).
+	 * <ul>
+	 * <li>If the <code>responseType</code> argument is <code>String.class</code>,
+	 * then the original JSON response will be returned in the result (without any transformation).</li>
+	 * <li>If the <code>responseType</code> argument is <code>byte[].class</code>,
+	 * then the original response will be returned as byte array (without any transformation).</li> 
+	 * <li>If the <code>responseType</code> argument is <code>InputStream.class</code>,
+	 * then the original stream response will be returned.</li> 
+	 * </ul>
 	 * @param responseType class of the response
 	 * @param <T> type of the response
 	 * @return the response as java object
