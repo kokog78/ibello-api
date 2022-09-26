@@ -21,6 +21,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.List;
+import java.util.Map;
 
 /**
  * This interface describes a REST client which sends a single request and receives a response.
@@ -116,7 +117,9 @@ public interface RestClient {
 	 * <ul>
 	 * <li>a {@link File} instance, in this case a multipart attachment will be added to the body,</li>
 	 * <li>an {@link InputStream} instance, in this case the content of the stream will be the request body,</li>
+	 * <li>a byte array, in this case the bytes will be the request body,</li>
 	 * <li>a {@link String} - it will be considered as a JSON value,</li>
+	 * <li>a {@link Map} - it will be transformed to JSON,</li>
 	 * <li>or anything else - which will be transformed to JSON.</li>
 	 * </ul>
 	 * @param object the object (or JSON string) to be sent
@@ -124,6 +127,14 @@ public interface RestClient {
 	 * @return this {@link RestClient} instance
 	 */
 	public <T> RestClient body(T object);
+	
+	/**
+	 * Sets the name of the body.
+	 * If specified, the request will be multipart/form-data type, and the body will be added with this name.
+	 * @param name the name of the body
+	 * @return this {@link RestClient} instance
+	 */
+	public RestClient name(String name);
 	
 	/**
 	 * Adds a HTTP header to the REST call.

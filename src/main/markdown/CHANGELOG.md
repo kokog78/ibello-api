@@ -3,6 +3,7 @@
 ## 1.22.0
 
 - New `Feature.getBackground()` method, which returns an object containing the test steps of the background of the features
+- New `HttpClient.name(...)` and `RestClient.name(...)` method to specify name of the bofy in a multipart/form-data request
 - The `RestClient.sendAndReceive(...)` method can receive response with `byte[]` or `InputStream` type
 
 ## 1.21.2
