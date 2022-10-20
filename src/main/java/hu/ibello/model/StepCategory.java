@@ -17,7 +17,24 @@ package hu.ibello.model;
 
 public enum StepCategory {
 
-	GIVEN,
-	WHEN,
-	THEN;
+	Given,
+	When,
+	Then;
+	
+	public static StepCategory fromString(String txt) {
+		if (txt != null) {
+			txt = txt.trim();
+			try {
+				return StepCategory.valueOf(txt);
+			} catch (Exception ex) {
+				txt = txt.toLowerCase();
+				for (StepCategory category : StepCategory.values()) {
+					if (category.name().toLowerCase().equals(txt)) {
+						return category;
+					}
+				}
+			}
+		}
+		return null;
+	}
 }
