@@ -13,16 +13,11 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-@XmlSchema (
-		xmlns = {
-				@XmlNs(namespaceURI="http://ibello.hu/model/1.6", prefix="")
-		},
-		namespace = "http://ibello.hu/model/1.6",
-		elementFormDefault = XmlNsForm.QUALIFIED,
-		attributeFormDefault = XmlNsForm.UNQUALIFIED
-		)
 package hu.ibello.model;
 
-import javax.xml.bind.annotation.XmlNs;
-import javax.xml.bind.annotation.XmlNsForm;
-import javax.xml.bind.annotation.XmlSchema;
+public enum StepCategory {
+
+	GIVEN,
+	WHEN,
+	THEN;
+}

@@ -25,11 +25,21 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement(name="step")
-@XmlType(propOrder={"performanceGroup", "children"})
+@XmlType(propOrder={"category", "performanceGroup", "children"})
 public class StepElement extends ParentElement {
 
+	private StepCategory category;
 	private String performanceGroup;
 	private List<Element> children;
+	
+	public StepCategory getCategory() {
+		return category;
+	}
+	
+	@XmlAttribute
+	public void setCategory(StepCategory category) {
+		this.category = category;
+	}
 	
 	public String getPerformanceGroup() {
 		return performanceGroup;
