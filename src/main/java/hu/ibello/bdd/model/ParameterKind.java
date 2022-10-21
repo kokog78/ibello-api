@@ -47,6 +47,11 @@ public enum ParameterKind {
 	BOOLEAN,
 	
 	/**
+	 * Docstring type parameter (with multiple lines).
+	 */
+	DOCSTRING,
+	
+	/**
 	 * Data table parameter type.
 	 */
 	DATATABLE;

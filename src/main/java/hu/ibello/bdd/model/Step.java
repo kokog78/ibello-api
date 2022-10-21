@@ -127,11 +127,26 @@ public class Step {
 				key = null;
 			}
 		}
+		String result;
 		if (key != null) {
-			return String.format("%s %s", key, text);
+			result = String.format("%s %s", key, text);
 		} else {
-			return text;
+			result = text;
 		}
+		if (parameters != null && !parameters.isEmpty()) {
+			Parameter param = parameters.get(parameters.size() - 1);
+			switch (param.getKind()) {
+			case DOCSTRING:
+			case DATATABLE:
+				String str = param.toString();
+				if (str != null) {
+					str = str.replaceAll("(\\r|\\n|\\r\\n)", "\n  ");
+					result = String.format("%s\n  ", result, str);
+				}
+				break;
+			}
+		}
+		return result;
 	}
     
 }

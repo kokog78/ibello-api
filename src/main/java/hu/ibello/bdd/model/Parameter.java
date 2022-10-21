@@ -36,6 +36,8 @@ public class Parameter {
 
 	private ParameterKind kind;
 	
+	private String contentType;
+	
 	private String text;
 	
 	private List<List<String>> rows;
@@ -59,6 +61,27 @@ public class Parameter {
 		} else {
 			this.rows = null;
 		}
+	}
+	
+	/**
+	 * Content type of the parameter.
+	 * Only available for doc strings.
+	 * @return content type
+	 */
+	public String getContentType() {
+		return contentType;
+	}
+	
+	/**
+	 * Sets the content type of the parameter.
+	 * Only available for doc strings.
+	 * @param contentType content type
+	 */
+	public void setContentType(String contentType) {
+		if (this.kind != ParameterKind.DOCSTRING && contentType != null) {
+			throw new UnsupportedOperationException("Content type can be set for doc string only.");
+		}
+		this.contentType = contentType;
 	}
 
 	/**
@@ -201,6 +224,62 @@ public class Parameter {
 			throw new UnsupportedOperationException("Only data table parameter can have rows.");
 		}
 		this.rows = rows;
+	}
+	
+	@Override
+	public String toString() {
+		if (kind != null) {
+			switch (kind) {
+			case DOCSTRING:
+				if (text != null) {
+					return String.format("\"\"\"%s\n%s\n\"\"\"", contentType == null ? "" : contentType, text);
+				}
+				break;
+			case DATATABLE:
+				if (rows != null) {
+					List<Integer> sizes = new ArrayList<>();
+					for (List<String> row : rows) {
+						while (sizes.size() < row.size()) {
+							sizes.add(0);
+						}
+						for (int i=0; i<row.size(); i++) {
+							String cell = row.get(i);
+							if (cell != null) {
+								int length = cell.length();
+								if (sizes.get(i) < length) {
+									sizes.set(i, length);
+								}
+							}
+						}
+					}
+					StringBuilder str = new StringBuilder();
+					for (List<String> row : rows) {
+						if (str.length() > 0) {
+							str.append('\n');
+						}
+						str.append('|');
+						for (int i=0; i<row.size(); i++) {
+							str.append(' ');
+							String cell = row.get(i);
+							int length = 0;
+							if (cell != null) {
+								length = cell.length();
+								str.append(cell);
+							}
+							int maxLength = sizes.get(i);
+							while (length < maxLength) {
+								str.append(' ');
+								length++;
+							}
+							str.append(" |");
+						}
+					}
+					return str.toString();
+				}
+				break;
+			}
+		}
+		return text;
 	}
 	
 }
