@@ -78,7 +78,7 @@ public class Parameter {
 	 * @param text the text content of the parameter
 	 */
 	public void setText(String text) {
-		if (this.kind == ParameterKind.DATATABLE) {
+		if (this.kind == ParameterKind.DATATABLE && text != null) {
 			throw new UnsupportedOperationException("Cannot set text value of data table parameter.");
 		}
 		this.text = text;
@@ -197,7 +197,7 @@ public class Parameter {
 	 * @param rows the tabular content of the parameter
 	 */
 	public void setRows(List<List<String>> rows) {
-		if (this.kind != ParameterKind.DATATABLE) {
+		if (this.kind != ParameterKind.DATATABLE && rows != null) {
 			throw new UnsupportedOperationException("Only data table parameter can have rows.");
 		}
 		this.rows = rows;
