@@ -6,6 +6,7 @@
 - New `HttpClient.name(...)` and `RestClient.name(...)` method to specify name of the bofy in a multipart/form-data request
 - The `RestClient.sendAndReceive(...)` method can receive response with `byte[]` or `InputStream` type
 - The test result XML contains the category of the test steps
+- The `Step` class may contain `DATATABLE` type parameter
 
 ## 1.21.2
 

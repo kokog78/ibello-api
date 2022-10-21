@@ -6,6 +6,7 @@
 - Új `HttpClient.name(...)` és `RestClient.name(...)` metódusok, amik segítségével a multipart/form-data kérés törzsét lehet elnevezni
 - A `RestClient.sendAndReceive(...)` metódus képes `byte[]` és `InputStream` típusú válasz fogadására is
 - Az XML formátumú teszteredményekben a tesztlépések kategóriája is megjelenik
+- `DATATABLE` típusú paraméter megjelenik a `Step` osztály paraméterei között
 
 ## 1.21.2
 

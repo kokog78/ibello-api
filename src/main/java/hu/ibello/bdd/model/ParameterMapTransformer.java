@@ -15,39 +15,11 @@
  */
 package hu.ibello.bdd.model;
 
-/**
- * Contains the different parameter kinds from a test step.
- * @author Kornél Simon
- */
-public enum ParameterKind {
+import java.util.Map;
 
-	/**
-	 * String parameter type.
-	 */
-	STRING,
+@FunctionalInterface
+public interface ParameterMapTransformer<T> {
+
+	public T transform(Map<String, String> row);
 	
-	/**
-	 * Integer number parameter type.
-	 */
-	INTEGER,
-	
-	/**
-	 * Decimal number parameter type.
-	 */
-	DECIMAL,
-	
-	/**
-	 * Date/time parameter type.
-	 */
-	DATETIME,
-	
-	/**
-	 * Boolean parameter type.
-	 */
-	BOOLEAN,
-	
-	/**
-	 * Data table parameter type.
-	 */
-	DATATABLE;
 }
