@@ -92,41 +92,10 @@ public class ParameterTest {
 			.containsExactly("1|2|3", "x|y|null", "9|8|7");
 	}
 	
-	@Test
-	public void toString_should_generate_docstring() throws Exception {
-		Parameter param1 = docstring("abc\ndef", null);
-		String result1 = param1.toString();
-		Parameter param2 = docstring("abc\ndef", "html");
-		String result2 = param2.toString();
-		assertThat(result1).isEqualTo("\"\"\"\nabc\ndef\n\"\"\"");
-		assertThat(result2).isEqualTo("\"\"\"html\nabc\ndef\n\"\"\"");
-	}
-	
-	@Test
-	public void toString_should_generate_datatable() throws Exception {
-		@SuppressWarnings("unchecked")
-		Parameter param1 = dataTable(
-				row("a", "b", "c"),
-				row("111", "2", "3"),
-				row("x", "yy"),
-				row("9", "8", "7", "6")
-			);
-		String result1 = param1.toString();
-		assertThat(result1).isEqualTo("| a   | b  | c |\n| 111 | 2  | 3 |\n| x   | yy |\n| 9   | 8  | 7 | 6 |");
-	}
-	
 	private Parameter string(String text) {
 		Parameter parameter = new Parameter();
 		parameter.setKind(ParameterKind.STRING);
 		parameter.setText(text);
-		return parameter;
-	}
-	
-	private Parameter docstring(String text, String type) {
-		Parameter parameter = new Parameter();
-		parameter.setKind(ParameterKind.DOCSTRING);
-		parameter.setText(text);
-		parameter.setContentType(type);
 		return parameter;
 	}
 	

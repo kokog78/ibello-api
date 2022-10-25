@@ -7,34 +7,13 @@ import org.junit.Test;
 public class StepTest {
 
 	@Test
-	public void toString_should_use_keyword_and_text() throws Exception {
-		Step step = step("Given", "A");
-		assertThat(step.toString()).isEqualTo("Given A");
-	}
-	
-	@Test
-	public void toString_should_use_kind_and_text() throws Exception {
-		Step step = step(StepKind.WHEN, "A");
-		assertThat(step.toString()).isEqualTo("When A");
-	}
-	
-	@Test
-	public void toString_should_prefer_keyword_over_kind() throws Exception {
-		Step step = step("When", "A");
-		step.setKind(StepKind.GIVEN);
-		assertThat(step.toString()).isEqualTo("When A");
-	}
-	
-	@Test
-	public void toString_should_use_asterisk_if_kind_is_unknown() throws Exception {
-		Step step = step(StepKind.UNKNOWN, "A");
-		assertThat(step.toString()).isEqualTo("* A");
-	}
-	
-	@Test
-	public void toString_should_skip_keyword() throws Exception {
-		Step step = step("", "A");
-		assertThat(step.toString()).isEqualTo("A");
+	public void getKeyword_should_calculate_keyword() throws Exception {
+		Step step1 = step("Given", "A");
+		Step step2 = step(StepKind.WHEN, "A");
+		Step step3 = step((String)null, "A");
+		assertThat(step1.getKeyword()).isEqualTo("Given");
+		assertThat(step2.getKeyword()).isEqualTo("When");
+		assertThat(step3.getKeyword()).isEqualTo("*");
 	}
 	
 	private Step step(String keyword, String text) {

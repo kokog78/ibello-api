@@ -36,10 +36,17 @@ public class Step {
 	 * Returns the keyword of the step.
 	 * It depends on the language of the document.
 	 * For english language, it can be "Given", "When", "Then", "And" and "But".
+	 * If keyword is not specified then this method returns an asterisk.
 	 * @return the keyword of the step
 	 */
 	public String getKeyword() {
-		return keyword;
+		if (keyword != null) {
+			return keyword;
+		} else if (kind != null) {
+			return kind.toGherkin();
+		} else {
+			return StepKind.UNKNOWN.toGherkin();
+		}
 	}
 
 	/**
@@ -115,38 +122,6 @@ public class Step {
 	 */
 	public void setParameters(List<Parameter> parameters) {
 		this.parameters = parameters;
-	}
-	
-	@Override
-	public String toString() {
-		String key = keyword;
-		if (key == null || key.isEmpty()) {
-			if (kind != null) {
-				key = kind.toGherkin();
-			} else {
-				key = null;
-			}
-		}
-		String result;
-		if (key != null) {
-			result = String.format("%s %s", key, text);
-		} else {
-			result = text;
-		}
-		if (parameters != null && !parameters.isEmpty()) {
-			Parameter param = parameters.get(parameters.size() - 1);
-			switch (param.getKind()) {
-			case DOCSTRING:
-			case DATATABLE:
-				String str = param.toString();
-				if (str != null) {
-					str = str.replaceAll("(\\r|\\n|\\r\\n)", "\n  ");
-					result = String.format("%s\n  ", result, str);
-				}
-				break;
-			}
-		}
-		return result;
 	}
     
 }
