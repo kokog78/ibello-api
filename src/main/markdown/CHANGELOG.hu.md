@@ -7,6 +7,7 @@
 - A `RestClient.sendAndReceive(...)` metódus képes `byte[]` és `InputStream` típusú válasz fogadására is
 - Az XML formátumú teszteredményekben a tesztlépések kategóriája is megjelenik
 - `DATATABLE` típusú paraméter megjelenik a `Step` osztály paraméterei között
+- Új `GraphTool.createLabeledGraph(...)` metódus címkézett grafikonok készítésére
 
 ## 1.21.2
 

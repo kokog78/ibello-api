@@ -7,6 +7,7 @@
 - The `RestClient.sendAndReceive(...)` method can receive response with `byte[]` or `InputStream` type
 - The test result XML contains the category of the test steps
 - The `Step` class may contain `DATATABLE` type parameter
+- New `GraphTool.createLabeledGraph(...)` method to create labeled plot
 
 ## 1.21.2
 
