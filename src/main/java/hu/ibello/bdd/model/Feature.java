@@ -36,7 +36,7 @@ public class Feature extends BDDDocument {
 
 	/**
 	 * Returns the namespace of the feature.
-	 * The namespace is not be automatically added to the test steps.
+	 * The namespace will not be automatically added to the test steps.
 	 * Each step can have it's own namespace.
 	 * This value is just a hint for editors.
 	 * @return the namespace of the feature
@@ -47,7 +47,7 @@ public class Feature extends BDDDocument {
 	
 	/**
 	 * Sets the namespace of the feature.
-	 * The namespace is not be automatically added to the test steps.
+	 * The namespace will not be automatically added to the test steps.
 	 * Each step can have it's own namespace.
 	 * This value is just a hint for editors.
 	 * @param namespace the namespace of the feature
