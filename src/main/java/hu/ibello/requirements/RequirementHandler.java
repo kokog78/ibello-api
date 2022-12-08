@@ -21,7 +21,7 @@ import java.util.regex.Pattern;
 import hu.ibello.requirements.model.Requirements;
 
 /**
- * With the methods of this class we can load and save Cucumber feature files.
+ * With the methods of this class we can load requirements.
  * The files will be loaded from the current ibello project.
  * <p>
  * The return values are in ibello's own format. The {@link Requirements} class describes a requirement list.

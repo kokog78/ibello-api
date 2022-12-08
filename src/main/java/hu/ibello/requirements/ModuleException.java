@@ -16,19 +16,18 @@
 package hu.ibello.requirements;
 
 /**
- * This exception class represents an error which was occurred during a requirement-related operation.
+ * This exception class represents an error which was occurred during a module-related operation.
  * @author Kornél Simon
  */
-public class RequirementException extends Exception {
+public class ModuleException extends Exception {
 
-	private static final long serialVersionUID = 1390669383278194634L;
+	private static final long serialVersionUID = 2017459785035408510L;
 
-	public RequirementException(String message, Throwable cause) {
+	public ModuleException(String message, Throwable cause) {
 		super(message, cause);
 	}
 
-	public RequirementException(String message) {
+	public ModuleException(String message) {
 		super(message);
 	}
-
 }

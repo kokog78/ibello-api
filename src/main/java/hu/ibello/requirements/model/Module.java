@@ -13,22 +13,40 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package hu.ibello.requirements;
+package hu.ibello.requirements.model;
+
+import java.util.List;
 
 /**
- * This exception class represents an error which was occurred during a requirement-related operation.
+ * Represents a functional module in the tested system.
+ * 
  * @author Kornél Simon
+ *
  */
-public class RequirementException extends Exception {
+public interface Module {
 
-	private static final long serialVersionUID = 1390669383278194634L;
-
-	public RequirementException(String message, Throwable cause) {
-		super(message, cause);
-	}
-
-	public RequirementException(String message) {
-		super(message);
-	}
-
+	/**
+	 * The identifier of the module.
+	 * @return the module identifier
+	 */
+	public String getId();
+	
+	/**
+	 * The short name/title of the module.
+	 * @return module title
+	 */
+	public String getTitle();
+	
+	/**
+	 * Description of the module.
+	 * @return module description
+	 */
+	public String getDescription();
+	
+	/**
+	 * If the module contains sub-modules, then this list returns them.
+	 * @return list of sub-modules
+	 */
+	public List<Module> getSubModules();
+	
 }

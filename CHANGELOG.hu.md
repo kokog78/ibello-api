@@ -8,6 +8,7 @@
 - Az XML formátumú teszteredményekben a tesztlépések kategóriája is megjelenik
 - `DATATABLE` típusú paraméter megjelenik a `Step` osztály paraméterei között
 - Új `GraphTool.createLabeledGraph(...)` metódus címkézett grafikonok készítésére
+- Új `PluginInitializer.modules()` metódus modulok adatainak betöltéséhez
 
 ## 1.21.2
 
