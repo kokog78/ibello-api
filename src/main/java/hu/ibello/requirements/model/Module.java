@@ -47,6 +47,6 @@ public interface Module {
 	 * If the module contains sub-modules, then this list returns them.
 	 * @return list of sub-modules
 	 */
-	public List<Module> getSubModules();
+	public List<Module> getModules();
 	
 }
