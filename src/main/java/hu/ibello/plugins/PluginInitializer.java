@@ -24,7 +24,7 @@ import hu.ibello.data.TestDataBuilder;
 import hu.ibello.functions.RegressionTool;
 import hu.ibello.graph.GraphTool;
 import hu.ibello.output.TestResultLoader;
-import hu.ibello.requirements.ModuleHandler;
+import hu.ibello.requirements.FunctionalityHandler;
 import hu.ibello.requirements.RequirementHandler;
 import hu.ibello.table.TableTool;
 import hu.ibello.transform.CsvTransformer;
@@ -149,10 +149,10 @@ public interface PluginInitializer {
 	public RequirementHandler requirements();
 	
 	/**
-	 * Returns an object which is designed to load module files from an ibello project.
-	 * @return the module handler object
+	 * Returns an object which is designed to load functionality files from an ibello project.
+	 * @return the functionality handler object
 	 */
-	public ModuleHandler modules();
+	public FunctionalityHandler functionalities();
 	
 	/**
 	 * Returns an object which can load ibello tests results.

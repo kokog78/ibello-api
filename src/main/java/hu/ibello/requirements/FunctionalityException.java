@@ -19,15 +19,15 @@ package hu.ibello.requirements;
  * This exception class represents an error which was occurred during a module-related operation.
  * @author Kornél Simon
  */
-public class ModuleException extends Exception {
+public class FunctionalityException extends Exception {
 
 	private static final long serialVersionUID = 2017459785035408510L;
 
-	public ModuleException(String message, Throwable cause) {
+	public FunctionalityException(String message, Throwable cause) {
 		super(message, cause);
 	}
 
-	public ModuleException(String message) {
+	public FunctionalityException(String message) {
 		super(message);
 	}
 }

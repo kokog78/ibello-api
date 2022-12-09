@@ -8,7 +8,7 @@
 - The test result XML contains the category of the test steps
 - The `Step` class may contain `DATATABLE` type parameter
 - New `GraphTool.createLabeledGraph(...)` method to create labeled plot
-- New `PluginInitializer.modules()` method to load module information
+- New `PluginInitializer.functionalities()` method to load functionality information
 
 ## 1.21.2
 

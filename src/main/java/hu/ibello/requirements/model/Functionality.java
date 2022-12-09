@@ -18,35 +18,35 @@ package hu.ibello.requirements.model;
 import java.util.List;
 
 /**
- * Represents a functional module in the tested system.
+ * Represents a functionality element (module) in the tested system.
  * 
  * @author Kornél Simon
  *
  */
-public interface Module {
+public interface Functionality {
 
 	/**
-	 * The identifier of the module.
-	 * @return the module identifier
+	 * The identifier of the functionality.
+	 * @return the functionality identifier
 	 */
 	public String getId();
 	
 	/**
-	 * The short name/title of the module.
-	 * @return module title
+	 * The short name/title of the functionality.
+	 * @return functionality title
 	 */
 	public String getTitle();
 	
 	/**
-	 * Description of the module.
-	 * @return module description
+	 * Description of the functionality.
+	 * @return functionality description
 	 */
 	public String getDescription();
 	
 	/**
-	 * If the module contains sub-modules, then this list returns them.
-	 * @return list of sub-modules
+	 * If the functionality can be splitted into multiple ones, then this list returns the sub-functions.
+	 * @return list of sub-functions
 	 */
-	public List<Module> getModules();
+	public List<Functionality> getChildren();
 	
 }
