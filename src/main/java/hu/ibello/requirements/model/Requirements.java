@@ -59,10 +59,10 @@ public interface Requirements {
 	public String getBaseId();
 	
 	/**
-	 * If the requirements are related to a functional module of the system, the this method returns identifier of the module. 
-	 * @return the related module identifier
+	 * If the requirements are related to a functionality of the system, the this method returns identifier of that functionality. 
+	 * @return the related functionality identifier
 	 */
-	public String getModuleId();
+	public String getFunctionalityId();
 	
 	/**
 	 * List of links (eg. identifiers of related tasks from a task management system).
@@ -73,7 +73,7 @@ public interface Requirements {
 	public List<String> getLinks();
 	
 	/**
-	 * Lisst of individual requirements.
+	 * List of individual requirements.
 	 * @return requirement list
 	 */
 	public List<? extends Requirement> getRequirements();
