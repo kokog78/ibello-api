@@ -23,7 +23,7 @@ import java.util.List;
  * @author Kornél Simon
  *
  */
-public interface Functionality {
+public interface Functionality extends Comparable<Functionality> {
 
 	/**
 	 * The identifier of the functionality.
@@ -48,5 +48,10 @@ public interface Functionality {
 	 * @return list of sub-functions
 	 */
 	public List<Functionality> getChildren();
+	
+	@Override
+	public default int compareTo(Functionality o) {
+		return getId().compareTo(o.getId());
+	}
 	
 }

@@ -23,7 +23,7 @@ import java.util.List;
  * 
  * @author Kornél Simon
  */
-public interface Requirements {
+public interface Requirements extends Comparable<Requirements> {
 
 	/**
 	 * The path to the requirements file, relative to the ibello requirements directory. 
@@ -92,5 +92,10 @@ public interface Requirements {
 			}
 		}
 		return result;
+	}
+	
+	@Override
+	default int compareTo(Requirements o) {
+		return getBaseId().compareTo(o.getBaseId());
 	}
 }
