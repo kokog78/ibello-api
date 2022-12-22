@@ -115,7 +115,7 @@ public interface RestClient {
 	 * Sets the body of the REST call.
 	 * The parameter can be:
 	 * <ul>
-	 * <li>a {@link File} instance, in this case a multipart attachment will be added to the body,</li>
+	 * <li>a {@link File} instance, in this case a multipart/form-data attachment will be added to the body,</li>
 	 * <li>an {@link InputStream} instance, in this case the content of the stream will be the request body,</li>
 	 * <li>a byte array, in this case the bytes will be the request body,</li>
 	 * <li>a {@link String} - it will be considered as a JSON value,</li>

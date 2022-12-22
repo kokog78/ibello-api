@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.util.Map;
 
 /**
  * This interface describes a HTTP client which sends a single request and receives a response.
@@ -101,6 +102,8 @@ public interface HttpClient {
 	 * <li>a {@link File} instance, in this case a multipart/form-data attachment will be added to the body,</li>
 	 * <li>an {@link InputStream} instance, in this case the content of the stream will be the request body,</li>
 	 * <li>a byte array, in this case the bytes will be the request body,</li>
+	 * <li>a {@link Map}, in this case the request will be a multipart/form-data request, each entry in the map
+	 * will be an attachment with the entry key as attachment name,
 	 * <li>or anything else - which will be transformed to a {@link String}.</li>
 	 * </ul>
 	 * @param object the object to be sent
