@@ -115,7 +115,7 @@ public interface RestClient {
 	 * Sets the body of the REST call.
 	 * The parameter can be:
 	 * <ul>
-	 * <li>a {@link File} instance, in this case a multipart/form-data attachment will be added to the body,</li>
+	 * <li>a {@link File} instance, in this case the content of the file will be the request body,</li>
 	 * <li>an {@link InputStream} instance, in this case the content of the stream will be the request body,</li>
 	 * <li>a byte array, in this case the bytes will be the request body,</li>
 	 * <li>a {@link String} - it will be considered as a JSON value,</li>
@@ -129,12 +129,42 @@ public interface RestClient {
 	public <T> RestClient body(T object);
 	
 	/**
-	 * Sets the name of the body.
-	 * If specified, the request will be multipart/form-data type, and the body will be added with this name.
-	 * @param name the name of the body
+	 * Adds a multipart body to the HTTP request. If specified, the MIME type of request will be multipart/form-data,
+	 * and the specified body will be appended to the parts. The body can be:
+	 * <ul>
+	 * <li>a {@link File} instance,</li>
+	 * <li>an {@link InputStream} instance,</li>
+	 * <li>a byte array,</li>
+	 * <li>a {@link String},</li>
+	 * <li>a {@link Map} - it will be transformed to JSON,</li>
+	 * <li>or anything else - which will be transformed to JSON.</li>
+	 * </ul>
+	 * @param mimeType a valid MIME type
+	 * @param name name of the multipart body
+	 * @param body the object to be sent
+	 * @param <T> the type of the body object
 	 * @return this {@link RestClient} instance
 	 */
-	public RestClient name(String name);
+	public <T> RestClient multipart(String mimeType, String name, T body);
+	
+	/**
+	 * Adds a multipart body to the HTTP request. If specified, the MIME type of request will be multipart/form-data,
+	 * and the specified body will be appended to the parts. The body can be:
+	 * <ul>
+	 * <li>a {@link File} instance,</li>
+	 * <li>an {@link InputStream} instance,</li>
+	 * <li>a byte array,</li>
+	 * <li>a {@link String},</li>
+	 * <li>a {@link Map} - it will be transformed to JSON,</li>
+	 * <li>or anything else - which will be transformed to JSON.</li>
+	 * </ul>
+	 * The MIME type of the multipart will not be specified.
+	 * @param name name of the multipart body
+	 * @param body the object to be sent
+	 * @param <T> the type of the body object
+	 * @return this {@link RestClient} instance
+	 */
+	public <T> RestClient multipart(String name, T body);
 	
 	/**
 	 * Adds a HTTP header to the REST call.

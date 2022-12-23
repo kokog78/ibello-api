@@ -3,7 +3,7 @@
 ## 1.22.0
 
 - Új `Feature.getBackground()` metódus, ami a jellemzők hátterének tesztlépéseit tartalmazó objektumot adja vissza
-- Új `HttpClient.name(...)` és `RestClient.name(...)` metódusok, amik segítségével a multipart/form-data kérés törzsét lehet elnevezni
+- Új `HttpClient.multipart(...)` és `RestClient.multipart(...)` metódusok, amik segítségével a multipart/form-data kérést lehet összeállítani
 - A `RestClient.sendAndReceive(...)` metódus képes `byte[]` és `InputStream` típusú válasz fogadására is
 - Az XML formátumú teszteredményekben a tesztlépések kategóriája is megjelenik
 - `DATATABLE` típusú paraméter megjelenik a `Step` osztály paraméterei között

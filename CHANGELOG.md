@@ -3,7 +3,7 @@
 ## 1.22.0
 
 - New `Feature.getBackground()` method, which returns an object containing the test steps of the background of the features
-- New `HttpClient.name(...)` and `RestClient.name(...)` method to specify name of the bofy in a multipart/form-data request
+- New `HttpClient.multipart(...)` and `RestClient.multipart(...)` methods to create a multipart/form-data request
 - The `RestClient.sendAndReceive(...)` method can receive response with `byte[]` or `InputStream` type
 - The test result XML contains the category of the test steps
 - The `Step` class may contain `DATATABLE` type parameter
