@@ -15,10 +15,34 @@
  */
 package hu.ibello.bdd.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Describes an example scenario from a Cucumber example file.
  * @author Kornél Simon
  */
 public class Example extends BDDDocumentItem<Step> {
-
+	
+	private List<String> tags;
+	
+	/**
+	 * Are there any tags in the scenario?
+	 * @return <code>true</code> if the scenario has tags
+	 */
+	public boolean hasTag() {
+		return tags != null && !tags.isEmpty();
+	}
+	
+	/**
+	 * Returns the tags of the scenario.
+	 * If the scenario does not have tags, it returns an empty list.
+	 * @return the tags of the scenario
+	 */
+	public List<String> getTags() {
+		if (tags == null) {
+			tags = new ArrayList<>();
+		}
+		return tags;
+	}
 }

@@ -23,9 +23,31 @@ import java.util.List;
  * @author Kornél Simon
  */
 public class Examples extends BDDDocument {
+	
+	private List<String> tags;
 
 	private List<Example> examples;
 
+	/**
+	 * Are there any tags in the example feature?
+	 * @return <code>true</code> if the feature has tags
+	 */
+	public boolean hasTag() {
+		return tags != null && !tags.isEmpty();
+	}
+	
+	/**
+	 * Returns the tags of the example feature.
+	 * If the feature does not have tags, it returns an empty list.
+	 * @return the tags of the example feature
+	 */
+	public List<String> getTags() {
+		if (tags == null) {
+			tags = new ArrayList<>();
+		}
+		return tags;
+	}
+	
 	/**
 	 * Are there any example scenarios in the item?
 	 * @return <code>true</code> if item has examples
