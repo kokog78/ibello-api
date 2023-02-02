@@ -10,6 +10,7 @@
 - `DATATABLE` típusú paraméter megjelenik a `Step` osztály paraméterei között
 - Új `GraphTool.createLabeledGraph(...)` metódus címkézett grafikonok készítésére
 - Új `PluginInitializer.functionalities()` metódus funkcionalitások adatainak betöltéséhez
+- Új `Regression.getErrorSquare()` metódus
 
 ## 1.21.2
 

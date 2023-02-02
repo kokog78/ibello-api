@@ -10,6 +10,7 @@
 - The `Step` class may contain `DATATABLE` type parameter
 - New `GraphTool.createLabeledGraph(...)` method to create labeled plot
 - New `PluginInitializer.functionalities()` method to load functionality information
+- New `Regression.getErrorSquare()` method
 
 ## 1.21.2
 
