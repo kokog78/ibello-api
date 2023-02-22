@@ -11,6 +11,7 @@
 - Új `GraphTool.createLabeledGraph(...)` metódus címkézett grafikonok készítésére
 - Új `PluginInitializer.functionalities()` metódus funkcionalitások adatainak betöltéséhez
 - Új `Regression.getErrorSquare()` metódus
+- A `StepElement`, `TestElement`, `SpecElement` és `TestRun` osztályok új `description` mezővel bővültek
 
 ## 1.21.2
 

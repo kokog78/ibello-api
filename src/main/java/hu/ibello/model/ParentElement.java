@@ -16,9 +16,10 @@
 package hu.ibello.model;
 
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlType(propOrder={"id", "successCount", "failureCount", "errorCount", "pendingCount"})
+@XmlType(propOrder={"id", "successCount", "failureCount", "errorCount", "pendingCount", "description"})
 public class ParentElement extends Element {
 
 	private String id;
@@ -26,6 +27,7 @@ public class ParentElement extends Element {
 	private Integer failureCount;
 	private Integer errorCount;
 	private Integer pendingCount;
+	private String description;
 	
 	public String getId() {
 		return id;
@@ -110,6 +112,15 @@ public class ParentElement extends Element {
 				errorCount += value;
 			}
 		}
+	}
+	
+	public String getDescription() {
+		return description;
+	}
+	
+	@XmlElement
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 }

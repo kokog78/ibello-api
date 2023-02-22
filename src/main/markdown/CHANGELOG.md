@@ -11,6 +11,7 @@
 - New `GraphTool.createLabeledGraph(...)` method to create labeled plot
 - New `PluginInitializer.functionalities()` method to load functionality information
 - New `Regression.getErrorSquare()` method
+- New `description` field in `StepElement`, `TestElement`, `SpecElement` and `TestRun` classes
 
 ## 1.21.2
 
