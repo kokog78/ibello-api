@@ -12,6 +12,8 @@
 - New `PluginInitializer.functionalities()` method to load functionality information
 - New `Regression.getErrorSquare()` method
 - New `description` field in `StepElement`, `TestElement`, `SpecElement` and `TestRun` classes
+- New `PageObject.pageObject(...)` and `StepLibrary.pageObject(...)` methods that return a page object of the specified type
+- New `StepLibrary.stepLibrary(...)` method that returns a step library instance of the specified type
 
 ## 1.21.2
 

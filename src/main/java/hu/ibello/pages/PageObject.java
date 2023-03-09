@@ -347,4 +347,15 @@ public abstract class PageObject extends WindowRelated {
 		return tool.testData();
 	}
 	
+	/**
+	 * Returns a page object with the given type.
+	 * @param <P> type of the page object
+	 * @param type page object class
+	 * @return the instantiated page object with the given type
+	 * @throws IllegalArgumentException if the given class cannot be instantiated as page object
+	 */
+	protected <P extends PageObject> P pageObject(Class<P> type) throws IllegalArgumentException {
+		return tool.pageObject(type);
+	}
+	
 }

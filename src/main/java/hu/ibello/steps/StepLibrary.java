@@ -224,5 +224,27 @@ public abstract class StepLibrary extends WindowRelated {
 	protected CsvTransformer csv() {
 		return tool.csv();
 	}
+	
+	/**
+	 * Returns a step library with the given type.
+	 * @param <S> type of the step library
+	 * @param type step library class
+	 * @return the instantiated step library with the given type
+	 * @throws IllegalArgumentException if the given class cannot be instantiated as step library
+	 */
+	protected <S extends StepLibrary> S stepLibrary(Class<S> type) throws IllegalArgumentException {
+		return tool.stepLibrary(type);
+	}
+	
+	/**
+	 * Returns a page object with the given type.
+	 * @param <P> type of the page object
+	 * @param type page object class
+	 * @return the instantiated page object with the given type
+	 * @throws IllegalArgumentException if the given class cannot be instantiated as page object
+	 */
+	protected <P extends PageObject> P pageObject(Class<P> type) throws IllegalArgumentException {
+		return tool.pageObject(type);
+	}
 
 }

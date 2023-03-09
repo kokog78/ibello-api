@@ -20,6 +20,7 @@ import hu.ibello.apitest.RestClient;
 import hu.ibello.core.Value;
 import hu.ibello.data.TestDataBuilder;
 import hu.ibello.output.OutputHandler;
+import hu.ibello.pages.PageObject;
 import hu.ibello.transform.CsvTransformer;
 import hu.ibello.transform.JsonTransformer;
 
@@ -113,4 +114,21 @@ public interface StepLibraryTool {
 	 */
 	CsvTransformer csv();
 
+	/**
+	 * Returns a step library with the given type.
+	 * @param <S> type of the step library
+	 * @param type step library class
+	 * @return the instantiated step library with the given type
+	 * @throws IllegalArgumentException if the given class cannot be instantiated as step library
+	 */
+	<S extends StepLibrary> S stepLibrary(Class<S> type) throws IllegalArgumentException;
+	
+	/**
+	 * Returns a page object with the given type.
+	 * @param <P> type of the page object
+	 * @param type page object class
+	 * @return the instantiated page object with the given type
+	 * @throws IllegalArgumentException if the given class cannot be instantiated as page object
+	 */
+	<P extends PageObject> P pageObject(Class<P> type) throws IllegalArgumentException;
 }
