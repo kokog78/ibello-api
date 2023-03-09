@@ -118,10 +118,11 @@ public interface StepLibraryTool {
 	 * Returns a step library with the given type.
 	 * @param <S> type of the step library
 	 * @param type step library class
+	 * @param windowId the window identifier - if available
 	 * @return the instantiated step library with the given type
 	 * @throws IllegalArgumentException if the given class cannot be instantiated as step library
 	 */
-	<S extends StepLibrary> S stepLibrary(Class<S> type) throws IllegalArgumentException;
+	<S extends StepLibrary> S stepLibrary(Class<S> type, String windowId) throws IllegalArgumentException;
 	
 	/**
 	 * Returns a page object with the given type.

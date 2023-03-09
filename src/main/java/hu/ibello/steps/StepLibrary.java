@@ -227,35 +227,26 @@ public abstract class StepLibrary extends WindowRelated {
 	
 	/**
 	 * Returns a step library with the given type.
+	 * The returned step library will inherit the window identifier of this step library - see {@link #getWindowId()}.
 	 * @param <S> type of the step library
 	 * @param type step library class
 	 * @return the instantiated step library with the given type
 	 * @throws IllegalArgumentException if the given class cannot be instantiated as step library
 	 */
 	protected <S extends StepLibrary> S stepLibrary(Class<S> type) throws IllegalArgumentException {
-		return tool.stepLibrary(type);
+		return tool.stepLibrary(type, getWindowId());
 	}
 	
 	/**
-	 * Returns a page object with the given type, for the default browser window.
+	 * Returns a page object with the given type.
+	 * The returned page object will inherit the window identifier of this step library - see {@link #getWindowId()}.
 	 * @param <P> type of the page object
 	 * @param type page object class
 	 * @return the instantiated page object with the given type
 	 * @throws IllegalArgumentException if the given class cannot be instantiated as page object
 	 */
 	protected <P extends PageObject> P pageObject(Class<P> type) throws IllegalArgumentException {
-		return tool.pageObject(type, null);
-	}
-
-	/**
-	 * Returns a page object with the given type, for the given browser window.
-	 * @param <P> type of the page object
-	 * @param type page object class
-	 * @return the instantiated page object with the given type
-	 * @throws IllegalArgumentException if the given class cannot be instantiated as page object
-	 */
-	protected <P extends PageObject> P pageObject(Class<P> type, String windowId) throws IllegalArgumentException {
-		return tool.pageObject(type, windowId);
+		return tool.pageObject(type, getWindowId());
 	}
 	
 }
