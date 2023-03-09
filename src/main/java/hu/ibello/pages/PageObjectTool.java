@@ -183,8 +183,9 @@ public interface PageObjectTool {
 	 * Returns a page object with the given type.
 	 * @param <P> type of the page object
 	 * @param type page object class
+	 * @param windowId the window identifier - if available
 	 * @return the instantiated page object with the given type
 	 * @throws IllegalArgumentException if the given class cannot be instantiated as page object
 	 */
-	<P extends PageObject> P pageObject(Class<P> type) throws IllegalArgumentException;
+	<P extends PageObject> P pageObject(Class<P> type, String windowId) throws IllegalArgumentException;
 }
