@@ -16,6 +16,7 @@
 package hu.ibello.inject;
 
 import static java.lang.annotation.ElementType.FIELD;
+import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 import java.lang.annotation.Retention;
@@ -24,7 +25,7 @@ import java.lang.annotation.Target;
 /**
  * <p>
  * Main annotation of the dependency injection system.
- * It marks an injected field in a class.
+ * It marks an injected field or a public method in a class.
  * Example:
  * </p>
  * <pre>
@@ -32,6 +33,11 @@ import java.lang.annotation.Target;
  * 
  *    {@literal @}Inject
  *    private InjectedClass injectedField;
+ *    
+ *    {@literal @}Inject
+ *    public void method(InjectedClass injectedParam) {
+ *        ...
+ *    }
  * 
  * }
  * </pre>
@@ -45,7 +51,7 @@ import java.lang.annotation.Target;
  * @author Kornél Simon
  */
 @Retention(RUNTIME)
-@Target(FIELD)
+@Target({FIELD, METHOD})
 public @interface Inject {
 
 }

@@ -51,6 +51,7 @@ public interface CsvTestDataBuilder<T> extends StringBasedBuilder<CsvTestDataBui
 	
 	/**
 	 * Loads the test data from CSV file, and convert it to a list of java objects.
+	 * The objects will be automatically injected with dependencies.
 	 * If the test data cannot be found then returns <code>null</code>.
 	 * @return the loaded test data as a java list
 	 */

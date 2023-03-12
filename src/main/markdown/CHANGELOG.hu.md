@@ -14,6 +14,8 @@
 - A `StepElement`, `TestElement`, `SpecElement` és `TestRun` osztályok új `description` mezővel bővültek
 - Új `PageObject.pageObject(...)` és `StepLibrary.pageObject(...)` metódusok, amik visszaadják a megadott típusú oldal-leíró példányt
 - Új `StepLibrary.stepLibrary(...)` metódus, ami visszaadja a megadott típusú tesztlépés-könyvtár példányt
+- Az `@Inject` annotáció publikus metódusok paramétereinek injektálására is használható.
+- A `TestDataBuilder.fromJson(...)` és a `TestDataBuilder.fromCsv(...)` által visszaadott adatbetöltők függőségeket injektálnak a létrehozott objektumokba.
 
 ## 1.21.2
 

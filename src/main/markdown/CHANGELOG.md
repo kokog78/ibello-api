@@ -14,6 +14,8 @@
 - New `description` field in `StepElement`, `TestElement`, `SpecElement` and `TestRun` classes
 - New `PageObject.pageObject(...)` and `StepLibrary.pageObject(...)` methods that return a page object of the specified type
 - New `StepLibrary.stepLibrary(...)` method that returns a step library instance of the specified type
+- The `@Inject` annotation can be user to inject parameters of public methods.
+- The data loaders returned by `TestDataBuilder.fromJson(...)` and `TestDataBuilder.fromCsv(...)` inject dependencies into the created objects.
 
 ## 1.21.2
 

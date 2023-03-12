@@ -76,6 +76,7 @@ public interface JsonTestDataBuilder<T> extends StringBasedBuilder<JsonTestDataB
 	
 	/**
 	 * Loads the test data from JSON file(s), and convert it to a java object.
+	 * The object will be automatically injected with dependencies.
 	 * @return the loaded test data as a java object
 	 */
 	public T load();

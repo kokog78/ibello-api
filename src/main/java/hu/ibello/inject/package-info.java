@@ -27,7 +27,9 @@
  * </p>
  * <ul>
  * <li>
- * The {@link hu.ibello.inject.Inject} annotation marks injectable fields in classes.
+ * The {@link hu.ibello.inject.Inject} annotation marks injectable fields and public methods in classes.
+ * A field can be public, protected, package private or private, it's value will be handled by the injector.
+ * Only public methods will be called, parameters of those methods will be provided by the injector.
  * </li>
  * <li>
  * <p>
@@ -77,10 +79,10 @@
  * During the injection these steps will be performed in the given order:
  * </p>
  * <ol>
- * <li>The injector determines if the field needs a new instance, or an existing instance should be used.</li>
- * <li>If an existing instance should be used, then the injector assings that instance to the field, and the injection process ends.</li>
+ * <li>The injector determines if the value should be a new or an existing instance.</li>
+ * <li>If an existing instance should be used, then the injector assings that instance to the value, and the injection process ends.</li>
  * <li>If a new instance should be created, then the injector creates that instance with the default constructor of the injected class.</li>
- * <li>The injector performs a full injection process on the new instance, discovers it's injectable fields and assigns values to them.</li>
+ * <li>The injector performs a full injection process on the new instance, discovers it's injectable fields and methods and assigns values to them.</li>
  * <li>If the injected class implements the {@link Initializable} interface, then the {@link Initializable#initialize()} method will be called.</li>
  * <li>The injection process for that field ends.</li>
  * </ol>

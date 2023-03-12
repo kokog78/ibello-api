@@ -32,6 +32,7 @@ public interface JsonTransformer extends JsonSerializer, JsonDeserializer {
 	/**
 	 * Registers a deserializer instance into the ibello. The registered instance will deserialize a specific
 	 * java type into JSON.
+	 * @param <T> the deserializer will deserialize this type of objects
 	 * @param deserializer the deserializer instance we want to register
 	 * @throws TransformerException if the registration of the deserializer is not possible
 	 */
@@ -39,6 +40,7 @@ public interface JsonTransformer extends JsonSerializer, JsonDeserializer {
 	
 	/**
 	 * Registers a serializer instance into the ibello. The registered instance will serialize a JSON string into a specific java type.
+	 * @param <T> the serializer will serialize this type of objects
 	 * @param serializer the serializer instance we want to register
 	 * @throws TransformerException if the registration of the serializer is not possible
 	 */
