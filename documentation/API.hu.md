@@ -1230,7 +1230,7 @@ A betöltendő fájl tartalma legyen az alábbi.
 
 Ha a "color.value" konfigurációs paraméter értéke "FFFFFF", akkor a tesztadat betöltése után a "color" mezőben a "#FFFFFF" szöveg lesz.
 
-###### Függőségek injektálása
+##### Függőségek injektálása
 
 A JSON fájl alapján létrehozott objektum függőségeit az ibello automatikusan injektálja. Az alábbi példában a `Request` típusú objektum létrehozása után az `initialize` metódus automatikusan meghívódik az injektált `User` típusú paraméterrel. Hasonlóan, a `logger` mező is automatikusan értéket kap.
 
