@@ -1230,6 +1230,23 @@ A betöltendő fájl tartalma legyen az alábbi.
 
 Ha a "color.value" konfigurációs paraméter értéke "FFFFFF", akkor a tesztadat betöltése után a "color" mezőben a "#FFFFFF" szöveg lesz.
 
+###### Függőségek injektálása
+
+A JSON fájl alapján létrehozott objektum függőségeit az ibello automatikusan injektálja. Az alábbi példában a `Request` típusú objektum létrehozása után az `initialize` metódus automatikusan meghívódik az injektált `User` típusú paraméterrel. Hasonlóan, a `logger` mező is automatikusan értéket kap.
+
+```java
+public class Request {
+
+    @Inject
+    private transient MyLogger logger;
+
+    @Inject
+    public void initialize(User currentUser) {
+        ...
+    }
+}
+```
+
 ##### Speciális adatbetöltési lehetőségek
 
 A JSON fájlok egész komplex szerkezetűek is tudnak lenni, ezáltal képesek objektumstruktúra leírására is. A JSON fájl mezői lehetnek tömbök és más objektumok is. Ezek betöltődését picit módosíthatjuk az alábbi két metódus segítségével.
@@ -1507,11 +1524,9 @@ Ezek a metódusok paraméterként kapják azt a szöveget, amit majd meg fognak 
 
 ## Függőségek injektálása
 
-Az ibello keretrendszer képes egyedi osztályainkat automatikusan a teszlépés-könyvtár és az oldal-leíró osztályokba injektálni. Sőt, az ily módon injektált osztályokba is hasonlóan
-injektálhatunk más osztályokat.
+Az ibello keretrendszer képes egyedi osztályainkat automatikusan a teszlépés-könyvtár és az oldal-leíró osztályokba injektálni. Sőt, az ily módon injektált osztályokba is hasonlóan injektálhatunk más osztályokat.
 
-Csak olyan osztály injektálható, aminek van alapértelmezett konstruktora. Az injektáláshoz be kell illesztenünk egy mezőt a hivatkozó osztályba - ez lehet privát is. A mezőt meg kell
-jelölnünk az `@Inject` annotációval.
+Csak olyan osztály injektálható, aminek van alapértelmezett konstruktora. Az injektáláshoz be kell illesztenünk egy mezőt a hivatkozó osztályba - ez lehet privát is. A mezőt meg kell jelölnünk az `@Inject` annotációval.
 
 ```java
 public class MyPage extends PageObject {
@@ -1522,8 +1537,20 @@ public class MyPage extends PageObject {
 }
 ```
 
-Az injektálás a fentieken kívül még finomítható. Amennyiben az injektált osztály implementálja az `Initializable` interfészt, úgy az ibello rendszer az innen örökölt `initialize()`
-metódust automatikusan meg fogja hívni, miután létrehozta az osztály egy példányát.
+Arra is lehetőség van, hogy publikus metódusok paramétereit injektáljuk. Ha egy metódust az `@Inject` annotációval jelölünk meg, akkor az ibello meg fogja hívni azt a metódust az osztálypéldány létrehozásakor úgy, hogy átadja neki a megfelelő paramétereket is.
+
+```java
+public class MyPage extends PageObject {
+
+    // a metódus meghívódik, a tool paraméter automtikusan kap egy MyTool példányt
+    @Inject
+    public void setTool(MyTool tool) {
+        ...
+    }
+}
+```
+
+Az injektálás a fentieken kívül még finomítható. Amennyiben az injektált osztály implementálja az `Initializable` interfészt, úgy az ibello rendszer az innen örökölt `initialize()` metódust automatikusan meg fogja hívni, miután létrehozta az osztály egy példányát.
 
 ```java
 public class MyTool implements Initializable {
