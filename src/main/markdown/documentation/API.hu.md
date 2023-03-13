@@ -1542,7 +1542,7 @@ Arra is lehetőség van, hogy publikus metódusok paramétereit injektáljuk. Ha
 ```java
 public class MyPage extends PageObject {
 
-    // a metódus meghívódik, a tool paraméter automtikusan kap egy MyTool példányt
+    // a metódus meghívódik, a tool paraméter automatikusan kap egy MyTool példányt
     @Inject
     public void setTool(MyTool tool) {
         ...
@@ -1574,15 +1574,24 @@ Az `@Injectable` annotáció egyetlen paramétere a kívánt szkóp, ami lehet:
 
 | Paraméter             | Szkóp leírása                                              |
 | --------------------- | ---------------------------------------------------------- |
-| `Scope.PROTOTYPE`     | Minden új injektálási helyhez új példány keletkezik.       |
-| `Scope.TEST`          | Minden egyes teszt metódus futáshoz új példány keletkezik. |
-| `Scope.SPECIFICATION` | Minden teszt osztály futásához új példány keletkezik.      |
-| `Scope.SESSION`       | Minden java szálhoz új példány keletkezik.                 |
-| `Scope.SINGLETON`     | A tesztek futása során csak egyetlen példány jön létre.    |
+| `Scope.PROTOTYPE`       | Minden új injektálási helyhez új példány keletkezik.       |
+| `Scope.TEST`           | Minden egyes teszt metódus futáshoz új példány keletkezik. |
+| `Scope.SPECIFICATION`   | Minden teszt osztály futásához új példány keletkezik.      |
+| `Scope.SESSION`        | Minden java szálhoz új példány keletkezik.                 |
+| `Scope.SINGLETON`      | A tesztek futása során csak egyetlen példány jön létre.    |
 
 Az ibello rendszerben az `@Inject` annotációval végrehajtott injektálás a támogatott módja annak, hogy extra logikát illesszünk a tesztjeinkbe. A tesztek futása során szükség lehet
 például háttérrendszerek konfigurálására, hogy a kívánt eredményt adják, miközben a böngészőt vezéreljük. Az ilyen típusú igényekhez létrehozhatunk az ibello API-tól független
 osztályokat, amiket az ibello függőség injektálásának segítségével illeszthetünk be a tesztek kódjába.
+
+Az `@Inject` annotáció segítségével nemcsak saját osztályokat injektálhatunk. Az alábbi ibello-s interfészek implementációjit is felhasználhatjuk:
+
+| Interfész                           | Leírás                                                    |
+| ----------------------------------- | --------------------------------------------------------- |
+| `hu.ibello.data.TestDataBuilder`       | Tesztadatok betöltésére szolgál.                          |
+| `hu.ibello.transform.JsonTransformer`  | JSON formátumú adatok objektumokká alakítása és vissza.    |
+| `hu.ibello.transform.CsvTransformer`   | CSV formátumú adatok objektum listává alakítása és vissza. |
+| `hu.ibello.functions.RegressionTool`   | Függvényillesztés ponthalmazra.                            | 
 
 ## Egyéb eszközök
 
