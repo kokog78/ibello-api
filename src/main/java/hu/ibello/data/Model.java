@@ -41,6 +41,20 @@ import java.lang.annotation.Target;
  * that the class can be used to load test data into it.
  * Instances of the class can also be used as parameters for test steps.
  * </p>
+ * <p>
+ * We can add the {@link Editable} annotation to the fields of a model class.
+ * With it we can specify what kind of editor should be used to specify value for that field.
+ * For example, the "requirementIds" field in this model class will contain requirement identifiers:
+ * </p>
+ * <pre>
+ * {@literal @}Model
+ * public class User {
+ * 
+ *     {@literal @}Editable(Editor.REQUIREMENT)
+ *     public List{@literal <}String{@literal >} requirementIds;
+ * 
+ * }
+ * </pre>
  * @author Kornél Simon
  */
 @Retention(RUNTIME)

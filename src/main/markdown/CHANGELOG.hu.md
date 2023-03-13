@@ -16,6 +16,7 @@
 - Új `StepLibrary.stepLibrary(...)` metódus, ami visszaadja a megadott típusú tesztlépés-könyvtár példányt
 - Az `@Inject` annotáció publikus metódusok paramétereinek injektálására is használható.
 - A `TestDataBuilder.fromJson(...)` és a `TestDataBuilder.fromCsv(...)` által visszaadott adatbetöltők függőségeket injektálnak a létrehozott objektumokba.
+- Új `@Editable` annotáció, amivel modell osztályok mezőihez lehet speciális szerkesztőt rendelni.
 
 ## 1.21.2
 

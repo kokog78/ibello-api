@@ -16,6 +16,7 @@
 - New `StepLibrary.stepLibrary(...)` method that returns a step library instance of the specified type
 - The `@Inject` annotation can be user to inject parameters of public methods.
 - The data loaders returned by `TestDataBuilder.fromJson(...)` and `TestDataBuilder.fromCsv(...)` inject dependencies into the created objects.
+- New `@Editable` annotation to assign special editors to fields of model classes.
 
 ## 1.21.2
 
