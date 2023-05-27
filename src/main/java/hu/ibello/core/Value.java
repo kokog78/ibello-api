@@ -366,8 +366,9 @@ public interface Value {
 	/**
 	 * Transforms the encapsulated value into an enum. If the value is <code>null</code>, the result will be the given <code>defaultValue</code>.
 	 * If the value is the right type, then it will be returned. Otherwise, the method tries to parse the result
-	 * from the String representation of the value. For that, the name of the enum constants will be used (see {@link Enum#name()}).
-	 * The method is able to find the right enum constant case-insensitively. If it is not possible, then the result will be the <code>defaultValue</code>.
+	 * from the String representation of the value. For that, the name of the enum constants will be used by default (see {@link Enum#name()}).
+	 * The method is able to find the right enum constant case-insensitively. If an enum constant has a {@link Name} annotation, then the search uses it's value too.
+	 * If the desired constant cannot be found, then the result will be the <code>defaultValue</code>.
 	 * @param <E> the type of the result
 	 * @param defaultValue default value which will be returned if value cannot be parsed to an enum constant; should be non-null
 	 * @return the value as enum constant
@@ -394,7 +395,8 @@ public interface Value {
 	 * in the array or collection as enum constants.</li>
 	 * </ul>
 	 * If the method parses a string as enum constant, then it tries to match the string value to the name of
-	 * the constant. The method is able to find the right enum constants case-insensitively.
+	 * the constant by default (see {@link Enum#name()}). The method is able to find the right enum constants case-insensitively.
+	 * If an enum constant has a {@link Name} annotation, then the search uses it's value too.
 	 * Invalid names will not result an exception - they just skipped.
 	 * Therefore it is possible to have an empty set as result.
 	 * @param <E> the desired enum type
