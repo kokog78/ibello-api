@@ -80,4 +80,12 @@ public interface Requirement {
 	public default boolean isActive() {
 		return !isArchived();
 	}
+	
+	/**
+	 * It is possible to assign a color to a requirement.
+	 * This method returns the HTML code of that color.
+	 * It may return <code>null</code> or empty string.
+	 * @return the color of the requirement
+	 */
+	public String getColor();
 }
