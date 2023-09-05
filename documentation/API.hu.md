@@ -184,7 +184,7 @@ public class UserData {
 }
 ```
 
-Most pedig illesszük me a `UserData` osztály egy példányát a teszlépés-könyvtárba! Az oldal-leírókkal és a tesztlépés-könyvtárakkal ellentétben
+Most pedig illesszük be a `UserData` osztály egy példányát a teszlépés-könyvtárba! Az oldal-leírókkal és a tesztlépés-könyvtárakkal ellentétben
 ehhez most használnunk kell az `@Inject` annotációt, az ibello innen tudja, hogy egy egyéni osztály példányát injektálnia kell:
 
 ```java
