@@ -22,6 +22,7 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Consumer;
 
 /**
  * This interface describes a REST client which sends a single request and receives a response.
@@ -212,6 +213,22 @@ public interface RestClient {
 	 */
 	public RestClient withoutCertificateValidation();
 	
+	/**
+	 * Specifies a body consumer instance which will receive the body content before the request is sent.
+	 * With this method we can inject a body-related logic into the behavior of the client.
+	 * Special cases:
+	 * <ul>
+	 * <li>If the request body is empty (for example, for a GET or DELETE request), then the consumer will receive a <code>null</code> value.</li>
+	 * <li>If the request is a multipart request, then the consumer will be called for every body parts.</li>
+	 * <li>If the content of the body is a file or an input stream, then the byte content of that file or stream will be input parameter of the consumer.</li>
+	 * <li>If the content of the body is a string, then the charset which is used to transform the string to bytes will be read out from the content type.</li>
+	 * <li>If the charset is not specified in the content type, the it will be UTF-8.</li>
+	 * </ul>
+	 * @param consumer body consumer instance
+	 * @return this {@link RestClient} instance
+	 */
+	public RestClient bodyConsumer(Consumer<byte[]> consumer);
+
 	/**
 	 * Executes the REST call: sends the request and receives the response.
 	 * It automatically transforms the response JSON to a java object.

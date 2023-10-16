@@ -6,6 +6,7 @@
 - Új `Examples.getTags()` és `Example.getTags()` metódusok a példákban szereplő címkék számára
 - Új `HttpClient.multipart(...)` és `RestClient.multipart(...)` metódusok, amik segítségével a multipart/form-data kérést lehet összeállítani
 - A `RestClient.sendAndReceive(...)` metódus képes `byte[]` és `InputStream` típusú válasz fogadására is
+- Új `RestClient.bodyConsumer(...)` metódus, amivel a kérés törzsét lehet feldolgozni még a REST hívás kiküldése előtt
 - Az XML formátumú teszteredményekben a tesztlépések kategóriája is megjelenik
 - `DATATABLE` típusú paraméter megjelenik a `Step` osztály paraméterei között
 - Új `GraphTool.createLabeledGraph(...)` metódus címkézett grafikonok készítésére
