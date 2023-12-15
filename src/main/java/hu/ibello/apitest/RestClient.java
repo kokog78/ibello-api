@@ -85,6 +85,16 @@ public interface RestClient {
 	public RestClient url(URL url);
 
 	/**
+	 * Sets the first part of the URL used in the HTTP request.
+	 * This method replaces the usage of <code>ibello.url.base</code> configuration property in the URL.
+	 * It means that if the {@link #url(String)} method is called with relative value, then
+	 * the final URL will be constructed from the base URL and the relative one.
+	 * @param baseUrl the base URL of the request
+	 * @return this {@link RestClient} instance
+	 */
+	public RestClient urlBase(String baseUrl);
+
+	/**
 	 * Sets the HTTP method of the REST call.
 	 * @param method the HTTP method
 	 * @return this {@link RestClient} instance
