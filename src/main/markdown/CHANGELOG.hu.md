@@ -19,6 +19,7 @@
 - A `TestDataBuilder.fromJson(...)` és a `TestDataBuilder.fromCsv(...)` által visszaadott adatbetöltők függőségeket injektálnak a létrehozott objektumokba
 - Új `@Editable` annotáció, amivel modell osztályok mezőihez lehet speciális szerkesztőt rendelni
 - Új `Requirement.getColor()` metódus, amivel a követelményhez rendelt szín kérhető le
+- Új szövegformátum a teszteredményekben: `TextFormatKind.PROPERTIES`
 
 ## 1.21.2
 

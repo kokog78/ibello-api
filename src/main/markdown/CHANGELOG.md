@@ -19,6 +19,7 @@
 - The data loaders returned by `TestDataBuilder.fromJson(...)` and `TestDataBuilder.fromCsv(...)` inject dependencies into the created objects
 - New `@Editable` annotation to assign special editors to fields of model classes
 - New `Requirement.getColor()` method which returns the color code assigned to the requirement
+- New text format in test results: `TextFormatKind.PROPERTIES`
 
 ## 1.21.2
 
