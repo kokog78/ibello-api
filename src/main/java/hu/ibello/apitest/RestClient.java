@@ -100,6 +100,36 @@ public interface RestClient {
 	 * @return this {@link RestClient} instance
 	 */
 	public RestClient method(HttpMethod method);
+
+	/**
+	 * Sets the HTTP method of the request to GET.
+	 * @return this {@link RestClient} instance
+	 */
+	public RestClient get();
+
+	/**
+	 * Sets the HTTP method of the request to POST.
+	 * @return this {@link RestClient} instance
+	 */
+	public RestClient post();
+
+	/**
+	 * Sets the HTTP method of the request to PUT.
+	 * @return this {@link RestClient} instance
+	 */
+	public RestClient put();
+
+	/**
+	 * Sets the HTTP method of the request to DELETE.
+	 * @return this {@link RestClient} instance
+	 */
+	public RestClient delete();
+
+	/**
+	 * Sets the HTTP method of the request to PATCH.
+	 * @return this {@link RestClient} instance
+	 */
+	public RestClient patch();
 	
 	/**
 	 * Sets the MIME type of the REST call's content.

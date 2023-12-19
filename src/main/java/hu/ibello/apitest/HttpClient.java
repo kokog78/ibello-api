@@ -82,10 +82,36 @@ public interface HttpClient {
 	 * @return this {@link HttpClient} instance
 	 */
 	public HttpClient method(HttpMethod method);
-	
-	public default HttpClient get() {
-		return method(HttpMethod.GET);
-	}
+
+	/**
+	 * Sets the HTTP method of the request to GET.
+	 * @return this {@link HttpClient} instance
+	 */
+	public HttpClient get();
+
+	/**
+	 * Sets the HTTP method of the request to POST.
+	 * @return this {@link HttpClient} instance
+	 */
+	public HttpClient post();
+
+	/**
+	 * Sets the HTTP method of the request to PUT.
+	 * @return this {@link HttpClient} instance
+	 */
+	public HttpClient put();
+
+	/**
+	 * Sets the HTTP method of the request to DELETE.
+	 * @return this {@link HttpClient} instance
+	 */
+	public HttpClient delete();
+
+	/**
+	 * Sets the HTTP method of the request to PATCH.
+	 * @return this {@link HttpClient} instance
+	 */
+	public HttpClient patch();
 	
 	/**
 	 * Sets the MIME type of the HTTP request's content.
