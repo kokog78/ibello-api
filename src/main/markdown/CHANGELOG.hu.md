@@ -20,6 +20,13 @@
 - Új `@Editable` annotáció, amivel modell osztályok mezőihez lehet speciális szerkesztőt rendelni
 - Új `Requirement.getColor()` metódus, amivel a követelményhez rendelt szín kérhető le
 - Új szövegformátum a teszteredményekben: `TextFormatKind.PROPERTIES`
+- Új `HttpClient.urlBase()` és `RestClient.urlBase()` metódusok, amik segítségével be lehet állítani a használni kívánt URL első felét
+- Új `HttpClient.get()` és `RestClient.get()` metódusok, amik segítségével GET kérést lehet összeállítani
+- Új `HttpClient.post()` és `RestClient.post()` metódusok, amik segítségével POST kérést lehet összeállítani
+- Új `HttpClient.put()` és `RestClient.put()` metódusok, amik segítségével PUT kérést lehet összeállítani
+- Új `HttpClient.delete()` és `RestClient.delete()` metódusok, amik segítségével DELETE kérést lehet összeállítani
+- Új `HttpClient.patch()` és `RestClient.patch()` metódusok, amik segítségével PATCH kérést lehet összeállítani
+
 
 ## 1.21.2
 

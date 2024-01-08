@@ -20,6 +20,13 @@
 - New `@Editable` annotation to assign special editors to fields of model classes
 - New `Requirement.getColor()` method which returns the color code assigned to the requirement
 - New text format in test results: `TextFormatKind.PROPERTIES`
+- New `HttpClient.urlBase()` and `RestClient.urlBase()` methods to set the first part of the URL used in the request
+- New `HttpClient.get()` and `RestClient.get()` methods to create GET request
+- New `HttpClient.post()` and `RestClient.post()` methods to create POST request
+- New `HttpClient.put()` and `RestClient.put()` methods to create PUT request
+- New `HttpClient.delete()` and `RestClient.delete()` methods to create DELETE request
+- New `HttpClient.patch()` and `RestClient.patch()` methods to create PATCH request
+
 
 ## 1.21.2
 
