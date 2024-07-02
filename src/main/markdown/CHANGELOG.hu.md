@@ -13,6 +13,7 @@
 - Új `PluginInitializer.functionalities()` metódus funkcionalitások adatainak betöltéséhez
 - Új `Regression.getErrorSquare()` metódus
 - A `StepElement`, `TestElement`, `SpecElement` és `TestRun` osztályok új `description` mezővel bővültek
+- Új `TestRun.responsibleParty` mező a teszteredményért felelős személy/szervezet feltüntetésére
 - Új `PageObject.pageObject(...)` és `StepLibrary.pageObject(...)` metódusok, amik visszaadják a megadott típusú oldal-leíró példányt
 - Új `StepLibrary.stepLibrary(...)` metódus, ami visszaadja a megadott típusú tesztlépés-könyvtár példányt
 - Az `@Inject` annotáció publikus metódusok paramétereinek injektálására is használható

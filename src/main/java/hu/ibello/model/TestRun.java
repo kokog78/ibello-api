@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement(name="test-run")
-@XmlType(propOrder={"modelVersion", "applicationVersion", "startTime", "endTime", "baseDirectory", "browser", "headless", "defaultTimeout", "counters", "windowSize", "logFile", "tag", "spec", "memoryUsage", "apdex"})
+@XmlType(propOrder={"modelVersion", "applicationVersion", "startTime", "endTime", "baseDirectory", "browser", "headless", "defaultTimeout", "counters", "windowSize", "responsibleParty", "logFile", "tag", "spec", "memoryUsage", "apdex"})
 public class TestRun extends ParentElement implements ITestRun {
 
 	private String modelVersion;
@@ -38,6 +38,7 @@ public class TestRun extends ParentElement implements ITestRun {
 	private long defaultTimeout;
 	private Counters counters;
 	private WindowSize windowSize;
+	private String responsibleParty;
 	private List<LogFile> logFile;
 	private List<String> tag;
 	private List<SpecElement> spec;
@@ -137,6 +138,15 @@ public class TestRun extends ParentElement implements ITestRun {
 	@XmlElement(name="window-size")
 	public void setWindowSize(WindowSize windowSize) {
 		this.windowSize = windowSize;
+	}
+	
+	public String getResponsibleParty() {
+		return responsibleParty;
+	}
+	
+	@XmlElement(name="responsible-party")
+	public void setResponsibleParty(String responsibleParty) {
+		this.responsibleParty = responsibleParty;
 	}
 	
 	public List<LogFile> getLogFile() {

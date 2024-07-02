@@ -13,6 +13,7 @@
 - New `PluginInitializer.functionalities()` method to load functionality information
 - New `Regression.getErrorSquare()` method
 - New `description` field in `StepElement`, `TestElement`, `SpecElement` and `TestRun` classes
+- New `TestRun.responsibleParty` field which can hold the responsible person/organization
 - New `PageObject.pageObject(...)` and `StepLibrary.pageObject(...)` methods that return a page object of the specified type
 - New `StepLibrary.stepLibrary(...)` method that returns a step library instance of the specified type
 - The `@Inject` annotation can be user to inject parameters of public methods
