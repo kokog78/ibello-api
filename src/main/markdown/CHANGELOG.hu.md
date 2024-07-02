@@ -28,7 +28,6 @@
 - Új `HttpClient.delete()` és `RestClient.delete()` metódusok, amik segítségével DELETE kérést lehet összeállítani
 - Új `HttpClient.patch()` és `RestClient.patch()` metódusok, amik segítségével PATCH kérést lehet összeállítani
 
-
 ## 1.21.2
 
 - Új `latencyMs` mező a teszteredmény elemeiben 

@@ -28,7 +28,6 @@
 - New `HttpClient.delete()` and `RestClient.delete()` methods to create DELETE request
 - New `HttpClient.patch()` and `RestClient.patch()` methods to create PATCH request
 
-
 ## 1.21.2
 
 - Elements of the test result now have `latencyMs` field
