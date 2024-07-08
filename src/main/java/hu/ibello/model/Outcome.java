@@ -20,10 +20,24 @@ public enum Outcome {
 	SUCCESS,
 	FAILURE,
 	ERROR,
-	PENDING;
+	PENDING,
+	BLOCKED,
+	SKIPPED;
 	
 	public boolean isFailed() {
-		return this==ERROR || this==FAILURE;
+		return this == ERROR || this == FAILURE;
+	}
+	
+	public boolean isSuccess() {
+		return this == SUCCESS;
+	}
+	
+	public boolean isExecuted() {
+		return this != PENDING && this != BLOCKED && this != SKIPPED;
+	}
+	
+	public boolean isPending() {
+		return this == PENDING;
 	}
 	
 	public boolean isStrongerThan(Outcome outcome) {
@@ -31,12 +45,15 @@ public enum Outcome {
 			return true;
 		} else {
 			switch (outcome) {
+			case BLOCKED:
+			case SKIPPED:
+				return this.isSuccess() || this.isFailed();
 			case PENDING:
-				return this!=PENDING;
+				return !this.isPending();
 			case SUCCESS:
 				return this.isFailed();
 			case FAILURE:
-				return this==Outcome.ERROR;
+				return this == Outcome.ERROR;
 			case ERROR:
 				return false;
 			default:

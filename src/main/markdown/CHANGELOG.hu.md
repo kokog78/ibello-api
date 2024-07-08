@@ -12,6 +12,7 @@
 - Új `GraphTool.createLabeledGraph(...)` metódus címkézett grafikonok készítésére
 - Új `PluginInitializer.functionalities()` metódus funkcionalitások adatainak betöltéséhez
 - Új `Regression.getErrorSquare()` metódus
+- Új `Outcome.BLOCKED` és `Outcome.SKIPPED` teszteredmény értékek
 - A `StepElement`, `TestElement`, `SpecElement` és `TestRun` osztályok új `description` mezővel bővültek
 - Új `TestRun.responsibleParty` mező a teszteredményért felelős személy/szervezet feltüntetésére
 - Új `PageObject.pageObject(...)` és `StepLibrary.pageObject(...)` metódusok, amik visszaadják a megadott típusú oldal-leíró példányt
