@@ -44,22 +44,8 @@ public enum Outcome {
 		if (outcome==null) {
 			return true;
 		} else {
-			switch (outcome) {
-			case BLOCKED:
-				return this.isFailed();
-			case SKIPPED:
-				return this != SKIPPED;
-			case PENDING:
-				return this != SKIPPED && this != PENDING;
-			case SUCCESS:
-				return this.isFailed() || this == BLOCKED;
-			case FAILURE:
-				return this == Outcome.ERROR;
-			case ERROR:
-				return false;
-			default:
-				return false;
-			}
+			int diff = getPriority() - outcome.getPriority();
+			return diff < 0;
 		}
 	}
 	
@@ -71,5 +57,24 @@ public enum Outcome {
 		} else {
 			return outcome2;
 		}
+	}
+	
+	private int getPriority() {
+		switch (this) {
+		case ERROR:
+			return 1;
+		case FAILURE:
+			return 2;
+		case BLOCKED:
+			return 3;
+		case SUCCESS:
+			return 4;
+		case SKIPPED:
+			return 5;
+		case PENDING:
+			return 6;
+		}
+		// not possible
+		return 100;
 	}
 }
