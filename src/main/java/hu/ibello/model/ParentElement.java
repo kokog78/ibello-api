@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlType(propOrder={"id", "successCount", "failureCount", "errorCount", "pendingCount", "description"})
+@XmlType(propOrder={"id", "successCount", "failureCount", "errorCount", "blockedCount", "skippedCount", "pendingCount", "description"})
 public class ParentElement extends Element {
 
 	private String id;
@@ -27,6 +27,8 @@ public class ParentElement extends Element {
 	private Integer failureCount;
 	private Integer errorCount;
 	private Integer pendingCount;
+	private Integer blockedCount;
+	private Integer skippedCount;
 	private String description;
 	
 	public String getId() {
@@ -110,6 +112,44 @@ public class ParentElement extends Element {
 				errorCount = value;
 			} else {
 				errorCount += value;
+			}
+		}
+	}
+	
+	public Integer getBlockedCount() {
+		return blockedCount;
+	}
+	
+	@XmlAttribute(name="blocked-count")
+	public void setBlockedCount(Integer blockedCount) {
+		this.blockedCount = blockedCount;
+	}
+
+	public void addBlockedCount(int value) {
+		if (value != 0) {
+			if (blockedCount == null) {
+				blockedCount = value;
+			} else {
+				blockedCount += value;
+			}
+		}
+	}
+	
+	public Integer getSkippedCount() {
+		return skippedCount;
+	}
+	
+	@XmlAttribute(name="skipped-count")
+	public void setSkippedCount(Integer skippedCount) {
+		this.skippedCount = skippedCount;
+	}
+
+	public void addSkippedCount(int value) {
+		if (value != 0) {
+			if (skippedCount == null) {
+				skippedCount = value;
+			} else {
+				skippedCount += value;
 			}
 		}
 	}
