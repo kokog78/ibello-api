@@ -48,9 +48,9 @@ public enum Outcome {
 			case BLOCKED:
 				return this.isSuccess() || this.isFailed();
 			case SKIPPED:
-				return this != SKIPPED && this != PENDING;
+				return this != SKIPPED;
 			case PENDING:
-				return !this.isPending();
+				return this != SKIPPED && this != PENDING;
 			case SUCCESS:
 				return this.isFailed();
 			case FAILURE:
