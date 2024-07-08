@@ -46,13 +46,13 @@ public enum Outcome {
 		} else {
 			switch (outcome) {
 			case BLOCKED:
-				return this.isSuccess() || this.isFailed();
+				return this.isFailed();
 			case SKIPPED:
 				return this != SKIPPED;
 			case PENDING:
 				return this != SKIPPED && this != PENDING;
 			case SUCCESS:
-				return this.isFailed();
+				return this.isFailed() || this == BLOCKED;
 			case FAILURE:
 				return this == Outcome.ERROR;
 			case ERROR:

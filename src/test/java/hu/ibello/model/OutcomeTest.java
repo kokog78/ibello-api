@@ -52,6 +52,31 @@ public class OutcomeTest {
 		assertStronger(Outcome.FAILURE, Outcome.ERROR, Outcome.ERROR);
 	}
 	
+	@Test
+	public void skipped_is_weaker_than_pending() throws Exception {
+		assertStronger(Outcome.SKIPPED, Outcome.PENDING, Outcome.PENDING);
+	}
+	
+	@Test
+	public void skipped_is_weaker_than_blocked() throws Exception {
+		assertStronger(Outcome.SKIPPED, Outcome.BLOCKED, Outcome.BLOCKED);
+	}
+	
+	@Test
+	public void success_is_weaker_than_blocked() throws Exception {
+		assertStronger(Outcome.BLOCKED, Outcome.SUCCESS, Outcome.BLOCKED);
+	}
+	
+	@Test
+	public void blocked_is_weaker_than_failure() throws Exception {
+		assertStronger(Outcome.BLOCKED, Outcome.FAILURE, Outcome.FAILURE);
+	}
+	
+	@Test
+	public void skipped_has_same_power_than_skipped() throws Exception {
+		assertStronger(Outcome.SKIPPED, Outcome.SKIPPED, Outcome.SKIPPED);
+	}
+	
 	private void assertStronger(Outcome outcome1, Outcome outcome2, Outcome result) {
 		Outcome stronger = Outcome.getStronger(outcome1, outcome2);
 		assertThat(stronger).isEqualTo(result);
