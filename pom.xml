@@ -198,9 +198,9 @@
 				<configuration>
 					<transformSchemas>
 						<transformSchema>
-							<uri>http://ibello.hu/model/1.4</uri>
+							<uri>http://ibello.hu/model/1.7</uri>
 							<toPrefix>ibello</toPrefix>
-							<toFile>ibello.hu_model_1.4.xsd</toFile>
+							<toFile>ibello.hu_model_1.7.xsd</toFile>
 						</transformSchema>
 					</transformSchemas>
 					<includes>
