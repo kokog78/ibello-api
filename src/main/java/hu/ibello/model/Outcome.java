@@ -67,11 +67,11 @@ public enum Outcome {
 			return 2;
 		case BLOCKED:
 			return 3;
-		case SUCCESS:
-			return 4;
-		case SKIPPED:
-			return 5;
 		case PENDING:
+			return 4;
+		case SUCCESS:
+			return 5;
+		case SKIPPED:
 			return 6;
 		}
 		// not possible

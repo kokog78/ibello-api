@@ -23,8 +23,8 @@ public class OutcomeTest {
 	}
 	
 	@Test
-	public void pending_is_weaker_than_success() throws Exception {
-		assertStronger(Outcome.PENDING, Outcome.SUCCESS, Outcome.SUCCESS);
+	public void success_is_weaker_than_pending() throws Exception {
+		assertStronger(Outcome.PENDING, Outcome.SUCCESS, Outcome.PENDING);
 	}
 	
 	@Test
@@ -53,8 +53,8 @@ public class OutcomeTest {
 	}
 	
 	@Test
-	public void pending_is_weaker_than_skipped() throws Exception {
-		assertStronger(Outcome.SKIPPED, Outcome.PENDING, Outcome.SKIPPED);
+	public void skipped_is_weaker_than_pending() throws Exception {
+		assertStronger(Outcome.SKIPPED, Outcome.PENDING, Outcome.PENDING);
 	}
 	
 	@Test
