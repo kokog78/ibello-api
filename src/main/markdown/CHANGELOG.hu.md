@@ -14,6 +14,7 @@
 - Új `Regression.getErrorSquare()` metódus
 - Új `Outcome.BLOCKED` és `Outcome.SKIPPED` teszteredmény értékek
 - A `StepElement`, `TestElement`, `SpecElement` és `TestRun` osztályok új `description` mezővel bővültek
+- A `StepElement`, `TestElement`, `SpecElement` és `TestRun` osztályok új `comment` mezővel bővültek
 - Új `TestRun.responsibleParty` mező a teszteredményért felelős személy/szervezet feltüntetésére
 - Új `PageObject.pageObject(...)` és `StepLibrary.pageObject(...)` metódusok, amik visszaadják a megadott típusú oldal-leíró példányt
 - Új `StepLibrary.stepLibrary(...)` metódus, ami visszaadja a megadott típusú tesztlépés-könyvtár példányt

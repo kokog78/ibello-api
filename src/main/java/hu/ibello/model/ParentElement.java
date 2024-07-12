@@ -15,11 +15,14 @@
  */
 package hu.ibello.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlType(propOrder={"id", "successCount", "failureCount", "errorCount", "blockedCount", "skippedCount", "pendingCount", "description"})
+@XmlType(propOrder={"id", "successCount", "failureCount", "errorCount", "blockedCount", "skippedCount", "pendingCount", "description", "comment"})
 public class ParentElement extends Element {
 
 	private String id;
@@ -30,6 +33,7 @@ public class ParentElement extends Element {
 	private Integer blockedCount;
 	private Integer skippedCount;
 	private String description;
+	private List<Comment> comment;
 	
 	public String getId() {
 		return id;
@@ -161,6 +165,17 @@ public class ParentElement extends Element {
 	@XmlElement
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	public List<Comment> getComment() {
+		if (comment == null) {
+			comment = new ArrayList<>();
+		}
+		return comment;
+	}
+	
+	public void setComment(List<Comment> comment) {
+		this.comment = comment;
 	}
 	
 }
