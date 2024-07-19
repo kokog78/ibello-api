@@ -11,6 +11,7 @@
 - The `Step` class may contain `DATATABLE` type parameter
 - New `GraphTool.createLabeledGraph(...)` method to create labeled plot
 - New `PluginInitializer.functionalities()` method to load functionality information
+- New `PluginInitializer.pdf()` method to save HTML pages to PDF files
 - New `Regression.getErrorSquare()` method
 - New `Outcome.BLOCKED` and `Outcome.SKIPPED` test result values
 - New `description` field in `StepElement`, `TestElement`, `SpecElement` and `TestRun` classes
@@ -29,9 +30,6 @@
 - New `HttpClient.put()` and `RestClient.put()` methods to create PUT request
 - New `HttpClient.delete()` and `RestClient.delete()` methods to create DELETE request
 - New `HttpClient.patch()` and `RestClient.patch()` methods to create PATCH request
-
-## 1.21.2
-
 - Elements of the test result now have `latencyMs` field
 - New `Value.toXMLGregorianCalendar` method
 - The `@Performance` annotation may contain multiple group identifiers

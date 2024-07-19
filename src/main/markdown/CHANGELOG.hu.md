@@ -11,6 +11,7 @@
 - `DATATABLE` típusú paraméter megjelenik a `Step` osztály paraméterei között
 - Új `GraphTool.createLabeledGraph(...)` metódus címkézett grafikonok készítésére
 - Új `PluginInitializer.functionalities()` metódus funkcionalitások adatainak betöltéséhez
+- Új `PluginInitializer.pdf()` metódus HTML oldalak PDF fájlba történő mentéséhez
 - Új `Regression.getErrorSquare()` metódus
 - Új `Outcome.BLOCKED` és `Outcome.SKIPPED` teszteredmény értékek
 - A `StepElement`, `TestElement`, `SpecElement` és `TestRun` osztályok új `description` mezővel bővültek
@@ -29,9 +30,6 @@
 - Új `HttpClient.put()` és `RestClient.put()` metódusok, amik segítségével PUT kérést lehet összeállítani
 - Új `HttpClient.delete()` és `RestClient.delete()` metódusok, amik segítségével DELETE kérést lehet összeállítani
 - Új `HttpClient.patch()` és `RestClient.patch()` metódusok, amik segítségével PATCH kérést lehet összeállítani
-
-## 1.21.2
-
 - Új `latencyMs` mező a teszteredmény elemeiben 
 - Új `Value.toXMLGregorianCalendar` metódus
 - A `@Performance` annotációban több csoportazonosító is megadható

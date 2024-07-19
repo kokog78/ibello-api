@@ -24,6 +24,7 @@ import hu.ibello.data.TestDataBuilder;
 import hu.ibello.functions.RegressionTool;
 import hu.ibello.graph.GraphTool;
 import hu.ibello.output.TestResultLoader;
+import hu.ibello.pdf.PdfTool;
 import hu.ibello.requirements.FunctionalityHandler;
 import hu.ibello.requirements.RequirementHandler;
 import hu.ibello.table.TableTool;
@@ -171,6 +172,12 @@ public interface PluginInitializer {
 	 * @return CSV transformer instance
 	 */
 	public CsvTransformer csv();
+	
+	/**
+	 * Returns an object which can be used to save HTML pages to PDF files.
+	 * @return PDF tool instance
+	 */
+	public PdfTool pdf();
 	
 	/**
 	 * Returns a regression tool instance.
