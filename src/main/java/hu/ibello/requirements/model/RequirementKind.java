@@ -23,12 +23,12 @@ package hu.ibello.requirements.model;
 public enum RequirementKind {
 
 	/**
-	 * Business level requirements are higher ones. In many cases they are containing lower-level (technical) requirements.
+	 * Business level requirements are higher ones. In many cases they are containing lower-level requirements.
 	 */
 	BUSINESS,
 	
 	/**
-	 * Technical requirement is the lowest level requirement. It should not contain any child requirements.
+	 * Technical requirements are below the business level ones. In many cases they do not contain any child requirements.
 	 */
 	TECHNICAL;
 }
