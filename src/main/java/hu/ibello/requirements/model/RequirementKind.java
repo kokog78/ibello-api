@@ -28,7 +28,7 @@ public enum RequirementKind {
 	BUSINESS,
 	
 	/**
-	 * Technical requirement is the lowest level requirement. It should not contains any child requirements.
+	 * Technical requirement is the lowest level requirement. It should not contain any child requirements.
 	 */
 	TECHNICAL;
 }
