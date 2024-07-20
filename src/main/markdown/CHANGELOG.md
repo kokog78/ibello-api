@@ -2,6 +2,8 @@
 
 ## 1.22.0
 
+2024-07-20
+
 - New `Feature.getBackground()` method, which returns an object containing the test steps of the background of the features
 - New `Examples.getTags()` and `Example.getTags()` methods to give back the tags from examples
 - New `HttpClient.multipart(...)` and `RestClient.multipart(...)` methods to create a multipart/form-data request

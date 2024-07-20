@@ -2,6 +2,8 @@
 
 ## 1.22.0
 
+2024-07-20
+
 - Új `Feature.getBackground()` metódus, ami a jellemzők hátterének tesztlépéseit tartalmazó objektumot adja vissza
 - Új `Examples.getTags()` és `Example.getTags()` metódusok a példákban szereplő címkék számára
 - Új `HttpClient.multipart(...)` és `RestClient.multipart(...)` metódusok, amik segítségével a multipart/form-data kérést lehet összeállítani
