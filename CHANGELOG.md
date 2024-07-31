@@ -3,6 +3,7 @@
 ## 1.23.0
 
 - The `Requirement` interface has a new `getLevel` method.
+- The `TestRun` class gas a new `kind` property.
 
 ## 1.22.0
 

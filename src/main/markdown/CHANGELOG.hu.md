@@ -3,6 +3,7 @@
 ## 1.23.0
 
 - A `Requirement` interfész a `getLevel` metódussal bővült.
+- A `TestRun` osztály kapott egy új `kind` tulajdonságot.
 
 ## 1.22.0
 
