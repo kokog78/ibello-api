@@ -1,5 +1,9 @@
 # ibello-api változási napló
 
+## 1.23.0
+
+- A `Requirement` interfész a `getLevel` metódussal bővült.
+
 ## 1.22.0
 
 2024-07-20

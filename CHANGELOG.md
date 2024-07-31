@@ -1,5 +1,9 @@
 # ibello-api changelog
 
+## 1.23.0
+
+- The `Requirement` interface has a new `getLevel` method.
+
 ## 1.22.0
 
 2024-07-20
