@@ -15,17 +15,23 @@
  */
 package hu.ibello.model;
 
-public enum TextFormatKind {
-
-	EMPTY,
-	NUMBER,
-	BOOLEAN,
-	JSON,
-	XML,
-	HTML,
-	PROPERTIES;
+/**
+ * Type of the test run.
+ */
+public enum TestRunKind {
 	
-	public boolean isDocument() {
-		return this == JSON || this == XML || this == HTML || this == PROPERTIES;
-	}
+	/**
+	 * Automated test run. This is the default value.
+	 */
+	AUTOMATED,
+	
+	/**
+	 * Manual test run where test scenarios are verified.
+	 */
+	MANUAL_SCENARIOS,
+	
+	/**
+	 * Manual test run where requirements are verified - without test scenarios.
+	 */
+	MANUAL_REQUIREMENTS;
 }

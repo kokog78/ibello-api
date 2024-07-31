@@ -25,10 +25,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement(name="test-run")
-@XmlType(propOrder={"modelVersion", "applicationVersion", "startTime", "endTime", "baseDirectory", "browser", "headless", "defaultTimeout", "counters", "windowSize", "responsibleParty", "logFile", "tag", "spec", "memoryUsage", "apdex"})
+@XmlType(propOrder={"modelVersion", "kind", "applicationVersion", "startTime", "endTime", "baseDirectory", "browser", "headless", "defaultTimeout", "counters", "windowSize", "responsibleParty", "logFile", "tag", "spec", "memoryUsage", "apdex"})
 public class TestRun extends ParentElement implements ITestRun {
 
 	private String modelVersion;
+	private TestRunKind kind;
 	private String applicationVersion;
 	private Date startTime;
 	private Date endTime;
@@ -52,6 +53,15 @@ public class TestRun extends ParentElement implements ITestRun {
 	@XmlAttribute(name="model-version")
 	public void setModelVersion(String modelVersion) {
 		this.modelVersion = modelVersion;
+	}
+	
+	public TestRunKind getKind() {
+		return kind;
+	}
+	
+	@XmlAttribute
+	public void setKind(TestRunKind kind) {
+		this.kind = kind;
 	}
 	
 	public String getApplicationVersion() {
