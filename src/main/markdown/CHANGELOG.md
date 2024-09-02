@@ -4,6 +4,7 @@
 
 - The `Requirement` interface has a new `getLevel` method.
 - The `TestRun` class gas a new `kind` property.
+- New `loadTestResult(File)` method in `TestResultLoader` class.
 
 ## 1.22.0
 
