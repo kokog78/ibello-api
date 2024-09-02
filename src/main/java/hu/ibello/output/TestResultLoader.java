@@ -15,6 +15,7 @@
  */
 package hu.ibello.output;
 
+import java.io.File;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -40,6 +41,15 @@ public interface TestResultLoader {
 	 * @throws TestResultLoaderException if the file cannot be loaded
 	 */
 	public TestRun loadTestResult(String dirName) throws TestResultLoaderException;
+	
+	/**
+	 * Loads a local test result from the given file.
+	 * Test results are stored in "results.xml" files. This tool transforms them to java objects.
+	 * @param file the XML file containing the test results
+	 * @return the test results object
+	 * @throws TestResultLoaderException if the file cannot be loaded
+	 */
+	public TestRun loadTestResult(File file) throws TestResultLoaderException;
 	
 	/**
 	 * Loads local test results from the sub-folder of the "ibello/results" directory.
