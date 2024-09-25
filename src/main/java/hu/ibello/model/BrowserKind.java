@@ -21,7 +21,9 @@ public enum BrowserKind {
 	FIREFOX,
 	IE,
 	EDGE,
-	OPERA;
+	OPERA,
+	ANDROID,
+	IOS;
 	
 	public static BrowserKind fromString(String name) {
 		return BrowserKind.valueOf(name.toUpperCase());
@@ -39,6 +41,10 @@ public enum BrowserKind {
 			return "Microsoft Edge";
 		case OPERA:
 			return "Opera";
+		case ANDROID:
+			return "Android";
+		case IOS:
+			return "iOS";
 		}
 		return null;
 	}
