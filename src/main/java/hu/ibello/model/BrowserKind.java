@@ -48,4 +48,14 @@ public enum BrowserKind {
 		}
 		return null;
 	}
+	
+	public boolean isMobile() {
+		switch (this) {
+		case ANDROID:
+		case IOS:
+			return true;
+		default:
+			return false;
+		}
+	}
 }
