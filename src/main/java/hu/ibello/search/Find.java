@@ -18,11 +18,13 @@ package hu.ibello.search;
 import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
+import java.lang.annotation.Repeatable;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 import hu.ibello.elements.WebElement;
 import hu.ibello.elements.WebElements;
+import hu.ibello.model.BrowserKind;
 import hu.ibello.pages.PageObject;
 
 /**
@@ -34,7 +36,18 @@ import hu.ibello.pages.PageObject;
  */
 @Retention(RUNTIME)
 @Target(FIELD)
+@Repeatable(Finds.class)
 public @interface Find {
+	
+	/**
+	 * The browsers where this search rule is applied.
+	 * If not specified, then ibello will use the same search rule in all browsers.
+	 * If multiple search rules can be selected for a browser, then the most specific one will be used.
+	 * (Most specific rule: where the number of the selected browsers is the smallest.)
+	 * If ibello can't decide which search rule should be used then it will throw an exception during runtime.
+	 * @return the browser where the search should be occured
+	 */
+	BrowserKind[] in() default {};
 
 	/**
 	 * Search algorithm. If not specified, search algorithm will be {@link By#CSS_SELECTOR}.

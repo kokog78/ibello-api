@@ -22,8 +22,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 @Retention(RUNTIME)
-@Target(ElementType.TYPE)
-public @interface Frames {
+@Target(ElementType.FIELD)
+public @interface Finds {
 
-	Frame[] value();
+	Find[] value();
 }

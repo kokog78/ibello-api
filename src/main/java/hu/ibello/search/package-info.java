@@ -69,6 +69,14 @@
  * private WebElement modalButton;
  * </pre>
  * <p>
+ * It is possible to use different search rules for different browsers. Example:
+ * </p>
+ * <pre>
+ * {@literal @}Find(in=BrowserKind.ANDROID, by=By.ID, selector="android-resource-id")
+ * {@literal @}Find(in=BrowserKind.IOS, by=By.NAME, selector="ios-element-name")
+ * private WebElement cancelButton;
+ * </pre>
+ * <p>
  * During a dynamic element search java methods are called directly. This is possible with the use of
  * {@link hu.ibello.search.SearchTool} interface: it has some useful methods where the search
  * conditions can be specified. Instances of this interface can be obtained by

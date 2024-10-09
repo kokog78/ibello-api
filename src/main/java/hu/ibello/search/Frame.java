@@ -1,3 +1,18 @@
+/*
+ * Ark-Sys Kft. licenses this file to you under
+ * the Apache License, Version 2.0 (the "License"); you may
+ * not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
 package hu.ibello.search;
 
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
@@ -7,6 +22,7 @@ import java.lang.annotation.Repeatable;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
+import hu.ibello.model.BrowserKind;
 import hu.ibello.pages.PageObject;
 
 /**
@@ -46,6 +62,16 @@ import hu.ibello.pages.PageObject;
 @Repeatable(Frames.class)
 public @interface Frame {
 
+	/**
+	 * The browsers where this search rule is applied.
+	 * If not specified, then ibello will use the same search rule in all browsers.
+	 * If multiple search rules can be selected for a browser, then the most specific one will be used.
+	 * (Most specific rule: where the number of the selected browsers is the smallest.)
+	 * If ibello can't decide which search rule should be used then it will throw an exception during runtime.
+	 * @return the browser where the search should be occured
+	 */
+	BrowserKind[] in() default {};
+	
 	/**
 	 * Search algorithm. If not specified, search algorithm will be {@link By#CSS_SELECTOR}.
 	 * @return search algorithm
