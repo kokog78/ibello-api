@@ -8,6 +8,7 @@
 - Új `configuration()` metódus a konfiguráció kezelésére a `PageObject`, `StepLibrary` és `PluginInitializer` osztályokban
 - Új `ANDROID` és `IOS` konstansok a `BrowserKind` enum osztályban, a mobilos tesztek támogatásához
 - Új `in` tulajdonság a `@Find`, `@Relation`, `@Position` és `@Frame` annotációkban, amivel a böngésző típusát lehet megadni
+- Új `XPATH` típusú keresési mód
 
 ## 1.22.0
 

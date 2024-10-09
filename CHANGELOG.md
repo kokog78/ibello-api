@@ -8,6 +8,7 @@
 - New `configuration()` method for configuration handling in classes `PageObject`, `StepLibrary` and `PluginInitializer`
 - New `ANDROID` and `IOS` constants in `BrowserKind` enum class to support mobile testing
 - New `in` property in the `@Find`, `@Relation`, `@Position` annotations `@Frame` to specify browser type
+- New `XPATH` search mode
 
 ## 1.22.0
 
