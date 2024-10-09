@@ -58,10 +58,7 @@ public @interface Position {
 	/**
 	 * The browsers where this search rule is applied.
 	 * If not specified, then ibello will use the same search rule in all browsers.
-	 * If multiple search rules can be selected for a browser, then the most specific one will be used.
-	 * (Most specific rule: where the number of the selected browsers is the smallest.)
-	 * If ibello can't decide which search rule should be used then it will throw an exception during runtime.
-	 * @return the browser where the search should be occured
+	 * @return the browser where the search should be occurred
 	 */
 	BrowserKind[] in() default {};
 	
