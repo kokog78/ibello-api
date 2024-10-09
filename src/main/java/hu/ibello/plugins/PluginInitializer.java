@@ -19,6 +19,7 @@ import hu.ibello.apitest.HttpClient;
 import hu.ibello.apitest.RestClient;
 import hu.ibello.bdd.ExamplesHandler;
 import hu.ibello.bdd.FeatureHandler;
+import hu.ibello.core.ConfigurationTool;
 import hu.ibello.core.Value;
 import hu.ibello.data.TestDataBuilder;
 import hu.ibello.functions.RegressionTool;
@@ -81,18 +82,33 @@ public interface PluginInitializer {
 	 * transform the configuration property into different java types.
 	 * This method always has a non-null result, even if the configuration value does not exist - in this case,
 	 * the wrapped value will be <code>null</code>.
+	 * @deprecated Use <code>configuration().getValue(name)</code> method.
 	 * @param name name of the configuration parameter
 	 * @return value of the configuration parameter wrapped into a {@link Value} instance
 	 */
-	public Value getConfigurationValue(String name);
+	@Deprecated
+	default Value getConfigurationValue(String name) {
+		return configuration().getValue(name);
+	}
 	
 	/**
 	 * Sets a configuration property to the given value.
 	 * The type of the value can be any type which is known by the {@link Value} interface.
+	 * @deprecated Use <code>configuration().setValue(name, value)</code> method.
 	 * @param name name of the configuration parameter
 	 * @param value value of the configuration parameter
 	 */
-	public void setConfigurationValue(String name, Object value);
+	@Deprecated
+	public default void setConfigurationValue(String name, Object value) {
+		configuration().setValue(name, value);
+	}
+	
+	/**
+	 * Returns an object which has some methods to access ibello configuration.
+	 * @see ConfigurationTool
+	 * @return the configuration object
+	 */
+	ConfigurationTool configuration();
 	
 	/**
 	 * Returns an URL which is merged with the <code>ibello.url.base</code> configuration property.
