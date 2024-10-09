@@ -32,6 +32,12 @@ public enum By {
 	CSS_SELECTOR,
 	
 	/**
+	 * Search by XPATH. The search pattern can be a valid XPATH expression.
+	 * Use with caution, may result in fragile selectors.
+	 */
+	XPATH,
+	
+	/**
 	 * Search by ID. The search pattern is an ID of an element.
 	 */
 	ID,
