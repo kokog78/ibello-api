@@ -17,6 +17,7 @@ package hu.ibello.steps;
 
 import hu.ibello.apitest.HttpClient;
 import hu.ibello.apitest.RestClient;
+import hu.ibello.core.ConfigurationTool;
 import hu.ibello.core.Name;
 import hu.ibello.core.Value;
 import hu.ibello.core.WindowRelated;
@@ -136,11 +137,22 @@ public abstract class StepLibrary extends WindowRelated {
 	 * transform the configuration property into different java types.
 	 * This method always has a non-null result, even if the configuration value does not exist - in this case,
 	 * the wrapped value will be <code>null</code>.
+	 * @deprecated Use <code>configuration().getValue(name)</code> method.
 	 * @param name name of the configuration parameter
 	 * @return value of the configuration parameter wrapped into a {@link Value} instance
 	 */
+	@Deprecated
 	protected Value getConfigurationValue(String name) {
-		return tool.getConfigurationValue(name);
+		return tool.configuration().getValue(name);
+	}
+	
+	/**
+	 * Returns an object which has some methods to access ibello configuration.
+	 * @see ConfigurationTool
+	 * @return the configuration object
+	 */
+	protected ConfigurationTool configuration() {
+		return tool.configuration();
 	}
 	
 	/**

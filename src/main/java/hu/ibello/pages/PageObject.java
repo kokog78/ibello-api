@@ -23,6 +23,7 @@ import hu.ibello.actions.WebElementActionBuilder;
 import hu.ibello.check.WebElementChecker;
 import hu.ibello.check.WebElementGetter;
 import hu.ibello.core.Browser;
+import hu.ibello.core.ConfigurationTool;
 import hu.ibello.core.Name;
 import hu.ibello.core.Value;
 import hu.ibello.core.WindowRelated;
@@ -97,7 +98,7 @@ import hu.ibello.search.SearchTool;
  * <li>accessing browser interface which can be used to open an URL, and to other things,
  * see {@link PageObject#browser()},</li>
  * <li>verifying some expectations, see {@link PageObject#expectations()},</li>
- * <li>reading configuration values, see {@link PageObject#getConfigurationValue(String)}.</li>
+ * <li>reading configuration values, see {@link PageObject#configuration()}.</li>
  * </ul>
  * <p>
  * Examples:
@@ -130,7 +131,7 @@ import hu.ibello.search.SearchTool;
  * 
  * private Long getDefaultTimeout() {
  *     // returning configuration value as number
- *     return getConfigurationValue("ibello.timeout.default").toLong();
+ *     return configuration().getValue("ibello.timeout.default").toLong();
  * }
  * </pre>
  * <p>
@@ -205,11 +206,22 @@ public abstract class PageObject extends WindowRelated {
 	 * transform the configuration property into different java types.
 	 * This method always has a non-null result, even if the configuration value does not exist - in this case,
 	 * the wrapped value will be <code>null</code>.
+	 * @deprecated Use <code>configuration().getValue(name)</code> method.
 	 * @param name name of the configuration parameter
 	 * @return value of the configuration parameter wrapped into a {@link Value} instance
 	 */
+	@Deprecated
 	protected Value getConfigurationValue(String name) {
-		return tool.getConfigurationValue(name);
+		return tool.configuration().getValue(name);
+	}
+	
+	/**
+	 * Returns an object which has some methods to access ibello configuration.
+	 * @see ConfigurationTool
+	 * @return the configuration object
+	 */
+	protected ConfigurationTool configuration() {
+		return tool.configuration();
 	}
 	
 	/**

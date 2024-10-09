@@ -24,7 +24,6 @@ import hu.ibello.check.WebElementChecker;
 import hu.ibello.check.WebElementGetter;
 import hu.ibello.core.Browser;
 import hu.ibello.core.ConfigurationTool;
-import hu.ibello.core.Value;
 import hu.ibello.data.TestDataBuilder;
 import hu.ibello.elements.WebElement;
 import hu.ibello.expect.ExpectationBuilder;
@@ -58,20 +57,6 @@ public interface PageObjectTool {
 	 */
 	SearchTool find(String windowId);
 
-	/**
-	 * Returns a configuration property as a {@link Value}. The returned value offers some public methods to
-	 * transform the configuration property into different java types.
-	 * This method always has a non-null result, even if the configuration value does not exist - in this case,
-	 * the wrapped value will be <code>null</code>.
-	 * @deprecated Use <code>configuration().getValue(name)</code> method.
-	 * @param name name of the configuration parameter
-	 * @return value of the configuration parameter wrapped into a {@link Value} instance
-	 */
-	@Deprecated
-	default Value getConfigurationValue(String name) {
-		return configuration().getValue(name);
-	}
-	
 	/**
 	 * Returns an object which has some methods to access ibello configuration.
 	 * @see ConfigurationTool
