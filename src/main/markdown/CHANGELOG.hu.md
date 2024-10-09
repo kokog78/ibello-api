@@ -5,6 +5,9 @@
 - A `Requirement` interfész a `getLevel` metódussal bővült.
 - A `TestRun` osztály kapott egy új `kind` tulajdonságot.
 - Új `loadTestResult(File)` metódus a `TestResultLoader` osztályban.
+- Új `configuration()` metódus a konfiguráció kezelésére a `PageObject`, `StepLibrary` és `PluginInitializer` osztályokban
+- Új `ANDROID` és `IOS` konstansok a `BrowserKind` enum osztályban, a mobilos tesztek támogatásához
+- Új `in` tulajdonság a `@Find`, `@Relation`, `@Position` és `@Frame` annotációkban, amivel a böngésző típusát lehet megadni
 
 ## 1.22.0
 

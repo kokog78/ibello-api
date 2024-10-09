@@ -3,8 +3,11 @@
 ## 1.23.0
 
 - The `Requirement` interface has a new `getLevel` method.
-- The `TestRun` class gas a new `kind` property.
+- The `TestRun` class has a new `kind` property.
 - New `loadTestResult(File)` method in `TestResultLoader` class.
+- New `configuration()` method for configuration handling in classes `PageObject`, `StepLibrary` and `PluginInitializer`
+- New `ANDROID` and `IOS` constants in `BrowserKind` enum class to support mobile testing
+- New `in` property in the `@Find`, `@Relation`, `@Position` annotations `@Frame` to specify browser type
 
 ## 1.22.0
 
