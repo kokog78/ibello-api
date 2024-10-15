@@ -22,8 +22,7 @@ public enum BrowserKind {
 	IE,
 	EDGE,
 	OPERA,
-	ANDROID,
-	IOS;
+	ANDROID;
 	
 	public static BrowserKind fromString(String name) {
 		return BrowserKind.valueOf(name.toUpperCase());
@@ -43,8 +42,6 @@ public enum BrowserKind {
 			return "Opera";
 		case ANDROID:
 			return "Android";
-		case IOS:
-			return "iOS";
 		}
 		return null;
 	}
@@ -52,7 +49,6 @@ public enum BrowserKind {
 	public boolean isMobile() {
 		switch (this) {
 		case ANDROID:
-		case IOS:
 			return true;
 		default:
 			return false;
