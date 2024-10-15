@@ -19,7 +19,6 @@ public enum BrowserKind {
 
 	CHROME,
 	FIREFOX,
-	IE,
 	EDGE,
 	OPERA,
 	ANDROID;
@@ -34,8 +33,6 @@ public enum BrowserKind {
 			return "Google Chrome";
 		case FIREFOX:
 			return "Mozilla Firefox";
-		case IE:
-			return "Internet Explorer";
 		case EDGE:
 			return "Microsoft Edge";
 		case OPERA:
