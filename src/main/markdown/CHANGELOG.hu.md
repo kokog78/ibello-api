@@ -2,6 +2,8 @@
 
 ## 1.23.0
 
+2024-10-15
+
 - A `Requirement` interfész a `getLevel` metódussal bővült.
 - A `TestRun` osztály kapott egy új `kind` tulajdonságot.
 - Új `loadTestResult(File)` metódus a `TestResultLoader` osztályban.
