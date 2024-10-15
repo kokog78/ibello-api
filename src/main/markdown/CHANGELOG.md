@@ -6,9 +6,10 @@
 - The `TestRun` class has a new `kind` property.
 - New `loadTestResult(File)` method in `TestResultLoader` class.
 - New `configuration()` method for configuration handling in classes `PageObject`, `StepLibrary` and `PluginInitializer`
-- New `ANDROID` and `IOS` constants in `BrowserKind` enum class to support mobile testing
+- New `ANDROID` constant in `BrowserKind` enum class to support native Android testing
 - New `in` property in the `@Find`, `@Relation`, `@Position` annotations `@Frame` to specify browser type
 - New `XPATH` search mode
+- New `BrowserActionBuilder.swipe(...)` and `WebElementActionBuilder.swipe(...)` methods for swiping on the screen
 
 ## 1.22.0
 

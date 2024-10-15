@@ -6,9 +6,10 @@
 - A `TestRun` osztály kapott egy új `kind` tulajdonságot.
 - Új `loadTestResult(File)` metódus a `TestResultLoader` osztályban.
 - Új `configuration()` metódus a konfiguráció kezelésére a `PageObject`, `StepLibrary` és `PluginInitializer` osztályokban
-- Új `ANDROID` és `IOS` konstansok a `BrowserKind` enum osztályban, a mobilos tesztek támogatásához
+- Új `ANDROID` konstans a `BrowserKind` enum osztályban, a natív Android tesztek támogatásához
 - Új `in` tulajdonság a `@Find`, `@Relation`, `@Position` és `@Frame` annotációkban, amivel a böngésző típusát lehet megadni
 - Új `XPATH` típusú keresési mód
+- Új `BrowserActionBuilder.swipe(...)` és `WebElementActionBuilder.swipe(...)` metódusok a képernyőn történő csúsztatáshoz
 
 ## 1.22.0
 

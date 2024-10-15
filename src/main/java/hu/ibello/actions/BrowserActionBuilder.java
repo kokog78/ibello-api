@@ -76,4 +76,10 @@ public interface BrowserActionBuilder extends ActionBuilder<BrowserActionBuilder
 	 */
 	void acceptAlert();
 	
+	/**
+	 * Swipes in the specified direction in the browser window.
+	 * @param direction swiping direction
+	 */
+	void swipe(Direction direction);
+	
 }

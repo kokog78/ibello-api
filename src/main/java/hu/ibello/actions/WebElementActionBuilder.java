@@ -263,5 +263,11 @@ public interface WebElementActionBuilder extends ActionBuilder<WebElementActionB
 	 * @param selected should be the checkbox selected
 	 */
 	void setSelected(boolean selected);
+	
+	/**
+	 * Swipes in the specified direction in the area occupied by the element.
+	 * @param direction swiping direction
+	 */
+	void swipe(Direction direction);
 
 }
