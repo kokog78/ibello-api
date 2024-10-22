@@ -1,6 +1,12 @@
 # ibello-api changelog
 
+## 1.24.0
+
+- Minimum required java version: 11
+
 ## 1.23.0
+
+2024-10-15
 
 - The `Requirement` interface has a new `getLevel` method.
 - The `TestRun` class has a new `kind` property.

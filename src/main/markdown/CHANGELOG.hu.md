@@ -1,5 +1,9 @@
 # ibello-api változási napló
 
+## 1.24.0
+
+- A szükséges minimális java verzió: 11
+
 ## 1.23.0
 
 2024-10-15
