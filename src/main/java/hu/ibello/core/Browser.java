@@ -21,6 +21,7 @@ import java.util.regex.Pattern;
 
 import hu.ibello.model.BrowserKind;
 import hu.ibello.model.Screenshot;
+import hu.ibello.script.JavascriptExecutor;
 import hu.ibello.search.Window;
 
 /**
@@ -61,6 +62,12 @@ import hu.ibello.search.Window;
  * <li>{@link Browser#sessionStorage()}</li>
  * <li>{@link Browser#localStorage()}</li>
  * <li>{@link Browser#cookies()}</li>
+ * </ul>
+ * <p>
+ * To execute JavaScript code int the current window or tab, see this method:
+ * </p>
+ * <ul>
+ * <li>{@link Browser#javascript()}</li>
  * </ul>
  * <p>
  * To handle downloaded files, use these methods:
@@ -194,6 +201,12 @@ public interface Browser {
 	 * @return the storage of cookies
 	 */
 	public Storage cookies();
+	
+	/**
+	 * Returns an object which is capable to run JavaScript code in the browser.
+	 * @return JavaScript executor instance
+	 */
+	public JavascriptExecutor javascript();
 	
 	/**
 	 * Returns a file which was downloaded with the browser earlier.
