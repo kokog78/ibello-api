@@ -1,5 +1,9 @@
 # ibello-api változási napló
 
+## 1.23.1
+
+- Új `Browser.javascript()` metódus JavaScipt kódok futtatásához
+
 ## 1.23.0
 
 2024-10-15

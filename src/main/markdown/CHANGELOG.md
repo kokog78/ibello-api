@@ -1,5 +1,9 @@
 # ibello-api changelog
 
+## 1.23.1
+
+- New `Browser.javascript()` method to run JavaScipt code
+
 ## 1.23.0
 
 2024-10-15
