@@ -3,6 +3,7 @@
 ## 1.23.1
 
 - New `Browser.javascript()` method to run JavaScipt code
+- The `TestRun` class has a new `threads` property.
 
 ## 1.23.0
 

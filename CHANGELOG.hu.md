@@ -3,6 +3,7 @@
 ## 1.23.1
 
 - Új `Browser.javascript()` metódus JavaScipt kódok futtatásához
+- A `TestRun` osztály kapott egy új `threads` tulajdonságot.
 
 ## 1.23.0
 
