@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement(name="test-run")
-@XmlType(propOrder={"modelVersion", "kind", "applicationVersion", "startTime", "endTime", "baseDirectory", "browser", "headless", "defaultTimeout", "counters", "windowSize", "responsibleParty", "logFile", "tag", "spec", "memoryUsage", "apdex"})
+@XmlType(propOrder={"modelVersion", "kind", "applicationVersion", "startTime", "endTime", "baseDirectory", "browser", "headless", "defaultTimeout", "threads", "counters", "windowSize", "responsibleParty", "logFile", "tag", "spec", "memoryUsage", "apdex"})
 public class TestRun extends ParentElement implements ITestRun {
 
 	private String modelVersion;
@@ -37,6 +37,7 @@ public class TestRun extends ParentElement implements ITestRun {
 	private BrowserKind browser;
 	private boolean headless;
 	private long defaultTimeout;
+	private Long threads;
 	private Counters counters;
 	private WindowSize windowSize;
 	private String responsibleParty;
@@ -130,6 +131,15 @@ public class TestRun extends ParentElement implements ITestRun {
 	@XmlAttribute(name="default-timeout")
 	public void setDefaultTimeout(long defaultTimeout) {
 		this.defaultTimeout = defaultTimeout;
+	}
+	
+	public Long getThreads() {
+		return threads;
+	}
+	
+	@XmlAttribute
+	public void setThreads(Long threads) {
+		this.threads = threads;
 	}
 	
 	public Counters getCounters() {
