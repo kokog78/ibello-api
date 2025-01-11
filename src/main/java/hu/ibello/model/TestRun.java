@@ -37,7 +37,7 @@ public class TestRun extends ParentElement implements ITestRun {
 	private BrowserKind browser;
 	private boolean headless;
 	private long defaultTimeout;
-	private Long threads;
+	private Integer threads;
 	private Counters counters;
 	private WindowSize windowSize;
 	private String responsibleParty;
@@ -133,12 +133,12 @@ public class TestRun extends ParentElement implements ITestRun {
 		this.defaultTimeout = defaultTimeout;
 	}
 	
-	public Long getThreads() {
+	public Integer getThreads() {
 		return threads;
 	}
 	
 	@XmlAttribute
-	public void setThreads(Long threads) {
+	public void setThreads(Integer threads) {
 		this.threads = threads;
 	}
 	
