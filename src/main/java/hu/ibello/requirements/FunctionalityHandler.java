@@ -64,20 +64,20 @@ public interface FunctionalityHandler {
 	 * Calculate the test coverage of the functionalities defined in the specified file.
 	 * The test coverage is calculated from the Cucumber feature files related to the functionalities.
 	 * The relation is made by the functionality ID: if a scenario has a tag with the ID of a functionality, then the functionality is covered by the test.
-	 * @param relativePath the path to the file, relative to the functionalities directory of the project
+	 * @param relativePath regular expression for the path to the file (which is relative to the functionalities directory of the project)
 	 * @return the test coverage of the functionalities
 	 * @throws FunctionalityException if there was an error during loading the file or calculating the coverage
 	 */
-	public FunctionalitiesCoverage calculateTestCoverage(String relativePath) throws FunctionalityException;
+	public FunctionalitiesCoverage calculateTestCoverage(Pattern relativePath) throws FunctionalityException;
 	
 	/**
 	 * Calculate the example coverage of the functionalities defined in the specified file.
 	 * The example coverage is calculated from the Cucumber example files related to the functionalities.
 	 * The relation is made by the functionality ID: if a scenario has a tag with the ID of a functionality, then the functionality is covered by the example.
-	 * @param relativePath the path to the file, relative to the functionalities directory of the project
+	 * @param relativePath regular expression for the path to the file (which is relative to the functionalities directory of the project)
 	 * @return the example coverage of the functionalities
 	 * @throws FunctionalityException if there was an error during loading the file or calculating the coverage
 	 */
-	public FunctionalitiesCoverage calculateExampleCoverage(String relativePath) throws FunctionalityException;
+	public FunctionalitiesCoverage calculateExampleCoverage(Pattern relativePath) throws FunctionalityException;
 	
 }

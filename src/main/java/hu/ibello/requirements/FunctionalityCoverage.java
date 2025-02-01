@@ -15,11 +15,13 @@
  */
 package hu.ibello.requirements;
 
+import java.util.regex.Pattern;
+
 /**
  * Contains the coverage of a single functionality.
  * 
- * @see FunctionalityHandler#calculateTestCoverage(String)
- * @see FunctionalityHandler#calculateExampleCoverage(String)
+ * @see FunctionalityHandler#calculateTestCoverage(Pattern)
+ * @see FunctionalityHandler#calculateExampleCoverage(Pattern)
  */
 public class FunctionalityCoverage extends ElementCoverage {
 
