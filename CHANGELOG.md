@@ -6,7 +6,7 @@
 - The `TestRun` class has a new `threads` property.
 - New `FunctionalityHandler.calculateTestCoverage(String)` method to calculate test coverage of functionalities
 - New `FunctionalityHandler.calculateExampleCoverage(String)` method to calculate example coverage of functionalities
-
+- New `Functionality.getLevel()` method
 
 ## 1.23.0
 
