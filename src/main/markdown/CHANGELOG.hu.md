@@ -4,6 +4,8 @@
 
 - Új `Browser.javascript()` metódus JavaScipt kódok futtatásához
 - A `TestRun` osztály kapott egy új `threads` tulajdonságot.
+- Új `FunctionalityHandler.calculateTestCoverage(String)` metódus funkciók teszt lefedettségének számításához
+- Új `FunctionalityHandler.calculateExampleCoverage(String)` metódus funkciók példa lefedettségének számításához
 
 ## 1.23.0
 
