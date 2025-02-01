@@ -16,12 +16,11 @@
 package hu.ibello.requirements;
 
 /**
- * Contains the coverage of multiple requirements.
+ * Contains the coverage of a single functionality.
  * 
- * @author Kornél Simon
- * @see RequirementHandler#calculateTestCoverage(String)
- * @see RequirementHandler#calculateExampleCoverage(String)
+ * @see FunctionalityHandler#calculateTestCoverage(String)
+ * @see FunctionalityHandler#calculateExampleCoverage(String)
  */
-public class RequirementsCoverage extends ElementsCoverage<RequirementCoverage> {
+public class FunctionalityCoverage extends ElementCoverage {
 
 }
