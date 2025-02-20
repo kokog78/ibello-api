@@ -7,6 +7,7 @@
 - Új `FunctionalityHandler.calculateTestCoverage(String)` metódus funkciók teszt lefedettségének számításához
 - Új `FunctionalityHandler.calculateExampleCoverage(String)` metódus funkciók példa lefedettségének számításához
 - Új `Functionality.getLevel()` metódus
+- Új `IbelloReportReader` interfész a nem ibello formátumú teszteredmények beolvasásához
 
 ## 1.23.0
 

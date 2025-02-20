@@ -7,6 +7,7 @@
 - New `FunctionalityHandler.calculateTestCoverage(String)` method to calculate test coverage of functionalities
 - New `FunctionalityHandler.calculateExampleCoverage(String)` method to calculate example coverage of functionalities
 - New `Functionality.getLevel()` method
+- New `IbelloReportReader` interface for reading non-ibello format test results
 
 ## 1.23.0
 
