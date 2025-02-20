@@ -8,6 +8,7 @@
 - Új `FunctionalityHandler.calculateExampleCoverage(String)` metódus funkciók példa lefedettségének számításához
 - Új `Functionality.getLevel()` metódus
 - Új `IbelloReportReader` interfész a nem ibello formátumú teszteredmények beolvasásához
+- Új `TestResultLoader.loadTestResultFromDirectory(...)` és `TestResultLoader.loadTestResultFromFile(File)` metódusok
 
 ## 1.23.0
 
