@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 import hu.ibello.model.TestRun;
+import hu.ibello.plugins.IbelloReportReader;
 
 /**
  * Utility class which loads test run results from the local "ibello/results" directory.
@@ -36,6 +37,8 @@ public interface TestResultLoader {
 	 * TestResultLoader loader = ...;
 	 * TestRun result = loader.loadTestResult("20000101_123456");
 	 * </pre>
+	 * If the sub-folder does not contain an ibello format test result then the framework tries to use the registered
+	 * {@link IbelloReportReader} instances to convert the result to {@link TestRun} object.
 	 * @param dirName the name of the sub-folder in the "ibello/results" directory which contains the "results.xml" file
 	 * @return the test run results in java object structure
 	 * @throws TestResultLoaderException if the file cannot be loaded
@@ -59,6 +62,8 @@ public interface TestResultLoader {
 	 * TestResultLoader loader = ...;
 	 * List&lt;TestRun&gt; results = loader.loadTestResults(Pattern.compile("20000101_.*"));
 	 * </pre>
+	 * If a sub-folder does not contain an ibello format test result then the framework tries to use the registered
+	 * {@link IbelloReportReader} instances to convert the result to {@link TestRun} object.
 	 * @param dirNamePattern pattern for the sub-folder names in the "ibello/results" directory
 	 * @return list of test run results
 	 * @throws TestResultLoaderException if one of the files cannot be loaded
