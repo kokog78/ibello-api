@@ -184,7 +184,7 @@ public class UserData {
 }
 ```
 
-Most pedig illesszük be a `UserData` osztály egy példányát a teszlépés-könyvtárba! Az oldal-leírókkal és a tesztlépés-könyvtárakkal ellentétben
+Most pedig illesszük be a `UserData` osztály egy példányát a tesztlépés-könyvtárba! Az oldal-leírókkal és a tesztlépés-könyvtárakkal ellentétben
 ehhez most használnunk kell az `@Inject` annotációt, az ibello innen tudja, hogy egy egyéni osztály példányát injektálnia kell:
 
 ```java
@@ -203,7 +203,7 @@ public class LoginSteps extends StepLibrary {
 
 ### Tesztlépések nevei
 
-A teszlépés-könyvtárak publikus metódusainak hívását az ibello rendszer folyamatosan loggolja, valamint azok neveit az elkészült teszt riportban is szerepelteti.
+A tesztlépés-könyvtárak publikus metódusainak hívását az ibello rendszer folyamatosan loggolja, valamint azok neveit az elkészült teszt riportban is szerepelteti.
 A logba és a riportba a metódus nevéből kiszámolt kifejezés kerül bele. Például az `i_login_with_valid_credentials` metódusnévből ez lesz:
 `I Login With Valid Credentials`. Ha ezt a működést meg szeretnénk változtatni, akkor a metódushoz adnunk kell egy `@Name` annotációt, aminek egyetlen tulajdonságaként
 meg kell adnunk a kiírandó szöveget. A szövegben a metódus esetleges paraméterei is megjelennek, azoknak a helyét `${0}`, `${1}`, stb. karaktersorozatokkal jelölhetjük.
@@ -329,7 +329,7 @@ Az oldal-leírók metódusai is bekerülnek a logba és a riportba. A megjelenő
 
 A tesztlépés-könyvtárak és az oldal-leírók lehetőséget adnak az ibello konfigurációs paraméterek olvasására. Erre a célra a `getConfigurationValue(String)` metódus szolgál.
 A metódus egyetlen argumentuma a kívánt konfigurációs paraméter neve, visszatérési értéke pedig egy `Value` típusú objektum, amivel a paraméter értékét lehet különböző java
-típusokra konvertálni. A konverzió a `Value` osztály metódusaival lehetséged, pl. `Value.toString()`, `Value.toDouble()`, `Value.toStringArray()`.
+típusokra konvertálni. A konverzió a `Value` osztály metódusaival lehetséges, pl. `Value.toString()`, `Value.toDouble()`, `Value.toStringArray()`.
 A `getConfigurationValue` metódus akkor is visszatér egy `Value` objektummal, ha a kért konfigurációs paraméter nem létezik, ekkor azonban minden konverziós metódus
 `null` értéket ad. Példák:
 
@@ -525,7 +525,7 @@ Ezután a böngésző elindítja az új oldal betöltését és megjelenítésé
 Azt, hogy a kattintás sikeres volt, onnan tudhatjuk meg, hogy az új oldal URL címe megjelenik a böngésző címmezőjében, vagy még biztosabban onnan, hogy az új oldalra jellemző tartalom
 megjelenik a böngészőben. Ha a hivatkozás - egy programhiba miatt - máshová mutatott, akkor másik oldal töltődik be, és más tartalom jelenik meg a böngészőben.
 
-A fenti esetet legjobban úgy tudjuk kezelni, ha a kattintás után a teszkód várakozik addig, amíg az új oldal megjelenésével kapcsolatos feltétel nem teljesül. Ha viszont programhiba van,
+A fenti esetet legjobban úgy tudjuk kezelni, ha a kattintás után a tesztkód várakozik addig, amíg az új oldal megjelenésével kapcsolatos feltétel nem teljesül. Ha viszont programhiba van,
 akkor a feltétel sohasem fog teljesülni - viszont erről értelmes időben tudomást szeretnénk kapni. Meg kell adnunk tehát egy határidőt, amin túl nem vagyunk hajlandóak várakozni. Ha a
 feltétel nem teljesül a határidő alatt, akkor feltételezhetjük, hogy hiba van, és a tesztnek el kell törnie.
 
@@ -872,7 +872,7 @@ Ha nincs megadva együttes várakozási idő, akkor annak az értéke automatiku
 
 Az összetett ellenőrzéseken belül használhatunk `expect(...)` és `assume(...)` metódust is.
 
-Ha `all(...)` metódussal létehozott összetett ellenőrzést használunk, akkor az akkor bukik el, amikor az első befoglalt ellenőrzés elbukik. Ha ez `expect(...)` metódussal volt
+Ha `all(...)` metódussal létrehozott összetett ellenőrzést használunk, akkor az akkor bukik el, amikor az első befoglalt ellenőrzés elbukik. Ha ez `expect(...)` metódussal volt
 létrehozva, akkor a teszt futása is végetér, míg ha `assume(...)` metódussal, akkor a tesztfutás folytatódik.
 
 Az `any(...)` metódussal létrehozott összetett ellenőrzéseknél kicsit más a helyzet. Ha a befoglalt ellenőrzések között akár egyetlen olyan is akad, amit `expect(...)` metódussal
@@ -903,7 +903,7 @@ repeat(...).withTimeout(CustomTimeout.PAGE_LOADING).untilSucceeds();
 ```
 
 Az időtúllépések használata lényeges. Fogalmilag kétféle időtúllépésről beszélhetünk: egy "külső" időtúllépésről, amit a
-teljes művelethet definiálunk, az előbb felvázolt módon. Maga a művelet meghívhat olyan más műveleteket és ellenőrzéseket, amik szintén
+teljes művelethez definiálunk, az előbb felvázolt módon. Maga a művelet meghívhat olyan más műveleteket és ellenőrzéseket, amik szintén
 használnak időtúllépéseket. Ezek a "belső" időtúllépések akkor jönnek számításba, amikor egy ilyen művelet vagy ellenőrzés elbukik - ekkor ugyanis
 a bukása előtt kivárja a saját időtúllépését. Ha túl sokáig vár, letelhet a teljes műveletre meghatározott "külső" időtúllépés is. Ezért fontos
 lehet a különböző időtúllépések összehangolása. A "belső" időtúllépésekhez mindig jóval kisebb értéket használjunk, mint a "külső"-höz!
@@ -1018,7 +1018,7 @@ Egyes böngészők (és böngésző-meghajtók) nem támogatják egyszerre több
 A böngészőablakok azonosítói öröklődnek is az oldal-leírók között. Amennyiben egy oldal-leíró tartalmaz más oldal-leírókra történő hivatkozásokat, amiknél nincs `Window` annotáció, akkor azok
 öröklik a tartalmazó objektum böngészőablakát. Vagyis a `Window` annotáció hiánya nem feltétlenül jelenti azt, hogy a műveletek az alapértelmezett ablakban futnak.
 
-A fentiek alapján lehetőség van arra is, hogy tesztlépés-könyvtárakra történő hibatkozásokhoz adjunk meg `Window` annotációt. Ezzel azt érjük el, hogy a tesztlépés-könyvtár
+A fentiek alapján lehetőség van arra is, hogy tesztlépés-könyvtárakra történő hivatkozásokhoz adjunk meg `Window` annotációt. Ezzel azt érjük el, hogy a tesztlépés-könyvtár
 által hivatkozott (annotációval nem rendelkező) oldal-leírók mint a tesztlépés-könyvtárnak megadott azonosítójú böngészőablakban fognak futni.
 
 ```java
@@ -1524,7 +1524,7 @@ Ezek a metódusok paraméterként kapják azt a szöveget, amit majd meg fognak 
 
 ## Függőségek injektálása
 
-Az ibello keretrendszer képes egyedi osztályainkat automatikusan a teszlépés-könyvtár és az oldal-leíró osztályokba injektálni. Sőt, az ily módon injektált osztályokba is hasonlóan injektálhatunk más osztályokat.
+Az ibello keretrendszer képes egyedi osztályainkat automatikusan a tesztlépés-könyvtár és az oldal-leíró osztályokba injektálni. Sőt, az ily módon injektált osztályokba is hasonlóan injektálhatunk más osztályokat.
 
 Csak olyan osztály injektálható, aminek van alapértelmezett konstruktora. Az injektáláshoz be kell illesztenünk egy mezőt a hivatkozó osztályba - ez lehet privát is. A mezőt meg kell jelölnünk az `@Inject` annotációval.
 
