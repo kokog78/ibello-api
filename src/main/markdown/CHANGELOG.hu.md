@@ -3,6 +3,13 @@
 ## 1.24.0
 
 - A szükséges minimális java verzió: 11
+- Új `Browser.javascript()` metódus JavaScipt kódok futtatásához
+- A `TestRun` osztály kapott egy új `threads` tulajdonságot.
+- Új `FunctionalityHandler.calculateTestCoverage(String)` metódus funkciók teszt lefedettségének számításához
+- Új `FunctionalityHandler.calculateExampleCoverage(String)` metódus funkciók példa lefedettségének számításához
+- Új `Functionality.getLevel()` metódus
+- Új `IbelloReportReader` interfész a nem ibello formátumú teszteredmények beolvasásához
+- Új `TestResultLoader.loadTestResultFromDirectory(...)` és `TestResultLoader.loadTestResultFromFile(File)` metódusok
 
 ## 1.23.0
 

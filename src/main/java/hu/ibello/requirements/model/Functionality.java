@@ -44,6 +44,13 @@ public interface Functionality extends Comparable<Functionality> {
 	public String getDescription();
 	
 	/**
+	 * The level/depth of the functionality.
+	 * The value for root functionalities is 1, for child functionalities of the root ones is 2.
+	 * @return level/depth of the functionality
+	 */
+	public int getLevel();
+	
+	/**
 	 * If the functionality can be splitted into multiple ones, then this list returns the sub-functions.
 	 * @return list of sub-functions
 	 */

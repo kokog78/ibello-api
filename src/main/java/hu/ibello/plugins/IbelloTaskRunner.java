@@ -15,12 +15,24 @@
  */
 package hu.ibello.plugins;
 
+import hu.ibello.core.Name;
+
 /**
  * <p>
  * Task runner is something which runs named tasks. It is possible to run a task by it's name from command line.
  * The task runner receives the name in the {@link #runTask(String)} method and tries to perform the task.
  * If it is possible - because the runner recognizes the name - then the method returns <code>true</code>.
  * </p>
+ * <p>
+ * A task runner may have a readable name. For that, multiple options are available.
+ * </p>
+ * <ol>
+ * <li>The task runner can have a descriptor in JSON format. The file should be available on the classpath,
+ * in the same package where the class is. The descriptor can have a "title" property which contains the readable
+ * name.</li>
+ * <li>If there is no descriptor file or it does not contain a non-empty title then it is possible to set
+ * the readable name with the {@link Name} annotation which should be placed on the class.</li>
+ * </ol>
  * <p>
  * It is possible to interact with the ibello infrastructure in the executed task. For this, the parameter of the
  * {@link #initialize(PluginInitializer)} method should be used. The {@link PluginInitializer#getConfigurationValue(String)}

@@ -68,7 +68,7 @@ public interface RequirementHandler {
 	 * @return the test coverage of the requirements
 	 * @throws RequirementException if there was an error during loading the file or calculating the coverage
 	 */
-	RequirementsCoverage calculateTestCoverage(String relativePath) throws RequirementException;
+	public RequirementsCoverage calculateTestCoverage(String relativePath) throws RequirementException;
 	
 	/**
 	 * Calculate the example coverage of the requirements defined in the specified file.
@@ -78,7 +78,7 @@ public interface RequirementHandler {
 	 * @return the example coverage of the requirements
 	 * @throws RequirementException if there was an error during loading the file or calculating the coverage
 	 */
-	RequirementsCoverage calculateExampleCoverage(String relativePath) throws RequirementException;
+	public RequirementsCoverage calculateExampleCoverage(String relativePath) throws RequirementException;
 	
 	
 }

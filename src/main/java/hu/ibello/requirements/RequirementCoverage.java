@@ -22,20 +22,18 @@ import hu.ibello.requirements.model.RequirementKind;
  * 
  * @author Kornél Simon
  * @see RequirementHandler#calculateTestCoverage(String)
+ * @see RequirementHandler#calculateExampleCoverage(String)
  */
-public class RequirementCoverage {
+public class RequirementCoverage extends ElementCoverage {
 
 	private RequirementKind kind;
-	private String id;
-	private int featureCount;
-	private int scenarioCount;
-	private int percentage;
 	
 	public RequirementCoverage() {
 		this(null, null);
 	}
 	
 	public RequirementCoverage(RequirementKind kind, String id) {
+		super();
 		setKind(kind);
 		setId(id);
 	}
@@ -56,102 +54,4 @@ public class RequirementCoverage {
 		this.kind = kind;
 	}
 	
-	/**
-	 * Identifier of the requirement.
-	 * @return ID of requirement
-	 */
-	public String getId() {
-		return id;
-	}
-	
-	/**
-	 * Sets the identifier of the requirement.
-	 * @param id ID of requirement
-	 */
-	public void setId(String id) {
-		this.id = id;
-	}
-	
-	/**
-	 * Returns the number of feature files assigned to this requirement.
-	 * @return number of feature files
-	 */
-	public int getFeatureCount() {
-		return featureCount;
-	}
-	
-	/**
-	 * Sets the number of feature files assigned to this requirement.
-	 * @param featureCount number of feature files
-	 */
-	public void setFeatureCount(int featureCount) {
-		this.featureCount = featureCount;
-	}
-	
-	/**
-	 * Increases the number of feature files assigned to this requirement.
-	 * @param plus this number will be added to the number of feature files
-	 */
-	public void incFeatureCount(int plus) {
-		featureCount += plus;
-	}
-	
-	/**
-	 * Returns the number of scenarios assigned to this requirement.
-	 * @return number of scenarios
-	 */
-	public int getScenarioCount() {
-		return scenarioCount;
-	}
-	
-	/**
-	 * Sets the number of scenarios assigned to this requirement.
-	 * @param scenarioCount number of scenarios
-	 */
-	public void setScenarioCount(int scenarioCount) {
-		this.scenarioCount = scenarioCount;
-	}
-	
-	/**
-	 * Increases the number of scenarios assigned to this requirement.
-	 * @param plus this number will be added to the number of scenarios
-	 */
-	public void incScenarioCount(int plus) {
-		scenarioCount += plus;
-	}
-	
-	/**
-	 * Returns the coverage value, in percents.
-	 * @return the coverage value
-	 */
-	public int getPercentage() {
-		return percentage;
-	}
-	
-	/**
-	 * Sets the coverage value, in percents.
-	 * @param percentage the coverage value
-	 */
-	public void setPercentage(int percentage) {
-		this.percentage = percentage;
-	}
-	
-	@Override
-	public int hashCode() {
-		if (id == null) {
-			return 0;
-		}
-		return id.hashCode();
-	}
-	
-	@Override
-	public boolean equals(Object obj) {
-		if (id != null) {
-			if (obj instanceof RequirementCoverage) {
-				RequirementCoverage req = (RequirementCoverage)obj;
-				return id.equals(req.id);
-			}
-		}
-		return super.equals(obj);
-	}
 }
