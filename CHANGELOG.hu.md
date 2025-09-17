@@ -1,6 +1,6 @@
 # ibello-api változási napló
 
-## 1.24.0
+## 1.23.1
 
 - A szükséges minimális java verzió: 11
 - Új `Browser.javascript()` metódus JavaScipt kódok futtatásához

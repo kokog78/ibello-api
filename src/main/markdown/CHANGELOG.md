@@ -1,6 +1,6 @@
 # ibello-api changelog
 
-## 1.24.0
+## 1.23.1
 
 - Minimum required java version: 11
 - New `Browser.javascript()` method to run JavaScipt code
