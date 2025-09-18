@@ -55,9 +55,12 @@ public interface TestResultLoader {
 	 * @throws TestResultLoaderException if the file cannot be loaded
 	 */
 	public TestRun loadTestResultFromDirectory(File directory) throws TestResultLoaderException;
-	
+
 	/**
 	 * @deprecated use {@link #loadTestResultFromDirectory(String)}
+	 * @param dirName the name of the sub-folder in the "ibello/results" directory which contains the test results
+	 * @return the test run results in java object structure
+	 * @throws TestResultLoaderException if the file cannot be loaded
 	 */
 	@Deprecated
 	public default TestRun loadTestResult(String dirName) throws TestResultLoaderException {
@@ -75,6 +78,9 @@ public interface TestResultLoader {
 	
 	/**
 	 * @deprecated use {@link #loadTestResultFromFile(File)}
+	 * @param file the XML file containing the test results
+	 * @return the test results object
+	 * @throws TestResultLoaderException if the file cannot be loaded
 	 */
 	@Deprecated
 	public default TestRun loadTestResult(File file) throws TestResultLoaderException {

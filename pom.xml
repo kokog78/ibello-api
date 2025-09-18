@@ -136,7 +136,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>3.0.0-M1</version>
+				<version>3.11.3</version>
 				<configuration>
 					<show>public</show>
 					<nohelp>true</nohelp>
@@ -157,21 +157,8 @@
 						<goals>
 							<goal>javadoc</goal>
 						</goals>
-						<configuration>
-							<doclet>com.manoelcampos.javadoc.coverage.CoverageDoclet</doclet>
-							<docletArtifact>
-								<groupId>com.manoelcampos</groupId>
-								<artifactId>javadoc-coverage</artifactId>
-								<version>1.1.0</version>
-							</docletArtifact>
-						</configuration>
 					</execution>
 				</executions>
-			</plugin>
-			<plugin>
-				<groupId>com.manoelcampos</groupId>
-				<artifactId>javadoc-coverage</artifactId>
-				<version>1.1.0</version>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
