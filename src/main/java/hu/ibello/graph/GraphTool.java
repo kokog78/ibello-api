@@ -15,6 +15,10 @@
  */
 package hu.ibello.graph;
 
+import java.io.IOException;
+
+import hu.ibello.transform.TransformerException;
+
 public interface GraphTool {
 
 	/**
@@ -37,4 +41,49 @@ public interface GraphTool {
 	 * @return the graph/chart instance
 	 */
 	public LabeledGraph createLabeledGraph(String name);
+	
+	/**
+	 * Generates a performance measurement time series graph from an existing measurement definition and data.
+	 * @param performanceDefinitionId performance measurement definition id
+	 * @return the graph created from the measurement data
+	 * @throws TransformerException if performance measurement definition file or data file is in the wrong format
+	 * @throws IOException if performance measurement definition file or data file cannot be loaded
+	 */
+	public TimeGraph generatePerformanceTimeSeriesGraph(String performanceDefinitionId) throws TransformerException, IOException;
+
+	/**
+	 * Generates an APDEX graph from an existing performance measurement definition and data.
+	 * @param performanceDefinitionId performance measurement definition id
+	 * @return the graph created from the measurement data
+	 * @throws TransformerException if performance measurement definition file or data file is in the wrong format
+	 * @throws IOException if performance measurement definition file or data file cannot be loaded
+	 */
+	public Graph generatePerformanceApdexGraph(String performanceDefinitionId) throws TransformerException, IOException;
+
+	/**
+	 * Generates an average response time graph from an existing performance measurement definition and data.
+	 * @param performanceDefinitionId performance measurement definition id
+	 * @return the graph created from the measurement data
+	 * @throws TransformerException if performance measurement definition file or data file is in the wrong format
+	 * @throws IOException if performance measurement definition file or data file cannot be loaded
+	 */
+	public Graph generatePerformanceAverageResponseTimeGraph(String performanceDefinitionId) throws TransformerException, IOException;
+
+	/**
+	 * Generates a 90% percentile graph from an existing performance measurement definition and data.
+	 * @param performanceDefinitionId performance measurement definition id
+	 * @return the graph created from the measurement data
+	 * @throws TransformerException if performance measurement definition file or data file is in the wrong format
+	 * @throws IOException if performance measurement definition file or data file cannot be loaded
+	 */
+	public Graph generatePerformancePercentile90Graph(String performanceDefinitionId) throws TransformerException, IOException;
+
+	/**
+	 * Generates an error graph from an existing performance measurement definition and data.
+	 * @param performanceDefinitionId performance measurement definition id
+	 * @return the graph created from the measurement data
+	 * @throws TransformerException if performance measurement definition file or data file is in the wrong format
+	 * @throws IOException if performance measurement definition file or data file cannot be loaded
+	 */
+	public Graph generatePerformanceErrorGraph(String performanceDefinitionId) throws TransformerException, IOException;
 }
