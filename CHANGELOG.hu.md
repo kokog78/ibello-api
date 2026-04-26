@@ -10,6 +10,7 @@
 - Új `Functionality.getLevel()` metódus
 - Új `IbelloReportReader` interfész a nem ibello formátumú teszteredmények beolvasásához
 - Új `TestResultLoader.loadTestResultFromDirectory(...)` és `TestResultLoader.loadTestResultFromFile(File)` metódusok
+- Új metódusok a `GraphTool` interfészben performancia grafikon generáláshoz
 
 ## 1.23.0
 
