@@ -57,6 +57,17 @@ public interface TestResultLoader {
 	public TestRun loadTestResultFromDirectory(File directory) throws TestResultLoaderException;
 	
 	/**
+	 * Loads a local test result from the sub-folder of the "ibello/results" directory.
+	 * Test results are stored in "results.xml" files. This tool transforms them to java objects.
+	 * Example:
+	 * <pre>
+	 * TestResultLoader loader = ...;
+	 * TestRun result = loader.loadTestResult("20000101_123456");
+	 * </pre>
+	 * If the sub-folder does not contain an ibello format test result then the framework tries to use the registered
+	 * {@link IbelloReportReader} instances to convert the result to {@link TestRun} object.
+	 * @param dirName the name of the sub-folder in the "ibello/results" directory which contains the test results
+	 * @return the test run results in java object structure
 	 * @deprecated use {@link #loadTestResultFromDirectory(String)}
 	 */
 	@Deprecated
@@ -74,6 +85,11 @@ public interface TestResultLoader {
 	public TestRun loadTestResultFromFile(File file) throws TestResultLoaderException;
 	
 	/**
+	 * Loads a local test result from the given file.
+	 * Test results are stored in "results.xml" files. This tool transforms them to java objects.
+	 * @param file the XML file containing the test results
+	 * @return the test results object
+	 * @throws TestResultLoaderException if the file cannot be loaded
 	 * @deprecated use {@link #loadTestResultFromFile(File)}
 	 */
 	@Deprecated
