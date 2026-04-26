@@ -2,6 +2,8 @@
 
 ## 1.23.1
 
+2026-04-26
+
 - Minimum required java version: 11
 - New `Browser.javascript()` method to run JavaScipt code
 - The `TestRun` class has a new `threads` property.

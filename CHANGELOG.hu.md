@@ -2,6 +2,8 @@
 
 ## 1.23.1
 
+2026-04-26
+
 - A szükséges minimális java verzió: 11
 - Új `Browser.javascript()` metódus JavaScipt kódok futtatásához
 - A `TestRun` osztály kapott egy új `threads` tulajdonságot.
