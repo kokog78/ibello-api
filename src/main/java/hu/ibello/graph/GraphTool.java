@@ -79,6 +79,15 @@ public interface GraphTool {
 	public Graph generatePerformancePercentile90Graph(String performanceDefinitionId) throws TransformerException, IOException;
 
 	/**
+	 * Generates a max value graph from an existing performance measurement definition and data.
+	 * @param performanceDefinitionId performance measurement definition id
+	 * @return the graph created from the measurement data
+	 * @throws TransformerException if performance measurement definition file or data file is in the wrong format
+	 * @throws IOException if performance measurement definition file or data file cannot be loaded
+	 */
+	public Graph generatePerformanceMaxValueGraph(String performanceDefinitionId) throws TransformerException, IOException;
+
+	/**
 	 * Generates an error graph from an existing performance measurement definition and data.
 	 * @param performanceDefinitionId performance measurement definition id
 	 * @return the graph created from the measurement data
