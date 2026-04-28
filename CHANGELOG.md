@@ -1,5 +1,9 @@
 # ibello-api changelog
 
+## 1.23.2
+
+- New methods in the `GraphTool` interface to generate performance graphs
+
 ## 1.23.1
 
 2026-04-26

@@ -1,5 +1,9 @@
 # ibello-api változási napló
 
+## 1.23.2
+
+- Új metódusok a `GraphTool` interfészben performancia grafikon generáláshoz
+
 ## 1.23.1
 
 2026-04-26
