@@ -3,6 +3,7 @@
 ## 1.23.2
 
 - Új metódusok a `GraphTool` interfészben performancia grafikon generáláshoz
+- Új `getName()` és `getFileName()` metódusok a `Graph` és a `Table` interfészekben
 
 ## 1.23.1
 

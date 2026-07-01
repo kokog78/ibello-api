@@ -3,6 +3,7 @@
 ## 1.23.2
 
 - New methods in the `GraphTool` interface to generate performance graphs
+- New `getName()` and `getFileName()` methods in `Graph` and `Table` interfaces
 
 ## 1.23.1
 

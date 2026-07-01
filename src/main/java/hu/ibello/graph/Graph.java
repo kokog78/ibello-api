@@ -32,6 +32,20 @@ public interface Graph {
 	 * @param name the name of the graph/chart
 	 */
 	public void setName(String name);
+	
+	/**
+	 * The name of the graph/chart.
+	 * @return the name of the graph/chart
+	 */
+	public String getName();
+	
+	/**
+	 * File name of the graph/chart.
+	 * It is calculated from the name of the graph.
+	 * When ibello saves the graph to a file then this file name is used.
+	 * @return file name of the graph/chart
+	 */
+	public String getFileName();
 
 	/**
 	 * Sets the X axis parameters on the chart.
