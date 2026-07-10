@@ -17,6 +17,7 @@ package hu.ibello.graph;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.List;
 
 import hu.ibello.functions.Function;
@@ -66,6 +67,13 @@ public interface TimeGraph {
 	public void setYAxis(String name);
 	
 	/**
+	 * Sets the default time zone ID of this graph.
+	 * It will be used to convert epoch millis to date/time values.
+	 * @param zoneId the default time zone ID
+	 */
+	public void setTimeZoneId(ZoneId zoneId);
+	
+	/**
 	 * Adds a new scatter plot to the chart.
 	 * @param name the name of the plot
 	 * @param data the data points
@@ -75,9 +83,11 @@ public interface TimeGraph {
 	/**
 	 * Adds a new function plot to the chart.
 	 * The domain axis is the function will be converted into time values.
-	 * For the conversion, each x value will be considered as epoch millis.
+	 * For the conversion, each x value will be considered as epoch millis,
+	 * with the use of the default time zone of the graph.
 	 * @param name the name of the plot
 	 * @param function the function which should be plotted
+	 * @see #setTimeZoneId(ZoneId)
 	 */
 	public void addFunction(String name, Function function);
 	
