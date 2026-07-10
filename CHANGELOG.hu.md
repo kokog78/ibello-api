@@ -4,6 +4,7 @@
 
 - Új metódusok a `GraphTool` interfészben performancia grafikon generáláshoz
 - Új `getName()` és `getFileName()` metódusok a `Graph` és a `Table` interfészekben
+- Új `setTimeZoneId(...)` metódus a `TimeGraph` interfészben, amivel megadható az grafikon alapártelmezett időzónája
 
 ## 1.23.1
 
