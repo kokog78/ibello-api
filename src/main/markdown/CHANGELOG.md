@@ -5,6 +5,7 @@
 - New methods in the `GraphTool` interface to generate performance graphs
 - New `getName()` and `getFileName()` methods in `Graph` and `Table` interfaces
 - New `setTimeZoneId(...)` method in the `TimeGraph` interface to specify the default time zone for the graph
+- New API to generate test progress reports (`IbelloProgressReporter`)
 
 ## 1.23.1
 

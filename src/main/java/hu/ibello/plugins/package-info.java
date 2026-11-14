@@ -37,6 +37,10 @@
  * custom format.)
  * </p>
  * <p>
+ * A plugin class which implements the {@link hu.ibello.plugins.IbelloProgressReporter} interface is a progress reporter plugin. It
+ * collects data from the testing project which will be used to generate a test progress report.
+ * </p>
+ * <p>
  * A plugin class which implements the {@link hu.ibello.plugins.IbelloTaskRunner} interface is a task runner plugin.
  * It receives a task name and should perform that task - or return <code>false</code>. Tasks can be executed from command line.
  * </p>
