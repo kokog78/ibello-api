@@ -13,7 +13,7 @@ public interface ProgressReport {
 	public ProgressReport withDescription(String description);
 	
 	public String getDescription();
-
+	
 	public ProgressReport withScoreCard(String title, int count);
 	
 	public ProgressReport withScoreCard(String title, int count, int maxCount);
@@ -22,6 +22,8 @@ public interface ProgressReport {
 	
 	public <E extends Enum<?>> ProgressReport registerStatus(E status, String htmlColor);
 	
+	public ProgressReport withExtraColumn(String columnTitle, int relativeWidth);
+
 	public ProgressItem addItem(String id);
 	
 	public ProgressItem findItem(String id);
