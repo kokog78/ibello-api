@@ -5,6 +5,7 @@ public enum ProgressItemKind {
 	FUNCTIONALITY,
 	REQUIREMENT,
 	TEST,
+	RESULT,
 	BUG;
 	
 }
