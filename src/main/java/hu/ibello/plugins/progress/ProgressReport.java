@@ -16,9 +16,17 @@ public interface ProgressReport {
 	
 	public ProgressReport withScoreCard(String title, int count);
 	
-	public ProgressReport withScoreCard(String title, int count, int maxCount);
+	public default ProgressReport withScoreCard(String title, int count, int maxCount) {
+		return withScoreCard(title, ScoreCardKind.NEUTRAL, count, maxCount);
+	}
 	
-	public ProgressReport withScoreCard(String title, double percentage);
+	public ProgressReport withScoreCard(String title, ScoreCardKind kind, int count, int maxCount);
+	
+	public default ProgressReport withScoreCard(String title, double percentage) {
+		return withScoreCard(title, ScoreCardKind.NEUTRAL, percentage);
+	}
+	
+	public ProgressReport withScoreCard(String title, ScoreCardKind kind, double percentage);
 	
 	public <E extends Enum<?>> ProgressReport registerStatus(E status, String htmlColor);
 	
