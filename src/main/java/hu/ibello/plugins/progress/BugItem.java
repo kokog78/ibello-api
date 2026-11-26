@@ -20,13 +20,13 @@ public interface BugItem {
 	
 	public <E extends Enum<?>> BugItem withSeverity(E severity);
 	
-	public BugItem withExtraValue(String value);
+	public BugItem withExtraValue(String name, String value);
 	
-	public BugItem withExtraValue(int value);
+	public BugItem withExtraValue(String name, int value);
 	
-	public BugItem withExtraValue(double value);
+	public BugItem withExtraValue(String name, double value);
 	
-	public BugItem withExtraValue(boolean value);
+	public BugItem withExtraValue(String name, boolean value);
 	
-	public <E extends Enum<?>> BugItem withExtraValue(E value);
+	public <E extends Enum<?>> BugItem withExtraValue(String name, E value);
 }

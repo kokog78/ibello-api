@@ -29,8 +29,6 @@ public interface ProgressReport {
 	public ProgressReport withScoreCard(String title, ScoreCardKind kind, double percentage);
 	
 	public <E extends Enum<?>> ProgressReport registerStatus(E status, String htmlColor);
-	
-	public ProgressReport withExtraColumn(String columnTitle, int relativeWidth);
 
 	public ProgressItem addItem(String id);
 	
