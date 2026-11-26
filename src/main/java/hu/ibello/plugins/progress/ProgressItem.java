@@ -10,7 +10,7 @@ public interface ProgressItem {
 	
 	public String getTitle();
 	
-	public ProgressItem withTitle(String id);
+	public ProgressItem withTitle(String title);
 
 	public <E extends Enum<?>> E getStatus();
 	
@@ -24,10 +24,10 @@ public interface ProgressItem {
 	
 	public ProgressItem withExtraValue(boolean value);
 	
-	public ProgressItem withMarkdownText(String markdownText);
-	
 	public <E extends Enum<?>> ProgressItem withExtraValue(E value);
 
+	public ProgressItem withMarkdownText(String markdownText);
+	
 	public ProgressItem addChild(String id);
 	
 }

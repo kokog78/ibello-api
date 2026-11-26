@@ -36,6 +36,10 @@ public interface ProgressReport {
 	
 	public ProgressItem findItem(String id);
 	
+	public BugItem addBug(String id);
+	
+	public BugItem findBug(String id);
+	
 	public ProgressReport buildFunctionalityTree(Function<ProgressItem, Boolean> validator) throws PluginException;
 	
 	public ProgressReport buildRequirementTree(Function<ProgressItem, Boolean> validator) throws PluginException;
