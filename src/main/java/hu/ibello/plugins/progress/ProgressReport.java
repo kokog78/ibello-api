@@ -42,4 +42,6 @@ public interface ProgressReport {
 	
 	public ProgressReport buildRequirementTree(Function<ProgressItem, Boolean> validator) throws PluginException;
 	
+	public ProgressReport buildTestScenarios(Function<ProgressItem, Boolean> validator) throws PluginException;
+	
 }
